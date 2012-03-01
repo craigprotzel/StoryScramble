@@ -1,0 +1,121 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+
+body{
+font-family: "Arial";
+font-size: 24px;
+}
+
+
+.pageName{
+	font-size: 64px;
+	position: absolute;
+	top: 20px;
+	left: 150px;
+	white-space: nowrap; 
+	/* display: block; */
+}
+
+.instructions{
+	font-size: 48px;
+	position: absolute;
+	top: 195px;
+	left: 225px;
+	white-space: nowrap; 
+}
+
+
+a{
+/* this removes the pre-styling on the links */
+text-decoration: none;
+}
+
+
+
+/* buttons */
+
+.bigButton{
+
+	position: relative; 	
+	top: 230px;
+	left: 115px;
+	/* right: 100px; */
+	float: left;
+	width: 150px;
+		
+	text-align: center;
+	color: black;
+	
+	background-color: #66ccff;
+	padding: 30px;
+
+	border-style: solid;
+	border-width: 8px; 
+	border-color: gray;
+
+	margin:20px;
+
+	font-size: 36px
+	
+}
+
+.bigButton:hover{
+	color: white;
+	background-color: #001f80;	
+}
+
+.bigButton:active{
+	color: black;
+	background-color: white;	
+}
+
+
+.medButton{
+
+	position: relative; 	
+	width: 150px;
+		
+	text-align: center;
+	color: black;
+	
+	background-color: #66ccff;
+	padding: 10px;
+
+	border-style: solid;
+	border-width: 6px; 
+	border-color: gray;
+
+	font-size: 24px
+}
+
+.medButton:hover{
+	color: white;
+	background-color: #001f80;	
+}
+
+.medButton:active{
+	color: black;
+	background-color: white;	
+}
+
+
+
+/* forms */
+.main{
+	position: absolute;
+	top: 150px;
+	left: 150px;
+	white-space:nowrap;
+	
+	font-size: 36px;
+
+}
+
+
+
+
+
+
