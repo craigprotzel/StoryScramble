@@ -1,9 +1,9 @@
 {
-  "name": "YOUR-APP-NAME",
+  "name": "Story Scramble",
   "version": "0.0.1",
   "dependencies": {
     "express": "2.5.6",
     "ejs" : "latest",
-    "nodemon" : "latest"
+    "supervisor" : "latest"
   }
 }

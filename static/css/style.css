@@ -14,16 +14,16 @@ font-size: 24px;
 	font-size: 64px;
 	position: absolute;
 	top: 20px;
-	left: 150px;
+	left: 25%;
 	white-space: nowrap; 
 	/* display: block; */
 }
 
 .instructions{
 	font-size: 48px;
-	position: absolute;
+	position: fixed;
 	top: 195px;
-	left: 225px;
+	left: 30%;
 	white-space: nowrap; 
 }
 

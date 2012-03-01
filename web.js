@@ -40,10 +40,10 @@ app.configure(function() {
 /*********** END SERVER CONFIGURATION *****************/
 
 // the template data variables
-	var contentType = ['headlines','articles', 'images', 'audio', 'video'];
-	var newsTopics = ['history','travel','sports']; 
+	var contentType = ['Headlines','Articles', 'Images', 'Audio', 'Video'];
+	var storyTopics = ['History','Travel','Sports']; 
 
-	newsScrambleArray = [];
+	storyScrambleArray = [];
 
 
 // Main Page - display the CleverHealth Main Page
@@ -56,109 +56,94 @@ app.get('/', function(request, response) {
 
 
 
-// Word Maker Page - display the Word Maker Page
+// Display Level II Page 
 
-app.get('/wordmaker', function(request, response) {
+app.get('/storyscramble_level_II', function(request, response) {
+    var templateData = { 
+     
+    };
+    
+    // render the card_form template with the data above
+    response.render("storyscramble_level_II.html",templateData);
+});
+
+// Display Level III Page
+
+app.get('/storyscramble_level_III', function(request, response) {
     var templateData = { 
 
     };
     
     // render the card_form template with the data above
-    response.render("wordmaker.html",templateData);
+    response.render("storyscramble_level_III.html",templateData);
 });
 
 
-// Video Puzzle Page - display the Video Puzzle Page
+// Display Level I Page
 
-app.get('/videopuzzle', function(request, response) {
-    var templateData = { 
-        /* pageTitle : 'CleverHealth Main', */
-        /* images: valentineImages */
-    };
-    
-    // render the card_form template with the data above
-    response.render("videopuzzle.html",templateData);
-});
-
-
-// News Scramble Page - display the News Scramble Page
-
-app.get('/newsscramble', function(request, response) {
+app.get('/storyscramble_level_I', function(request, response) {
     var templateData = {
     	contentType : contentType, 
-        newsTopics : newsTopics
+        storyTopics : storyTopics
     };
     
-    // render the card_form template with the data above
-    response.render("newsscramble.html",templateData);
+    // render the story_form template with the data above
+    response.render("storyscramble_level_I.html",templateData);
 });
 
 
-// receive a form submission
+// receive a form submission from Level I page
 
-//Receive News Scrqmble Name & Topics
-app.post('/newsscramble_post', function(request, response){
+//Receive Story Scramble Name & Topics
+app.post('/storyscramble_level_I_post', function(request, response){
     console.log("Inside app.post('/')");
     console.log("form received and includes")
     console.log(request.body);
     
     // Simple data object to hold the form data
-    var newNewsScramble = {
+    var newStoryScramble = {
     	
-    	newsName : request.body.newsName, 
+    	storyName : request.body.storyName, 
 		contentType : request.body.contentType,
-    	newsTopics : request.body.newsTopics
-        
-        /*
-		to : request.body.to,
-        from : request.body.from,
-        message : request.body.message,
-        image : request.body.image
-		*/
+    	storyTopics : request.body.storyTopics
 				  
     };
     
-    // Put this newCard object into the cardArray
-    //cardArray.push(newCard);
+    // Put this newStoryScramble object into the scrambleArray
+    storyScrambleArray.push(newStoryScramble);
     
-    newsScrambleArray.push(newNewsScramble);
-    
-    // Get the position of the card in the cardArray
-    //cardNumber = cardArray.length - 1;
-    
-    newsScrambleNum = newsScrambleArray.length - 1;
-    
-    //response.redirect('/card/' + cardNumber); // for example /card/1
+    // Get the position of the story in the storyArray    
+    storyScrambleNum = storyScrambleArray.length - 1;
 
-    response.redirect('/newsscramble/' + newsScrambleNum);
-	//response.json(newNewsScramble);
+    response.redirect('/storyscramble_data/' + storyScrambleNum);
+	//response.json(newStoryScramble);
 });
 
 
 
 // Display a specific card 
 //app.get('/card/:cardNumber', function(request, response){
-app.get('/newsscramble/:newsScrambleNum', function(request, response){
+app.get('/storyscramble_data/:storyScrambleNum', function(request, response){
     // get the requested card number
     //cardNumber = request.params.cardNumber;
     
     // ???why do we need this line???
-    newsScrambleNum = request.params.newsScrambleNum;
+    storyScrambleNum = request.params.storyScrambleNum;
 
     // Get the card from cardArray
     //cardData = cardArray[cardNumber];  // cardData contains 'to','from','message','image'
     
-    newsScrambleData = newsScrambleArray[newsScrambleNum];
+    storyScrambleData = storyScrambleArray[storyScrambleNum];
     
     
-    if (newsScrambleData != undefined) {
+    if (storyScrambleData != undefined) {
         
         // Render the card_display template - pass in the cardData
-        response.render("newsscramble_data.html", newsScrambleData);
+        response.render("storyscramble_data.html", storyScrambleData);
         
     } else {
         // card not found. show the 'Card not found' template
-        response.render("newsscramble_data_notfound.html");        
+        response.render("storyscramble_data_notfound.html");        
     }
     
 });
