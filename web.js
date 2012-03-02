@@ -1,6 +1,25 @@
 var express = require('express'); // 
 var ejs = require('ejs'); //embedded javascript template engine
+
 var app = express.createServer(express.logger());
+
+var mongoose = require('mongoose'); //include Mongoose MongoDB Library
+var schema = mongoose.Schema;
+
+
+
+/************ DATABASE CONFIGURATION **********/
+app.db = mongoose.connect(process.env.MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
+
+// include the database model / schema
+require('./models').configureSchema(schema, mongoose);
+
+// Define your DB Model variables
+var StoryEntry = mongoose.model('StoryEntry');
+
+/************* END DATABASE CONFIGURATION *********/
+
+
 
 
 /*********** SERVER CONFIGURATION *****************/
@@ -108,6 +127,13 @@ app.post('/storyscramble_level_I_post', function(request, response){
     	storyTopics : request.body.storyTopics
 				  
     };
+    
+    //post this data to the db
+    var post = new StoryEntry(newStoryScramble);
+    
+    // save the blog post
+    post.save();
+    
     
     // Put this newStoryScramble object into the scrambleArray
     storyScrambleArray.push(newStoryScramble);
