@@ -232,16 +232,16 @@ body {
   line-height: 20px;
   margin: 0;
   padding: 0;
-  background-color: #ececec;
+  background-color: #333333;
 }
 body > header {
-  background: #cccccc;
+  background: #6d4194;
   padding: 20px;
 }
 body > header h1 {
   margin: 0;
   font-size: 24px;
-  color: #555555;
+  color: #ffffff;
 }
 article#main {
   width: 960px;
@@ -250,15 +250,15 @@ article#main {
 
   margin: 0 auto;
   overflow: hidden;
-  color: #555555;
-  background-color: #f9f6ea;
+  color: #ffffff;
+  background-color: #333333;
 }
 body > footer {
   position: fixed;
+  background-color: #6d4194;
   bottom: 0;
-  background: #cccccc;
   width: 100%;
-  color: #555555;
+  color: #333333;
   padding: 6px;
   font-weight: 500;
 }
@@ -295,7 +295,7 @@ body > footer {
   margin: 0 10px;
   /* .row(4); */
 
-  background-color: #6d4194;
+  background-color: #19a3a3;
   height: 200px;
   line-height: 200px;
   text-align: center;
@@ -309,11 +309,11 @@ body > footer {
 }
 #buttons .option:hover {
   color: #ffffff;
-  background-color: #65378f;
+  background-color: #6d4194;
 }
 #buttons .option:active {
   color: #ffffff;
-  background-color: #6d4194;
+  background-color: #19a3a3;
 }
 /*
 .medButton{

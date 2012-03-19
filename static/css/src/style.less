@@ -10,11 +10,6 @@
 @white: #fff;
 @black: #000;
 
-//Alz other colors
-@lightPurple:		#6D4194; 
-@darkPurple: 		#65378F;
-@darkPurpleTwo:		#6D4182;
-@grayBg:	#ECECEC;
 
 
 //////////
@@ -38,18 +33,18 @@ body{
 	#font.sans-serif();
 	margin: 0;
 	padding: 0;
-	background-color: @grayBg;
+	background-color: @grayDark; 
 }
 
 // > sign means direct child of
 body > header {
-	background: @grayLighter;
+	background: @lightPurple;
 	padding: 20px;
 	
 	h1{
 		margin: 0;
 		font-size: @medium;	
-		color: @gray;
+		color: @white;
 		}
 	}
 
@@ -60,17 +55,18 @@ article#main {
 	/* padding: 200px; */
 	margin: 0 auto;
 	overflow: hidden;
-	color: @gray;
-	background-color: @main;
+	color: @white;
+	
+	background-color: @grayDark;
 	
 }
 
 body > footer {
 	position: fixed;
+	background-color: @lightPurple;
 	bottom: 0;
-	background: @grayLighter;
 	width: 100%;
-	color: @gray;
+	color: @grayDark;
 	padding: 6px;
 	font-weight: 500;
 }
