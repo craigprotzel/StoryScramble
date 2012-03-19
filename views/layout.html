@@ -18,15 +18,14 @@
 
 		<!-- Not Using Twitter Bootstrap For Now -->
 
-            <header>
-            
+            <header> 
                 <% if (typeof pageTitle != "undefined") { %>
                    <h1><%= pageTitle %></h1>
                 <% } else {%>
-                   <h1>Story Scramble</h1>
-                
+                 <a href="/main.html" class="links"><h1>Story Scramble</h1></a>
                 <% } %>
             </header>
+            
             
             <article id="main">
                 
@@ -34,8 +33,15 @@
             
             </article>
 
+
 			<footer>
-				By Craig Protzel
+
+				<form method="POST" action="/usaTodayAPIQuery">
+					<input class="foot erButtons" id="usaTodayCall">USA Today API</input>
+				</form>
+
+				<a href="http://www.craigprotzel.com" class="footerButtons">By Craig Protzel</a>
+							
 			</footer>
 
 

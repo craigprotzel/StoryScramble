@@ -22,7 +22,7 @@
 @gutter-width: 20;
 
 // Remove the definition below for a pixel-based layout, aka fluid vs non-fluid
-//@total-width: 100%;
+@total-width: 100%;
 
 
 ////////////
@@ -46,10 +46,15 @@ body > header {
 		font-size: @medium;	
 		color: @white;
 		}
+	
+	.links{
+		text-decoration: none;
+		}	
 	}
+	
 
 article#main {
-		
+	/* .column(12); */	
 	max-width: 960px; 
 	height: 100%;
 	/* padding: 200px; */
@@ -69,6 +74,8 @@ body > footer {
 	color: @white;
 	padding: 6px;
 	font-weight: 500;
+	font-size: @small;
+	display: inline;
 }
 
 
@@ -105,48 +112,31 @@ body > footer {
 #buttons {  
 	/* .column(12); */ 
 	/* .push(2); */
+	/* .row(9); */
+	margin: 50px auto 100px auto;
 	margin-top:  50px;   
 	margin-bottom: 100px;
+	
 
 	.option {
-		.column(4,12); 
+		.column(3,9); 
 		.bigButton();
 		
 	}
 }
 
 
-
-/*
-.medButton{
-
-	position: relative; 	
-	width: 150px;
-		
-	text-align: center;
-	color: black;
-	
-	background-color: #66ccff;
-	padding: 10px;
-
-	border-style: solid;
-	border-width: 6px; 
-	border-color: gray;
-
-	font-size: 24px
-}
-
-.medButton:hover{
-	color: white;
-	background-color: #001f80;	
-}
-
-.medButton:active{
-	color: black;
-	background-color: white;	
+.footerButtons {
+	.medButton();
+	padding: 0 10px 0 10px;
 }
 
 
+#usaTodayCall {
+		float: right; 
+		/* display: inline;  */
+		margin-right: 30px;
+		}
 
 
 /* forms */

@@ -1,4 +1,7 @@
-var express = require('express'); // 
+//for the api query
+var requestURL = require('request');
+
+var express = require('express');  
 var ejs = require('ejs'); //embedded javascript template engine
 
 var app = express.createServer(express.logger());
@@ -6,16 +9,19 @@ var app = express.createServer(express.logger());
 var mongoose = require('mongoose'); //include Mongoose MongoDB Library
 var schema = mongoose.Schema;
 
-var MONGOLAB_URI = 'mongodb://heroku_app3095706:p3n08339u1e9no3p0ghj6p0chn@ds031347.mongolab.com:31347/heroku_app3095706';
-
 /************ DATABASE CONFIGURATION **********/
-app.db = mongoose.connect(process.env.MONGOLAB_URI || MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
+app.db = mongoose.connect(process.env.MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
 
 // include the database model / schema
 require('./models').configureSchema(schema, mongoose);
 
 // Define your DB Model variables
+
+//first practice db entry
 var StoryEntry = mongoose.model('StoryEntry');
+
+//USA Today API Call
+var stories = mongoose.model('stories');
 
 /************* END DATABASE CONFIGURATION *********/
 
@@ -58,20 +64,70 @@ app.configure(function() {
 });
 /*********** END SERVER CONFIGURATION *****************/
 
+
+
 // the template data variables
-	var contentType = ['Headlines','Articles', 'Images', 'Audio', 'Video'];
-	var storyTopics = ['Top News','Travel','Sports']; 
 
-	storyScrambleArray = [];
+//old variables
+var contentType = ['Headlines','Articles', 'Images', 'Audio', 'Video'];
+var storyTopics = ['Top News','Travel','Sports']; 
+storyScrambleArray = [];
 
+//usa today variables
+var source = 'USA_Today';
 
-// Main Page - display the CleverHealth Main Page
+		
+		
 
+// Main Page
 app.get('/', function(request, response) {
     
     response.render("main.html");
 
 });
+
+
+
+//USA Today API Query - click button on Main Page
+app.post('/usaTodayAPIQuery', function (request,response) {
+
+
+	// the url you need to request from USA Today
+    // this will return the 5 top news articles in json format
+    var url = "http://api.usatoday.com/open/articles/topnews?encoding=json&count=5&api_key=85gehs983tmqbwxz4uwk6ghv"
+	
+    // make the request to USA Today api
+    requestURL(url, function (error, response, usaTodayJSON) {
+        
+        // if successful
+        if (!error && response.statusCode == 200) {
+
+            // convert usaTodayJSON into JS object, usaTodayData
+            usaTodayData = JSON.parse(usaTodayJSON);    
+    		
+    		
+        	//*****FOR MONGO DB*****
+        	
+            for (i = 0; i < usaTodayData.stories.length; i++) {
+            	var newStory = new stories( {
+            		source : source,
+            		title : usaTodayData.stories[i].title,
+            		link: usaTodayData.stories[i].link,
+            		description : usaTodayData.stories[i].description,
+            		source_guid : usaTodayData.stories[i].guid[0].value,
+            		pubDate : usaTodayData.stories[i].timestamp 
+            				
+            	})
+            	
+            	newStory.save();	
+            }          
+        }
+    });
+
+});
+
+
+
 
 
 
@@ -113,6 +169,7 @@ app.get('/storyscramble_level_I', function(request, response) {
 
 // receive a form submission from Level I page
 
+
 //Receive Story Scramble Name & Topics
 app.post('/storyscramble_level_I_post', function(request, response){
     console.log("Inside app.post('/')");
@@ -147,13 +204,9 @@ app.post('/storyscramble_level_I_post', function(request, response){
 
 
 
-// Display a specific card 
-//app.get('/card/:cardNumber', function(request, response){
 app.get('/storyscramble_data/:storyScrambleNum', function(request, response){
-    // get the requested card number
-    //cardNumber = request.params.cardNumber;
     
-    // ???why do we need this line???
+    // get the requested story number    
     storyScrambleNum = request.params.storyScrambleNum;
 
     // Get the card from cardArray
@@ -173,25 +226,6 @@ app.get('/storyscramble_data/:storyScrambleNum', function(request, response){
     }
     
 });
-
-
-/*
-// Route to display card form template without the layout (Header and Footer)
-app.get('/notfancy',function(request, response){
-    
-    // display the card form template without the default Layout (header and footer). 
-    // set templateData.layout = false as show below.
-    // layout : false tells express to not use the layout template and just render and return the requested template
-    
-    var templateData = { 
-        pageTitle : 'Valentine Card Maker',
-        images: valentineImages,
-        layout: false
-    };
-    response.render("card_form.html",templateData);
-});
-*/
-
 
 
 
