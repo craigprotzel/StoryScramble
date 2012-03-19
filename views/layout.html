@@ -17,29 +17,33 @@
     <body>
 
 		<!-- Not Using Twitter Bootstrap For Now -->
-        <div class="container">
 
-            <div class="header">
+            <header>
             
                 <% if (typeof pageTitle != "undefined") { %>
                    <h1><%= pageTitle %></h1>
-                <% } %>
+                <% } else {%>
+                   <h1>Story Scramble</h1>
                 
-            </div>
+                <% } %>
+            </header>
             
-            <div class="">
+            <article id="main">
                 
                 <%- body %>
             
-            </div>
+            </article>
 
+			<footer>
+				By Craig Protzel
+			</footer>
 
-        </div>
 
 
         <!-- JavaScript at the bottom for fast page loading -->
-        <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!--         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+        <script src="/js/script.js"></script>
+        <script src="/js/src/app.js"></script>
 
     </body>
     

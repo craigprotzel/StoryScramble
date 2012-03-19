@@ -1,0 +1,175 @@
+//font sizes
+@big: 52px;
+@large: 38px;
+@medium: 24px;
+@normal: 18px;
+@small: 12px;
+
+
+@main: #F9F6EA;
+@white: #fff;
+@black: #000;
+
+//Alz other colors
+@lightPurple:		#6D4194; 
+@darkPurple: 		#65378F;
+@darkPurpleTwo:		#6D4182;
+@grayBg:	#ECECEC;
+
+
+//////////
+// GRID //
+//////////
+
+// Specify the number of columns and set column and gutter widths
+@columns: 12;
+@column-width: 60;
+@gutter-width: 20;
+
+// Remove the definition below for a pixel-based layout, aka fluid vs non-fluid
+//@total-width: 100%;
+
+
+////////////
+// LAYOUT //
+////////////
+
+body{
+	#font.sans-serif();
+	margin: 0;
+	padding: 0;
+	background-color: @grayBg;
+}
+
+// > sign means direct child of
+body > header {
+	background: @grayLighter;
+	padding: 20px;
+	
+	h1{
+		margin: 0;
+		font-size: @medium;	
+		color: @gray;
+		}
+	}
+
+article#main {
+		
+	width: 960px; 
+	height: 100%;
+	/* padding: 200px; */
+	margin: 0 auto;
+	overflow: hidden;
+	color: @gray;
+	background-color: @main;
+	
+}
+
+body > footer {
+	position: fixed;
+	bottom: 0;
+	background: @grayLighter;
+	width: 100%;
+	color: @gray;
+	padding: 6px;
+	font-weight: 500;
+}
+
+
+///////////////
+// MAIN PAGE //
+//////////////
+
+
+.pageTitle{
+	
+	font-size: @large;
+	font-weight: bold;
+	text-align: center;
+	
+	/* margin: 45px; */ 
+	margin-top: 60px;
+	
+	/* .push(3); */
+	/* .pull(3); */	
+		
+	}
+	
+
+.instructions{
+
+	font-size: @big;
+	font-weight: bold;
+	text-align: center; 
+	margin-top: 100px; 
+	/* .push(2); */
+}
+
+
+#buttons {
+	/* .row(12);  */ 
+	/* .column(12); */ 
+	/* .push(2); */
+	margin-top:  50px;   
+	margin-bottom: 100px;
+
+	.option {
+		.column(4,12); 	
+		/* .row(4); */
+		.bigButton();
+		
+	}
+}
+
+
+
+/*
+.medButton{
+
+	position: relative; 	
+	width: 150px;
+		
+	text-align: center;
+	color: black;
+	
+	background-color: #66ccff;
+	padding: 10px;
+
+	border-style: solid;
+	border-width: 6px; 
+	border-color: gray;
+
+	font-size: 24px
+}
+
+.medButton:hover{
+	color: white;
+	background-color: #001f80;	
+}
+
+.medButton:active{
+	color: black;
+	background-color: white;	
+}
+
+
+
+
+/* forms */
+
+/*
+.main{
+	position: absolute;
+	top: 150px;
+	left: 150px;
+	white-space:nowrap;
+	
+	font-size: 36px;
+
+}
+*/
+
+
+
+
+
