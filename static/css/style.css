@@ -274,6 +274,7 @@ body > footer {
   text-align: center;
   /* margin: 45px; */
   margin-top: 60px;
+  line-height: 50px;
   /* .push(3); */
 
   /* .pull(3); */
@@ -283,8 +284,29 @@ body > footer {
   font-weight: bold;
   text-align: center;
   margin-top: 100px;
+  line-height: 50px;
   /* .push(2); */
 
+}
+.gameInstructions {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 75px 20px;
+  line-height: 35px;
+}
+.game {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 100px 10px;
+  line-height: 30px;
+  /* display: inline; */
+
+}
+.game #highlight {
+  font-size: 52px;
+  display: inline;
+  color: #19a3a3;
 }
 #buttons {
   /* .column(12); */
@@ -342,6 +364,10 @@ body > footer {
 .footerButtons:active {
   color: #ffffff;
   background-color: #6d4194;
+}
+.gameField {
+  font-size: 38px;
+  width: 10em;
 }
 #usaTodayCall {
   float: right;

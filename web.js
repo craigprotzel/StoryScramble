@@ -86,6 +86,13 @@ app.get('/', function(request, response) {
 });
 
 
+//Link From Header to Main Page
+app.get('/main', function(request,response) {
+
+	response.render("main.html");
+});
+
+
 
 //USA Today API Query - click button on Main Page
 app.post('/usaTodayAPIQuery', function (request,response) {
@@ -132,7 +139,7 @@ app.post('/usaTodayAPIQuery', function (request,response) {
 
 
 
-// Display Level II Page 
+// Display Level II Page - ONE USA TODAY ENTRY
 
 app.get('/storyscramble_level_II', function(request, response) {
     
@@ -150,7 +157,7 @@ app.get('/storyscramble_level_II', function(request, response) {
         };
         
         // render the card_form template with the data above
-        response.render("storyscramble_level_II.html", templateData);
+        response.render("storyscramble_stories_one.html", templateData);
         
     });
     
@@ -188,16 +195,28 @@ app.get('/storyscramble_level_II', function(request, response) {
 
 
 
-// Display Level III Page
+// Display Level III Page - ALL USA TODAY ENTRIES
 
 app.get('/storyscramble_level_III', function(request, response) {
-    var templateData = { 
 
-    };
+	//get all the stories and display
+    var query = stories_db.find({});
+    query.sort('date',-1); //sort by date in descending order
     
-    // render the card_form template with the data above
-    response.render("storyscramble_level_III.html",templateData);
+    // run the query and display blog_main.html template if successful
+    query.exec({}, function(err, allStories){
+        
+        // prepare template data
+        templateData = {
+            stories : allStories
+        };
+            
+	    // render the card_form template with the data above
+	    response.render("storyscramble_stories_all.html",templateData);
+	});
+
 });
+
 
 
 // Display Level I Page

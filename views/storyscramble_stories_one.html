@@ -1,0 +1,83 @@
+<section class="pageTitle">Level TWO - WORD SCRAMBLE</section>
+	
+	
+<section class="gameInstructions">  
+	TYPE your answer in the WHITE BOX<br/> 
+	Then press ENTER
+</section>
+	
+<section class="gameBoard">		
+
+
+	<!-- loop through all the stories -->
+	<%	for( var i=0; i<1; i++) { %>    
+	
+	
+		<!-- declare variables -->
+		<%	var allWords = stories[i].title.split(" "); %>
+		<%	var masterWords = stories[i].title.split(" "); %>
+
+			
+		<!-- create a function to sort items randomly -->
+		<%	var sortRandom = function() { %>
+		<%		return (0.5 - Math.random()); %>
+		<%	} %>
+		
+				
+		<!-- create a function to sort items longest to shortest -->
+		<%	var sortLongToShort = function(a,b) { %>
+		<%		return(b.toString().length - a.toString().length); %>
+		<%	} %>
+		
+		
+		<!-- establish a variable called sorted words and sort allWords from long to short -->
+		<%	var sortedWords = allWords; %>
+		<%	sortedWords.sort(sortLongToShort); %>
+	
+		
+		<!-- link the longest word to its actual placement in the original story title -->	
+		<%	var index = 0;
+			for (var j = 0; j < masterWords.length; j++){
+				if (sortedWords[0] == masterWords[j]) {
+					index = j;
+				} 
+			} %>
+			
+		
+		<!-- isolate the longest word, split then sort then join -->
+		<%	var longestWord = sortedWords[0].split("");
+			longestWord.sort(sortRandom); 
+		 	var scrambledWord = longestWord.join(""); %> 
+			
+		<section class="game">
+			
+			<!-- print the story title the longest word scrambled in its original position -->	
+			<%	for (var j = 0; j < masterWords.length; j++){
+				if (j == index) { %>
+				<section id="highlight">
+					<%= scrambledWord %>
+				</section>
+			<%	} 
+				else { %>
+					<%= masterWords[j] %> 
+						
+			<%		}
+				} %>
+			
+	
+			<p>
+			<input type="text" placeholder="" name="longestWord" class="gameField" id="longestWord"/>
+			</p>
+			
+			<p>
+			<b>CLUE:</b> <%= stories[i].description %>
+			</p>
+		
+		</section>
+	
+	<% }; %>	
+			
+		
+	
+
+</section>
