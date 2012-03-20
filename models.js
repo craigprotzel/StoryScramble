@@ -27,7 +27,7 @@ module.exports.configureSchema = function(Schema, mongoose) {
 		});
 	
 	//add schema to Mongoose
-	mongoose.model('StoriesDB',StoriesDB)
+	mongoose.model('StoriesDB',StoriesDB);
 
     
 };

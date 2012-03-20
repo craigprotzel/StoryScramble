@@ -107,7 +107,7 @@ app.post('/usaTodayAPIQuery', function (request,response) {
     		
         	//*****FOR MONGO DB*****
         	
-            for (i = 0; i < usaTodayData.stories.length; i++) {
+            for (var i = 0; i < usaTodayData.StoriesDB.length; i++) {
             	var newStory = new StoriesDB( {
             		source : source,
             		title : usaTodayData.StoriesDB[i].title,
