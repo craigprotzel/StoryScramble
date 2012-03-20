@@ -21,7 +21,7 @@ require('./models').configureSchema(schema, mongoose);
 var StoryEntry = mongoose.model('StoryEntry');
 
 //USA Today API Call
-var stories = mongoose.model('stories');
+var StoriesDB = mongoose.model('StoriesDB');
 
 /************* END DATABASE CONFIGURATION *********/
 
@@ -78,7 +78,6 @@ var source = 'USA_Today';
 
 		
 		
-
 // Main Page
 app.get('/', function(request, response) {
     
@@ -91,10 +90,10 @@ app.get('/', function(request, response) {
 //USA Today API Query - click button on Main Page
 app.post('/usaTodayAPIQuery', function (request,response) {
 
-
+	console.log("in get usaTodayAPIQuery");
 	// the url you need to request from USA Today
-    // this will return the 5 top news articles in json format
-    var url = "http://api.usatoday.com/open/articles/topnews?encoding=json&count=5&api_key=85gehs983tmqbwxz4uwk6ghv"
+    // this will return the 10 top news articles in json format
+    var url = "http://api.usatoday.com/open/articles/topnews?encoding=json&count=10&api_key=85gehs983tmqbwxz4uwk6ghv"
 	
     // make the request to USA Today api
     requestURL(url, function (error, response, usaTodayJSON) {
@@ -109,13 +108,13 @@ app.post('/usaTodayAPIQuery', function (request,response) {
         	//*****FOR MONGO DB*****
         	
             for (i = 0; i < usaTodayData.stories.length; i++) {
-            	var newStory = new stories( {
+            	var newStory = new StoriesDB( {
             		source : source,
-            		title : usaTodayData.stories[i].title,
-            		link: usaTodayData.stories[i].link,
-            		description : usaTodayData.stories[i].description,
-            		source_guid : usaTodayData.stories[i].guid[0].value,
-            		pubDate : usaTodayData.stories[i].timestamp 
+            		title : usaTodayData.StoriesDB[i].title,
+            		link: usaTodayData.StoriesDB[i].link,
+            		description : usaTodayData.StoriesDB[i].description,
+            		source_guid : usaTodayData.StoriesDB[i].guid[0].value,
+            		pubDate : usaTodayData.StoriesDB[i].timestamp 
             				
             	})
             	
@@ -123,6 +122,8 @@ app.post('/usaTodayAPIQuery', function (request,response) {
             }          
         }
     });
+    
+    response.redirect('/');
 
 });
 
@@ -134,13 +135,62 @@ app.post('/usaTodayAPIQuery', function (request,response) {
 // Display Level II Page 
 
 app.get('/storyscramble_level_II', function(request, response) {
-    var templateData = { 
-     
-    };
     
-    // render the card_form template with the data above
-    response.render("storyscramble_level_II.html",templateData);
+    
+    //get all the stories and display
+    var query = StoriesDB.find({});
+    query.sort('date',-1); //sort by date in descending order
+    
+    // run the query and display blog_main.html template if successful
+    query.exec({}, function(err, allStories){
+        
+        // prepare template data
+        templateData = {
+            stories : allStories
+        };
+        
+        // render the card_form template with the data above
+        response.render("storyscramble_level_II.html", templateData);
+        
+    });
+    
+    
+    //get a random story by its unique id and display it 
+/*
+    var requestedStoryID = request.params.Id;
+    
+    
+    stories.findById( requestedStoryID, function(err, blogpost) {
+        
+        if (err) {
+            console.log(err);
+            response.send("an error occurred!");
+        }
+        
+        if (blogpost == null ) {
+            console.log('post not found');
+            response.send("uh oh, can't find that post");
+
+        } else {
+
+            // use different layout for single entry view
+            blogpost.layout = 'layout_single_entry.html';
+        
+            // found the blogpost
+            response.render('blog_single_entry.html', blogpost);
+        }
+        
+    })
+*/
+    
+    
+       
+    
 });
+
+
+
+
 
 // Display Level III Page
 

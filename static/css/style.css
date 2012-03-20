@@ -349,6 +349,14 @@ body > footer {
 
   margin-right: 30px;
 }
+.gameBoard {
+  color: #ffffff;
+}
+.gameBoard a {
+  /* text-decoration: none; */
+
+  color: #ffffff;
+}
 /* forms */
 /*
 .main{

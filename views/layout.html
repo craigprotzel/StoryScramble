@@ -1,53 +1,51 @@
 <!doctype html>
 
 <html>
-    <head>
+	<head>
         <title>
-        <% if (typeof pageTitle != "undefined") { %>
-           <%= pageTitle %>
-        <% } else { %>
-            StoryScramble.com
-        <% } %>
+	        <% if (typeof pageTitle != "undefined") { %>
+	           <%= pageTitle %>
+	        <% } else { %>
+	            StoryScramble.com
+	        <% } %>
         </title>
         
         <link rel="stylesheet" href="/css/style.css" type="text/css" charset="utf-8"/>
-
+	
     </head>
 
     <body>
 
-		<!-- Not Using Twitter Bootstrap For Now -->
-
-            <header> 
-                <% if (typeof pageTitle != "undefined") { %>
-                   <h1><%= pageTitle %></h1>
-                <% } else {%>
-                 <a href="/main.html" class="links"><h1>Story Scramble</h1></a>
-                <% } %>
-            </header>
+		<header> 
+            <% if (typeof pageTitle != "undefined") { %>
+               <h1><%= pageTitle %></h1>
+            <% } else {%>
+             <a href="/main.html" class="links"><h1>Story Scramble</h1></a>
+            <% } %>
+        </header>
+        
+        
+        <article id="main">
             
-            
-            <article id="main">
-                
-                <%- body %>
-            
-            </article>
+            <%- body %>
+        
+        </article>
 
 
-			<footer>
+		<footer>
 
-				<form method="POST" action="/usaTodayAPIQuery">
-					<input type="submit" class="footerButtons" id="usaTodayCall">USA Today API</input>
-				</form>
+			<form method="POST" action="/usaTodayAPIQuery">
+				<input type="submit" class="footerButtons" id="usaTodayCall" value="USA Today API" />
+			</form>
 
-				<a href="http://www.craigprotzel.com" class="footerButtons">By Craig Protzel</a>
-							
-			</footer>
+			<a href="http://www.craigprotzel.com" class="footerButtons">By Craig Protzel</a>
+						
+		</footer>
 
 
 
-        <!-- JavaScript at the bottom for fast page loading -->
-<!--         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+		<!-- JavaScript at the bottom for fast page loading -->
+		<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
         <script src="/js/script.js"></script>
         <script src="/js/src/app.js"></script>
 
