@@ -15,7 +15,7 @@ module.exports.configureSchema = function(Schema, mongoose) {
     
        
    	// USA Today API 
-    var StoriesDB = new Schema ({
+    var stories_db = new Schema ({
 		
 		source: String,
 		title: String,
@@ -27,7 +27,7 @@ module.exports.configureSchema = function(Schema, mongoose) {
 		});
 	
 	//add schema to Mongoose
-	mongoose.model('StoriesDB',StoriesDB);
+	mongoose.model('stories_db',stories_db);
 
     
 };

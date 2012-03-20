@@ -21,7 +21,7 @@ require('./models').configureSchema(schema, mongoose);
 var StoryEntry = mongoose.model('StoryEntry');
 
 //USA Today API Call
-var StoriesDB = mongoose.model('StoriesDB');
+var stories_db = mongoose.model('stories_db');
 
 /************* END DATABASE CONFIGURATION *********/
 
@@ -107,14 +107,14 @@ app.post('/usaTodayAPIQuery', function (request,response) {
     		
         	//*****FOR MONGO DB*****
         	
-            for (var i = 0; i < usaTodayData.StoriesDB.length; i++) {
-            	var newStory = new StoriesDB( {
+            for (var i = 0; i < usaTodayData.stories.length; i++) {
+            	var newStory = new stories_db( {
             		source : source,
-            		title : usaTodayData.StoriesDB[i].title,
-            		link: usaTodayData.StoriesDB[i].link,
-            		description : usaTodayData.StoriesDB[i].description,
-            		source_guid : usaTodayData.StoriesDB[i].guid[0].value,
-            		pubDate : usaTodayData.StoriesDB[i].timestamp 
+            		title : usaTodayData.stories[i].title,
+            		link: usaTodayData.stories[i].link,
+            		description : usaTodayData.stories[i].description,
+            		source_guid : usaTodayData.stories[i].guid[0].value,
+            		pubDate : usaTodayData.stories[i].timestamp 
             				
             	})
             	
@@ -138,7 +138,7 @@ app.get('/storyscramble_level_II', function(request, response) {
     
     
     //get all the stories and display
-    var query = StoriesDB.find({});
+    var query = stories_db.find({});
     query.sort('date',-1); //sort by date in descending order
     
     // run the query and display blog_main.html template if successful
@@ -155,34 +155,30 @@ app.get('/storyscramble_level_II', function(request, response) {
     });
     
     
+    
     //get a random story by its unique id and display it 
 /*
-    var requestedStoryID = request.params.Id;
+    var requestedStoryID = request.params.storyId;
     
-    
-    stories.findById( requestedStoryID, function(err, blogpost) {
+    stories_db.findById( requestedStoryID, function(err, story) {
         
         if (err) {
             console.log(err);
             response.send("an error occurred!");
         }
         
-        if (blogpost == null ) {
-            console.log('post not found');
-            response.send("uh oh, can't find that post");
+        if (story == null ) {
+            console.log('story not found');
+            response.send("uh oh, can't find that story");
 
         } else {
-
-            // use different layout for single entry view
-            blogpost.layout = 'layout_single_entry.html';
         
             // found the blogpost
-            response.render('blog_single_entry.html', blogpost);
+            response.render('storyscramble_level_II.html', blogpost);
         }
         
     })
 */
-    
     
        
     

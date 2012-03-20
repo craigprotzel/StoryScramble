@@ -1,9 +1,14 @@
 <h2>USA Today - Top 10 Stories</h2>
 	
 <section class="gameBoard">		
-<%	for( var i=0; i<stories.length; i++) { %>   
+
+<!-- //to loop through all the stories -->
+<!-- <%	for( var i=0; i<stories.length; i++) { %>   --> 
+
+	<% var i = 1; %>
 
 	<b>TITLE:</b> <a href="<%= stories[i].link %>"><%= stories[i].title %></a>
+	
 	<br/>
 		
 
@@ -40,7 +45,7 @@
 		<%	var allWords = stories[i].title.split(" "); %>
 		<%	var masterWords = stories[i].title.split(" "); %>
 		
-		<% 	console.log(allWords); %>
+		
 		
 		<!-- create a function to sort the words longest to shortest -->
 		<%	var sortLongToShort = function(a,b) { %>
@@ -64,34 +69,33 @@
 	
 	<div>
 		<b>Longest Word Scrambled:</b>
-		
-		<%	var index = 0;
-			for (var j = 0; j < masterWords.length; j++){
-				if (sortedWords[0] == masterWords[j]) {
-					index = j;
-				} 
-			}
-		
-		 var longestWord = sortedWords[0].split("");
-		 longestWord.sort(sortRandom); 
-		 var scrambledWord = longestWord.join(""); %> 
-		<%= scrambledWord %>
-		
-	<div>	
-		<b>Rejoined Sentence with Scrambled Word:</b>
-		<%	for (var j = 0; j < masterWords.length; j++){
-			if (j == index) { %>
-				<%= scrambledWord %>
-		<%	} 
-			else { %>
-			<%= masterWords[j] %> 
-		<%	}
-		} %>
-	</div>
-	<% 	console.log(masterWords); %>
-		
+			
+			<%	var index = 0;
+				for (var j = 0; j < masterWords.length; j++){
+					if (sortedWords[0] == masterWords[j]) {
+						index = j;
+					} 
+				}
+			
+			 var longestWord = sortedWords[0].split("");
+			 longestWord.sort(sortRandom); 
+			 var scrambledWord = longestWord.join(""); %> 
+			<%= scrambledWord %>
+			
+		<div>	
+			<b>Rejoined Sentence with Scrambled Word:</b>
+			<%	for (var j = 0; j < masterWords.length; j++){
+				if (j == index) { %>
+					<%= scrambledWord %>
+			<%	} 
+				else { %>
+				<%= masterWords[j] %> 
+			<%	}
+			} %>
+		</div>
 		
 	</div>
+	
 	
 	<div>
 		<input type="text" placeholder="Type The Correct Word Here" name="longestWord" id="longestWord" size="50" />
@@ -122,7 +126,9 @@
 		<br/>			
 			<b>Description:</b> <%= stories[i].description %>
 			<br/><br/>	
-		<% } %>	
+			
+			
+		<!-- <% } %> -->	
 		
 	</div>
 
