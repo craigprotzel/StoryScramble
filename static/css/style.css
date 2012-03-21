@@ -234,6 +234,9 @@ body {
   padding: 0;
   background-color: #333333;
 }
+.hidden {
+  display: none;
+}
 body > header {
   background: #6d4194;
   padding: 20px;
@@ -299,14 +302,15 @@ body > footer {
   font-size: 24px;
   font-weight: bold;
   margin: 100px 10px;
-  line-height: 30px;
+  line-height: 40px;
   /* display: inline; */
 
 }
 .game #highlight {
-  font-size: 52px;
+  font-size: 64px;
   display: inline;
   color: #19a3a3;
+  padding: 0 5px 0 5px;
 }
 #buttons {
   /* .column(12); */
@@ -345,17 +349,17 @@ body > footer {
 }
 .footerButtons {
   background-color: #6d4194;
-  height: 20px;
-  line-height: 20px;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
-  font-size: 20%;
   font-weight: bold;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
   padding: 0 10px 0 10px;
+  font-size: 20%;
+  font-size: 12px;
 }
 .footerButtons:hover {
   color: #ffffff;
@@ -365,9 +369,52 @@ body > footer {
   color: #ffffff;
   background-color: #6d4194;
 }
+.enterButtons {
+  background-color: #6d4194;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 15px 20px 15px 20px;
+  margin: 20px;
+  font-size: 24px;
+}
+.enterButtons:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+.enterButtons:active {
+  color: #ffffff;
+  background-color: #6d4194;
+}
+.clueButtons {
+  background-color: #6d4194;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px 20px 10px 20px;
+  font-size: 12px;
+}
+.clueButtons:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+.clueButtons:active {
+  color: #ffffff;
+  background-color: #6d4194;
+}
 .gameField {
   font-size: 38px;
-  width: 10em;
+  width: 9em;
+  margin: 0 20px 0 20px;
+}
+.clue {
+  margin: 5px 0 5px 0;
 }
 #usaTodayCall {
   float: right;

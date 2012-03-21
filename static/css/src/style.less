@@ -1,4 +1,5 @@
 //font sizes
+@superBig: 64px;
 @big: 52px;
 @large: 38px;
 @medium: 24px;
@@ -33,8 +34,13 @@ body{
 	#font.sans-serif();
 	margin: 0;
 	padding: 0;
-	background-color: @grayDark; 
+	background-color: @grayDark; 	
 }
+
+.hidden { 
+display: none;
+}
+
 
 // > sign means direct child of
 body > header {
@@ -126,13 +132,14 @@ body > footer {
 	font-size: @medium;
 	font-weight: bold;
 	margin: 100px 10px;
-	line-height: 30px;
+	line-height: 40px;
 	/* display: inline; */
 	
 	#highlight{
-		font-size: @big;
+		font-size: @superBig;
 		display: inline;
 		color: @newAqua;
+		padding: 0 5px 0 5px;
 	}
 
 }
@@ -157,17 +164,39 @@ body > footer {
 
 
 .footerButtons{
-	.medButton();
+	.styleButton();
+	height: 20px;
+ 	line-height: 20px;
 	padding: 0 10px 0 10px;
+	font-size: 20%;
+	font-size: @small;
+}
+
+.enterButtons{
+	.styleButton();
+	padding: 15px 20px 15px 20px;
+	margin: 20px;
+	font-size: @medium;
+}
+
+
+.clueButtons{
+	.styleButton();
+	padding: 10px 20px 10px 20px;
+	font-size: @small;
 }
 
 
 
 .gameField{
 		font-size: @large; 
-		width: 10em;
-		
+		width: 9em;
+		margin: 0 20px 0 20px;	
 	}
+	
+.clue{ 
+	margin: 5px 0 5px 0;	
+}
 
 
 

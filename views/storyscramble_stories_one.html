@@ -33,6 +33,10 @@
 		<!-- establish a variable called sorted words and sort allWords from long to short -->
 		<%	var sortedWords = allWords; %>
 		<%	sortedWords.sort(sortLongToShort); %>
+		
+		
+		<!-- save the longest word in a hidden div -->
+		<div class="hidden" id="levelTwoAnswer"><%= sortedWords[0] %></div>
 	
 		
 		<!-- link the longest word to its actual placement in the original story title -->	
@@ -44,6 +48,7 @@
 			} %>
 			
 		
+		
 		<!-- isolate the longest word, split then sort then join -->
 		<%	var longestWord = sortedWords[0].split("");
 			longestWord.sort(sortRandom); 
@@ -51,7 +56,7 @@
 			
 		<section class="game">
 			
-			<!-- print the story title the longest word scrambled in its original position -->	
+			<!-- print the story title with the longest word scrambled in its original position -->	
 			<%	for (var j = 0; j < masterWords.length; j++){
 				if (j == index) { %>
 				<section id="highlight">
@@ -59,23 +64,26 @@
 				</section>
 			<%	} 
 				else { %>
-					<%= masterWords[j] %> 
-						
+					<%= masterWords[j] %>		
 			<%		}
 				} %>
 			
-	
-			<p>
-			<input type="text" placeholder="" name="longestWord" class="gameField" id="longestWord"/>
-			</p>
 			
 			<p>
-			<b>CLUE:</b> <%= stories[i].description %>
+			<input type="text" placeholder="" name="longestWord" class="gameField" id="levelTwoEntry" value=""/>
+			<input type="submit" class="enterButtons" id="levelTwoEnter" value="ENTER"/>
+			</p>
+						
+			<p>
+			<input type="button" class="clueButtons" value="CLUE"/>
+			</p>
+			<p class="clue hidden">
+			<%= stories[i].description %>
 			</p>
 		
 		</section>
 	
-	<% }; %>	
+	<% } %>	
 			
 		
 	
