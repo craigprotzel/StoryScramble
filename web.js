@@ -9,6 +9,8 @@ var app = express.createServer(express.logger());
 var mongoose = require('mongoose'); //include Mongoose MongoDB Library
 var schema = mongoose.Schema;
 
+var MONGOLAB_URI=mongodb://heroku_app3095706:p3n08339u1e9no3p0ghj6p0chn@ds031347.mongolab.com:31347/heroku_app3095706
+
 /************ DATABASE CONFIGURATION **********/
 app.db = mongoose.connect(process.env.MONGOLAB_URI || MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
 
