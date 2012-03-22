@@ -10,7 +10,7 @@ var mongoose = require('mongoose'); //include Mongoose MongoDB Library
 var schema = mongoose.Schema;
 
 /************ DATABASE CONFIGURATION **********/
-app.db = mongoose.connect(process.env.MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
+app.db = mongoose.connect(process.env.MONGOLAB_URI || MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
 
 // include the database model / schema
 require('./models').configureSchema(schema, mongoose);
