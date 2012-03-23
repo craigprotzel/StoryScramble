@@ -9,8 +9,10 @@ var app = express.createServer(express.logger());
 var mongoose = require('mongoose'); //include Mongoose MongoDB Library
 var schema = mongoose.Schema;
 
+var MONOGOLAB_URI = 
+
 /************ DATABASE CONFIGURATION **********/
-app.db = mongoose.connect(process.env.MONGOLAB_URI || MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
+app.db = mongoose.connect(process.env.MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
 
 // include the database model / schema
 require('./models').configureSchema(schema, mongoose);
@@ -97,7 +99,7 @@ app.get('/main', function(request,response) {
 //USA Today API Query - click button on Main Page
 app.post('/usaTodayAPIQuery', function (request,response) {
 
-	console.log("in get usaTodayAPIQuery");
+	console.log("hit usaTodayAPIQuery");
 	// the url you need to request from USA Today
     // this will return the 10 top news articles in json format
     var url = "http://api.usatoday.com/open/articles/topnews?encoding=json&count=10&api_key=85gehs983tmqbwxz4uwk6ghv"
