@@ -7,15 +7,11 @@
 </section>
 	
 <section class="gameBoard">		
-
-
-	<!-- loop through all the stories -->
-	<%	for( var i=0; i<1; i++) { %>    
-	
+   	
 	
 		<!-- declare variables -->
-		<%	var allWords = stories[i].title.split(" "); %>
-		<%	var masterWords = stories[i].title.split(" "); %>
+		<%	var allWords = randomStory.title.split(" "); %>
+		<%	var masterWords = randomStory.title.split(" "); %>
 
 			
 		<!-- create a function to sort items randomly -->
@@ -78,12 +74,12 @@
 			<input type="button" class="clueButtons" value="CLUE"/>
 			</p>
 			<p class="clue hidden">
-			<%= stories[i].description %>
+			<%= randomStory.description %>
 			</p>
 		
 		</section>
 	
-	<% } %>	
+	
 			
 		
 	

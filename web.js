@@ -148,14 +148,21 @@ app.get('/storyscramble_level_II', function(request, response) {
     
     //get all the stories and display
     var query = stories_db.find({});
-    query.sort('date',-1); //sort by date in descending order
-    
+
+    //sort by date in descending order
+    query.sort('date',-1);
+    query.limit(50); 
+
     // run the query and display blog_main.html template if successful
     query.exec({}, function(err, allStories){
         
+        randomNum = Math.floor(Math.random()*allStories.length);
+		randomStory = allStories[randomNum];
+		
         // prepare template data
         templateData = {
-            stories : allStories
+            //stories : allStories,
+            randomStory : randomStory
         };
         
         // render the card_form template with the data above
@@ -165,29 +172,36 @@ app.get('/storyscramble_level_II', function(request, response) {
     
     
     
-    //get a random story by its unique id and display it 
-/*
-    var requestedStoryID = request.params.storyId;
-    
-    stories_db.findById( requestedStoryID, function(err, story) {
-        
-        if (err) {
-            console.log(err);
-            response.send("an error occurred!");
-        }
-        
-        if (story == null ) {
-            console.log('story not found');
-            response.send("uh oh, can't find that story");
+	// Display a single blog post
+	/*
+	app.get('/entry/:urlslug',function(request, response){
+	
+	    // Get the request blog post by urlslug
+	    BlogPost.findOne({ urlslug : request.params.urlslug },function(err, blogpost){
+	
+	        if (err) {
+	            console.log(err);
+	            response.send("an error occurred!");
+	        }
+	
+	        if (blogpost == null ) {
+	            console.log('post not found');
+	            response.send("uh oh, can't find that post");
+	
+	        } else {
+	
+	            // use different layout for single entry view
+	            post.layout = 'layout_single_entry.html';
+	
+	            // found the blogpost
+	            response.render('blog_single_entry.html', blogpost);
+	        }
+	    });
+	});
+	*/
 
-        } else {
-        
-            // found the blogpost
-            response.render('storyscramble_level_II.html', blogpost);
-        }
-        
-    })
-*/
+
+
     
        
     
