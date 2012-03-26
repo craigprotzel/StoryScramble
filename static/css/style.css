@@ -234,6 +234,14 @@ body {
   padding: 0;
   background-color: #333333;
 }
+body h1 {
+  color: #ffffff;
+  font-size: 52px;
+  font-weight: bold;
+}
+body a {
+  text-decoration: none;
+}
 .hidden {
   display: none;
 }
@@ -241,13 +249,26 @@ body > header {
   background: #6d4194;
   padding: 20px;
 }
-body > header h1 {
-  margin: 0;
-  font-size: 24px;
-  color: #ffffff;
-}
-body > header .links {
+body > header #links {
+  background-color: #6d4194;
+  text-align: center;
   text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 24px;
+  text-align: left;
+  padding: 8px 12px 10px 12px;
+}
+body > header #links:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+body > header #links:active {
+  color: #ffffff;
+  background-color: #6d4194;
 }
 article#main {
   /* .column(12); */
@@ -273,44 +294,32 @@ body > footer {
 }
 .pageTitle {
   font-size: 38px;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
-  /* margin: 45px; */
   margin-top: 60px;
   line-height: 50px;
-  /* .push(3); */
-
-  /* .pull(3); */
 }
+/*
+#welcomePageTitle{
+	font-size: @large;
+}
+	
+#levelOneTitle{
+	font-size: @large;
+}
+*/
 .instructions {
   font-size: 52px;
   font-weight: bold;
   text-align: center;
   margin-top: 100px;
   line-height: 50px;
-  /* .push(2); */
+}
+#usaTodayCall {
+  float: right;
+  /* display: inline;  */
 
-}
-.gameInstructions {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin: 75px 20px;
-  line-height: 35px;
-}
-.game {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 100px 10px;
-  line-height: 40px;
-  /* display: inline; */
-
-}
-.game #highlight {
-  font-size: 64px;
-  display: inline;
-  color: #19a3a3;
-  padding: 0 5px 0 5px;
+  margin-right: 30px;
 }
 #buttons {
   /* .column(12); */
@@ -353,6 +362,7 @@ body > footer {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
+  border: none;
   -moz-border-radius: 5px;
   border-radius: 5px;
   height: 20px;
@@ -369,66 +379,208 @@ body > footer {
   color: #ffffff;
   background-color: #6d4194;
 }
-.enterButtons {
+.gameInstructions {
+  font-size: 52px;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 100px;
+  line-height: 50px;
+}
+.gameInstructionsList {
+  font-size: 38px;
+  font-weight: bold;
+  text-align: left;
+  margin: 50px 0px 0px 13%;
+  line-height: 65px;
+}
+#instructionsGreen {
+  color: #19a3a3;
+  font-size: 52px;
+}
+#instructionsEntryField {
+  font-size: 38px;
+  color: #333333;
+  background-color: #ffffff;
+  padding: 5px 25px;
+  margin: 0px 10px;
+}
+.enterInstructionButton {
   background-color: #6d4194;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
+  border: none;
   -moz-border-radius: 5px;
   border-radius: 5px;
   padding: 15px 20px 15px 20px;
-  margin: 20px;
+  margin: 10px 20px 10px 15px;
   font-size: 24px;
 }
-.enterButtons:hover {
+.enterInstructionButton:hover {
   color: #ffffff;
   background-color: #19a3a3;
 }
-.enterButtons:active {
+.enterInstructionButton:active {
   color: #ffffff;
   background-color: #6d4194;
 }
-.clueButtons {
-  background-color: #6d4194;
+.startButton {
+  background-color: #19a3a3;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  padding: 10px 20px 10px 20px;
-  font-size: 12px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  display: inline;
+  float: left;
+  width: 31.25%;
+  margin: 0 1.0416666666666665%;
+  padding: 50px 50px;
+  margin: 80px 30%;
+  font-size: 38px;
+  line-height: 42px;
 }
-.clueButtons:hover {
-  color: #ffffff;
-  background-color: #19a3a3;
-}
-.clueButtons:active {
+.startButton:hover {
   color: #ffffff;
   background-color: #6d4194;
 }
-.gameField {
-  font-size: 38px;
-  width: 9em;
-  margin: 0 20px 0 20px;
-}
-.clue {
-  margin: 5px 0 5px 0;
-}
-#usaTodayCall {
-  float: right;
-  /* display: inline;  */
-
-  margin-right: 30px;
+.startButton:active {
+  color: #ffffff;
+  background-color: #19a3a3;
 }
 .gameBoard {
   color: #ffffff;
 }
 .gameBoard a {
-  /* text-decoration: none; */
-
+  text-decoration: none;
   color: #ffffff;
+}
+.game {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 100px 10px;
+  line-height: 60px;
+  text-align: center;
+}
+#wordsLevelOne {
+  font-size: 38px;
+}
+#highlightLevelOne {
+  font-size: 96px;
+  display: inline;
+  color: #19a3a3;
+  padding: 0 2px 0 8px;
+}
+.hideClue {
+  display: none;
+}
+#highlightClueLevelOne {
+  font-size: 24px;
+  display: inline;
+  color: #19a3a3;
+  padding: 0 5px 0 5px;
+}
+#fullTitle {
+  font-size: 52px;
+  display: inline;
+  color: #19a3a3;
+  padding: 0 5px 0 5px;
+}
+.lowerGameButtons {
+  background-color: #6d4194;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 15px 25px 15px 25px;
+  margin: 10px 10px 10px 10px;
+  font-size: 18px;
+}
+.lowerGameButtons:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+.lowerGameButtons:active {
+  color: #ffffff;
+  background-color: #6d4194;
+}
+#levelOneLowerGameButtonsALL {
+  margin: 70px 0% 10px 0%;
+}
+#levelTwoLowerGameButtonsALL {
+  margin: 70px 0% 10px 0%;
+}
+.clue {
+  display: none;
+  margin: 35px 0px 5px 0px;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 35px;
+}
+.gameEntryField {
+  font-size: 38px;
+  width: 9em;
+  margin: 0 auto 0 auto;
+}
+.enterButton {
+  background-color: #6d4194;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 15px 20px 15px 20px;
+  margin: 30px 20px 30px 30px;
+  font-size: 24px;
+}
+.enterButton:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+.enterButton:active {
+  color: #ffffff;
+  background-color: #6d4194;
+}
+.nextButton {
+  background-color: #6d4194;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 15px 20px 15px 20px;
+  margin-top: 30px;
+  font-size: 24px;
+}
+.nextButton:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+.nextButton:active {
+  color: #ffffff;
+  background-color: #6d4194;
+}
+.checkAnswer {
+  display: none;
+  padding: 15px 20px 15px 20px;
+  margin: 45px;
+  font-size: 52px;
+}
+#levelOneCorrectAnswer {
+  color: #00e18a;
+}
+#levelOneWrongAnswer {
+  color: #ff585a;
 }
 /* forms */
 /*

@@ -102,7 +102,8 @@ app.post('/usaTodayAPIQuery', function (request,response) {
 	console.log("hit usaTodayAPIQuery");
 	// the url you need to request from USA Today
     // this will return the 10 top news articles in json format
-    var url = "http://api.usatoday.com/open/articles/topnews?encoding=json&count=10&api_key=85gehs983tmqbwxz4uwk6ghv"
+    var url = "http://api.usatoday.com/open/articles/travel?encoding=json&count=30&api_key=85gehs983tmqbwxz4uwk6ghv"
+    
 	
     // make the request to USA Today api
     requestURL(url, function (error, response, usaTodayJSON) {
@@ -141,7 +142,56 @@ app.post('/usaTodayAPIQuery', function (request,response) {
 
 
 
-// Display Level II Page - ONE USA TODAY ENTRY
+// Display Level I Pages - ONE WORD SCRAMBLED
+
+
+app.get('/instructions_level_I', function(request, response) {
+	
+	response.render("instructions_level_I.html");
+
+});
+
+ 
+
+app.get('/storyscramble_level_I', function(request, response) {
+    
+    
+    //get all the stories and display
+    var query = stories_db.find({});
+
+    //sort by date in descending order
+    query.sort('date',-1);
+    query.limit(50); 
+
+    // run the query and display blog_main.html template if successful
+    query.exec({}, function(err, allStories){
+        
+        randomNum = Math.floor(Math.random()*allStories.length);
+		randomStory = allStories[randomNum];
+		
+        // prepare template data
+        templateData = {
+            //stories : allStories,
+            randomStory : randomStory
+        };
+        
+        // render the card_form template with the data above
+        response.render("storyscramble_word.html", templateData);
+        
+    });                
+});
+
+
+
+
+// Display Level II Page - TITLE WORDS SCRAMBLED 
+
+app.get('/instructions_level_II', function(request, response) {
+	
+	response.render("instructions_level_II.html");
+
+});
+
 
 app.get('/storyscramble_level_II', function(request, response) {
     
@@ -166,46 +216,11 @@ app.get('/storyscramble_level_II', function(request, response) {
         };
         
         // render the card_form template with the data above
-        response.render("storyscramble_stories_one.html", templateData);
+        response.render("storyscramble_title.html", templateData);
         
-    });
-    
-    
-    
-	// Display a single blog post
-	/*
-	app.get('/entry/:urlslug',function(request, response){
-	
-	    // Get the request blog post by urlslug
-	    BlogPost.findOne({ urlslug : request.params.urlslug },function(err, blogpost){
-	
-	        if (err) {
-	            console.log(err);
-	            response.send("an error occurred!");
-	        }
-	
-	        if (blogpost == null ) {
-	            console.log('post not found');
-	            response.send("uh oh, can't find that post");
-	
-	        } else {
-	
-	            // use different layout for single entry view
-	            post.layout = 'layout_single_entry.html';
-	
-	            // found the blogpost
-	            response.render('blog_single_entry.html', blogpost);
-	        }
-	    });
-	});
-	*/
-
-
-
-    
-       
-    
+    });                
 });
+
 
 
 
@@ -235,6 +250,22 @@ app.get('/storyscramble_level_III', function(request, response) {
 
 
 
+
+
+// Make server turn on and listen at defined PORT (or port 3000 if is not defined)
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
+
+
+
+
+
+
+//**********OLD STUF**********//
+
+/*
 // Display Level I Page
 
 app.get('/storyscramble_level_I', function(request, response) {
@@ -308,10 +339,8 @@ app.get('/storyscramble_data/:storyScrambleNum', function(request, response){
     
 });
 
+*/
+
+//**********END OLD STUF**********//
 
 
-// Make server turn on and listen at defined PORT (or port 3000 if is not defined)
-var port = process.env.PORT || 3000;
-app.listen(port, function() {
-  console.log("Listening on " + port);
-});

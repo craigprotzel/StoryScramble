@@ -1,0 +1,63 @@
+<section class="pageTitle">Level Two - Title Scramble</section>
+	
+<section class="gameBoard">		
+   	
+		<!-- declare variables -->
+		<%	var allWords = randomStory.title.split(" "); %>
+		<%	var masterWords = randomStory.title.split(" "); %>
+
+			
+		<!-- create a function to sort items randomly -->
+		<%	var sortRandom = function() { %>
+		<%		return (0.5 - Math.random()); %>
+		<%	}; %>
+		
+				
+		<!-- save the longest word in a hidden div -->
+		<div class="hidden" id="levelThreeAnswer"></div>
+	
+		
+		<section class="game"> 		
+			
+		<% for (var i = 0; i < allWords.length; i++) { %>
+			<%	var scrambledLetters = allWords[i].split("") %>
+			<%	scrambledLetters.sort(sortRandom) %>
+			<%	var newWords = scrambledLetters.join(""); %>
+		
+			<section id="fullTitle">
+			<%= newWords %> 
+		<%	} %>	
+			</section>
+			
+			
+			<p>
+			<input type="text" placeholder="" name="correctWord" class="gameEntryField" id="levelThreeEntry" value=""/>
+			<input type="submit" class="enterButton" id="levelTwoEnter" value="ENTER"/>
+			<input type="submit" class="nextButton" id="levelTwoEnter" value="NEXT"/>
+							
+			<input type="submit" class="checkAnswer" id="levelTwoCorrectAnswer" value="CORRECT!!!  NEXT">
+			<input type="submit" class="checkAnswer" id="levelTwoWrongAnswer" value="SORRY-TRY AGAIN">  		
+			</p>
+						
+			<p id="levelTwoLowerGameButtonsALL">
+			<input type="button" class="lowerGameButtons" id="levelTwoClueButton" value="CLUE"/>
+			<input type="button" class="lowerGameButtons" value="GIVE ME A LETTER!"/>
+			<input type="button" class="lowerGameButtons" value="HELP"/>
+			</p>
+			
+			<p class="clue">
+
+			
+			
+			<p class="clue">
+			<%= randomStory.description %>
+			</p>
+		
+		</section>
+	
+	
+			
+		
+	
+
+</section>

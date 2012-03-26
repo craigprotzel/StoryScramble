@@ -46,6 +46,13 @@
 @newAqua:			#19A3A3;
 @newBlue:			#0099FF;
 @newPurple:			#A94FC8;
+@superLightPurple:	#FFCCFF;
+
+
+@newRed:			#FF585A;
+@newOrange:			#FFCC33;
+@newYellow:			#FFF8AF;
+@newGreen:			#00E18A;
 
 
 // Baseline grid
@@ -201,6 +208,29 @@
 
 
 
+
+.instructionsButton(){
+
+	background-color: @newAqua;
+	text-align: center;
+	text-decoration: none;
+	color: @white;
+	font-weight: bold;
+	.border-radius(10px);	
+
+	&:hover {
+		color: @white;
+		background-color: @lightPurple;
+	}
+
+	&:active {
+		color: @white;
+		background-color: @newAqua;	
+	}
+}
+
+
+
 .styleButton(){
  	
  	background-color: @lightPurple;
@@ -208,6 +238,7 @@
 	text-decoration: none;
 	color: @white;
 	font-weight: bold;
+	border: none;
 	.border-radius(5px);	
 
 	&:hover {
