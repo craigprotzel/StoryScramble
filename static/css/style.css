@@ -393,16 +393,37 @@ body > footer {
   margin: 50px 0px 0px 13%;
   line-height: 65px;
 }
-#instructionsGreen {
+.gameInstructionsListSmall {
+  display: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  margin: 50px 25% 0px 30%;
+  line-height: 45px;
+}
+.instructionsGreen {
   color: #19a3a3;
   font-size: 52px;
 }
-#instructionsEntryField {
+.instructionsGreenSmall {
+  color: #19a3a3;
+  font-size: 24px;
+  padding: 0px 10px 0px 5px;
+}
+.instructionsEntryField {
   font-size: 38px;
   color: #333333;
   background-color: #ffffff;
   padding: 5px 25px;
   margin: 0px 10px;
+}
+.instructionsEntryFieldSmall {
+  font-size: 18px;
+  color: #333333;
+  background-color: #ffffff;
+  padding: 5px 10px;
+  margin: 5px 5px;
 }
 .enterInstructionButton {
   background-color: #6d4194;
@@ -422,6 +443,27 @@ body > footer {
   background-color: #19a3a3;
 }
 .enterInstructionButton:active {
+  color: #ffffff;
+  background-color: #6d4194;
+}
+.enterInstructionButtonSmall {
+  background-color: #6d4194;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  margin: 5px 10px 5px 7px;
+  font-size: 18px;
+}
+.enterInstructionButtonSmall:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+.enterInstructionButtonSmall:active {
   color: #ffffff;
   background-color: #6d4194;
 }

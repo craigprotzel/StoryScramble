@@ -1,15 +1,52 @@
-//Level I
+//**********Global**********//
 
 $("input:text:visible:first").focus();
 
-//Code to manage lower game buttons 
+
+
+//**********Lower Game Buttons**********//
+
+
+
+//Level I lower game buttons 
 $("#levelOneClueButton").click(function() { 
   $('.clue').toggle();
 });
 
+$("#levelOneGiveMeButton").click(function() { 
+  alert("You clicked the \"Give Me Letter\" button");
+  //$('.clue').toggle();
+});
+
+$("#levelOneHelpButton").click(function() { 
+  //alert("You clicked the \"Help\" button");
+  $('.gameInstructionsListSmall').toggle();
+});
 
 
-//code to compare text entry to the correct answer	
+
+
+//Level II lower game buttons 
+$("#levelTwoClueButton").click(function() { 
+  $('.clue').toggle();
+});
+
+$("#levelTwoGiveMeButton").click(function() { 
+  alert("You clicked the \"Give Me Letter\" button");
+});
+
+$("#levelTwoHelpButton").click(function() { 
+  $('.gameInstructionsListSmall').toggle();
+});
+
+
+
+
+
+//**********Level I**********//
+
+
+//Level I check answer	
 var levelOneEnter = document.getElementById('levelOneEnter'); 
 var levelOneEntry = document.getElementById('levelOneEntry');
 var levelOneAnswer = document.getElementById('levelOneAnswer');
@@ -35,7 +72,8 @@ function checkLevelOneAnswer() {
 };
 
 
-//add enter keypress functionality
+
+//"enter" keypress functionality
 $(document).keypress(function(e) {
     if(e.keyCode == 13) {
     
@@ -55,9 +93,13 @@ $(document).keypress(function(e) {
 });
 
 
-//Level II
 
-//code to compare text entry to the correct answer	
+
+
+//**********Level II**********//
+
+
+//Level II check answer	
 var levelTwoEnter = document.getElementById('levelTwoEnter'); 
 var levelTwoEntry = document.getElementById('levelTwoEntry');
 var levelTwoAnswer = document.getElementById('levelTwoAnswer');

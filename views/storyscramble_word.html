@@ -75,19 +75,24 @@
 						
 			<p id="levelOneLowerGameButtonsALL">
 			<input type="button" class="lowerGameButtons" id="levelOneClueButton" value="CLUE"/>
-			<input type="button" class="lowerGameButtons" value="GIVE ME A LETTER!"/>
-			<input type="button" class="lowerGameButtons" value="HELP"/>
+			<input type="button" class="lowerGameButtons" id="levelOneGiveMeButton" value="GIVE ME A LETTER!"/>
+			<input type="button" class="lowerGameButtons" id="levelOneHelpButton" value="HELP"/>
 			</p>
 			
 			<p class="clue">
 			
 				<!-- check to see if answer is in the clue -->			
 				<%	var clueMasterWords = randomStory.description.split(" ");
+				
+					var randomStoryDescriptionLower = randomStory.description.toLowerCase();
+					var clueMasterWordsLower = randomStoryDescriptionLower.split(" ");
+					console.log (clueMasterWordsLower);
+				
 					var clueIndex = 0;
 					var answerInTheClue = false;
 					
 					for (var j = 0; j < clueMasterWords.length; j++){
-						if (sortedWords[0] == clueMasterWords[j]){
+						if (sortedWords[0] == clueMasterWords[j] || sortedWords[0] == clueMasterWordsLower[j]){
 							answerInTheClue = true; 
 							clueIndex = j;
 						}
@@ -114,9 +119,17 @@
 					
 			</p>
 			
+			<ol class="gameInstructionsListSmall">
+					<li>Unscramble the <span class="instructionsGreenSmall">LARGE WORD</span></li>
+					<li>Type your answer in the <span class="instructionsEntryFieldSmall">White Box</span></li>
+					<li>Press <input type="button" class="enterInstructionButtonSmall" value="ENTER"/>to check your answer</li>
+			</ol>
+
 			
-			<p class="checkAnswer" id="levelOneCorrectAnswer">CORRECT!!! CLICK NEXT</p>
-			<p class="checkAnswer" id="levelOneWrongAnswer">SORRY. TRY AGAIN</p> 		
+	
+			
+			<p class="checkAnswer" id="levelOneCorrectAnswer">Correct!!! Click Next</p>
+			<p class="checkAnswer" id="levelOneWrongAnswer">Sorry. Try Again</p> 		
 		
 		</section>
 		
