@@ -1,0 +1,200 @@
+<!doctype html>
+
+<html>
+	<head>
+        <title>
+	        
+	            StoryScramble.com
+	        
+        </title>
+        
+        <link rel="stylesheet" href="/css/style.css" type="text/css" charset="utf-8"/>
+    </head>
+
+
+    <body>
+
+		<header> 
+               
+           <div class="headerContainerWidth" id="helpDiv">
+            <input type="button" class="helpButton" id="mainHelpButton" value="HELP"/>         
+	       </div>
+	        <input type="button" id="homeButton" value="STORY SCRAMBLE"/>
+	      
+                
+         	<section id="pageTitle"></section>
+      	
+      	</header>
+        
+       
+        
+        <article id="main">
+            
+            <section id="currentPageTitle">Level One - Word Scramble</section>
+	
+<section class="gameBoard" id="gameBoardSection">		
+   	
+	<!-- grab the story title, split by spaces, save to a var -->
+	 
+		
+	<!-- use the "longest" function to (1)sort the comma separated string and then (2)determine the index value of the longest word -->	
+	
+					
+	<!-- save the longest word in a hidden div -->
+	<div class="hidden" id="levelOneAnswer">handles?</div>
+	
+	
+	<div class="hidden" id="levelOneLetters">h,a,n,d,l,e,s,?</div> 
+	
+	<!-- use the "scramble" function to randomize the character order of the longest word -->
+	
+		
+		<!-- print the story title with the longest word scrambled in its original position -->	
+		<span class="quotes">"</span>
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> Ask </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> the </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> Captain: </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> Do </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> full </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> overhead </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> bins </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> affect </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> how </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> a </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="wordTitle"> flight </a>		
+		
+				<a href="http://travel.usatoday.com/experts/cox/story/2012-03-26/Ask-the-Captain-Do-full-overhead-bins-affect-how-a-flight-handles/53777652/1" id="highlightWord"> dnahle?s </a>
+		
+			<span class="quotes">"</span>
+		
+		
+		<p>
+		
+			<input type="text" placeholder="" name="longestWord" class="gameEntryField" id="levelOneEntry" value=""/>
+			<input type="submit" class="enterButton" id="levelOneEnter" value="ENTER"/>
+			<input type="submit" class="newButton" id="levelOneNew" value="NEW"/>
+				
+		</p>
+			
+					
+		<p id="lowerGameButtonsALL">
+		<input type="button" class="lowerGameButtons" id="clueButton" value="CLUE"/>
+		<input type="button" class="lowerGameButtons" id="giveMeButton" value="GIVE ME A LETTER!"/>
+		</p>
+		
+
+		<p class="clue">
+	
+			<!-- check to see if answer is in the clue -->			
+			
+				
+			<!-- use compareWords and cleanup functions to check if the answer is part of the clue -->
+			<!-- if the answer is in the clue, scramble it -->		
+			
+						<span id="answerNotInClue"> Does </span>
+					
+						<span id="answerNotInClue"> all </span>
+					
+						<span id="answerNotInClue"> the </span>
+					
+						<span id="answerNotInClue"> extra </span>
+					
+						<span id="answerNotInClue"> weight </span>
+					
+						<span id="answerNotInClue"> above </span>
+					
+						<span id="answerNotInClue"> the </span>
+					
+						<span id="answerNotInClue"> wings </span>
+					
+						<span id="answerNotInClue"> affect </span>
+					
+						<span id="answerNotInClue"> the </span>
+					
+						<span id="answerNotInClue"> performance </span>
+					
+						<span id="answerNotInClue"> and </span>
+					
+						<span id="answerNotInClue"> handing </span>
+					
+						<span id="answerNotInClue"> of </span>
+					
+						<span id="answerNotInClue"> an </span>
+					
+						<span id="answerNotInClue"> airliner? </span>
+					
+				
+		</p>
+		
+		
+		<ol class="gameInstructionsListSmall">
+				<li>Unscramble the <span class="instructionsGreenSmall">LARGE WORD</span></li>
+				<li>Type your answer in the <span class="instructionsEntryFieldSmall">White Box</span></li>
+				<li>Press <input type="button" class="enterInstructionButtonSmall" value="ENTER"/>to check your answer</li>
+		</ol>
+	
+	
+</section>
+		
+		
+		<section class="checkAnswer" id="levelOneCorrectAnswer">
+		<p>Correct!!!</p>
+		
+		<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" value="dnahle?s"/>
+		<b>=</b>
+		<input type="text" placeholder="" name="longestWord" class="gameAnswerField" value="handles?"/>
+		
+		<input type="submit" class="newButton" id="levelOneNext" value="NEW HEADLINE"/>
+			
+		</section>
+		
+		<section class="checkAnswer" id="levelOneWrongAnswer">
+		<p>Sorry</p>
+		
+		<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" value="dnahle?s"/>
+		�
+		<input type="text" placeholder="" name="longestWord" class="gameAnswerField" id="wrongAnswer" value="handles?"/>
+		
+		<input type="submit" class="newButton" id="levelOneTryAgain" value="TRY AGAIN"/>
+		<input type="submit" class="newButton" id="levelOneSkip" value="NEW HEADLINE"/>
+		
+		</section> 
+		
+				
+
+
+        
+        </article>
+
+
+		<footer>
+
+			<form method="POST" action="/usaTodayAPIQuery">
+				<input type="submit" class="footerButtons" id="usaTodayCall" value="USA Today API" />
+			</form>
+
+			<a href="http://www.craigprotzel.com" class="footerButtons">By Craig Protzel</a>
+						
+		</footer>
+
+
+
+		<!-- JavaScript at the bottom for fast page loading -->
+		<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
+        <script src="/js/script.js"></script>
+        <script src="/js/src/app.js"></script>
+
+    </body>
+    
+</html>

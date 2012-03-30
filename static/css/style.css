@@ -232,7 +232,7 @@ body {
   line-height: 20px;
   margin: 0;
   padding: 0;
-  background-color: #333333;
+  background-color: #282828;
 }
 body h1 {
   color: #ffffff;
@@ -246,11 +246,19 @@ body a {
   display: none;
 }
 body > header {
-  background: #6d4194;
-  padding: 20px;
+  background: #87468b;
+  color: #ffffff;
+  padding: 18px;
+  overflow: hidden;
 }
-body > header #links {
-  background-color: #6d4194;
+.headerContainerWidth {
+  width: 200px;
+}
+#helpDiv {
+  float: right;
+}
+#homeButton {
+  background-color: #9b5aaa;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
@@ -258,17 +266,53 @@ body > header #links {
   border: none;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  font-size: 24px;
-  text-align: left;
-  padding: 8px 12px 10px 12px;
+  font-size: 18px;
+  width: 200px;
+  padding: 10px 12px;
+  margin-top: 5px;
+  float: left;
+  line-height: 1;
 }
-body > header #links:hover {
+#homeButton:hover {
   color: #ffffff;
   background-color: #19a3a3;
 }
-body > header #links:active {
+#homeButton:active {
   color: #ffffff;
-  background-color: #6d4194;
+  background-color: #9b5aaa;
+}
+.headerHelpButton {
+  background-color: #9b5aaa;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 10px 12px;
+  margin-top: 5px;
+  float: right;
+  line-height: 1;
+}
+.headerHelpButton:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+.headerHelpButton:active {
+  color: #ffffff;
+  background-color: #9b5aaa;
+}
+#currentPageTitle {
+  display: none;
+}
+#pageTitle {
+  font-size: 38px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 50px;
+  margin-top: 10px;
 }
 article#main {
   /* .column(12); */
@@ -279,11 +323,11 @@ article#main {
   margin: 0 auto;
   overflow: hidden;
   color: #ffffff;
-  background-color: #333333;
+  background-color: #282828;
 }
 body > footer {
   position: fixed;
-  background-color: #6d4194;
+  background-color: #87468b;
   bottom: 0;
   width: 100%;
   color: #ffffff;
@@ -292,30 +336,16 @@ body > footer {
   font-size: 12px;
   display: inline;
 }
-.pageTitle {
-  font-size: 38px;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 60px;
-  line-height: 50px;
-}
 /*
-#welcomePageTitle{
-	font-size: @large;
+.instructions{
+
+	font-size: @big;
+	font-weight: bold;
+	text-align: center; 
+	margin-top: 100px; 
+	line-height: 50px;
 }
-	
-#levelOneTitle{
-	font-size: @large;
-}
-*/
-.instructions {
-  font-size: 52px;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 100px;
-  line-height: 50px;
-}
-#usaTodayCall {
+*/#usaTodayCall {
   float: right;
   /* display: inline;  */
 
@@ -350,14 +380,14 @@ body > footer {
 }
 #buttons .option:hover {
   color: #ffffff;
-  background-color: #6d4194;
+  background-color: #87468b;
 }
 #buttons .option:active {
   color: #ffffff;
   background-color: #19a3a3;
 }
 .footerButtons {
-  background-color: #6d4194;
+  background-color: #9b5aaa;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
@@ -377,14 +407,17 @@ body > footer {
 }
 .footerButtons:active {
   color: #ffffff;
-  background-color: #6d4194;
+  background-color: #9b5aaa;
 }
 .gameInstructions {
   font-size: 52px;
   font-weight: bolder;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 150px;
   line-height: 50px;
+}
+#help {
+  display: none;
 }
 .gameInstructionsList {
   font-size: 38px;
@@ -403,30 +436,40 @@ body > footer {
   line-height: 45px;
 }
 .instructionsGreen {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-weight: bold;
   color: #19a3a3;
   font-size: 52px;
 }
 .instructionsGreenSmall {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-weight: bold;
   color: #19a3a3;
   font-size: 24px;
   padding: 0px 10px 0px 5px;
 }
 .instructionsEntryField {
   font-size: 38px;
-  color: #333333;
+  color: #282828;
   background-color: #ffffff;
   padding: 5px 25px;
   margin: 0px 10px;
 }
 .instructionsEntryFieldSmall {
   font-size: 18px;
-  color: #333333;
+  color: #282828;
   background-color: #ffffff;
   padding: 5px 10px;
   margin: 5px 5px;
 }
 .enterInstructionButton {
-  background-color: #6d4194;
+  background-color: #87468b;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
@@ -444,10 +487,10 @@ body > footer {
 }
 .enterInstructionButton:active {
   color: #ffffff;
-  background-color: #6d4194;
+  background-color: #87468b;
 }
 .enterInstructionButtonSmall {
-  background-color: #6d4194;
+  background-color: #87468b;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
@@ -465,7 +508,7 @@ body > footer {
 }
 .enterInstructionButtonSmall:active {
   color: #ffffff;
-  background-color: #6d4194;
+  background-color: #87468b;
 }
 .startButton {
   background-color: #19a3a3;
@@ -473,6 +516,7 @@ body > footer {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
+  border: none;
   -moz-border-radius: 10px;
   border-radius: 10px;
   display: inline;
@@ -486,44 +530,78 @@ body > footer {
 }
 .startButton:hover {
   color: #ffffff;
-  background-color: #6d4194;
+  background-color: #87468b;
 }
 .startButton:active {
   color: #ffffff;
   background-color: #19a3a3;
 }
+.backButton {
+  background-color: #19a3a3;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  display: inline;
+  float: left;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  padding: 40px;
+  margin: 70px 25%;
+  font-size: 38px;
+  line-height: 42px;
+}
+.backButton:hover {
+  color: #ffffff;
+  background-color: #87468b;
+}
+.backButton:active {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
 .gameBoard {
   color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 150px 10px;
+  line-height: 95px;
+  text-align: center;
 }
 .gameBoard a {
   text-decoration: none;
   color: #ffffff;
 }
-.game {
-  color: #ffffff;
-  font-size: 24px;
+.quotes {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
   font-weight: bold;
-  margin: 100px 10px;
-  line-height: 60px;
-  text-align: center;
+  font-size: 38px;
+  margin: 30px auto 50px auto;
 }
-#wordsLevelOne {
+#wordTitle {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 52px;
   font-size: 38px;
 }
-#highlightLevelOne {
+#highlightWord {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-weight: bold;
   font-size: 96px;
   display: inline;
   color: #19a3a3;
   padding: 0 2px 0 8px;
-}
-.hideClue {
-  display: none;
-}
-#highlightClueLevelOne {
-  font-size: 24px;
-  display: inline;
-  color: #19a3a3;
-  padding: 0 5px 0 5px;
 }
 #fullTitle {
   font-size: 52px;
@@ -531,8 +609,67 @@ body > footer {
   color: #19a3a3;
   padding: 0 5px 0 5px;
 }
+.gameEntryField {
+  font-size: 38px;
+  width: 8em;
+  margin: 0 20px 0 auto;
+}
+.gameAnswerField {
+  font-size: 52px;
+  width: 7em;
+  margin: 30px auto 50px auto;
+}
+.enterButton {
+  background-color: #87468b;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 15px 20px 15px 20px;
+  margin: 30px 10px 10px 15px;
+  font-size: 24px;
+}
+.enterButton:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+.enterButton:active {
+  color: #ffffff;
+  background-color: #87468b;
+}
+.checkAnswer {
+  display: none;
+  margin: 150px 0px 30px 0px;
+  font-size: 96px;
+  text-align: center;
+}
+#levelOneCorrectAnswer {
+  color: #00dc6e;
+  font-weight: bold;
+}
+#levelOneWrongAnswer {
+  color: #ff585a;
+}
+.clue {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 24px;
+  line-height: 36px;
+  display: none;
+}
+#answerInClue {
+  color: #19a3a3;
+}
+#answerNotInClue {
+  color: #ffffff;
+}
 .lowerGameButtons {
-  background-color: #6d4194;
+  background-color: #87468b;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
@@ -550,79 +687,10 @@ body > footer {
 }
 .lowerGameButtons:active {
   color: #ffffff;
-  background-color: #6d4194;
+  background-color: #87468b;
 }
-#levelOneLowerGameButtonsALL {
-  margin: 70px 0% 10px 0%;
-}
-#levelTwoLowerGameButtonsALL {
-  margin: 70px 0% 10px 0%;
-}
-.clue {
-  display: none;
-  margin: 35px 0px 5px 0px;
-  color: #ffffff;
-  font-size: 24px;
-  line-height: 35px;
-}
-.gameEntryField {
-  font-size: 38px;
-  width: 9em;
-  margin: 0 auto 0 auto;
-}
-.enterButton {
-  background-color: #6d4194;
-  text-align: center;
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: bold;
-  border: none;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  padding: 15px 20px 15px 20px;
-  margin: 30px 20px 30px 30px;
-  font-size: 24px;
-}
-.enterButton:hover {
-  color: #ffffff;
-  background-color: #19a3a3;
-}
-.enterButton:active {
-  color: #ffffff;
-  background-color: #6d4194;
-}
-.nextButton {
-  background-color: #6d4194;
-  text-align: center;
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: bold;
-  border: none;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  padding: 15px 20px 15px 20px;
-  margin-top: 30px;
-  font-size: 24px;
-}
-.nextButton:hover {
-  color: #ffffff;
-  background-color: #19a3a3;
-}
-.nextButton:active {
-  color: #ffffff;
-  background-color: #6d4194;
-}
-.checkAnswer {
-  display: none;
-  padding: 15px 20px 15px 20px;
-  margin: 45px;
-  font-size: 52px;
-}
-#levelOneCorrectAnswer {
-  color: #00e18a;
-}
-#levelOneWrongAnswer {
-  color: #ff585a;
+#lowerGameButtonsALL {
+  margin: 60px 0% 10px 0%;
 }
 /* forms */
 /*

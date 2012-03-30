@@ -1,136 +1,118 @@
-<section class="pageTitle">Level One - Word Scramble</section>
-
+<section id="currentPageTitle">Level One - Word Scramble</section>
 	
-<section class="gameInstructions">  
-
-</section>
-
-	
-<section class="gameBoard">		
+<section class="gameBoard" id="gameBoardSection">		
    	
-		<!-- declare variables -->
-		<%	var allWords = randomStory.title.split(" "); %>
-		<%	var masterWords = randomStory.title.split(" "); %>
-
-			
-		<!-- create a function to sort items randomly -->
-		<%	var sortRandom = function() { %>
-		<%		return (0.5 - Math.random()); %>
-		<%	}; %>
+	<!-- grab the story title, split by spaces, save to a var -->
+	<%	var masterWords = randomStory.title.split(" "); %> 
 		
-				
-		<!-- create a function to sort items longest to shortest -->
-		<%	var sortLongToShort = function(a,b) { %>
-		<%		return(b.toString().length - a.toString().length); %>
-		<%	}; %>
-		
-		
-		<!-- establish a variable called sorted words and sort allWords from long to short -->
-		<%	var sortedWords = allWords; %>
-		<%	sortedWords.sort(sortLongToShort); %>
-		<%	var longestWordSaved = sortedWords[0]; %>
-		
-		
-		<!-- save the longest word in a hidden div -->
-		<div class="hidden" id="levelOneAnswer"><%= sortedWords[0] %></div>
+	<!-- use the "longest" function to (1)sort the comma separated string and then (2)determine the index value of the longest word -->	
+	<%	var	index = longest(masterWords); %>
+					
+	<!-- save the longest word in a hidden div -->
+	<div class="hidden" id="levelOneAnswer"><%= masterWords[index] %></div>
 	
+	<!-- <%  var letters = masterWords[index].split(""); %> -->
+	<!-- <div class="hidden" id="levelOneLetters"><%= letters %></div> --> 
+	
+	<!-- use the "scramble" function to randomize the character order of the longest word -->
+	<%	var scrambledWord = scramble(masterWords[index]); %>
 		
-		<!-- link the longest word to its actual placement in the original story title -->	
-		<%	var index = 0;
-			for (var j = 0; j < masterWords.length; j++){
-				if (sortedWords[0] == masterWords[j]) {
-					index = j;
-				} 
+		<!-- print the story title with the longest word scrambled in its original position -->	
+		<span class="quotes">"</span>
+		<%	for (var i = 0; i < masterWords.length; i++){
+			if (i == index) { %>
+				<a href="<%= randomStory.link %>" id="highlightWord"> <%= scrambledWord %> </a>
+		<%	} 
+			else { %>
+				<a href="<%= randomStory.link %>" id="wordTitle"> <%= masterWords[i] %> </a>		
+		<%		}
 			} %>
-			
+			<span class="quotes">"</span>
 		
 		
-		<!-- isolate the longest word, split then sort then join -->
-		<%	var longestWord = sortedWords[0].split("");
-			longestWord.sort(sortRandom); 
-		 	var scrambledWord = longestWord.join(""); %> 
-			
-		<section class="game">
-			
-			<!-- print the story title with the longest word scrambled in its original position -->	
-			<%	for (var j = 0; j < masterWords.length; j++){
-				if (j == index) { %>
-					<a href="<%= randomStory.link %>" id="highlightLevelOne"> <%= scrambledWord %> </a>
-			<%	} 
-				else { %>
-					<a href="<%= randomStory.link %>" id="wordsLevelOne"> <%= masterWords[j] %> </a>		
-			<%		}
-				} %>
-			
-			
-			<p>
+		<p>
+		
 			<input type="text" placeholder="" name="longestWord" class="gameEntryField" id="levelOneEntry" value=""/>
 			<input type="submit" class="enterButton" id="levelOneEnter" value="ENTER"/>
-			<input type="submit" class="nextButton" value="NEXT"/>
-							
-			<!-- <input type="submit" class="checkAnswer" id="levelOneCorrectAnswer" value="CORRECT!!!  NEXT"> -->
-			<!-- <input type="submit" class="checkAnswer" id="levelOneWrongAnswer" value="SORRY-TRY AGAIN">  --> 
-			
-			</p>
-						
-			<p id="levelOneLowerGameButtonsALL">
-			<input type="button" class="lowerGameButtons" id="levelOneClueButton" value="CLUE"/>
-			<input type="button" class="lowerGameButtons" id="levelOneGiveMeButton" value="GIVE ME A LETTER!"/>
-			<input type="button" class="lowerGameButtons" id="levelOneHelpButton" value="HELP"/>
-			</p>
-			
-			<p class="clue">
-			
-				<!-- check to see if answer is in the clue -->			
-				<%	var clueMasterWords = randomStory.description.split(" ");
+			<input type="submit" class="enterButton" id="levelOneNew" value="NEW"/>
 				
-					var randomStoryDescriptionLower = randomStory.description.toLowerCase();
-					var clueMasterWordsLower = randomStoryDescriptionLower.split(" ");
-					console.log (clueMasterWordsLower);
-				
-					var clueIndex = 0;
-					var answerInTheClue = false;
-					
-					for (var j = 0; j < clueMasterWords.length; j++){
-						if (sortedWords[0] == clueMasterWords[j] || sortedWords[0] == clueMasterWordsLower[j]){
-							answerInTheClue = true; 
-							clueIndex = j;
-						}
-					} %>
-					
-				<!-- print out the clue with the answer scrambled if it is in the clue -->	
-				<%	if (answerInTheClue){ 		
-						for (var j = 0; j < clueMasterWords.length; j++){ 
-									if (j == clueIndex){ %>
-									<!-- <section id="highlightClueLevelOne"> -->							
-									<%= scrambledWord %>		
-									<!-- </section> -->												
-								<%	} 
-									else { %>
-									<%= clueMasterWords[j] %>
-								<%	} 
-							}			
-					} 			
-					else { 
-						for (var j = 0; j < clueMasterWords.length; j++){ %>
-							<%= clueMasterWords[j] %>
-						<%	}
-					} %>
-					
-			</p>
+		</p>
 			
-			<ol class="gameInstructionsListSmall">
-					<li>Unscramble the <span class="instructionsGreenSmall">LARGE WORD</span></li>
-					<li>Type your answer in the <span class="instructionsEntryFieldSmall">White Box</span></li>
-					<li>Press <input type="button" class="enterInstructionButtonSmall" value="ENTER"/>to check your answer</li>
-			</ol>
-
-			
-	
-			
-			<p class="checkAnswer" id="levelOneCorrectAnswer">Correct!!! Click Next</p>
-			<p class="checkAnswer" id="levelOneWrongAnswer">Sorry. Try Again</p> 		
+					
+		<p id="lowerGameButtonsALL">
+		<input type="button" class="lowerGameButtons" id="clueButton" value="CLUE"/>
+		<input type="button" class="lowerGameButtons" id="giveMeButton" value="GIVE ME A LETTER!"/>
+		</p>
 		
+
+		<p class="clue">
+	
+			<!-- check to see if answer is in the clue -->			
+			<%	var clueMasterWords = randomStory.description.split(" ");%>
+				
+			<!-- use compareWords and cleanup functions to check if the answer is part of the clue -->
+			<!-- if the answer is in the clue, scramble it -->		
+			<%	for (var i = 0; i < clueMasterWords.length; i++){
+					if ( compareWords( cleanup( masterWords[index] ),cleanup( clueMasterWords[i] ) ) ) { %>
+						<span id="answerInClue"> <%= scramble(clueMasterWords[i]) %> </span> 		
+					<%	} else { %>
+						<span id="answerNotInClue"> <%= clueMasterWords[i] %> </span>
+					<%	} 
+				} %>
+				
+		</p>
+
+</section>	
+		
+		
+<section id="help">
+
+	<section class="gameInstructions">
+		INSTRUCTIONS
+		<ol class= "gameInstructionsList">
+			<li>Unscramble the <span class="instructionsGreen">LARGE WORD</span></li>
+			<li>Type your answer in the <span class="instructionsEntryField">White Box</span></li>
+			<li>Press <input type="button" class="enterInstructionButton" value="ENTER"/>to check your answer</li>
+		</ol>
+	</section>
+
+	<input type="button" class="backButton" id="backToTheGame" value="BACK TO THE GAME"/>
+	
+
+</section>	
+
+
+<ol class="gameInstructionsListSmall">
+		<li>Unscramble the <span class="instructionsGreenSmall">LARGE WORD</span></li>
+		<li>Type your answer in the <span class="instructionsEntryFieldSmall">White Box</span></li>
+		<li>Press <input type="button" class="enterInstructionButtonSmall" value="ENTER"/>to check your answer</li>
+</ol>
+	
+	
+		
+				
+<section class="checkAnswer" id="levelOneCorrectAnswer">
+		<p>Correct!!!</p>
+		
+		<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" value="<%= scrambledWord %>"/>
+		<b>=</b>
+		<input type="text" placeholder="" name="longestWord" class="gameAnswerField" value="<%= masterWords[index] %>"/>
+		
+		<input type="submit" class="enterButton" id="levelOneNext" value="NEW HEADLINE"/>
+			
 		</section>
 		
-</section>
+		<section class="checkAnswer" id="levelOneWrongAnswer">
+		<p>Sorry</p>
+		
+		<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" value="<%= scrambledWord %>"/>
+		­
+		<input type="text" placeholder="" name="longestWord" class="gameAnswerField" id="wrongAnswer" value="<%= masterWords[index] %>"/>
+		
+		<input type="submit" class="enterButton" id="levelOneTryAgain" value="TRY AGAIN"/>
+		<input type="submit" class="enterButton" id="levelOneSkip" value="NEW HEADLINE"/>
+		
+</section> 
+		
+				
+

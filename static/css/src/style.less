@@ -59,16 +59,66 @@ display: none;
 // > sign means direct child of
 body > header {
 	background: @lightPurple;
-	padding: 20px;		
+	color: @white;
+	padding: 18px;	
+	overflow: hidden;	
+	}
 	
-	#links{
-		.styleButton();
-		font-size: @medium;
-		text-align: left;
-		padding: 8px 12px 10px 12px;
-		}
-		
+	
+
+.headerContainerWidth {
+width: 200px;
 }
+
+#helpDiv{
+float: right;
+}
+
+
+
+#homeButton{
+		
+	.headerButton();
+	font-size: @normal;
+	//text-align: left;
+	width: 200px;
+	padding: 10px 12px;
+	margin-top: 5px;
+	float: left;
+	line-height: 1;
+}
+
+
+.headerHelpButton{
+	
+	.headerButton();
+	font-size: @normal;
+	//text-align: left;
+	//width: 200px;
+	padding: 10px 12px;
+	margin-top: 5px;
+	float: right;
+	line-height: 1;	
+}		
+
+
+
+#currentPageTitle{
+	display: none;	
+}
+
+
+#pageTitle{
+	font-size: @large;
+	font-weight: 500;
+	text-align: center;
+	line-height: 50px; 
+	margin-top: 10px;
+}
+
+
+
+
 	
 
 article#main {
@@ -86,6 +136,8 @@ article#main {
 	
 }
 
+
+
 body > footer {
 	position: fixed;
 	background-color: @lightPurple;
@@ -99,35 +151,15 @@ body > footer {
 }
 
 
+
+
+
+
 ///////////////
 // MAIN PAGE //
 ///////////////
 
-
-.pageTitle{
-
-	font-size: @large;
-
-	font-weight: 600;
-	text-align: center;
-	
-	margin-top: 60px;
-	line-height: 50px;
-}
-	
-	
 /*
-#welcomePageTitle{
-	font-size: @large;
-}
-	
-#levelOneTitle{
-	font-size: @large;
-}
-*/
-		
-	
-
 .instructions{
 
 	font-size: @big;
@@ -135,7 +167,8 @@ body > footer {
 	text-align: center; 
 	margin-top: 100px; 
 	line-height: 50px;
-}	
+}
+*/	
 
 
 
@@ -164,7 +197,7 @@ body > footer {
 
 
 .footerButtons{
-	.styleButton();
+	.headerButton();
 	height: 20px;
  	line-height: 20px;
 	padding: 0 10px 0 10px;
@@ -186,12 +219,13 @@ body > footer {
 	font-size: @big;
 	font-weight: bolder;
 	text-align: center;
-	margin-top: 100px; 
+	margin-top: 150px; 
 	line-height: 50px;
 }	
 
-
-
+#help{
+	display: none;
+}
 
 .gameInstructionsList{
 
@@ -214,11 +248,15 @@ body > footer {
 
 
 .instructionsGreen{
+	#font.serif();
+	font-weight: bold;
 	color: @newAqua;
 	font-size: @big;	
 }
 
 .instructionsGreenSmall{
+	#font.serif();
+	font-weight: bold;
 	color: @newAqua;
 	font-size: @medium;	
 	padding: 0px 10px 0px 5px;
@@ -241,7 +279,6 @@ body > footer {
 		padding: 5px 10px;
 		margin: 5px 5px;
 	}
-
 
 	
 .enterInstructionButton{
@@ -271,8 +308,15 @@ body > footer {
 	line-height: 42px;
 }
 
+.backButton {
 
-
+	.instructionsButton();
+	.column(6,12);	
+	padding: 40px;
+	margin: 70px 25%;
+	font-size: @large;
+	line-height: 42px;
+}
 
 
 
@@ -282,6 +326,11 @@ body > footer {
 
 .gameBoard {
 	color: @white;
+	font-size: @medium;
+	font-weight: bold;
+	margin: 150px 10px;
+	line-height: 95px;	
+	text-align: center;	
 	
 	a{
 	text-decoration: none;
@@ -289,51 +338,125 @@ body > footer {
 	}
 }
 
+#gameBoardSection {
 
-.game {
-	color: @white;
-	font-size: @medium;
+}
+
+
+
+//////////////
+// HEADLINE //
+//////////////
+
+.quotes{
+	#font.serif();
 	font-weight: bold;
-	margin: 100px 10px;
-	line-height: 60px;	
-	text-align: center;	
-	}
-
+	font-size: @large;	
+	margin: 30px auto 50px auto;
+}
 	
-#wordsLevelOne{
+#wordTitle{
+	#font.serif();
+	font-weight: bold;
+	font-size: @big;
 	font-size: @large;
 }	
 	
 	
-#highlightLevelOne{
+#highlightWord{
+		#font.serif();
+		font-weight: bold;
 		font-size: @superBig;
 		display: inline;
 		color: @newAqua;
 		padding: 0 2px 0 8px;
 	}
-	
-
-.hideClue{
-	display: none;
-}	
 
 
-
-#highlightClueLevelOne{
-		font-size: @medium;
-		display: inline;
-		color: @newAqua;
-		padding: 0 5px 0 5px;
-	}
-
-	
 #fullTitle{
 		font-size: @big;
 		display: inline;
 		color: @newAqua;
 		padding: 0 5px 0 5px;
+	}	
+
+
+////////////////////////////
+// ENTRY FIELDS & BUTTONS //
+////////////////////////////
+
+.gameEntryField{
+		font-size: @large; 
+		width: 8em;
+		margin: 0 20px 0 auto;		
 	}
 
+.gameAnswerField{
+		font-size: @big; 
+		width: 7em;
+		margin: 30px auto 50px auto;		
+	}
+
+	
+.enterButton{
+	.styleButton();
+	padding: 15px 20px 15px 20px;
+	margin: 30px 10px 10px 15px;
+	font-size: @medium;
+}
+
+
+////////////
+// ANSWER //
+////////////
+
+.checkAnswer{
+	display: none;
+	margin: 150px 0px 30px 0px;
+	font-size: @superBig;
+	text-align: center;
+	}
+	
+	
+#levelOneCorrectAnswer{
+	color: @newGreen;
+	font-weight: bold;
+}
+	
+	
+#levelOneWrongAnswer{
+	color: @newRed;
+}
+
+
+
+//////////
+// CLUE //
+//////////
+
+.clue{  
+	#font.serif();
+	font-size: @medium;
+	line-height: 36px;
+	display: none;
+	}
+
+#answerInClue{	
+		color: @newAqua;					
+	}
+
+#answerNotInClue{
+		color: @white;
+}
+
+
+
+	
+
+
+///////////////////
+// LOWER BUTTONS //
+///////////////////
 
 
 .lowerGameButtons{
@@ -342,91 +465,22 @@ body > footer {
 	margin: 10px 10px 10px 10px;
 	font-size: @normal;
 	
+	#clueButton{
+	}
+	#giveMeButton{
+	}
+	#lowerHelpButton{
+	}
 	
-	#levelOneClueButton{
-	}
-	#levelOneGiveMeButton{
-	}
-	#levelOneHelpButton{
-	}
-
-
-	#levelTwoClueButton{
-	}
-	#levelTwoGiveMeButton{
-	}
-	#levelTwoHelpButton{
-	}
-
 }
 
 
-#levelOneLowerGameButtonsALL{
-	margin: 70px 0% 10px 0%;
-}
-
-#levelTwoLowerGameButtonsALL{
-	margin: 70px 0% 10px 0%;
+#lowerGameButtonsALL{
+	margin: 60px 0% 10px 0%;
 }
 
 
-
-.clue{ 
-	display: none;
-	margin: 35px 0px 5px 0px;	
-	color: @white;
-	font-size: @medium;
-	line-height: 35px;
-}
-
-
-
-.gameEntryField{
-		font-size: @large; 
-		width: 9em;
-		margin: 0 auto 0 auto;		
-	}
-
 	
-.enterButton{
-	.styleButton();
-	padding: 15px 20px 15px 20px;
-	margin: 30px 20px 30px 30px;
-	font-size: @medium;
-}
-
-
-.nextButton{
-	.styleButton();
-	padding: 15px 20px 15px 20px;
-	margin-top: 30px;
-	font-size: @medium;
-}
-
-
-.checkAnswer{
-	display: none;	
-	padding: 15px 20px 15px 20px;
-	margin: 45px;
-	font-size: @big;
-	
-	}
-	
-	
-#levelOneCorrectAnswer{
-	color: @newGreen;
-}
-	
-	
-#levelOneWrongAnswer{
-	color: @newRed;
-}
-	
-
-
-
-
-
 
 
 

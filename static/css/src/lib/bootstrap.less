@@ -16,7 +16,10 @@
 @grayLighter:       #ccc;
 @grayLight:         #777;
 @gray:              #555;
-@grayDark:          #333;
+
+@grayDark:			#282828;
+@grayDarkOld:          #333;
+
 @black:             #000;
 
 // Accent Colors
@@ -31,7 +34,7 @@
 
 
 //Alz other colors
-@lightPurple:		#6D4194; 
+@lightPurpleAlz:	#6D4194; 
 @darkPurple: 		#65378F;
 @darkPurpleTwo:		#6D4182;
 @grayBg:			#ECECEC;
@@ -43,16 +46,20 @@
 @fbLightBlue:		#3D94F5;
 @fbCraigBlue:		#3D32E1;
 
+@lightPurple:		#87468B;
+
 @newAqua:			#19A3A3;
 @newBlue:			#0099FF;
 @newPurple:			#A94FC8;
 @superLightPurple:	#FFCCFF;
 
+@headerLightPurple:	#9B5AAA;
+
 
 @newRed:			#FF585A;
 @newOrange:			#FFCC33;
 @newYellow:			#FFF8AF;
-@newGreen:			#00E18A;
+@newGreen:			#00DC6E;
 
 
 // Baseline grid
@@ -216,6 +223,7 @@
 	text-decoration: none;
 	color: @white;
 	font-weight: bold;
+	border: none;
 	.border-radius(10px);	
 
 	&:hover {
@@ -233,6 +241,7 @@
 
 .styleButton(){
  	
+ 	//background-color: @newAqua;
  	background-color: @lightPurple;
 	text-align: center;
 	text-decoration: none;
@@ -253,7 +262,27 @@
 }
 
 
+.headerButton(){
+ 	
+ 	//background-color: @newAqua;
+ 	background-color: @headerLightPurple;
+	text-align: center;
+	text-decoration: none;
+	color: @white;
+	font-weight: bold;
+	border: none;
+	.border-radius(5px);	
 
+	&:hover {
+		color: @white;
+		background-color: @newAqua;
+	}
+
+	&:active {
+		color: @white;
+		background-color: @headerLightPurple;	
+	}
+}
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {

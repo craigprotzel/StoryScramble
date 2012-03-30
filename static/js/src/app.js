@@ -1,6 +1,26 @@
 //**********Global**********//
 
+$("#homeButton").click(function() { 
+  document.location.href='/';
+});
+
+
+
+$("#levelTwoNext").click(function() { 
+  document.location.href='/storyscramble_level_II';
+});
+
 $("input:text:visible:first").focus();
+
+
+//**********Page Titles**********//
+
+var pageTitle = document.getElementById('pageTitle');
+var currentPageTitle = document.getElementById('currentPageTitle');
+console.log(currentPageTitle);
+
+var titleFiller = currentPageTitle.innerHTML;
+pageTitle.innerHTML = titleFiller;
 
 
 
@@ -8,25 +28,66 @@ $("input:text:visible:first").focus();
 
 
 
-//Level I lower game buttons 
-$("#levelOneClueButton").click(function() { 
-  $('.clue').toggle();
-});
+//Level I - Clue Button 
 
-$("#levelOneGiveMeButton").click(function() { 
-  alert("You clicked the \"Give Me Letter\" button");
-  //$('.clue').toggle();
-});
 
-$("#levelOneHelpButton").click(function() { 
-  //alert("You clicked the \"Help\" button");
-  $('.gameInstructionsListSmall').toggle();
+$("#clueButton").click(function() { 
+	console.log("Clue was pressed");	
+	$('.clue').toggle();
 });
 
 
+//Level I - Give Me A Letter Logic
+
+var letterCount = 1;
+
+  
+function letterCounter() {
+	
+	var levelOneAnswer = document.getElementById('levelOneAnswer');
+	var stringOfLetters = levelOneAnswer.innerHTML;
+	
+	var levelOneEntry = document.getElementById('levelOneEntry');
+	levelOneEntry.value = ""; 
+	
+	if (letterCount <= stringOfLetters.length) {
+		for (i = 0; i < letterCount; i++){
+			levelOneEntry.value = levelOneEntry.value + stringOfLetters[i]
+		}
+	}
+	else if (letterCount > stringOfLetters.length){
+		levelOneEntry.value = levelOneAnswer.innerHTML; 
+		$('#levelOneEnter').trigger('click');
+	}		
+	
+	letterCount++;
+} 
+
+var giveMeButton = document.getElementById('giveMeButton');
+giveMeButton.addEventListener('click', letterCounter, false);
 
 
-//Level II lower game buttons 
+
+// Level I - Help Buttons
+
+$("#helpButton").click(function() { 
+	$('.gameBoard').toggle();
+	$('#help').toggle();
+});
+
+$("#backToTheGame").click(function() { 
+	$('.gameBoard').toggle();
+	$('#help').toggle();
+});
+
+
+
+
+
+
+
+//Level II - Lower Game Buttons 
+
 $("#levelTwoClueButton").click(function() { 
   $('.clue').toggle();
 });
@@ -43,6 +104,7 @@ $("#levelTwoHelpButton").click(function() {
 
 
 
+
 //**********Level I**********//
 
 
@@ -50,24 +112,36 @@ $("#levelTwoHelpButton").click(function() {
 var levelOneEnter = document.getElementById('levelOneEnter'); 
 var levelOneEntry = document.getElementById('levelOneEntry');
 var levelOneAnswer = document.getElementById('levelOneAnswer');
+		
+var wrongAnswer = document.getElementById('wrongAnswer');		
 							
 levelOneEnter.addEventListener('click', checkLevelOneAnswer, false); 
 				
 function checkLevelOneAnswer() {
-	console.log("Level 1 Answer Submitted");
-	console.log("You Entered: " + levelOneEntry.value);
-	console.log("The Correct Answer is: " + levelOneAnswer.innerHTML);
+	
+	//console.log("Level 1 Answer Submitted");
+	//console.log("You Entered: " + levelOneEntry.value);
+	//console.log("The Correct Answer is: " + levelOneAnswer.innerHTML);
 	
 	if (levelOneEntry.value == levelOneAnswer.innerHTML) {
+
+		$('#gameBoardSection').hide();
+		
 		$('.checkAnswer').show();
 		$('#levelOneCorrectAnswer').show();
 		$('#levelOneWrongAnswer').hide();		
+		
 		}
 	
 	else {
+		
+		$('#gameBoardSection').hide();
+
 		$('.checkAnswer').show();
 		$('#levelOneCorrectAnswer').hide();
 		$('#levelOneWrongAnswer').show();		
+		wrongAnswer.value = levelOneEntry.value;
+				
 		}	
 };
 
@@ -79,18 +153,56 @@ $(document).keypress(function(e) {
     
     console.log("Enter was pressed");
     
-    	if (levelOneEntry.value == levelOneAnswer.innerHTML) {
-			$('.checkAnswer').show();
-			$('#levelOneCorrectAnswer').show();
-			$('#levelOneWrongAnswer').hide();		
+	if (levelOneEntry.value == levelOneAnswer.innerHTML) {
+		
+		$('#gameBoardSection').hide();
+		
+		$('.checkAnswer').show();
+		$('#levelOneCorrectAnswer').show();
+		$('#levelOneWrongAnswer').hide();		
+		
 		}
-		else {
-			$('.checkAnswer').show();
-			$('#levelOneCorrectAnswer').hide();
-			$('#levelOneWrongAnswer').show();	
+		
+	else {
+		
+		$('#gameBoardSection').hide();
+		
+		$('.checkAnswer').show();
+		$('#levelOneCorrectAnswer').hide();
+		$('#levelOneWrongAnswer').show();	
+		
+		wrongAnswer.value = levelOneEntry.value;	
+		
 		}	        
 	}
 });
+
+
+//Level I - Try Again
+$("#levelOneTryAgain").click(function() { 
+  
+  	$('#gameBoardSection').show();
+		
+	$('.checkAnswer').hide();
+	$('#levelOneCorrectAnswer').hide();
+
+	levelOneEntry.value = ""
+	letterCount = 1;  
+});
+
+
+//Level I - Go On To Another Headline
+
+$("#levelOneNew").click(function() { 
+  document.location.href='/storyscramble_level_I';
+});
+$("#levelOneNext").click(function() { 
+  document.location.href='/storyscramble_level_I';
+});
+$("#levelOneSkip").click(function() { 
+  document.location.href='/storyscramble_level_I';
+});
+
 
 
 

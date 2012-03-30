@@ -9,7 +9,7 @@ var app = express.createServer(express.logger());
 var mongoose = require('mongoose'); //include Mongoose MongoDB Library
 var schema = mongoose.Schema;
 
-var MONOGOLAB_URI = 
+var MONOGOLAB_URI;
 
 /************ DATABASE CONFIGURATION **********/
 app.db = mongoose.connect(process.env.MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
@@ -78,20 +78,14 @@ storyScrambleArray = [];
 //usa today variables
 var source = 'USA_Today';
 
-		
+	
 		
 // Main Page
 app.get('/', function(request, response) {
     
     response.render("main.html");
+    
 
-});
-
-
-//Link From Header to Main Page
-app.get('/main', function(request,response) {
-
-	response.render("main.html");
 });
 
 
@@ -183,7 +177,6 @@ app.get('/storyscramble_level_I', function(request, response) {
 
 
 
-
 // Display Level II Page - TITLE WORDS SCRAMBLED 
 
 app.get('/instructions_level_II', function(request, response) {
@@ -257,6 +250,109 @@ var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Listening on " + port);
 });
+
+
+
+
+app.helpers({
+
+    longest: function(wordslist){ 
+    	
+    	var sortLongToShort = function(a,b) {
+			return(b.toString().length - a.toString().length);
+		};
+		var sorted = wordslist.slice(0);
+		var sorted = sorted.sort(sortLongToShort);
+
+		for (var j = 0; j < wordslist.length; j++){
+			if (sorted[0] == wordslist[j]) {
+				return j;
+			}
+		}
+		return -1
+    }
+    
+  , cleanup : function(word) {
+    	word = word.replace(/[^\w ]/, "");
+    	return word.toLowerCase();
+    }
+    
+  , scramble : function (word){
+  		
+  		//here we use regex to find punctuation and save it for adding it after scrambling.
+  		
+  		var random = function() { 
+				return (0.5 - Math.random()); 
+			}; 
+				
+		var characters = word.split("");
+		characters.sort(random); 
+		
+		//before returning you would add back the punctuation you removed at the beginning.
+
+		return characters.join("");
+  }
+  
+  , compareWords : function(one, two){
+  		var onechars = one.split(''),
+  			twochars = two.split(''),
+  			likeness = 0,
+  			looper = []; 			
+  			
+  			if (onechars.length > twochars.length){
+  				looper = twochars.length;
+  			} else {
+  				looper = onechars.length;	
+  			}
+  			
+ 
+  			for (var i = 0; i < looper; i++){
+  				if (onechars[i] === twochars[i]) {
+  					likeness++;
+  				}
+  			}
+  			
+  			var diff = Math.abs(onechars.length - twochars.length);
+  			
+  			if (diff < 3) {
+		  		if ( likeness > (looper - 2) ) {
+		  				return true;
+		  			} else {
+		  				return false;
+		  		}
+  			}
+  }
+  
+  /* this doesn't work very well */
+  , matchWords : function(one, two){
+  		
+  		var onechars = one.split(''),
+  			twochars = two.split('');	
+  		
+  		var close = Math.abs(onechars.length - twochars.length);	
+  			
+  		if (close < 3){	
+  		
+	  		if (onechars.length > twochars.length){
+	  			if (one.match(two)){
+	  				return true;
+	  			} 
+	  			else {
+	  				return false;
+	  			}
+	  		}
+	  		else if (twochars.length > onechars.length){
+	  			if (two.match(one)){
+	  				return true;
+	  			}
+	  			else {
+	  				return false;
+	  			}
+	  		}	
+	  	}	
+  	}
+});
+
 
 
 

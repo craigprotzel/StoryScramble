@@ -11,22 +11,24 @@
         </title>
         
         <link rel="stylesheet" href="/css/style.css" type="text/css" charset="utf-8"/>
-	
     </head>
+
 
     <body>
 
 		<header> 
-            <% if (typeof pageTitle != "undefined") { %>
-               <h1><%= pageTitle %></h1>
-            <% } else {%>
-            
-            <!-- this link doesn't work, do I need a route??? -->
-             <a href="/main" id="links">Story Scramble</a>
-            
-            <% } %>
-        </header>
+               
+           <div class="headerContainerWidth" id="helpDiv">
+            <input type="button" class="headerHelpButton" id="helpButton" value="HELP"/>         
+	       </div>
+	        <input type="button" id="homeButton" value="STORY SCRAMBLE"/>
+	      
+                
+         	<section id="pageTitle"></section>
+      	
+      	</header>
         
+       
         
         <article id="main">
             

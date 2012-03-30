@@ -1,6 +1,6 @@
 // export Schemas to web.js
 module.exports.configureSchema = function(Schema, mongoose) {
-        
+
     
     // StoryEntry  
     var StoryEntry = new Schema({
