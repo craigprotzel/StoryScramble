@@ -51,10 +51,14 @@ body{
 
 
 .hidden { 
-display: none;
+	display: none;
 }
 
-
+/*
+#soundCorrect_01 {
+	display: hidden;
+}
+*/
 
 // > sign means direct child of
 body > header {
@@ -159,18 +163,6 @@ body > footer {
 // MAIN PAGE //
 ///////////////
 
-/*
-.instructions{
-
-	font-size: @big;
-	font-weight: bold;
-	text-align: center; 
-	margin-top: 100px; 
-	line-height: 50px;
-}
-*/	
-
-
 
 #usaTodayCall {
 		float: right; 
@@ -180,17 +172,19 @@ body > footer {
 
 
 #buttons {  
-	/* .column(12); */ 
-	/* .push(2); */
-	/* .row(9); */
+
 	margin: 50px auto 100px auto;
 	margin-top:  50px;   
 	margin-bottom: 100px;
+	border: none;
+	text-decoration: none;
 	
-
+	
 	.option {
 		.column(3,9); 
 		.bigButton();
+		font-size: 34px;
+		
 		
 	}
 }
@@ -209,7 +203,6 @@ body > footer {
 
 
 
-
 //////////////////
 // INSTRUCTIONS //
 //////////////////
@@ -219,12 +212,31 @@ body > footer {
 	font-size: @big;
 	font-weight: bolder;
 	text-align: center;
-	margin-top: 150px; 
+	margin-top: 110px; 
 	line-height: 50px;
 }	
 
+
 #help{
 	display: none;
+}
+
+#helpChoices{
+	display: none;
+}
+
+#helpInstructions{
+	display: none;
+}
+
+changeLevel{
+	font-size: @normal;
+}
+reviewInstructions{
+	font-size: @normal;
+}
+backToTheGame{
+	font-size: @normal;
 }
 
 .gameInstructionsList{
@@ -328,7 +340,7 @@ body > footer {
 	color: @white;
 	font-size: @medium;
 	font-weight: bold;
-	margin: 150px 10px;
+	margin-top: 150px;
 	line-height: 95px;	
 	text-align: center;	
 	
@@ -337,11 +349,6 @@ body > footer {
 	color: @white;
 	}
 }
-
-#gameBoardSection {
-
-}
-
 
 
 //////////////
@@ -422,12 +429,20 @@ body > footer {
 	color: @newGreen;
 	font-weight: bold;
 }
-	
-	
+		
 #levelOneWrongAnswer{
 	color: @newRed;
 }
 
+
+#levelTwoCorrectAnswer{
+	color: @newGreen;
+	font-weight: bold;
+}
+	
+#levelTwoWrongAnswer{
+	color: @newRed;
+}
 
 
 //////////
@@ -459,30 +474,19 @@ body > footer {
 ///////////////////
 
 
+#lowerGameButtonsALL{
+	margin: 60px 0% 10px 0%;
+}
+
 .lowerGameButtons{
 	.styleButton();
 	padding: 15px 25px 15px 25px;
 	margin: 10px 10px 10px 10px;
 	font-size: @normal;
-	
-	#clueButton{
-	}
-	#giveMeButton{
-	}
-	#lowerHelpButton{
-	}
-	
-}
-
-
-#lowerGameButtonsALL{
-	margin: 60px 0% 10px 0%;
 }
 
 
 	
-
-
 
 /* forms */
 

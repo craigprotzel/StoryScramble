@@ -245,6 +245,11 @@ body a {
 .hidden {
   display: none;
 }
+/*
+#soundCorrect_01 {
+	display: hidden;
+}
+*/
 body > header {
   background: #87468b;
   color: #ffffff;
@@ -336,30 +341,18 @@ body > footer {
   font-size: 12px;
   display: inline;
 }
-/*
-.instructions{
-
-	font-size: @big;
-	font-weight: bold;
-	text-align: center; 
-	margin-top: 100px; 
-	line-height: 50px;
-}
-*/#usaTodayCall {
+#usaTodayCall {
   float: right;
   /* display: inline;  */
 
   margin-right: 30px;
 }
 #buttons {
-  /* .column(12); */
-  /* .push(2); */
-
-  /* .row(9); */
-
   margin: 50px auto 100px auto;
   margin-top: 50px;
   margin-bottom: 100px;
+  border: none;
+  text-decoration: none;
 }
 #buttons .option {
   display: inline;
@@ -374,9 +367,10 @@ body > footer {
   color: #ffffff;
   font-size: 20%;
   font-weight: bold;
+  border: none;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  font-size: 36px;
+  font-size: 34px;
 }
 #buttons .option:hover {
   color: #ffffff;
@@ -413,11 +407,26 @@ body > footer {
   font-size: 52px;
   font-weight: bolder;
   text-align: center;
-  margin-top: 150px;
+  margin-top: 110px;
   line-height: 50px;
 }
 #help {
   display: none;
+}
+#helpChoices {
+  display: none;
+}
+#helpInstructions {
+  display: none;
+}
+changeLevel {
+  font-size: 18px;
+}
+reviewInstructions {
+  font-size: 18px;
+}
+backToTheGame {
+  font-size: 18px;
 }
 .gameInstructionsList {
   font-size: 38px;
@@ -566,7 +575,7 @@ body > footer {
   color: #ffffff;
   font-size: 24px;
   font-weight: bold;
-  margin: 150px 10px;
+  margin-top: 150px;
   line-height: 95px;
   text-align: center;
 }
@@ -653,6 +662,13 @@ body > footer {
 #levelOneWrongAnswer {
   color: #ff585a;
 }
+#levelTwoCorrectAnswer {
+  color: #00dc6e;
+  font-weight: bold;
+}
+#levelTwoWrongAnswer {
+  color: #ff585a;
+}
 .clue {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
   font-size: 14px;
@@ -667,6 +683,9 @@ body > footer {
 }
 #answerNotInClue {
   color: #ffffff;
+}
+#lowerGameButtonsALL {
+  margin: 60px 0% 10px 0%;
 }
 .lowerGameButtons {
   background-color: #87468b;
@@ -688,9 +707,6 @@ body > footer {
 .lowerGameButtons:active {
   color: #ffffff;
   background-color: #87468b;
-}
-#lowerGameButtonsALL {
-  margin: 60px 0% 10px 0%;
 }
 /* forms */
 /*

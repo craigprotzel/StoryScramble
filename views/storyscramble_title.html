@@ -1,63 +1,135 @@
 <section id="currentPageTitle">Level Two - Title Scramble</section>
 	
 	
-<section class="gameBoard">		
+<section class="gameBoard" id="gameBoardSection">		
    	
 		<!-- declare variables -->
-		<%	var allWords = randomStory.title.split(" "); %>
 		<%	var masterWords = randomStory.title.split(" "); %>
-
-			
-		<!-- create a function to sort items randomly -->
-		<%	var sortRandom = function() { %>
-		<%		return (0.5 - Math.random()); %>
-		<%	}; %>
+		<% var wordCountIndex = 0; %> 
 		
+		<!--
+		<div>
+		MASTER WORDS LENGTH:
+		<%= masterWords.length %>
+		MASTER WORDS: 
+		<%= masterWords %>
+		WORD COUNT INDEX:
+		<%= wordCountIndex %>
+		</div>
+		-->
+		
+		<!-- save these values for the front end in a hidden div -->
+		<div class="hidden" id="levelTwoHeadline"><%= masterWords %></div>
+		<div class="hidden" id="levelTwoWordCountIndex"><%= wordCountIndex %></div> 
+		<div class="hidden" id="levelTwoAnswer"><%= masterWords[wordCountIndex] %></div>
 				
-		<!-- save the longest word in a hidden div -->
-		<div class="hidden" id="levelThreeAnswer"></div>
-	
+
+		<!-- declare an array to save the scrambled words -->		
+		<% var newWords = []; %>
+
+		<span class="quotes">"</span>		
+		<%	for (var i=0; i < masterWords.length; i++){ %>
+				
+				<!-- run the scramble function on all the words -->
+				<% newWords[i] = scramble(masterWords[i]); %>
+				
+				<%	if (i == wordCountIndex){ %>
+							<a href="<%= randomStory.link %>" id="highlightWord"> <%= newWords[i] %> </a>
+				<%	} 
+					else { %>
+							<a href="<%= randomStory.link %>" id="wordTitle"> <%= newWords[i] %> </a>
+				<%	}
+			} %>
+					
+		<span class="quotes">"</span>
 		
-		<section class="game"> 		
-			
-		<% for (var i = 0; i < allWords.length; i++) { %>
-			<%	var scrambledLetters = allWords[i].split("") %>
-			<%	scrambledLetters.sort(sortRandom) %>
-			<%	var newWords = scrambledLetters.join(""); %>
 		
-			<section id="fullTitle">
-			<%= newWords %> 
-		<%	} %>	
-			</section>
-			
-			
-			<p>
-			<input type="text" placeholder="" name="correctWord" class="gameEntryField" id="levelThreeEntry" value=""/>
-			<input type="submit" class="enterButton" id="levelTwoEnter" value="ENTER"/>
-			<input type="submit" class="nextButton" id="levelTwoNext" value="NEXT"/>
-							
-			<input type="submit" class="checkAnswer" id="levelTwoCorrectAnswer" value="CORRECT!!!  NEXT">
-			<input type="submit" class="checkAnswer" id="levelTwoWrongAnswer" value="SORRY-TRY AGAIN">  		
-			</p>
+		<!--
+		<div>
+		<%= newWords.length %>
+		<%= newWords %>
+		</div>
+		-->
+		
+					
+		<p>
+			<input type="text" placeholder="" name="correctWord" class="gameEntryField" id="levelTwoEntry" value=""/>
+			<input type="button" class="enterButton" id="levelTwoEnter" value="ENTER"/>
+			<input type="button" class="enterButton" id="levelTwoNext" value="NEXT WORD"/>
+							 		
+		</p>
 						
-			<p id="lowerGameButtonsALL">
-			<input type="button" class="lowerGameButtons" id="lowerClueButton" value="CLUE"/>
-			<input type="button" class="lowerGameButtons" id="lowerGiveMeButton" value="GIVE ME A LETTER!"/>
-			</p>
+		<p id="lowerGameButtonsALL">
+			<input type="button" class="lowerGameButtons" id="clueButton" value="CLUE"/>
+			<input type="button" class="lowerGameButtons" id="giveMeButtonLevelTwo" value="GIVE ME A LETTER!"/>
+		</p>
 			
 			
-			<p class="clue">
+		<p class="clue">
 			<%= randomStory.description %>
-			</p>
+		</p>
+
+</section>	
 		
-			
-			<ol class="gameInstructionsListSmall">
-					<li>Unscramble the <span class="instructionsGreenSmall">WORD</span>in order</li>
-					<li>Type your answer in the <span class="instructionsEntryFieldSmall">White Box</span></li>
-					<li>Press <input type="button" class="enterInstructionButtonSmall" value="ENTER"/>to check your answer</li>
-			</ol>
+
+
+<!-- HELP SECTION -->
+<section class = gameInstructions id="helpChoices">
+
+		How Can We Help You?
 		
-		
+		<section id="buttons">		
+			<input type="button" class="option" id="changeLevel" value="CHANGE LEVEL"/>
+			<input type="button" class="option" id="reviewInstructions" value="INSTRUCTIONS"/>
+			<input type="button" class="option" id="backToTheGame" value="GO BACK"/>		
 		</section>
-		
+
 </section>
+
+
+<section class="gameInstructions" id ="helpInstructions">
+	
+		INSTRUCTIONS
+
+		<ol class= "gameInstructionsList">
+			<li>Unscramble each <span class="instructionsGreen">WORD</span> in order</li>
+			<li>Type each answer in the <span class="instructionsEntryField">White Box</span></li>
+			<li>Press <input type="button" class="enterInstructionButton" value="ENTER"/>to check each answer</li>
+		</ol>
+
+
+		<input type="button" class="backButton" id="backToTheGameInstructions" value="BACK TO THE GAME"/>
+	
+</section>
+
+
+
+
+
+<!-- CHECK ANSWER SECTION -->				
+<section class="checkAnswer" id="levelTwoCorrectAnswer">
+	
+	<p>Correct!!!</p>
+	
+	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" value="<%= newWords[wordCountIndex] %>"/>
+	<b>=</b>
+	<input type="text" placeholder="" name="currentWord" class="gameAnswerField" value="<%= masterWords[wordCountIndex] %>"/>
+	
+	<input type="button" class="enterButton" id="levelTwoNew" value="NEXT WORD"/>
+			
+</section>
+		
+<section class="checkAnswer" id="levelTwoWrongAnswer">
+	<p>Sorry</p>
+	
+	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" value="<%= newWords[wordCountIndex] %>"/>
+	­
+	<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" id="wrongAnswer" value=""/>
+	
+	<input type="button" class="enterButton" id="levelTwoTryAgain" value="TRY AGAIN"/>
+	<input type="button" class="enterButton" id="levelTwoSkip" value="NEXT WORD"/>
+		
+</section> 
+
+
+
