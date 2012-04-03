@@ -223,6 +223,9 @@ app.get('/storyscramble_level_II', function(request, response) {
 
 app.get('/storyscramble_level_III', function(request, response) {
 
+	response.render("main.html");
+
+	/*
 	//get all the stories and display
     var query = stories_db.find({});
     query.sort('date',-1); //sort by date in descending order
@@ -238,6 +241,7 @@ app.get('/storyscramble_level_III', function(request, response) {
 	    // render the card_form template with the data above
 	    response.render("storyscramble_stories_all.html",templateData);
 	});
+	*/
 
 });
 
