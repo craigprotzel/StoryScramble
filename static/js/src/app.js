@@ -256,6 +256,8 @@ var checkLevelTwoAnswer = function(){
 		
 		if (levelTwoWordCountIndex == levelTwoMasterHeadline.length - 1) {
 			$('#correctText').html("Great Job!!!");
+			$('#levelTwoNew').val("NEXT HEADLINE");
+			
 			console.log("LAST WORD!!!");	
 			}
 		else {
