@@ -407,7 +407,7 @@ body > footer {
   font-size: 52px;
   font-weight: bolder;
   text-align: center;
-  margin-top: 110px;
+  margin-top: 100px;
   line-height: 50px;
 }
 #help {
@@ -532,8 +532,8 @@ backToTheGame {
   float: left;
   width: 31.25%;
   margin: 0 1.0416666666666665%;
-  padding: 50px 50px;
-  margin: 80px 30%;
+  padding: 30px 50px;
+  margin: 65px 30%;
   font-size: 38px;
   line-height: 42px;
 }
@@ -575,7 +575,7 @@ backToTheGame {
   color: #ffffff;
   font-size: 24px;
   font-weight: bold;
-  margin-top: 150px;
+  margin-top: 120px;
   line-height: 95px;
   text-align: center;
 }
@@ -601,6 +601,26 @@ backToTheGame {
   font-size: 52px;
   font-size: 38px;
 }
+.word {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 52px;
+  font-size: 38px;
+}
+.gameBoard a.highlightedWord {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 96px;
+  display: inline;
+  color: #19a3a3;
+  padding: 0 2px 0 8px;
+}
 #highlightWord {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
   font-size: 14px;
@@ -617,6 +637,9 @@ backToTheGame {
   display: inline;
   color: #19a3a3;
   padding: 0 5px 0 5px;
+}
+#scrambledWordsList {
+  display: none;
 }
 .gameEntryField {
   font-size: 38px;

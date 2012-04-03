@@ -212,7 +212,7 @@ body > footer {
 	font-size: @big;
 	font-weight: bolder;
 	text-align: center;
-	margin-top: 110px; 
+	margin-top: 100px; 
 	line-height: 50px;
 }	
 
@@ -314,8 +314,8 @@ backToTheGame{
 
 	.instructionsButton();
 	.column(4,12);	
-	padding: 50px 50px;
-	margin: 80px 30%;
+	padding: 30px 50px;
+	margin: 65px 30%;
 	font-size: @large;
 	line-height: 42px;
 }
@@ -340,7 +340,7 @@ backToTheGame{
 	color: @white;
 	font-size: @medium;
 	font-weight: bold;
-	margin-top: 150px;
+	margin-top: 120px;
 	line-height: 95px;	
 	text-align: center;	
 	
@@ -367,7 +367,24 @@ backToTheGame{
 	font-weight: bold;
 	font-size: @big;
 	font-size: @large;
-}	
+}
+
+.word{
+	#font.serif();
+	font-weight: bold;
+	font-size: @big;
+	font-size: @large;
+}		
+	
+
+.gameBoard a.highlightedWord{
+		#font.serif();
+		font-weight: bold;
+		font-size: @superBig;
+		display: inline;
+		color: @newAqua;
+		padding: 0 2px 0 8px;
+	}
 	
 	
 #highlightWord{
@@ -378,6 +395,8 @@ backToTheGame{
 		color: @newAqua;
 		padding: 0 2px 0 8px;
 	}
+	
+
 
 
 #fullTitle{
@@ -386,6 +405,11 @@ backToTheGame{
 		color: @newAqua;
 		padding: 0 5px 0 5px;
 	}	
+
+
+#scrambledWordsList {
+	display: none;
+}
 
 
 ////////////////////////////

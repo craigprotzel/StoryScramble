@@ -4,8 +4,10 @@
 <section class="gameBoard" id="gameBoardSection">		
    	
 		<!-- declare variables -->
-		<%	var masterWords = randomStory.title.split(" "); %>
-		<% var wordCountIndex = 0; %> 
+		<%	var masterHeadline = randomStory.title; %>
+		<%	var masterWords = masterHeadline.split(" "); %>
+		<%	var wordCountIndex = 0; %> 
+		
 		
 		<!--
 		<div>
@@ -18,39 +20,39 @@
 		</div>
 		-->
 		
+		
 		<!-- save these values for the front end in a hidden div -->
-		<div class="hidden" id="levelTwoHeadline"><%= masterWords %></div>
+		<div class="hidden" id="levelTwoHeadline"><%= masterHeadline %></div>
 		<div class="hidden" id="levelTwoWordCountIndex"><%= wordCountIndex %></div> 
-		<div class="hidden" id="levelTwoAnswer"><%= masterWords[wordCountIndex] %></div>
+		
 				
 
 		<!-- declare an array to save the scrambled words -->		
-		<% var newWords = []; %>
+		<% var scrambledWords = []; %>
 
 		<span class="quotes">"</span>		
 		<%	for (var i=0; i < masterWords.length; i++){ %>
 				
 				<!-- run the scramble function on all the words -->
-				<% newWords[i] = scramble(masterWords[i]); %>
+				<% scrambledWords[i] = scramble(masterWords[i]); %>
 				
 				<%	if (i == wordCountIndex){ %>
-							<a href="<%= randomStory.link %>" id="highlightWord"> <%= newWords[i] %> </a>
+							<a href="<%= randomStory.link %>" class="word highlightedWord"> <%= scrambledWords[i] %> </a>
 				<%	} 
 					else { %>
-							<a href="<%= randomStory.link %>" id="wordTitle"> <%= newWords[i] %> </a>
+							<a href="<%= randomStory.link %>" class="word"> <%= scrambledWords[i] %> </a>
 				<%	}
 			} %>
 					
 		<span class="quotes">"</span>
 		
 		
-		<!--
-		<div>
-		<%= newWords.length %>
-		<%= newWords %>
-		</div>
-		-->
-		
+		<ul id="scrambledWordsList">
+		<% for (var i=0; i < scrambledWords.length; i++) { %>
+			<li class="scrambledWordItem"><%= scrambledWords[i] %> </li>
+		<% } %>
+		</ul>
+					
 					
 		<p>
 			<input type="text" placeholder="" name="correctWord" class="gameEntryField" id="levelTwoEntry" value=""/>
@@ -109,20 +111,20 @@
 <!-- CHECK ANSWER SECTION -->				
 <section class="checkAnswer" id="levelTwoCorrectAnswer">
 	
-	<p>Correct!!!</p>
+	<p id="correctText">Correct!!!</p>
 	
-	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" value="<%= newWords[wordCountIndex] %>"/>
+	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" id="scrambledWordCorrect" value="<%= scrambledWords[wordCountIndex] %>"/>
 	<b>=</b>
-	<input type="text" placeholder="" name="currentWord" class="gameAnswerField" value="<%= masterWords[wordCountIndex] %>"/>
+	<input type="text" placeholder="" name="currentWord" class="gameAnswerField" id="correctAnswer" value="<%= masterWords[wordCountIndex] %>"/>
 	
 	<input type="button" class="enterButton" id="levelTwoNew" value="NEXT WORD"/>
 			
 </section>
 		
 <section class="checkAnswer" id="levelTwoWrongAnswer">
-	<p>Sorry</p>
+	<p id="wrongText">Sorry</p>
 	
-	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" value="<%= newWords[wordCountIndex] %>"/>
+	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" id="scrambledWordWrong" value="<%=  scrambledWords[wordCountIndex] %>"/>
 	­
 	<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" id="wrongAnswer" value=""/>
 	
