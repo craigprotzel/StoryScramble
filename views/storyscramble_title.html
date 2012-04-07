@@ -51,9 +51,30 @@
 			<input type="button" class="lowerGameButtons" id="giveMeButtonLevelThree" value="GIVE ME A LETTER!"/>
 		</p>
 			
-			
-		<p class="clue">
-			<%= randomStory.description %>
+		
+		
+		<p class="clue">	
+			<!-- check to see if answer is in the clue -->			
+			<%	var clueMasterWords = randomStory.description.split(" "); %>
+			<%	var inClue = []; %>
+				
+			<!-- use compareWords and cleanup functions to check if the answer is part of the clue -->
+			<!-- if the answer is in the clue, put it in appropriate array -->		
+			<%	for (var i = 0; i < clueMasterWords.length; i++){
+					for (var j = 0; j < masterWords.length; j++){
+						if ( compareWords( cleanup( masterWords[j] ),cleanup( clueMasterWords[i] ) ) ) { 
+							 inClue.push(clueMasterWords[i]);
+						}
+					} 
+				} %>	
+				
+			<%	for (var i = 0; i < clueMasterWords.length; i++) { 					
+					if (0 <= inClue.indexOf(clueMasterWords[i])){ %>
+						<span id="answerInClue"> <%= scramble(clueMasterWords[i]) %> </span>
+					<% } else { %>
+						<span id="answerNotInClue"> <%= clueMasterWords[i] %> </span>
+					<% }
+				}	%>								
 		</p>
 
 </section>	

@@ -13,6 +13,8 @@ $("#helpButton").click(function() {
 	$('.gameBoard').hide();
 	$('#helpChoices').show();
 	$('#helpInstructions').hide();
+	$('.checkAnswer').hide();
+	
 });
 
 $("#changeLevel").click(function() { 
