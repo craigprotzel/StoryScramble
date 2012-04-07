@@ -621,6 +621,17 @@ backToTheGame {
   color: #19a3a3;
   padding: 0 2px 0 8px;
 }
+.gameBoard a.highlightedWordTwo {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 52px;
+  display: inline;
+  color: #19a3a3;
+  padding: 0 2px 0 8px;
+}
 #highlightWord {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
   font-size: 14px;
@@ -690,6 +701,13 @@ backToTheGame {
   font-weight: bold;
 }
 #levelTwoWrongAnswer {
+  color: #ff585a;
+}
+#levelThreeCorrectAnswer {
+  color: #00dc6e;
+  font-weight: bold;
+}
+#levelThreeWrongAnswer {
   color: #ff585a;
 }
 .clue {

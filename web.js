@@ -68,7 +68,7 @@ app.configure(function() {
 
 
 
-// the template data variables
+//the template data variables
 
 //old variables
 var contentType = ['Headlines','Articles', 'Images', 'Audio', 'Video'];
@@ -79,13 +79,13 @@ storyScrambleArray = [];
 var source = 'USA_Today';
 
 	
+	
 		
-// Main Page
+//Main Page
 app.get('/', function(request, response) {
     
     response.render("main.html");
     
-
 });
 
 
@@ -121,7 +121,7 @@ app.post('/usaTodayAPIQuery', function (request,response) {
             		pubDate : usaTodayData.stories[i].timestamp 
             				
             	})
-            	
+            	         	
             	newStory.save();	
             }          
         }
@@ -135,10 +135,7 @@ app.post('/usaTodayAPIQuery', function (request,response) {
 
 
 
-
-// Display Level I Pages - ONE WORD SCRAMBLED
-
-
+//Display Level I Pages - ONE WORD SCRAMBLED
 app.get('/instructions_level_I', function(request, response) {
 	
 	response.render("instructions_level_I.html");
@@ -150,26 +147,26 @@ app.get('/instructions_level_I', function(request, response) {
 app.get('/storyscramble_level_I', function(request, response) {
     
     
-    //get all the stories and display
+    //get all the stories from the db
     var query = stories_db.find({});
 
     //sort by date in descending order
     query.sort('date',-1);
     query.limit(50); 
 
-    // run the query and display blog_main.html template if successful
+    //run the query
     query.exec({}, function(err, allStories){
         
         randomNum = Math.floor(Math.random()*allStories.length);
 		randomStory = allStories[randomNum];
 		
-        // prepare template data
+        //prepare template data
         templateData = {
             //stories : allStories,
             randomStory : randomStory
         };
         
-        // render the card_form template with the data above
+        //render the card_form template with the data above
         response.render("storyscramble_word.html", templateData);
         
     });                
@@ -177,8 +174,7 @@ app.get('/storyscramble_level_I', function(request, response) {
 
 
 
-// Display Level II Page - TITLE WORDS SCRAMBLED 
-
+// Display Level II Page - TWO WORDS SCRAMBLED 
 app.get('/instructions_level_II', function(request, response) {
 	
 	response.render("instructions_level_II.html");
@@ -189,27 +185,27 @@ app.get('/instructions_level_II', function(request, response) {
 app.get('/storyscramble_level_II', function(request, response) {
     
     
-    //get all the stories and display
+    //get all the stories from the db
     var query = stories_db.find({});
 
     //sort by date in descending order
     query.sort('date',-1);
     query.limit(50); 
 
-    // run the query and display blog_main.html template if successful
+    //run the query
     query.exec({}, function(err, allStories){
         
         randomNum = Math.floor(Math.random()*allStories.length);
 		randomStory = allStories[randomNum];
 		
-        // prepare template data
+        //prepare template data
         templateData = {
             //stories : allStories,
             randomStory : randomStory
         };
         
-        // render the card_form template with the data above
-        response.render("storyscramble_title.html", templateData);
+        //render page with the template data from above
+        response.render("storyscramble_two_words.html", templateData);
         
     });                
 });
@@ -217,39 +213,48 @@ app.get('/storyscramble_level_II', function(request, response) {
 
 
 
+//Display Level III Page - TITLE WORDS SCRAMBLED 
+
+app.get('/instructions_level_III', function(request, response) {
+	
+	response.render("instructions_level_III.html");
+
+});
 
 
-// Display Level III Page - ALL USA TODAY ENTRIES
+//Display Level III Page - ALL USA TODAY ENTRIES
 
 app.get('/storyscramble_level_III', function(request, response) {
 
-	response.render("main.html");
-
-	/*
-	//get all the stories and display
+    //get all the stories in the db
     var query = stories_db.find({});
-    query.sort('date',-1); //sort by date in descending order
-    
-    // run the query and display blog_main.html template if successful
+
+    //sort by date in descending order
+    query.sort('date',-1);
+    query.limit(50); 
+
+    //run the query
     query.exec({}, function(err, allStories){
         
-        // prepare template data
+        randomNum = Math.floor(Math.random()*allStories.length);
+		randomStory = allStories[randomNum];
+		
+        //prepare template data
         templateData = {
-            stories : allStories
+            //stories : allStories,
+            randomStory : randomStory
         };
-            
-	    // render the card_form template with the data above
-	    response.render("storyscramble_stories_all.html",templateData);
-	});
-	*/
 
+	//render page with the template data from above
+	response.render("storyscramble_title.html");
+
+    });                
 });
 
 
 
 
-
-// Make server turn on and listen at defined PORT (or port 3000 if is not defined)
+//Make server turn on and listen at defined PORT (or port 3000 if is not defined)
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Listening on " + port);
@@ -260,7 +265,7 @@ app.listen(port, function() {
 
 app.helpers({
 
-    longest: function(wordslist){ 
+    longestOne: function(wordslist){ 
     	
     	var sortLongToShort = function(a,b) {
 			return(b.toString().length - a.toString().length);
@@ -268,12 +273,30 @@ app.helpers({
 		var sorted = wordslist.slice(0);
 		var sorted = sorted.sort(sortLongToShort);
 
-		for (var j = 0; j < wordslist.length; j++){
-			if (sorted[0] == wordslist[j]) {
-				return j;
+		for (var i = 0; i < wordslist.length; i++){
+			if (sorted[0] == wordslist[i]) {
+				return i;
 			}
 		}
 		return -1
+    }
+    
+	, longestTwo: function(wordslist){ 
+    	
+    	var sortLongToShort = function(a,b) {
+			return(b.toString().length - a.toString().length);
+		};
+		var sorted = wordslist.slice(0);
+		var sorted = sorted.sort(sortLongToShort);
+
+		var twoLongest = [];
+		
+		for (var i = 0; i < wordslist.length; i++){
+			if (sorted[0] == wordslist[i] || sorted[1] == wordslist[i]) {
+				twoLongest.push(i);
+			}
+		} 
+		return twoLongest;
     }
     
   , cleanup : function(word) {

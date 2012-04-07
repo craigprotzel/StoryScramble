@@ -59,10 +59,74 @@ console.log(currentPageTitle);
 var titleFiller = currentPageTitle.innerHTML;
 pageTitle.innerHTML = titleFiller;
 
+console.log("Title Filler is: " + titleFiller);
+console.log("PageTitle.innerHTML is: " + pageTitle.innerHTML);
+
+
+//Page Booleans
+var onLevelOne = false;
+var onLevelTwo = false;
+var onLevelThree = false;
+
+var levelOneTitle = "Level One - Word Scramble";
+var levelTwoTitle = "Level Two - Two Word Scramble";
+var levelThreeTitle = "Level Three - Title Scramble";
+
+if (titleFiller == levelOneTitle){
+	onLevelOne = true;
+	onLevelTwo = false;
+	onLevelThree = false;
+	console.log("We're On Level One!!!");
+}
+else if (titleFiller == levelTwoTitle) {
+	onLevelOne = false;
+	onLevelTwo = true;
+	onLevelThree = false;
+	console.log("We're On Level Two!!!");
+}
+else if (titleFiller == levelThreeTitle) {
+	onLevelOne = false;
+	onLevelTwo = false;
+	onLevelThree = true;
+	console.log("We're On Level Three!!!");
+}
+
+
+//Enter - Entry - Answer Variables
+
+var levelOneEnter = document.getElementById('levelOneEnter'); 
+var levelOneEntry = document.getElementById('levelOneEntry');
+var levelOneAnswer = document.getElementById('levelOneAnswer');
+/* soundCorrect = document.getElementById('soundCorrect_01');  */
+
+var levelTwoEnter = document.getElementById('levelTwoEnter'); 
+var levelTwoEntry = document.getElementById('levelTwoEntry');
+
+var levelThreeEnter = document.getElementById('levelThreeEnter'); 
+var levelThreeEntry = document.getElementById('levelThreeEntry');
+
+var wrongAnswer = document.getElementById('wrongAnswer');
+
+
+//inner HTML variables
+if (onLevelTwo) {
+	var levelTwoMasterHeadline = (document.getElementById('levelTwoHeadline').innerHTML).split(" ");
+	var levelTwoWordCountIndex = (document.getElementById('levelTwoWordCountIndex').innerHTML).split(",");
+	console.log("TLTWC 0 is: " + levelTwoWordCountIndex[0]);
+	console.log("TLTWC 1 is: " + levelTwoWordCountIndex[1]);
+	var levelTwoIndex = document.getElementById('levelTwoIndex').innerHTML;
+}
+else if (onLevelThree){
+	//inner HTML variables
+	var levelThreeMasterHeadline = (document.getElementById('levelThreeHeadline').innerHTML).split(" ");
+	var levelThreeWordCountIndex = document.getElementById('levelThreeWordCountIndex').innerHTML;
+	console.log("TLTWC is: " + levelThreeWordCountIndex)
+}
 
 
 
-//**********Level I**********//
+
+//******************************Level I******************************//
 
 
 //Level I - Give Me A Letter Logic
@@ -98,13 +162,7 @@ $("#giveMeButtonLevelOne").click(function() {
 
 //Level I - Check Answer Logic
 	
-var levelOneEnter = document.getElementById('levelOneEnter'); 
-var levelOneEntry = document.getElementById('levelOneEntry');
-var levelOneAnswer = document.getElementById('levelOneAnswer');
-
-/* soundCorrect = document.getElementById('soundCorrect_01');  */
 		
-var wrongAnswer = document.getElementById('wrongAnswer');		
 						 
 var checkLevelOneAnswer = function(){
 	
@@ -115,10 +173,7 @@ var checkLevelOneAnswer = function(){
 		$('.checkAnswer').show();
 		$('#levelOneCorrectAnswer').show();
 		$('#levelOneWrongAnswer').hide();
-		/* soundCorrect.play(); */
-		
-				
-		
+		/* soundCorrect.play(); */	
 	}
 	
 	else {
@@ -129,7 +184,6 @@ var checkLevelOneAnswer = function(){
 		$('#levelOneCorrectAnswer').hide();
 		$('#levelOneWrongAnswer').show();		
 		wrongAnswer.value = levelOneEntry.value;
-				
 	}	
 };
 
@@ -169,16 +223,23 @@ $("#levelOneTryAgain").click(function() {
 
 
 
-//**********Level II**********//
+
+//******************************Level II******************************//
+
+
+
+
 
 
 //Level II - Give Me A Letter Logic
-
 var letterCountLevelTwo = 1;
 
 var letterCounterLevelTwo = function(){
 	
-	var levelTwoAnswer = levelTwoMasterHeadline[levelTwoWordCountIndex];
+	var levelTwoAnswer = levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]];
+	console.log(levelTwoAnswer);
+	console.log("The Level 2 Index Value is: " + levelTwoIndex);
+	console.log("The Current Answer is: " + levelTwoAnswer);
 	var levelTwoChars = levelTwoAnswer.split(""); 
 	
 	var levelTwoEntry = document.getElementById('levelTwoEntry');
@@ -188,7 +249,7 @@ var letterCounterLevelTwo = function(){
 		for (i = 0; i < letterCountLevelTwo; i++){
 			levelTwoEntry.value = levelTwoEntry.value + levelTwoChars[i]
 		}
-		console.log (letterCountLevelTwo);
+		console.log(letterCountLevelTwo);
 	}
 	else if (letterCountLevelTwo > levelTwoChars.length){
 		levelTwoEntry.value = levelTwoAnswer;
@@ -197,7 +258,6 @@ var letterCounterLevelTwo = function(){
 		$('#levelTwoEnter').trigger('click');
 		
 	}		
-	
 	letterCountLevelTwo++;
 } 
 
@@ -208,53 +268,50 @@ $("#giveMeButtonLevelTwo").click(function() {
 
 
 
-
 //Level II check answer	
 
 
-var levelTwoEnter = document.getElementById('levelTwoEnter'); 
-var levelTwoEntry = document.getElementById('levelTwoEntry');
+var changeHighlightWordLevelTwo = function(idx){
 
-var levelTwoMasterHeadline = (document.getElementById('levelTwoHeadline').innerHTML).split(" ");
-var levelTwoWordCountIndex = document.getElementById('levelTwoWordCountIndex').innerHTML;
-
-var levelTwoScrambledWords = document.getElementById('levelTwoScrambledWords');
-
-
-var changeHighlightWord = function(idx){
-
-	$('.highlightedWord').html(levelTwoMasterHeadline[idx-1]);
+	$('.highlightedWord').html(levelTwoMasterHeadline[levelTwoWordCountIndex[idx-1]]);
 	$('.word').removeClass('highlightedWord')
+	$('.word').removeClass('highlightedWordTwo')
 	
 	$('.word').each(function(index) {
-   		if (idx == index){
+   		if (levelTwoWordCountIndex[idx] == index){
    			$(this).addClass('highlightedWord')
    		}
    });				
 }
 
+
 											
 var checkLevelTwoAnswer = function(){
-	console.log("Level 2 Answer Submitted");
+	//console.log("Level 2 Answer Submitted");
 	console.log("You Entered: " + levelTwoEntry.value);
-	console.log("The Correct Answer is: " + levelTwoMasterHeadline[levelTwoWordCountIndex]);
+	console.log("The Correct Answer is: " + levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]]);
 	var currentScrambleAnswer = "";
 	
 	$('.scrambledWordItem').each(function(index) {
-   		if (levelTwoWordCountIndex == index){
+   		if (levelTwoIndex == index){
    			currentScrambleAnswer = $(this).html()
+   			console.log("Current Scramble Answer = " + currentScrambleAnswer)
    		}
+   		
    });
 	
 	
-	if (levelTwoEntry.value == levelTwoMasterHeadline[levelTwoWordCountIndex]) {
+	if (levelTwoEntry.value == levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]]) {
 				
 		$('#gameBoardSection').hide();
 			
 		$('#scrambledWordCorrect').val(currentScrambleAnswer);
-		$('#correctAnswer').val(levelTwoMasterHeadline[levelTwoWordCountIndex]);
+		$('#correctAnswer').val(levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]]);
+		console.log("Level Two index Is: " + levelTwoIndex)
 		
-		if (levelTwoWordCountIndex == levelTwoMasterHeadline.length - 1) {
+		levelTwoIndex++;
+		
+		if (levelTwoIndex == 2) {
 			$('#correctText').html("Great Job!!!");
 			$('#levelTwoNew').val("NEXT HEADLINE");
 			
@@ -269,11 +326,9 @@ var checkLevelTwoAnswer = function(){
 		$('#levelTwoWrongAnswer').hide();
 		
 		letterCountLevelTwo = 1;
-		//console.log("THE LETTER COUNT IS: " + letterCountLevelTwo);
-
-		console.log("The Word Count Is: " + levelTwoWordCountIndex)
-		levelTwoWordCountIndex++;
-		changeHighlightWord(levelTwoWordCountIndex);	
+		
+		
+		changeHighlightWordLevelTwo(levelTwoIndex);	
 	}
 	
 	else {
@@ -284,12 +339,15 @@ var checkLevelTwoAnswer = function(){
 		$('#levelTwoCorrectAnswer').hide();
 		$('#levelTwoWrongAnswer').show();
 		
+		console.log("Level Two index Is: " + levelTwoIndex)
+		
 		wrongAnswer.value = levelTwoEntry.value;		
 	}	
 };
 
 		
 $("#levelTwoEnter").click(function() { 
+	console.log("ENTER WAS PRESSED");
  	checkLevelTwoAnswer();
  });
 	
@@ -300,13 +358,14 @@ $("#levelTwoEnter").click(function() {
 //Level II - Go On To Another Headline
 
 
+//Level II - New
 $("#levelTwoNew").click(function() {
 
 	levelTwoEntry.value = "";
 	letterCountLevelTwo = 1;
 	
-	if(levelTwoWordCountIndex == levelTwoMasterHeadline.length ) {
-		levelTwoWordCountIndex = 0;
+	if(levelTwoIndex == 2) {
+		levelTwoIndex = 0;
 		document.location.href='/storyscramble_level_II';
 		console.log("NEW WAS CLICKED")
 		}
@@ -314,43 +373,47 @@ $("#levelTwoNew").click(function() {
 		$('#gameBoardSection').show();	
 		$('.checkAnswer').hide();
 		$('#levelTwoCorrectAnswer').hide();
+		
 	}  
 });
 
 
+//Level II - Next
 $("#levelTwoNext").click(function() { 
 
 	letterCountLevelTwo = 1;
 	levelTwoEntry.value = "";
 	
-	if(levelTwoWordCountIndex == levelTwoMasterHeadline.length - 1 ) {
-		levelTwoWordCountIndex = 0;
+	if(levelTwoIndex == 1) {
+		levelTwoIndex = 0;
 		document.location.href='/storyscramble_level_II';
-		console.log("NEXT WAS CLICKED")
+		console.log("NEXT WAS CLICKED");
 		}
 	else {
-		levelTwoWordCountIndex++;
-		changeHighlightWord(levelTwoWordCountIndex);
+		console.log("NEXT WAS CLICKED - Current Level Two Index: " + levelTwoIndex);
+		levelTwoIndex++;
+		console.log("New Level Two Index: " + levelTwoIndex);
+		changeHighlightWordLevelTwo(levelTwoIndex);
 		$('#gameBoardSection').show();	
 		$('.checkAnswer').hide();
 		$('#levelTwoCorrectAnswer').hide();
 	}	
 });
 
-
+//Level II - Skip
 $("#levelTwoSkip").click(function() { 
 
 	letterCountLevelTwo = 1;
 	levelTwoEntry.value = "";
 
-	if(levelTwoWordCountIndex == levelTwoMasterHeadline.length - 1 ) {
-			levelTwoWordCountIndex = 0;
+	if(levelTwoIndex == 1) {
+			levelTwoIndex = 0;
 			document.location.href='/storyscramble_level_II';
 			console.log("SKIP WAS CLICKED")
 		}
 	else {
-		levelTwoWordCountIndex++;
-		changeHighlightWord(levelTwoWordCountIndex);
+		levelTwoIndex++;
+		changeHighlightWordLevelTwo(levelTwoIndex);
 		$('#gameBoardSection').show();	
 		$('.checkAnswer').hide();
 		$('#levelTwoCorrectAnswer').hide();
@@ -373,8 +436,211 @@ $("#levelTwoTryAgain").click(function() {
 
 
 
+//******************************Level III******************************//
+
+
+//Level III - Give Me A Letter Logic
+
+var letterCountLevelThree = 1;
+
+var letterCounterLevelThree = function(){
+	
+	var levelThreeAnswer = levelThreeMasterHeadline[levelThreeWordCountIndex];
+	var levelThreeChars = levelThreeAnswer.split(""); 
+	
+	var levelThreeEntry = document.getElementById('levelThreeEntry');
+	levelThreeEntry.value = ""; 
+	
+	if (letterCountLevelThree <= levelThreeChars.length) {
+		for (i = 0; i < letterCountLevelThree; i++){
+			levelThreeEntry.value = levelThreeEntry.value + levelThreeChars[i]
+		}
+		console.log(letterCountLevelThree);
+	}
+	else if (letterCountLevelThree > levelThreeChars.length){
+		levelThreeEntry.value = levelThreeAnswer;
+		letterCountLevelThree = 1;
+		console.log (letterCountLevelThree); 
+		$('#levelThreeEnter').trigger('click');
+		
+	}		
+	letterCountLevelThree++;
+} 
+
+
+$("#giveMeButtonLevelThree").click(function() { 
+	console.log("GIVE ME BUTTON WAS PRESSED");
+ 	letterCounterLevelThree();
+ });
+
+
+
+//Level III check answer	
+
+var changeHighlightWordLevelThree = function(idx){
+
+	$('.highlightedWord').html(levelThreeMasterHeadline[idx-1]);
+	$('.word').removeClass('highlightedWord')
+	
+	$('.word').each(function(index) {
+   		if (idx == index){
+   			$(this).addClass('highlightedWord')
+   		}
+   });				
+}
+
+											
+var checkLevelThreeAnswer = function(){
+	console.log("Level 3 Answer Submitted");
+	console.log("You Entered: " + levelThreeEntry.value);
+	console.log("The Correct Answer is: " + levelThreeMasterHeadline[levelThreeWordCountIndex]);
+	var currentScrambleAnswer = "";
+	
+	$('.scrambledWordItem').each(function(index) {
+   		if (levelThreeWordCountIndex == index){
+   			currentScrambleAnswer = $(this).html()
+   		}
+   });
+	
+	
+	if (levelThreeEntry.value == levelThreeMasterHeadline[levelThreeWordCountIndex]) {
+				
+		$('#gameBoardSection').hide();
+			
+		$('#scrambledWordCorrect').val(currentScrambleAnswer);
+		$('#correctAnswer').val(levelThreeMasterHeadline[levelThreeWordCountIndex]);
+		
+		if (levelThreeWordCountIndex == levelThreeMasterHeadline.length - 1) {
+			$('#correctText').html("Great Job!!!");
+			$('#levelThreeNew').val("NEXT HEADLINE");
+			
+			console.log("LAST WORD!!!");	
+			}
+		else {
+			$('#correctText').html("Correct!!!");
+		}
+		
+		$('.checkAnswer').show();
+		$('#levelThreeCorrectAnswer').show();
+		$('#levelThreeWrongAnswer').hide();
+		
+		letterCountLevelThree = 1;
+		//console.log("THE LETTER COUNT IS: " + letterCountLevelThree);
+
+		console.log("The Word Count Is: " + levelThreeWordCountIndex)
+		levelThreeWordCountIndex++;
+		changeHighlightWordLevelThree(levelThreeWordCountIndex);	
+	}
+	
+	else {
+
+		$('#gameBoardSection').hide();
+		$('#scrambledWordWrong').val(currentScrambleAnswer);
+		$('.checkAnswer').show();
+		$('#levelThreeCorrectAnswer').hide();
+		$('#levelThreeWrongAnswer').show();
+		
+		wrongAnswer.value = levelThreeEntry.value;		
+	}	
+};
+
+		
+$("#levelThreeEnter").click(function() { 
+	console.log("ENTER WAS PRESSED");
+ 	checkLevelThreeAnswer();
+ });
+	
+
+
+	
+	
+//Level III - Go On To Another Headline
+
+
+//Level III - New
+$("#levelThreeNew").click(function() {
+
+	console.log("NEW WAS PRESSED");
+
+	levelThreeEntry.value = "";
+	letterCountLevelThree = 1;
+	
+	if(levelThreeWordCountIndex == levelThreeMasterHeadline.length ) {
+		levelThreeWordCountIndex = 0;
+		document.location.href='/storyscramble_level_III';
+		console.log("NEW WAS CLICKED")
+		}
+	else {
+		$('#gameBoardSection').show();	
+		$('.checkAnswer').hide();
+		$('#levelThreeCorrectAnswer').hide();
+	}  
+});
+
+
+//Level III - Next
+$("#levelThreeNext").click(function() { 
+
+	console.log("NEXT WAS PPRESSED");
+
+	letterCountLevelThree = 1;
+	levelThreeEntry.value = "";
+	
+	if(levelThreeWordCountIndex == levelThreeMasterHeadline.length - 1 ) {
+		levelThreeWordCountIndex = 0;
+		document.location.href='/storyscramble_level_III';
+		console.log("NEXT WAS CLICKED")
+		}
+	else {
+		levelThreeWordCountIndex++;
+		changeHighlightWordLevelThree(levelThreeWordCountIndex);
+		$('#gameBoardSection').show();	
+		$('.checkAnswer').hide();
+		$('#levelThreeCorrectAnswer').hide();
+	}	
+});
+
+//Level III - Skip
+$("#levelThreeSkip").click(function() { 
+
+	console.log("SKIP WAS PRESSED");
+
+	letterCountLevelThree = 1;
+	levelThreeEntry.value = "";
+
+	if(levelThreeWordCountIndex == levelThreeMasterHeadline.length - 1 ) {
+			levelThreeWordCountIndex = 0;
+			document.location.href='/storyscramble_level_III';
+			console.log("SKIP WAS CLICKED")
+		}
+	else {
+		levelThreeWordCountIndex++;
+		changeHighlightWordLevelThree(levelThreeWordCountIndex);
+		$('#gameBoardSection').show();	
+		$('.checkAnswer').hide();
+		$('#levelThreeCorrectAnswer').hide();
+	}
+});
+
+
+//Level III - Try Again
+$("#levelThreeTryAgain").click(function() { 
+  
+  	$('#gameBoardSection').show();	
+	$('.checkAnswer').hide();
+
+	levelThreeEntry.value = wrongAnswer.value;
+ 
+});
+
+
+
+
+
+
 //"Enter" Keypress Functionality
 //Not working right now
+/*
 $(document).keypress(function(e) {
     if(e.keyCode == 13) {
     
@@ -404,7 +670,7 @@ $(document).keypress(function(e) {
 			
 			}	
 		//}        
-	
+*/	
 	//else if (window.location.href = '/storyscramble_level_II'){
 	//Level II
 	/*
@@ -430,8 +696,8 @@ $(document).keypress(function(e) {
 			
 			}	
 		//} */        
-	}
+/*	}
 		
 });
-   
+*/ 
 		

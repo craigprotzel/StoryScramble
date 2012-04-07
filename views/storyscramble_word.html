@@ -7,8 +7,8 @@
 	<!-- grab the story title, split by spaces, save to a var -->
 	<%	var masterWords = randomStory.title.split(" "); %> 
 		
-	<!-- use the "longest" function to (1)sort the comma separated string and then (2)determine the index value of the longest word -->	
-	<%	var	index = longest(masterWords); %>
+	<!-- use the "longestOne" function to (1)sort the comma separated string and then (2)determine the index value of the longest word -->	
+	<%	var	index = longestOne(masterWords); %>
 					
 	<!-- save the longest word in a hidden div -->
 	<div class="hidden" id="levelOneAnswer"><%= masterWords[index] %></div>

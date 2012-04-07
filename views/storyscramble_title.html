@@ -1,4 +1,4 @@
-<section id="currentPageTitle">Level Two - Title Scramble</section>
+<section id="currentPageTitle">Level Three - Title Scramble</section>
 	
 	
 <section class="gameBoard" id="gameBoardSection">		
@@ -7,26 +7,11 @@
 		<%	var masterHeadline = randomStory.title; %>
 		<%	var masterWords = masterHeadline.split(" "); %>
 		<%	var wordCountIndex = 0; %> 
-		
-		
-		<!--
-		<div>
-		MASTER WORDS LENGTH:
-		<%= masterWords.length %>
-		MASTER WORDS: 
-		<%= masterWords %>
-		WORD COUNT INDEX:
-		<%= wordCountIndex %>
-		</div>
-		-->
-		
-		
+			
 		<!-- save these values for the front end in a hidden div -->
-		<div class="hidden" id="levelTwoHeadline"><%= masterHeadline %></div>
-		<div class="hidden" id="levelTwoWordCountIndex"><%= wordCountIndex %></div> 
+		<div class="hidden" id="levelThreeHeadline"><%= masterHeadline %></div>
+		<div class="hidden" id="levelThreeWordCountIndex"><%= wordCountIndex %></div> 
 		
-				
-
 		<!-- declare an array to save the scrambled words -->		
 		<% var scrambledWords = []; %>
 
@@ -55,15 +40,15 @@
 					
 					
 		<p>
-			<input type="text" placeholder="" name="correctWord" class="gameEntryField" id="levelTwoEntry" value=""/>
-			<input type="button" class="enterButton" id="levelTwoEnter" value="ENTER"/>
-			<input type="button" class="enterButton" id="levelTwoNext" value="NEXT WORD"/>
+			<input type="text" placeholder="" name="correctWord" class="gameEntryField" id="levelThreeEntry" value=""/>
+			<input type="button" class="enterButton" id="levelThreeEnter" value="ENTER"/>
+			<input type="button" class="enterButton" id="levelThreeNext" value="NEXT WORD"/>
 							 		
 		</p>
 						
 		<p id="lowerGameButtonsALL">
 			<input type="button" class="lowerGameButtons" id="clueButton" value="CLUE"/>
-			<input type="button" class="lowerGameButtons" id="giveMeButtonLevelTwo" value="GIVE ME A LETTER!"/>
+			<input type="button" class="lowerGameButtons" id="giveMeButtonLevelThree" value="GIVE ME A LETTER!"/>
 		</p>
 			
 			
@@ -109,7 +94,7 @@
 
 
 <!-- CHECK ANSWER SECTION -->				
-<section class="checkAnswer" id="levelTwoCorrectAnswer">
+<section class="checkAnswer" id="levelThreeCorrectAnswer">
 	
 	<p id="correctText">Correct!!!</p>
 	
@@ -117,19 +102,19 @@
 	<b>=</b>
 	<input type="text" placeholder="" name="currentWord" class="gameAnswerField" id="correctAnswer" value="<%= masterWords[wordCountIndex] %>"/>
 	
-	<input type="button" class="enterButton" id="levelTwoNew" value="NEXT WORD"/>
+	<input type="button" class="enterButton" id="levelThreeNew" value="NEXT WORD"/>
 			
 </section>
 		
-<section class="checkAnswer" id="levelTwoWrongAnswer">
+<section class="checkAnswer" id="levelThreeWrongAnswer">
 	<p id="wrongText">Sorry</p>
 	
 	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" id="scrambledWordWrong" value="<%=  scrambledWords[wordCountIndex] %>"/>
 	­
 	<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" id="wrongAnswer" value=""/>
 	
-	<input type="button" class="enterButton" id="levelTwoTryAgain" value="TRY AGAIN"/>
-	<input type="button" class="enterButton" id="levelTwoSkip" value="NEXT WORD"/>
+	<input type="button" class="enterButton" id="levelThreeTryAgain" value="TRY AGAIN"/>
+	<input type="button" class="enterButton" id="levelThreeSkip" value="NEXT WORD"/>
 		
 </section> 
 
