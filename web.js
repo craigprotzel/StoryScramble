@@ -77,61 +77,40 @@ storyScrambleArray = [];
 
 //usa today variables
 var source = 'USA_Today';
+var requestedTopic = 'Offbeat';
 
 	
-	
-		
-//Main Page
+
+//Main Page - Choose Topic
 app.get('/', function(request, response) {
-    
-    response.render("main.html");
-    
-});
-
-
-
-//USA Today API Query - click button on Main Page
-app.post('/usaTodayAPIQuery', function (request,response) {
-
-	console.log("hit usaTodayAPIQuery");
-	// the url you need to request from USA Today
-    // this will return the 10 top news articles in json format
-    var url = "http://api.usatoday.com/open/articles/travel?encoding=json&count=30&api_key=85gehs983tmqbwxz4uwk6ghv"
-    
 	
-    // make the request to USA Today api
-    requestURL(url, function (error, response, usaTodayJSON) {
-        
-        // if successful
-        if (!error && response.statusCode == 200) {
+	response.render("main.html");
 
-            // convert usaTodayJSON into JS object, usaTodayData
-            usaTodayData = JSON.parse(usaTodayJSON);    
-    		
-    		
-        	//*****FOR MONGO DB*****
-        	
-            for (var i = 0; i < usaTodayData.stories.length; i++) {
-            	var newStory = new stories_db( {
-            		source : source,
-            		title : usaTodayData.stories[i].title,
-            		link: usaTodayData.stories[i].link,
-            		description : usaTodayData.stories[i].description,
-            		source_guid : usaTodayData.stories[i].guid[0].value,
-            		pubDate : usaTodayData.stories[i].timestamp 
-            				
-            	})
-            	         	
-            	newStory.save();	
-            }          
-        }
-    });
+});	
+		
+//Levels - News Page
+app.get('/news', function(request, response) {
     
-    response.redirect('/');
-
+    requestedTopic = 'Offbeat';
+    response.render("levels_news.html");
+    
 });
 
+//Levels - Travel Page
+app.get('/travel', function(request, response) {
+    
+    requestedTopic = 'Travel';
+    response.render("levels_travel.html");
+    
+});
 
+//Levels - Weather Page
+app.get('/weather', function(request, response) {
+    
+    requestedTopic = 'Weather';
+    response.render("levels_weather.html");
+    
+});
 
 
 
@@ -146,9 +125,9 @@ app.get('/instructions_level_I', function(request, response) {
 
 app.get('/storyscramble_level_I', function(request, response) {
     
-    
+    //var requestedTopic = request.params.Weather;
     //get all the stories from the db
-    var query = stories_db.find({});
+    var query = stories_db.find({'topic' : requestedTopic});
 
     //sort by date in descending order
     query.sort('date',-1);
@@ -186,7 +165,7 @@ app.get('/storyscramble_level_II', function(request, response) {
     
     
     //get all the stories from the db
-    var query = stories_db.find({});
+    var query = stories_db.find({'topic' : requestedTopic});
 
     //sort by date in descending order
     query.sort('date',-1);
@@ -227,7 +206,7 @@ app.get('/instructions_level_III', function(request, response) {
 app.get('/storyscramble_level_III', function(request, response) {
 
     //get all the stories in the db
-    var query = stories_db.find({});
+    var query = stories_db.find({'topic' : requestedTopic});
 
     //sort by date in descending order
     query.sort('date',-1);
@@ -250,6 +229,53 @@ app.get('/storyscramble_level_III', function(request, response) {
 
     });                
 });
+
+
+
+
+
+//USA Today API Query - click button on Main Page
+app.post('/usaTodayAPIQuery', function (request,response) {
+
+	console.log("hit usaTodayAPIQuery");
+	// the url you need to request from USA Today
+    // this will return the 10 top news articles in json format
+    var url = "http://api.usatoday.com/open/articles/offbeat?encoding=json&count=30&api_key=85gehs983tmqbwxz4uwk6ghv"
+    
+	
+    // make the request to USA Today api
+    requestURL(url, function (error, response, usaTodayJSON) {
+        
+        // if successful
+        if (!error && response.statusCode == 200) {
+
+            // convert usaTodayJSON into JS object, usaTodayData
+            usaTodayData = JSON.parse(usaTodayJSON);    
+    		
+    		
+        	//*****FOR MONGO DB*****
+        	
+            for (var i = 0; i < usaTodayData.stories.length; i++) {
+            	var newStory = new stories_db( {
+            		source : source,
+            		topic : topic,
+            		title : usaTodayData.stories[i].title,
+            		link: usaTodayData.stories[i].link,
+            		description : usaTodayData.stories[i].description,
+            		source_guid : usaTodayData.stories[i].guid[0].value,
+            		pubDate : usaTodayData.stories[i].timestamp 
+            				
+            	})
+            	         	
+            	newStory.save();	
+            }          
+        }
+    });
+    
+    response.redirect('/');
+
+});
+
 
 
 

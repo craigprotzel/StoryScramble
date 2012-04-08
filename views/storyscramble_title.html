@@ -1,4 +1,4 @@
-<section id="currentPageTitle">Level Three - Title Scramble</section>
+<section id="currentPageTitle">Level Three</section>
 	
 	
 <section class="gameBoard" id="gameBoardSection">		
@@ -84,29 +84,31 @@
 <!-- HELP SECTION -->
 <section class = gameInstructions id="helpChoices">
 
-		How Can We Help You?
+	How Can We Help You?
 		
-		<section id="buttons">		
-			<input type="button" class="option" id="changeLevel" value="CHANGE LEVEL"/>
-			<input type="button" class="option" id="reviewInstructions" value="INSTRUCTIONS"/>
-			<input type="button" class="option" id="backToTheGame" value="GO BACK"/>		
-		</section>
+	<section id="buttons">		
+		<input type="button" class="option" id="changeTopic" value="CHANGE TOPIC"/>
+		<input type="button" class="option" id="changeLevel" value="CHANGE LEVEL"/>
+		<input type="button" class="option" id="reviewInstructions" value="INSTRUCTIONS"/>
+		<input type="button" class="backButton" id="backToTheGame" value="BACK TO THE GAME"/>			
+	</section>
+
 
 </section>
 
 
 <section class="gameInstructions" id ="helpInstructions">
 	
-		INSTRUCTIONS
+	INSTRUCTIONS
 
-		<ol class= "gameInstructionsList">
-			<li>Unscramble each <span class="instructionsGreen">WORD</span> in order</li>
-			<li>Type each answer in the <span class="instructionsEntryField">White Box</span></li>
-			<li>Press <input type="button" class="enterInstructionButton" value="ENTER"/>to check each answer</li>
-		</ol>
+	<ol class= "gameInstructionsList">
+		<li>Unscramble each <span class="instructionsGreen">WORD</span> in order</li>
+		<li>Type each answer in the <span class="instructionsEntryField">White Box</span></li>
+		<li>Press <input type="button" class="enterInstructionButton" value="ENTER"/>to check each answer</li>
+	</ol>
 
 
-		<input type="button" class="backButton" id="backToTheGameInstructions" value="BACK TO THE GAME"/>
+	<input type="button" class="backButton" id="backToTheGameInstructions" value="BACK TO THE GAME"/>
 	
 </section>
 
@@ -117,7 +119,7 @@
 <!-- CHECK ANSWER SECTION -->				
 <section class="checkAnswer" id="levelThreeCorrectAnswer">
 	
-	<p id="correctText">Correct!!!</p>
+	<p id="correctText">Correct!</p>
 	
 	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" id="scrambledWordCorrect" value="<%= scrambledWords[wordCountIndex] %>"/>
 	<b>=</b>
@@ -126,6 +128,20 @@
 	<input type="button" class="enterButton" id="levelThreeNew" value="NEXT WORD"/>
 			
 </section>
+
+
+<section class="checkAnswer" id="finalAnswer">
+	
+	<p id="correctFinal">AWESOME!!!</p>
+								
+	<a href="<%= randomStory.link %>" class="word" id="finalHeadline">"<%=masterHeadline%>"</a>					
+	
+	<section>
+		<input type="button" class="enterButton" id="levelThreeFinalButton" value="NEW HEADLINE"/>
+	</section>		
+
+</section>
+
 		
 <section class="checkAnswer" id="levelThreeWrongAnswer">
 	<p id="wrongText">Sorry</p>

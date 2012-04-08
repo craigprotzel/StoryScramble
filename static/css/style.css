@@ -556,12 +556,12 @@ backToTheGame {
   border-radius: 10px;
   display: inline;
   float: left;
-  width: 47.91666666666667%;
+  width: 31.25%;
   margin: 0 1.0416666666666665%;
-  padding: 40px;
-  margin: 70px 25%;
-  font-size: 38px;
-  line-height: 42px;
+  padding: 20px;
+  margin: 80px 34.5%;
+  font-size: 24px;
+  line-height: 36px;
 }
 .backButton:hover {
   color: #ffffff;
@@ -590,7 +590,8 @@ backToTheGame {
   line-height: 20px;
   font-weight: bold;
   font-size: 38px;
-  margin: 30px auto 50px auto;
+  margin: 30px 0px 50px 0px;
+  color: #ffffff;
 }
 #wordTitle {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
@@ -607,7 +608,6 @@ backToTheGame {
   font-weight: normal;
   line-height: 20px;
   font-weight: bold;
-  font-size: 52px;
   font-size: 38px;
 }
 .gameBoard a.highlightedWord {
@@ -689,6 +689,10 @@ backToTheGame {
   font-size: 96px;
   text-align: center;
 }
+.checkAnswer a {
+  text-decoration: none;
+  color: #ffffff;
+}
 #levelOneCorrectAnswer {
   color: #00dc6e;
   font-weight: bold;
@@ -709,6 +713,23 @@ backToTheGame {
 }
 #levelThreeWrongAnswer {
   color: #ff585a;
+}
+#finalAnswer {
+  color: #00dc6e;
+  font-weight: bold;
+}
+#finalHeadline {
+  font-size: 38px;
+  line-height: 72px;
+}
+#levelOneNext {
+  margin-top: 50px;
+}
+#levelTwoFinalButton {
+  margin-top: 50px;
+}
+#levelThreeFinalButton {
+  margin-top: 50px;
 }
 .clue {
   font-family: "Georgia", Times New Roman, Times, sans-serif;

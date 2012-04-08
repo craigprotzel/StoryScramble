@@ -7,26 +7,113 @@ $("#homeButton").click(function() {
 });
 
 
+//Choose level
+$("#chooseLevelOne").click(function() { 
+	document.location.href="/instructions_level_I";
+});
+$("#chooseLevelTwo").click(function() { 
+	document.location.href="/instructions_level_II";
+});
+$("#chooseLevelThree").click(function() { 
+	document.location.href="/instructions_level_III";
+});
+
+
 //Header Help Button
+
+var currentTopic;
+
+var choseNews = 0;
+var choseTravel = 0;
+var choseWeather = 0;
+
+var changeNews = function (){
+	choseNews = 1;
+	choseTravel = 0;
+	choseWeather = 0
+};
+
+var changeTravel = function (){
+	choseNews = 0;
+	choseTravel = 1;
+	choseWeather = 0;
+};
+
+var changeWeather = function (){
+	choseNews = 0;
+	choseTravel = 0;
+	choseWeather = 1;
+};
+
+$("#news").click(function() { 
+	
+	changeNews();	
+	document.location.href='/news';
+	currentTopic = 'news';
+	console.log("You chose NEWS");
+	
+});
+
+$("#travel").click(function() { 
+	
+	changeTravel();
+	document.location.href='/travel';
+	currentTopic = 'travel';
+	console.log("You chose TRAVEL");
+});
+
+$("#weather").click(function() { 
+
+	changeWeather();
+	document.location.href='/weather';
+	currentTopic = 'weather';
+	console.log("You chose WEATHER");
+});	
+
+
 $("#helpButton").click(function() {
 	console.log("Help is pressed"); 
 	$('.gameBoard').hide();
 	$('#helpChoices').show();
 	$('#helpInstructions').hide();
 	$('.checkAnswer').hide();
+	console.log("You are on Topic: " + currentTopic);
+	console.log ("Chose News = " + choseNews);
+	console.log ("Chose Travel = " + choseTravel);
+	console.log ("Chose Weather = " + choseWeather);
 	
 });
 
-$("#changeLevel").click(function() { 
+
+//Help - Change Topic
+$("#changeTopic").click(function() { 
 	document.location.href='/';
 });
 
+
+
+$('#changeLevel').click(function() {
+	console.log("Change Level Pressed");
+	if (choseNews == 1) {
+		document.location.href='/news';	
+	} 
+	else if (choseTravel == 1) {
+		document.location.href='/travel';
+	}
+	else if (choseWeather == 1) {
+		document.location.href='/weather';
+	}
+	
+});
+
+
+//Help - Back to the Game
 $("#backToTheGame").click(function() { 
 	$('.gameBoard').show();
 	$('#helpChoices').hide();	
 });
 
-
+//Help - Instructions
 $("#reviewInstructions").click(function() { 
 	$('.gameBoard').hide();
 	$('#helpChoices').hide();
@@ -34,6 +121,7 @@ $("#reviewInstructions").click(function() {
 	
 });
 
+//Help - Instructions - Back to the Game
 $("#backToTheGameInstructions").click(function() { 
 	$('.gameBoard').show();
 	$('#helpInstructions').hide();	
@@ -70,9 +158,9 @@ var onLevelOne = false;
 var onLevelTwo = false;
 var onLevelThree = false;
 
-var levelOneTitle = "Level One - Word Scramble";
-var levelTwoTitle = "Level Two - Two Word Scramble";
-var levelThreeTitle = "Level Three - Title Scramble";
+var levelOneTitle = "Level One";
+var levelTwoTitle = "Level Two";
+var levelThreeTitle = "Level Three";
 
 if (titleFiller == levelOneTitle){
 	onLevelOne = true;
@@ -314,18 +402,26 @@ var checkLevelTwoAnswer = function(){
 		levelTwoIndex++;
 		
 		if (levelTwoIndex == 2) {
-			$('#correctText').html("Great Job!!!");
-			$('#levelTwoNew').val("NEXT HEADLINE");
+			//$('#correctText').html("Great Job!!!");
+			//$('#levelTwoNew').val("NEXT HEADLINE");
 			
-			console.log("LAST WORD!!!");	
+			$('.checkAnswer').show();
+			$('#finalAnswer').show();
+			
+			$('#levelTwoCorrectAnswer').hide();
+			$('#levelTwoWrongAnswer').hide();
+			
 			}
 		else {
 			$('#correctText').html("Correct!!!");
+			
+			$('.checkAnswer').show();
+			$('#levelTwoCorrectAnswer').show();
+			$('#finalAnswer').hide();
+			$('#levelTwoWrongAnswer').hide();
 		}
 		
-		$('.checkAnswer').show();
-		$('#levelTwoCorrectAnswer').show();
-		$('#levelTwoWrongAnswer').hide();
+		
 		
 		letterCountLevelTwo = 1;
 		
@@ -423,6 +519,18 @@ $("#levelTwoSkip").click(function() {
 });
 
 
+//Level II - Final Button
+$("#levelTwoFinalButton").click(function() {
+
+		levelTwoIndex = 0;
+		document.location.href='/storyscramble_level_II';
+		console.log("FINAL WAS CLICKED")
+	
+});
+
+
+
+
 //Level II - Try Again
 $("#levelTwoTryAgain").click(function() { 
   
@@ -513,18 +621,26 @@ var checkLevelThreeAnswer = function(){
 		$('#correctAnswer').val(levelThreeMasterHeadline[levelThreeWordCountIndex]);
 		
 		if (levelThreeWordCountIndex == levelThreeMasterHeadline.length - 1) {
-			$('#correctText').html("Great Job!!!");
-			$('#levelThreeNew').val("NEXT HEADLINE");
 			
-			console.log("LAST WORD!!!");	
+			//$('#correctText').html("Great Job!!!");
+			//$('#levelThreeNew').val("NEXT HEADLINE");
+			
+			$('.checkAnswer').show();	
+			$('#finalAnswer').show();
+			
+			$('#levelThreeCorrectAnswer').hide();
+			$('#levelThreeWrongAnswer').hide();	
+			
 			}
 		else {
 			$('#correctText').html("Correct!!!");
+			
+			$('#finalAnswer').hide();
+			$('#levelThreeCorrectAnswer').show();
+			$('#levelThreeWrongAnswer').hide();
 		}
 		
-		$('.checkAnswer').show();
-		$('#levelThreeCorrectAnswer').show();
-		$('#levelThreeWrongAnswer').hide();
+		
 		
 		letterCountLevelThree = 1;
 		//console.log("THE LETTER COUNT IS: " + letterCountLevelThree);
@@ -540,6 +656,7 @@ var checkLevelThreeAnswer = function(){
 		$('#scrambledWordWrong').val(currentScrambleAnswer);
 		$('.checkAnswer').show();
 		$('#levelThreeCorrectAnswer').hide();
+		$('#finalAnswer').hide();
 		$('#levelThreeWrongAnswer').show();
 		
 		wrongAnswer.value = levelThreeEntry.value;		
@@ -622,6 +739,16 @@ $("#levelThreeSkip").click(function() {
 		$('.checkAnswer').hide();
 		$('#levelThreeCorrectAnswer').hide();
 	}
+});
+
+
+//Level III - Final Button
+$("#levelThreeFinalButton").click(function() {
+
+		levelThreeWordCountIndex = 0;
+		document.location.href='/storyscramble_level_III';
+		console.log("FINAL WAS CLICKED")
+	
 });
 
 

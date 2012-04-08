@@ -1,11 +1,11 @@
-<section id="currentPageTitle">Level One - Word Scramble</section>
-	
+<section id="currentPageTitle">Level One</section>
 	
 <!-- MAIN GAME SECTION -->	
 <section class="gameBoard" id="gameBoardSection">		
    	
 	<!-- grab the story title, split by spaces, save to a var -->
-	<%	var masterWords = randomStory.title.split(" "); %> 
+	<%	var masterHeadline = randomStory.title; %> 
+	<%	var masterWords = masterHeadline.split(" "); %>
 		
 	<!-- use the "longestOne" function to (1)sort the comma separated string and then (2)determine the index value of the longest word -->	
 	<%	var	index = longestOne(masterWords); %>
@@ -67,28 +67,29 @@
 <!-- HELP SECTION -->
 <section class = gameInstructions id="helpChoices">
 
-		How Can We Help You?
-		
-		<section id="buttons">		
-			<input type="button" class="option" id="changeLevel" value="CHANGE LEVEL"/>
-			<input type="button" class="option" id="reviewInstructions" value="INSTRUCTIONS"/>
-			<input type="button" class="option" id="backToTheGame" value="GO BACK"/>		
-		</section>
+	How Can We Help You?
+	
+	<section id="buttons">		
+		<input type="button" class="option" id="changeTopic" value="CHANGE TOPIC"/>
+		<input type="button" class="option" id="changeLevel" value="CHANGE LEVEL"/>
+		<input type="button" class="option" id="reviewInstructions" value="INSTRUCTIONS"/>
+		<input type="button" class="backButton" id="backToTheGame" value="BACK TO THE GAME"/>		
+	</section>
 
 </section>
 
 
 <section class="gameInstructions" id ="helpInstructions">
 	
-		INSTRUCTIONS
+	INSTRUCTIONS
 
-		<ol class= "gameInstructionsList">
-			<li>Unscramble the <span class="instructionsGreen">LARGE WORD</span></li>
-			<li>Type your answer in the <span class="instructionsEntryField">White Box</span></li>
-			<li>Press <input type="button" class="enterInstructionButton" value="ENTER"/>to check your answer</li>
-		</ol>
+	<ol class= "gameInstructionsList">
+		<li>Unscramble the <span class="instructionsGreen">LARGE WORD</span></li>
+		<li>Type your answer in the <span class="instructionsEntryField">White Box</span></li>
+		<li>Press <input type="button" class="enterInstructionButton" value="ENTER"/>to check your answer</li>
+	</ol>
 
-		<input type="button" class="backButton" id="backToTheGameInstructions" value="BACK TO THE GAME"/>
+	<input type="button" class="backButton" id="backToTheGameInstructions" value="BACK TO THE GAME"/>
 	
 </section>
 
@@ -98,13 +99,18 @@
 <!-- CHECK ANSWER SECTION -->				
 <section class="checkAnswer" id="levelOneCorrectAnswer">
 	
-	<p>Correct!!!</p>
+	<p>Nice Work!</p>
 	
+	<a href="<%= randomStory.link %>" class="word" id="finalHeadline">"<%=masterHeadline%>"</a>
+	
+	<!--
 	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" value="<%= scrambledWord %>"/>
 	<b>=</b>
 	<input type="text" placeholder="" name="longestWord" class="gameAnswerField" value="<%= masterWords[index] %>"/>
-	
-	<input type="button" class="enterButton" id="levelOneNext" value="NEW HEADLINE"/>
+	-->
+	<section>
+		<input type="button" class="enterButton" id="levelOneNext" value="NEW HEADLINE"/>
+	</section>		
 			
 </section>
 		

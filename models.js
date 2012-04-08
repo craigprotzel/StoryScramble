@@ -18,6 +18,7 @@ module.exports.configureSchema = function(Schema, mongoose) {
     var stories_db = new Schema ({
 		
 		source: String,
+		topic: String,
 		title: String,
 		link: String,
 		pubDate : String,
