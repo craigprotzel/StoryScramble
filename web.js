@@ -71,13 +71,15 @@ app.configure(function() {
 //the template data variables
 
 //old variables
-var contentType = ['Headlines','Articles', 'Images', 'Audio', 'Video'];
-var storyTopics = ['Top News','Travel','Sports']; 
-storyScrambleArray = [];
+//var contentType = ['Headlines','Articles', 'Images', 'Audio', 'Video'];
+//var storyTopics = ['Top News','Travel','Sports']; 
+//storyScrambleArray = [];
+
 
 //usa today variables
 var source = 'USA_Today';
-var requestedTopic = 'Offbeat';
+var storyTopics = ['Offbeat','Travel','Weather'];
+var requestedTopic = '';
 
 	
 
@@ -429,8 +431,22 @@ app.get('/storyscramble_level_I', function(request, response) {
 
 
 // receive a form submission from Level I page
+*/
 
 
+/*
+app.post('/chooseTopic'), function(request, response){
+
+	console.log("A Topic Was Chosen");
+	
+	//Simple data object to hold the topic data
+	
+	var 
+}
+*/
+
+
+/*
 //Receive Story Scramble Name & Topics
 app.post('/storyscramble_level_I_post', function(request, response){
     console.log("Inside app.post('/')");

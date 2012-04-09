@@ -21,53 +21,32 @@ $("#chooseLevelThree").click(function() {
 
 //Header Help Button
 
-var currentTopic;
-
-var choseNews = 0;
-var choseTravel = 0;
-var choseWeather = 0;
-
-var changeNews = function (){
-	choseNews = 1;
-	choseTravel = 0;
-	choseWeather = 0
-};
-
-var changeTravel = function (){
-	choseNews = 0;
-	choseTravel = 1;
-	choseWeather = 0;
-};
-
-var changeWeather = function (){
-	choseNews = 0;
-	choseTravel = 0;
-	choseWeather = 1;
-};
+var topicChosen;
 
 $("#news").click(function() { 
 	
-	changeNews();	
-	document.location.href='/news';
-	currentTopic = 'news';
-	console.log("You chose NEWS");
+	console.log("Topic Set: News");
+	localStorage.setItem("topicChosen", "news");
+	document.location.href='/news';	
 	
 });
 
 $("#travel").click(function() { 
 	
-	changeTravel();
+	console.log("Topic Set: Travel");
+	localStorage.setItem("topicChosen", "travel");
 	document.location.href='/travel';
-	currentTopic = 'travel';
-	console.log("You chose TRAVEL");
+	
+	
 });
 
 $("#weather").click(function() { 
 
-	changeWeather();
+	console.log("Topic Set: Weather");
+	localStorage.setItem("topicChosen", "weather");
 	document.location.href='/weather';
-	currentTopic = 'weather';
-	console.log("You chose WEATHER");
+	
+	
 });	
 
 
@@ -77,10 +56,7 @@ $("#helpButton").click(function() {
 	$('#helpChoices').show();
 	$('#helpInstructions').hide();
 	$('.checkAnswer').hide();
-	console.log("You are on Topic: " + currentTopic);
-	console.log ("Chose News = " + choseNews);
-	console.log ("Chose Travel = " + choseTravel);
-	console.log ("Chose Weather = " + choseWeather);
+
 	
 });
 
@@ -94,21 +70,25 @@ $("#changeTopic").click(function() {
 
 $('#changeLevel').click(function() {
 	console.log("Change Level Pressed");
-	if (choseNews == 1) {
-		document.location.href='/news';	
-	} 
-	else if (choseTravel == 1) {
+	var topicChosen = localStorage.getItem("topicChosen");
+	console.log(topicChosen);
+	if (topicChosen == "news") {
+		document.location.href='/news';
+	}
+	else if (topicChosen == "travel") {
 		document.location.href='/travel';
 	}
-	else if (choseWeather == 1) {
+	else if (topicChosen == "weather"){
 		document.location.href='/weather';
 	}
-	
 });
 
 
 //Help - Back to the Game
-$("#backToTheGame").click(function() { 
+$("#backToTheGame").click(function() {
+
+	
+ 
 	$('.gameBoard').show();
 	$('#helpChoices').hide();	
 });
@@ -435,6 +415,7 @@ var checkLevelTwoAnswer = function(){
 		$('#scrambledWordWrong').val(currentScrambleAnswer);
 		$('.checkAnswer').show();
 		$('#levelTwoCorrectAnswer').hide();
+		$('#finalAnswer').hide();
 		$('#levelTwoWrongAnswer').show();
 		
 		console.log("Level Two index Is: " + levelTwoIndex)
