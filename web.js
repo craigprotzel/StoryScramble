@@ -89,6 +89,13 @@ app.get('/', function(request, response) {
 	response.render("main.html");
 
 });	
+
+//Topics Page
+app.get('/topics', function(request,response){
+
+	response.render("topics.html");
+
+});
 		
 //Levels - News Page
 app.get('/news', function(request, response) {

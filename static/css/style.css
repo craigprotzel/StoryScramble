@@ -256,9 +256,6 @@ body > header {
   padding: 18px;
   overflow: hidden;
 }
-.headerContainerWidth {
-  width: 200px;
-}
 #helpDiv {
   float: right;
 }
@@ -272,7 +269,6 @@ body > header {
   -moz-border-radius: 5px;
   border-radius: 5px;
   font-size: 18px;
-  width: 200px;
   padding: 10px 12px;
   margin-top: 5px;
   float: left;
@@ -308,6 +304,31 @@ body > header {
 .headerHelpButton:active {
   color: #ffffff;
   background-color: #9b5aaa;
+}
+#welcomeButton {
+  display: inline;
+  float: left;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  background-color: #19a3a3;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  font-size: 38px;
+  padding: 50px 0px;
+  margin: 75px 26% 0px 26%;
+}
+#welcomeButton:hover {
+  color: #ffffff;
+  background-color: #87468b;
+}
+#welcomeButton:active {
+  color: #ffffff;
+  background-color: #19a3a3;
 }
 #currentPageTitle {
   display: none;
@@ -559,7 +580,7 @@ backToTheGame {
   width: 31.25%;
   margin: 0 1.0416666666666665%;
   padding: 20px;
-  margin: 80px 34.5%;
+  margin: 70px 34.5%;
   font-size: 24px;
   line-height: 36px;
 }
@@ -575,7 +596,7 @@ backToTheGame {
   color: #ffffff;
   font-size: 24px;
   font-weight: bold;
-  margin-top: 120px;
+  margin-top: 90px;
   line-height: 95px;
   text-align: center;
 }
@@ -629,7 +650,7 @@ backToTheGame {
   font-weight: bold;
   font-size: 52px;
   display: inline;
-  color: #19a3a3;
+  color: #ffffff;
   padding: 0 2px 0 8px;
 }
 #highlightWord {
@@ -747,7 +768,7 @@ backToTheGame {
   color: #ffffff;
 }
 #lowerGameButtonsALL {
-  margin: 60px 0% 10px 0%;
+  margin: 40px 0% 10px 0%;
 }
 .lowerGameButtons {
   background-color: #87468b;

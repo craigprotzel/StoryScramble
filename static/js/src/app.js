@@ -7,6 +7,12 @@ $("#homeButton").click(function() {
 });
 
 
+//Start Button
+$("#welcomeButton").click(function() { 
+  document.location.href='/topics';
+});
+
+
 //Choose level
 $("#chooseLevelOne").click(function() { 
 	document.location.href="/instructions_level_I";
@@ -84,13 +90,26 @@ $('#changeLevel').click(function() {
 });
 
 
+var finishedLevelOne = false;
+var finishedLevelTwo = false;
+var finishedLevelThree = false;
+
 //Help - Back to the Game
 $("#backToTheGame").click(function() {
 
-	
- 
-	$('.gameBoard').show();
-	$('#helpChoices').hide();	
+	if (finishedLevelOne){
+		document.location.href='/storyscramble_level_I';
+		}
+	else if (finishedLevelTwo) {
+		document.location.href='/storyscramble_level_II';
+	}
+	else if (finishedLevelThree) {
+		document.location.href='/storyscramble_level_III';
+	}
+	else {
+		$('.gameBoard').show();
+		$('#helpChoices').hide();
+	}	
 });
 
 //Help - Instructions
@@ -103,8 +122,20 @@ $("#reviewInstructions").click(function() {
 
 //Help - Instructions - Back to the Game
 $("#backToTheGameInstructions").click(function() { 
-	$('.gameBoard').show();
-	$('#helpInstructions').hide();	
+
+	if (finishedLevelOne){
+		document.location.href='/storyscramble_level_I';
+		}
+	else if (finishedLevelTwo) {
+		document.location.href='/storyscramble_level_II';
+	}
+	else if (finishedLevelThree) {
+		document.location.href='/storyscramble_level_III';
+	}
+	else {
+		$('.gameBoard').show();
+		$('#helpInstructions').hide();	
+	}
 });
 
 
@@ -236,8 +267,13 @@ $("#giveMeButtonLevelOne").click(function() {
 						 
 var checkLevelOneAnswer = function(){
 	
-	if (levelOneEntry.value == levelOneAnswer.innerHTML) {
-
+	//this cleans it up for spaces
+	var levelOneEnteredAnswer = levelOneEntry.value.trim();
+	
+	if (levelOneEnteredAnswer == levelOneAnswer.innerHTML) {
+		
+		finishedLevelOne = true;
+		
 		$('#gameBoardSection').hide();
 		
 		$('.checkAnswer').show();
@@ -370,8 +406,10 @@ var checkLevelTwoAnswer = function(){
    		
    });
 	
+	//this cleans it up for spaces
+	var levelTwoEnteredAnswer = levelTwoEntry.value.trim();
 	
-	if (levelTwoEntry.value == levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]]) {
+	if (levelTwoEnteredAnswer == levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]]) {
 				
 		$('#gameBoardSection').hide();
 			
@@ -382,8 +420,8 @@ var checkLevelTwoAnswer = function(){
 		levelTwoIndex++;
 		
 		if (levelTwoIndex == 2) {
-			//$('#correctText').html("Great Job!!!");
-			//$('#levelTwoNew').val("NEXT HEADLINE");
+			
+			finishedLevelTwo = true;
 			
 			$('.checkAnswer').show();
 			$('#finalAnswer').show();
@@ -594,7 +632,10 @@ var checkLevelThreeAnswer = function(){
    });
 	
 	
-	if (levelThreeEntry.value == levelThreeMasterHeadline[levelThreeWordCountIndex]) {
+	//this cleans it up for spaces
+	var levelThreeEnteredAnswer = levelThreeEntry.value.trim();
+	
+	if (levelThreeEnteredAnswer == levelThreeMasterHeadline[levelThreeWordCountIndex]) {
 				
 		$('#gameBoardSection').hide();
 			
@@ -605,6 +646,8 @@ var checkLevelThreeAnswer = function(){
 			
 			//$('#correctText').html("Great Job!!!");
 			//$('#levelThreeNew').val("NEXT HEADLINE");
+			
+			finishedLevelThree = true;
 			
 			$('.checkAnswer').show();	
 			$('#finalAnswer').show();
