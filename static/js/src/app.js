@@ -69,7 +69,7 @@ $("#helpButton").click(function() {
 
 //Help - Change Topic
 $("#changeTopic").click(function() { 
-	document.location.href='/';
+	document.location.href='/topics';
 });
 
 
