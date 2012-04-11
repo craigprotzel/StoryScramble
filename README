@@ -1,21 +1,22 @@
-This project is a demo for the Dynamic Web Development class at ITP/NYU
+This is my NYU ITP Master's Thesis project, "StoryScramble."
+It is a web-based application designed spcifically for people with early stage memory loss.
+I am working in conjunction with the NY Alzheimer's Association in hopes of creating a web-based game that would be usable by their clients.
 
-It demonstrates using ExpressJS framework with NodeJS for a multi-page website. The web app uses EJS as a template language. 
+The site uses the ExpressJS framework with NodeJS.  
+The web app uses EJS as a template language. 
 
-- Template files are in the /views folder.
-- Static files are in the /static folder
+Template files are in the /views folder.
+Static files are in the /static folder
 
 Before running locally run the command 
 npm install
+This will install all dependencies in the package.json file.
 
-this will install all dependencies in the package.json file.
-
-To run locally, navigate to the code directory in Terminal, run 
-node web.js
-
-Visit the site on your browser at http://localhost:3000
-
+I am accessing the USA Today API to obtain site content and storing that data in a MongoLab Db.
+I am also using one local storage variable to track the user's topic choice
 
 The files were created from the Heroku tutorial, "Getting Started with Node.js on Heroku/Cedar" http://devcenter.heroku.com/articles/node-js
 
-ROUTES: 
+
+
+
