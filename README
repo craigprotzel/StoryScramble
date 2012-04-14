@@ -1,6 +1,7 @@
-This is my NYU ITP Master's Thesis project, "Story Scramble."
-It's a web-based application designed specifically for people with early stage memory loss.
-I'm working in conjunction with the NY Alzheimer's Association in hopes of creating a web-based game that will be usable by their clients.
+"Story Scramble" is my thesis project for my master's degree @ NYU ITP 
+
+The project is a web-based application designed specifically for people with early stage memory loss. specifically people dealing with MCI and early stage Alzheimer's.
+I'm working directly with the NY Alzheimer's Association (http://www.alz.org/nyc/) with the goal of creating a "brain exercise game" that will be usable by their clients.
 
 The site uses the ExpressJS framework with NodeJS and EJS as a template language. 
 
@@ -18,7 +19,7 @@ I'm also using one local storage variable to track the user's "topic" choice
 
 The files were created with a great deal of help from John Schimmel (https://github.com/johnschimmel) and the Heroku tutorial, "Getting Started with Node.js on Heroku/Cedar" http://devcenter.heroku.com/articles/node-js
 
-Also, I owe a great deal of gratitude to Jeremy Scott-Diamond (http://www.jeremyscottdiamond.com/) and Martin Bravo (http://www.bravomartin.cl/) for their technical and creative help. Could not have done this without them.
+I also owe a great deal of gratitude to Jeremy Scott-Diamond (http://www.jeremyscottdiamond.com/) and Martin Bravo (http://www.bravomartin.cl/) for their technical and creative expertise. Could not have done this without their help and support.
 
 
 
