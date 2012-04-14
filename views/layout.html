@@ -6,7 +6,7 @@
 	        <% if (typeof pageTitle != "undefined") { %>
 	           <%= pageTitle %>
 	        <% } else { %>
-	            StoryScramble.com
+	            StoryScramble
 	        <% } %>
         </title>
         
@@ -36,10 +36,14 @@
 		<header> 
                
            <div class="headerContainerWidth" id="helpDiv">
-            <input type="button" class="headerHelpButton" id="helpButton" value="HELP"/>         
+           	<input type="button" class="headerHelpButton" id="instructionsToggleButton" value="ON/OFF"/>  
+            <input type="button" class="headerHelpButton" id="helpButton" value="HOW TO PLAY"/>         
 	       </div>
-	        <input type="button" id="homeButton" value="MAIN"/>
-	      
+	   
+	        <input type="button" id="homeButton" value="HOME"/>
+	        <input type="button" id="changeTopic" value="TOPICS"/>
+	        <input type="button" id="changeLevel" value="LEVELS"/>
+	     
                 
          	<section id="pageTitle"></section>
       	
@@ -57,9 +61,10 @@
 
 		<footer>
 
-			<form method="POST" action="/usaTodayAPIQuery">
-				<input type="submit" class="footerButtons" id="usaTodayCall" value="USA Today API" />
-			</form>
+			<!-- <form method="POST" action="/usaTodayAPIQuery"> -->
+				<!-- <input type="submit" class="footerButtons" id="usaTodayCall" value="USA Today API" /> -->
+				<input type="button" class="footerButtons" id="usaTodayCall" value="USA Today API" />
+			<!-- </form> -->
 
 			<a href="http://www.craigprotzel.com" class="footerButtons">By Craig Protzel</a>
 						

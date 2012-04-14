@@ -282,6 +282,52 @@ body > header {
   color: #ffffff;
   background-color: #9b5aaa;
 }
+#changeTopic {
+  background-color: #9b5aaa;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 10px 12px;
+  margin-top: 5px;
+  float: left;
+  line-height: 1;
+}
+#changeTopic:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+#changeTopic:active {
+  color: #ffffff;
+  background-color: #9b5aaa;
+}
+#changeLevel {
+  background-color: #9b5aaa;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 10px 12px;
+  margin-top: 5px;
+  float: left;
+  line-height: 1;
+}
+#changeLevel:hover {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
+#changeLevel:active {
+  color: #ffffff;
+  background-color: #9b5aaa;
+}
 .headerHelpButton {
   background-color: #9b5aaa;
   text-align: center;
@@ -362,6 +408,13 @@ body > footer {
   font-size: 12px;
   display: inline;
 }
+.welcomePage {
+  font-size: 38px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 90px;
+  line-height: 48px;
+}
 #usaTodayCall {
   float: right;
   /* display: inline;  */
@@ -370,8 +423,6 @@ body > footer {
 }
 #buttons {
   margin: 50px auto 100px auto;
-  margin-top: 50px;
-  margin-bottom: 100px;
   border: none;
   text-decoration: none;
 }
@@ -401,6 +452,37 @@ body > footer {
   color: #ffffff;
   background-color: #19a3a3;
 }
+#buttonsTwo {
+  margin: 50px 10% 100px 10%;
+  border: none;
+  text-decoration: none;
+}
+#buttonsTwo .optionTwo {
+  display: inline;
+  float: left;
+  width: 47.91666666666667%;
+  margin: 0 1.0416666666666665%;
+  background-color: #19a3a3;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20%;
+  font-weight: bold;
+  border: none;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  font-size: 34px;
+}
+#buttonsTwo .optionTwo:hover {
+  color: #ffffff;
+  background-color: #87468b;
+}
+#buttonsTwo .optionTwo:active {
+  color: #ffffff;
+  background-color: #19a3a3;
+}
 .footerButtons {
   background-color: #9b5aaa;
   text-align: center;
@@ -424,13 +506,6 @@ body > footer {
   color: #ffffff;
   background-color: #9b5aaa;
 }
-.gameInstructions {
-  font-size: 52px;
-  font-weight: bolder;
-  text-align: center;
-  margin-top: 100px;
-  line-height: 50px;
-}
 #help {
   display: none;
 }
@@ -440,14 +515,31 @@ body > footer {
 #helpInstructions {
   display: none;
 }
-changeLevel {
-  font-size: 18px;
-}
 reviewInstructions {
   font-size: 18px;
 }
 backToTheGame {
   font-size: 18px;
+}
+.gameInstructions {
+  font-size: 52px;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 100px;
+  line-height: 52px;
+}
+.gameInstructionsSmall {
+  position: absolute;
+  float: right;
+  background-color: #555555;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px 5px 10px 5px;
+  margin: 70px 0px 0px 40%;
+}
+#helpInstructionsSmall {
+  display: none;
 }
 .gameInstructionsList {
   font-size: 38px;
@@ -457,13 +549,13 @@ backToTheGame {
   line-height: 65px;
 }
 .gameInstructionsListSmall {
-  display: none;
   color: #ffffff;
   font-size: 18px;
   font-weight: bold;
   text-align: left;
-  margin: 50px 25% 0px 30%;
-  line-height: 45px;
+  line-height: 32px;
+  /* margin: 10px 20% 10px 30%; */
+
 }
 .instructionsGreen {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
@@ -473,6 +565,7 @@ backToTheGame {
   font-weight: bold;
   color: #19a3a3;
   font-size: 52px;
+  padding-left: 10px;
 }
 .instructionsGreenSmall {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
@@ -483,6 +576,17 @@ backToTheGame {
   color: #19a3a3;
   font-size: 24px;
   padding: 0px 10px 0px 5px;
+}
+.instructionsPurple {
+  font-weight: bold;
+  color: #87468b;
+  font-size: 44px;
+}
+.instructionsPurpleSmall {
+  font-weight: bold;
+  color: #87468b;
+  font-size: 24px;
+  margin: 0px 2px;
 }
 .instructionsEntryField {
   font-size: 38px;
@@ -495,11 +599,11 @@ backToTheGame {
   font-size: 18px;
   color: #282828;
   background-color: #ffffff;
-  padding: 5px 10px;
-  margin: 5px 5px;
+  padding: 3px 6px;
+  margin-left: 5px;
 }
 .enterInstructionButton {
-  background-color: #87468b;
+  background-color: #19a3a3;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
@@ -513,14 +617,14 @@ backToTheGame {
 }
 .enterInstructionButton:hover {
   color: #ffffff;
-  background-color: #19a3a3;
+  background-color: #87468b;
 }
 .enterInstructionButton:active {
   color: #ffffff;
-  background-color: #87468b;
+  background-color: #19a3a3;
 }
 .enterInstructionButtonSmall {
-  background-color: #87468b;
+  background-color: #19a3a3;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
@@ -534,11 +638,11 @@ backToTheGame {
 }
 .enterInstructionButtonSmall:hover {
   color: #ffffff;
-  background-color: #19a3a3;
+  background-color: #87468b;
 }
 .enterInstructionButtonSmall:active {
   color: #ffffff;
-  background-color: #87468b;
+  background-color: #19a3a3;
 }
 .startButton {
   background-color: #19a3a3;
@@ -580,7 +684,7 @@ backToTheGame {
   width: 31.25%;
   margin: 0 1.0416666666666665%;
   padding: 20px;
-  margin: 70px 34.5%;
+  margin: 50px 34.5% 75px;
   font-size: 24px;
   line-height: 36px;
 }
@@ -650,7 +754,7 @@ backToTheGame {
   font-weight: bold;
   font-size: 52px;
   display: inline;
-  color: #ffffff;
+  color: #19a3a3;
   padding: 0 2px 0 8px;
 }
 #highlightWord {
@@ -675,7 +779,7 @@ backToTheGame {
 }
 .gameEntryField {
   font-size: 38px;
-  width: 8em;
+  width: 9em;
   margin: 0 20px 0 auto;
 }
 .gameAnswerField {
@@ -692,9 +796,10 @@ backToTheGame {
   border: none;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  padding: 15px 20px 15px 20px;
-  margin: 30px 10px 10px 15px;
+  padding: 13px 18px;
+  margin: 25px 10px 10px 15px;
   font-size: 24px;
+  font-weight: 800;
 }
 .enterButton:hover {
   color: #ffffff;
@@ -768,10 +873,10 @@ backToTheGame {
   color: #ffffff;
 }
 #lowerGameButtonsALL {
-  margin: 40px 0% 10px 0%;
+  margin: 50px 0% 10px 0%;
 }
 .lowerGameButtons {
-  background-color: #87468b;
+  background-color: #19a3a3;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
@@ -779,17 +884,42 @@ backToTheGame {
   border: none;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  padding: 15px 25px 15px 25px;
-  margin: 10px 10px 10px 10px;
-  font-size: 18px;
+  padding: 23px 33px;
+  margin: 10px;
+  font-size: 24px;
+  font-weight: bold;
 }
 .lowerGameButtons:hover {
   color: #ffffff;
-  background-color: #19a3a3;
+  background-color: #87468b;
 }
 .lowerGameButtons:active {
   color: #ffffff;
-  background-color: #87468b;
+  background-color: #19a3a3;
+}
+#showStory {
+  display: none;
+}
+#showStoryHeadline {
+  display: none;
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 70px 0px 25px 0px;
+  text-align: center;
+}
+#showStoryText {
+  display: none;
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 20px 12% 10px 12%;
 }
 /* forms */
 /*

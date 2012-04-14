@@ -90,6 +90,14 @@ app.get('/', function(request, response) {
 
 });	
 
+
+//Categories Page - Choose Topic
+app.get('/categories', function(request, response) {
+	
+	response.render("categories.html");
+
+});	
+
 //Topics Page
 app.get('/topics', function(request,response){
 
@@ -240,9 +248,35 @@ app.get('/storyscramble_level_III', function(request, response) {
 });
 
 
+app.get('/ajaxgetarticle', function(request, response){
 
+	articleURL = request.query.url;
+	articleURL = articleURL.replace(/apidata/g, "content");
+	console.log("this is the CONSOLE LOG MUTHAFUCKER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " +articleURL);
+	
+	if (articleURL) {
+		
+		diffbotURL = "http://www.diffbot.com/api/article?token=dc81f6c99eeff87f2a12411cd446e63c&url=" + articleURL;
+		
+		requestURL(diffbotURL, function(err, http, jsonData) {
+		
+			//convert json to native js
+			diffbotData = JSON.parse(jsonData);
+			
+			// get the diff bot data you want
+			articleData = {
+				title : diffbotData.title,
+				text : diffbotData.text
+			}
+			
+			//respond with json
+			response.json(articleData);
+		});
+	
+	}
+})
 
-
+/*
 //USA Today API Query - click button on Main Page
 app.post('/usaTodayAPIQuery', function (request,response) {
 
@@ -284,8 +318,7 @@ app.post('/usaTodayAPIQuery', function (request,response) {
     response.redirect('/');
 
 });
-
-
+*/
 
 
 

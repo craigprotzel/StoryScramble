@@ -241,7 +241,28 @@
 .styleButton(){
  	
  	//background-color: @newAqua;
- 	background-color: @lightPurple;
+ 	background-color: @newAqua;
+	text-align: center;
+	text-decoration: none;
+	color: @white;
+	font-weight: bold;
+	border: none;
+	.border-radius(5px);	
+
+	&:hover {
+		color: @white;
+		background-color: @lightPurple;
+	}
+
+	&:active {
+		color: @white;
+		background-color: @newAqua;	
+	}
+}
+
+.styleButtonPurple(){
+ 	
+  	background-color: @lightPurple;
 	text-align: center;
 	text-decoration: none;
 	color: @white;

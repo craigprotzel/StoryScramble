@@ -38,6 +38,7 @@ body{
 	padding: 0;
 	background-color: @grayDark;
 	//background-color: @white; 
+	//background-color: @lightPurple;
 	
 	h1{
 	color: @white;
@@ -64,6 +65,7 @@ body{
 // > sign means direct child of
 body > header {
 	background: @lightPurple;
+	//background: @grayDark;
 	color: @white;
 	padding: 18px;	
 	overflow: hidden;	
@@ -78,11 +80,34 @@ body > header {
 #helpDiv{
 float: right;
 }
-
-
+	
 
 #homeButton{
 		
+	.headerButton();
+	font-size: @normal;
+	//text-align: left;
+	//width: 100px;
+	padding: 10px 12px;
+	margin-top: 5px;
+	float: left;
+	line-height: 1;
+}
+
+#changeTopic{
+		
+	.headerButton();
+	font-size: @normal;
+	//text-align: left;
+	//width: 100px;
+	padding: 10px 12px;
+	margin-top: 5px;
+	float: left;
+	line-height: 1;
+}
+
+#changeLevel{
+
 	.headerButton();
 	font-size: @normal;
 	//text-align: left;
@@ -107,13 +132,14 @@ float: right;
 }		
 
 
+
 #welcomeButton{
 	.column(6,12);
 	.instructionsButton();
 	font-size: @large;
 	padding: 50px 0px;
 	margin: 75px 26% 0px 26%;
-	
+
 }
 
 
@@ -173,6 +199,15 @@ body > footer {
 // MAIN PAGE //
 ///////////////
 
+.welcomePage{
+
+	font-size: @large;
+	font-weight: 400;
+	text-align: center;
+	margin-top: 90px; 
+	line-height: 48px; 
+}	
+
 
 #usaTodayCall {
 		float: right; 
@@ -184,8 +219,6 @@ body > footer {
 #buttons {  
 
 	margin: 50px auto 100px auto;
-	margin-top:  50px;   
-	margin-bottom: 100px;
 	border: none;
 	text-decoration: none;
 	
@@ -194,9 +227,21 @@ body > footer {
 		.column(3,9); 
 		.bigButton();
 		font-size: 34px;
-		
-		
 	}
+}
+
+
+#buttonsTwo {  
+
+	margin: 50px 10% 100px 10%;
+	border: none;
+	text-decoration: none;
+	
+	.optionTwo {
+		.column(6,12); 
+		.bigButton();
+		font-size: 34px;
+	}	
 }
 
 
@@ -217,15 +262,6 @@ body > footer {
 // INSTRUCTIONS //
 //////////////////
 
-.gameInstructions{
-
-	font-size: @big;
-	font-weight: bolder;
-	text-align: center;
-	margin-top: 100px; 
-	line-height: 50px;
-}	
-
 
 #help{
 	display: none;
@@ -239,14 +275,42 @@ body > footer {
 	display: none;
 }
 
-changeLevel{
-	font-size: @normal;
-}
+
+
 reviewInstructions{
 	font-size: @normal;
 }
+
 backToTheGame{
 	font-size: @normal;
+}
+
+
+
+.gameInstructions{
+
+	font-size: @big;
+	font-weight: bolder;
+	text-align: center;
+	margin-top: 100px; 
+	line-height: 52px;
+}	
+
+.gameInstructionsSmall{
+
+	position: absolute;
+	float:right;
+	background-color: @gray;
+	font-size: @normal;
+	font-weight: bold;
+	text-align: center;
+	padding: 15px 5px 10px 5px;
+	margin: 70px 0px 0px 40%;
+	//margin: 100px 30% 20px 30%;
+}
+
+#helpInstructionsSmall{
+	display: none;
 }
 
 .gameInstructionsList{
@@ -256,16 +320,16 @@ backToTheGame{
 	text-align: left;
 	margin: 50px 0px 0px 13%; 
 	line-height: 65px;
+	
 }	
 
 .gameInstructionsListSmall{
-	display: none;
 	color: @white;
 	font-size: @normal;
 	font-weight: bold;
-	text-align: left;
-	margin: 50px 25% 0px 30%; 
-	line-height: 45px;
+	text-align: left; 
+	line-height: 32px;
+	/* margin: 10px 20% 10px 30%; */
 }
 
 
@@ -273,7 +337,8 @@ backToTheGame{
 	#font.serif();
 	font-weight: bold;
 	color: @newAqua;
-	font-size: @big;	
+	font-size: @big;
+	padding-left: 10px;	
 }
 
 .instructionsGreenSmall{
@@ -284,7 +349,18 @@ backToTheGame{
 	padding: 0px 10px 0px 5px;
 }
 
+.instructionsPurple{
+	font-weight: bold;
+	color: @lightPurple;
+	font-size: @larger;	
+}
 
+.instructionsPurpleSmall{
+	font-weight: bold;
+	color: @lightPurple;
+	font-size: @medium;	
+	margin: 0px 2px;
+}
 
 .instructionsEntryField{
 		font-size: @large; 
@@ -298,8 +374,8 @@ backToTheGame{
 		font-size: @normal; 
 		color: @grayDark;
 		background-color: @white;
-		padding: 5px 10px;
-		margin: 5px 5px;
+		padding: 3px 6px;
+		margin-left: 5px;
 	}
 
 	
@@ -335,7 +411,7 @@ backToTheGame{
 	.instructionsButton();
 	.column(4,12);	
 	padding: 20px;
-	margin: 70px 34.5%;
+	margin: 50px 34.5% 75px;
 	font-size: @medium;
 	line-height: 36px;
 }
@@ -402,7 +478,7 @@ backToTheGame{
 		font-weight: bold;
 		font-size: @big;
 		display: inline;
-		color: @white;
+		color: @newAqua;
 		padding: 0 2px 0 8px;
 	}
 	
@@ -438,7 +514,7 @@ backToTheGame{
 
 .gameEntryField{
 		font-size: @large; 
-		width: 8em;
+		width: 9em;
 		margin: 0 20px 0 auto;		
 	}
 
@@ -450,10 +526,11 @@ backToTheGame{
 
 	
 .enterButton{
-	.styleButton();
-	padding: 15px 20px 15px 20px;
-	margin: 30px 10px 10px 15px;
+	.styleButtonPurple();
+	padding: 13px 18px;
+	margin: 25px 10px 10px 15px;
 	font-size: @medium;
+	font-weight: 800;
 	
 	
 }
@@ -564,18 +641,56 @@ backToTheGame{
 
 
 #lowerGameButtonsALL{
-	margin: 40px 0% 10px 0%;
+	margin: 50px 0% 10px 0%;
 }
 
 .lowerGameButtons{
 	.styleButton();
-	padding: 15px 25px 15px 25px;
-	margin: 10px 10px 10px 10px;
-	font-size: @normal;
+	padding: 23px 33px;
+	margin: 10px;
+	font-size: @medium;
+	font-weight: bold;
 }
 
 
+
+
+
+////////////////
+// READ STORY //
+////////////////
+
+#showStory{
 	
+	display:none;
+
+}	
+
+
+#showStoryHeadline{
+	
+	display: none;
+	#font.serif(); 
+	font-size: @medium;
+	line-height: 36px;
+	margin: 70px 0px 25px 0px;
+	text-align: center;
+	
+}
+
+#showStoryText{
+
+	display: none;
+	#font.serif();
+	font-size: @normal;
+	line-height: 26px;
+	margin: 20px 12% 10px 12%;
+
+}
+
+
+
+
 
 /* forms */
 

@@ -4,8 +4,9 @@
 <section class="gameBoard" id="gameBoardSection">		
    	
 	<!-- grab the story title, split by spaces, save to a var -->
-	<%	var masterHeadline = randomStory.title; %> 
-	<%	var masterWords = masterHeadline.split(" "); %>
+	<%	var masterHeadline = randomStory.title; %>
+	<%	var masterHeadLineLower = masterHeadline.toLowerCase(); %> 
+	<%	var masterWords = masterHeadLineLower.split(" "); %>
 		
 	<!-- use the "longestOne" function to (1)sort the comma separated string and then (2)determine the index value of the longest word -->	
 	<%	var	index = longestOne(masterWords); %>
@@ -20,7 +21,7 @@
 	<%	var scrambledWord = scramble(masterWords[index]); %>
 		
 		<!-- print the story title with the longest word scrambled in its original position -->	
-		<span class="quotes">"</span>
+		<!-- <span class="quotes">"</span> -->
 		<%	for (var i = 0; i < masterWords.length; i++){
 			if (i == index) { %>
 				<a href="<%= randomStory.link %>" id="highlightWord"> <%= scrambledWord %> </a>
@@ -29,19 +30,21 @@
 				<a href="<%= randomStory.link %>" id="wordTitle"> <%= masterWords[i] %> </a>		
 		<%		}
 			} %>
-			<span class="quotes">"</span>
+			<!-- <span class="quotes">"</span> -->
 		
 		
 		<p>
 			<input type="text" placeholder="" name="longestWord" class="gameEntryField" id="levelOneEntry" value=""/>
+			
 			<input type="button" class="enterButton" id="levelOneEnter" value="ENTER"/>
-			<input type="button" class="enterButton" id="levelOneNew" value="NEW"/>	
+				
 		</p>
 			
 					
 		<p id="lowerGameButtonsALL">
-			<input type="button" class="lowerGameButtons" id="clueButton" value="CLUE"/>
-			<input type="button" class="lowerGameButtons" id="giveMeButtonLevelOne" value="GIVE ME A LETTER!"/>
+			<input type="button" class="lowerGameButtons" id="clueButton" value="GIVE ME A CLUE"/>
+			<input type="button" class="lowerGameButtons" id="giveMeButtonLevelOne" value="GIVE ME A LETTER"/>
+			<!-- <input type="button" class="lowerGameButtons" id="levelOneNew" value="GIVE ME A NEW HEADLINE"/> -->
 		</p>
 		
 
@@ -81,17 +84,33 @@
 
 <section class="gameInstructions" id ="helpInstructions">
 	
-	INSTRUCTIONS
+	HOW TO PLAY
 
 	<ol class= "gameInstructionsList">
-		<li>Unscramble the <span class="instructionsGreen">LARGE WORD</span></li>
+		<li>Unscramble the <span class="instructionsGreen"> GREEN WORD</span></li>
 		<li>Type your answer in the <span class="instructionsEntryField">White Box</span></li>
-		<li>Press <input type="button" class="enterInstructionButton" value="ENTER"/>to check your answer</li>
+		<li>Press <span class="instructionsPurple">ENTER</span> to check your answer</li>
 	</ol>
 
 	<input type="button" class="backButton" id="backToTheGameInstructions" value="BACK TO THE GAME"/>
 	
 </section>
+
+
+<section class="gameInstructionsSmall" id="helpInstructionsSmall">
+	
+	HOW TO PLAY
+
+	<ol class= "gameInstructionsListSmall">
+		<li>Unscramble the <span class="instructionsGreenSmall">GREEN WORD</span></li>
+		<li>Type your answer in the <span class="instructionsEntryFieldSmall">White Box</span></li>
+		<li>Press <span class="instructionsPurpleSmall">ENTER</span> to check your answer</li>
+	</ol>
+
+	<!-- <input type="button" class="backButton" id="backToTheGameInstructionsSmall" value="BACK TO THE GAME"/> -->
+	
+</section>
+
 
 
 	
@@ -109,23 +128,37 @@
 	<input type="text" placeholder="" name="longestWord" class="gameAnswerField" value="<%= masterWords[index] %>"/>
 	-->
 	<section>
-		<input type="button" class="enterButton" id="levelOneNext" value="NEW HEADLINE"/>
+		<input type="button" class="lowerGameButtons" id="levelOneNext" value="NEW HEADLINE"/>
+		<input type="button" class="lowerGameButtons" id="readStory" value="READ STORY"/>
 	</section>		
 			
 </section>
 		
 <section class="checkAnswer" id="levelOneWrongAnswer">
-	<p>Sorry</p>
+	<!-- <p>Sorry</p> -->
 	
-	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" value="<%= scrambledWord %>"/>
+	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" disabled="disabled" value="<%= scrambledWord %>"/>
 	­
-	<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" id="wrongAnswer" value=""/>
+	<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" id="wrongAnswer" disabled="disabled" value=""/>
 	
-	<input type="button" class="enterButton" id="levelOneTryAgain" value="TRY AGAIN"/>
-	<input type="button" class="enterButton" id="levelOneSkip" value="NEW HEADLINE"/>
+	<input type="button" class="lowerGameButtons" id="levelOneTryAgain" value="TRY AGAIN"/>
+	<!-- <input type="button" class="lowerGameButtons" id="levelOneSkip" value="NEW HEADLINE"/> -->
 		
 </section> 
+
 		
+<section id="showStory">
 
-				
 
+	<section id="showStoryHeadline">
+		"<%= masterHeadline %>"
+	</section>
+	
+	<section id="showStoryText">
+		<%= masterHeadline %>
+	</section>
+					
+	<input type="button" class="backButton" id="backToTheGameReadStoryBottom" value="BACK TO THE GAME"/>
+	<!-- <input type="button" class="backButton" id="linkToStory" value="LINK TO THE STORY"/> -->
+
+</section>

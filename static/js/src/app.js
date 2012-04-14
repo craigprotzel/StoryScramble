@@ -3,13 +3,34 @@
 
 //Header Home Button
 $("#homeButton").click(function() { 
+
+  console.log("Topic Set: ");
+  localStorage.setItem("topicChosen", " ");
   document.location.href='/';
+
 });
 
 
-//Start Button
-$("#welcomeButton").click(function() { 
+//Header Topic Button
+$("#changeTopic").click(function() { 
   document.location.href='/topics';
+});
+
+
+//Welcome - Enter Button
+$("#welcomeButton").click(function() { 
+  document.location.href='/categories';
+});
+
+
+
+//Choose Category
+$("#categoryWords").click(function() { 
+	document.location.href="/topics";
+});
+
+$("#categoryHeadlines").click(function() { 
+	document.location.href="/topics";
 });
 
 
@@ -32,7 +53,7 @@ var topicChosen;
 $("#news").click(function() { 
 	
 	console.log("Topic Set: News");
-	localStorage.setItem("topicChosen", "news");
+	localStorage.setItem("topicChosen", "News");
 	document.location.href='/news';	
 	
 });
@@ -40,7 +61,7 @@ $("#news").click(function() {
 $("#travel").click(function() { 
 	
 	console.log("Topic Set: Travel");
-	localStorage.setItem("topicChosen", "travel");
+	localStorage.setItem("topicChosen", "Travel");
 	document.location.href='/travel';
 	
 	
@@ -49,7 +70,7 @@ $("#travel").click(function() {
 $("#weather").click(function() { 
 
 	console.log("Topic Set: Weather");
-	localStorage.setItem("topicChosen", "weather");
+	localStorage.setItem("topicChosen", "Weather");
 	document.location.href='/weather';
 	
 	
@@ -58,18 +79,28 @@ $("#weather").click(function() {
 
 $("#helpButton").click(function() {
 	console.log("Help is pressed"); 
+	
 	$('.gameBoard').hide();
+	$('#helpInstructionsSmall').hide();
+	
+	/*
 	$('#helpChoices').show();
 	$('#helpInstructions').hide();
 	$('.checkAnswer').hide();
-
+	*/
+	
+	$('#helpInstructions').show();
 	
 });
 
 
 //Help - Change Topic
 $("#changeTopic").click(function() { 
+	
+	console.log("Topic Set: ");
+	localStorage.setItem("topicChosen", " ");
 	document.location.href='/topics';
+	
 });
 
 
@@ -78,13 +109,13 @@ $('#changeLevel').click(function() {
 	console.log("Change Level Pressed");
 	var topicChosen = localStorage.getItem("topicChosen");
 	console.log(topicChosen);
-	if (topicChosen == "news") {
+	if (topicChosen == "News") {
 		document.location.href='/news';
 	}
-	else if (topicChosen == "travel") {
+	else if (topicChosen == "Travel") {
 		document.location.href='/travel';
 	}
-	else if (topicChosen == "weather"){
+	else if (topicChosen == "Weather"){
 		document.location.href='/weather';
 	}
 });
@@ -93,6 +124,7 @@ $('#changeLevel').click(function() {
 var finishedLevelOne = false;
 var finishedLevelTwo = false;
 var finishedLevelThree = false;
+
 
 //Help - Back to the Game
 $("#backToTheGame").click(function() {
@@ -111,6 +143,14 @@ $("#backToTheGame").click(function() {
 		$('#helpChoices').hide();
 	}	
 });
+
+//Toggle Instructions
+$("#instructionsToggleButton").click(function() {
+	$('#helpInstructionsSmall').toggle();
+});
+
+
+
 
 //Help - Instructions
 $("#reviewInstructions").click(function() { 
@@ -152,13 +192,19 @@ $("#clueButton").click(function() {
 });
 
 
+
+
 //Page Titles
 var pageTitle = document.getElementById('pageTitle');
 var currentPageTitle = document.getElementById('currentPageTitle');
 console.log(currentPageTitle);
 
+
+var topicCurrent = localStorage.getItem("topicChosen");
+
+
 var titleFiller = currentPageTitle.innerHTML;
-pageTitle.innerHTML = titleFiller;
+pageTitle.innerHTML = topicCurrent + " " + titleFiller;
 
 console.log("Title Filler is: " + titleFiller);
 console.log("PageTitle.innerHTML is: " + pageTitle.innerHTML);
@@ -275,7 +321,7 @@ var checkLevelOneAnswer = function(){
 		finishedLevelOne = true;
 		
 		$('#gameBoardSection').hide();
-		
+				
 		$('.checkAnswer').show();
 		$('#levelOneCorrectAnswer').show();
 		$('#levelOneWrongAnswer').hide();
@@ -785,6 +831,49 @@ $("#levelThreeTryAgain").click(function() {
 	levelThreeEntry.value = wrongAnswer.value;
  
 });
+
+
+
+// ajax call
+
+$('input#readStory').on('click', function(){
+
+	console.log("got it");
+	
+	url = $('#finalHeadline').attr('href');
+	console.log(url);
+	
+	data = {};
+	data['url'] = url;
+	
+	// perform ajax 
+	$.ajax({
+		url : '/ajaxgetarticle',
+		data : data,
+		dataType:'json',
+		type : 'GET',
+		
+		success : function(data) {
+			//console.log(data.text);
+			
+			$("#showStoryText").html(data.text);
+			
+			$("#showStory").show();
+			$("#showStoryHeadline").show();
+			$("#showStoryText").show();
+			
+			$('.checkAnswer').hide();
+			$('#levelThreeCorrectAnswer').hide();
+			
+		},
+		
+		error : function(err) {
+		
+		}
+	})
+	
+})
+
 
 
 
