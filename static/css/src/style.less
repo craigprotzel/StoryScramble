@@ -459,12 +459,13 @@ backToTheGame{
 
 .word{
 	#font.serif();
+	color: @white;
 	font-weight: bold;
 	font-size: @large;
 }	
 
 
-.gameBoard a.highlightedWord{
+.highlightedWord{
 		#font.serif();
 		font-weight: bold;
 		font-size: @superBig;
@@ -473,7 +474,7 @@ backToTheGame{
 		padding: 0 2px 0 8px;
 	}
 	
-.gameBoard a.highlightedWordTwo{
+.highlightedWordTwo{
 		#font.serif();
 		font-weight: bold;
 		font-size: @big;
@@ -592,11 +593,15 @@ backToTheGame{
 	font-weight: bold;
 }
 
-#finalHeadline{
-	font-size: @large;
-	line-height: 72px;
+//This is to pass the link to read story
+#finalHeadlineLink{
+	display: none;
 }
 
+#finalHeadline{
+	line-height: 46px;
+	margin-bottom: 30px;
+}
 
 #levelOneNext{
 	margin-top: 50px;

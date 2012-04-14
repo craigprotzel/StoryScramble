@@ -732,10 +732,11 @@ backToTheGame {
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
+  color: #ffffff;
   font-weight: bold;
   font-size: 38px;
 }
-.gameBoard a.highlightedWord {
+.highlightedWord {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
   font-size: 14px;
   font-weight: normal;
@@ -746,7 +747,7 @@ backToTheGame {
   color: #19a3a3;
   padding: 0 2px 0 8px;
 }
-.gameBoard a.highlightedWordTwo {
+.highlightedWordTwo {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
   font-size: 14px;
   font-weight: normal;
@@ -844,9 +845,12 @@ backToTheGame {
   color: #00dc6e;
   font-weight: bold;
 }
+#finalHeadlineLink {
+  display: none;
+}
 #finalHeadline {
-  font-size: 38px;
-  line-height: 72px;
+  line-height: 46px;
+  margin-bottom: 30px;
 }
 #levelOneNext {
   margin-top: 50px;

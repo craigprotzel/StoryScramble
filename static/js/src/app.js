@@ -1,5 +1,15 @@
 //**********Global**********//
 
+//Disabling all anchor tags
+/*
+$("a").click(function(){
+	
+	alert('disabled');
+    return false;
+
+});
+*/
+
 
 //Header Home Button
 $("#homeButton").click(function() { 
@@ -64,34 +74,42 @@ $("#travel").click(function() {
 	localStorage.setItem("topicChosen", "Travel");
 	document.location.href='/travel';
 	
-	
 });
 
 $("#weather").click(function() { 
 
 	console.log("Topic Set: Weather");
 	localStorage.setItem("topicChosen", "Weather");
-	document.location.href='/weather';
-	
+	document.location.href='/weather';	
 	
 });	
+
+
 
 
 $("#helpButton").click(function() {
 	console.log("Help is pressed"); 
 	
 	$('.gameBoard').hide();
-	$('#helpInstructionsSmall').hide();
+	$('#helpInstructions').show();
 	
+	$("#showStory").hide();
+	$("#showStoryHeadline").hide();
+	$("#showStoryText").hide();
+	
+	
+	
+	//$('#helpInstructionsSmall').hide(); 
+		
+	//not using these buttons anymore
 	/*
 	$('#helpChoices').show();
 	$('#helpInstructions').hide();
 	$('.checkAnswer').hide();
 	*/
-	
-	$('#helpInstructions').show();
-	
 });
+
+
 
 
 //Help - Change Topic
@@ -126,7 +144,9 @@ var finishedLevelTwo = false;
 var finishedLevelThree = false;
 
 
+/*
 //Help - Back to the Game
+//NOT USING THIS ANYMORE
 $("#backToTheGame").click(function() {
 
 	if (finishedLevelOne){
@@ -141,8 +161,17 @@ $("#backToTheGame").click(function() {
 	else {
 		$('.gameBoard').show();
 		$('#helpChoices').hide();
+		
+		$("#showStory").hide();
+		$("#showStoryHeadline").hide();
+		$("#showStoryText").hide();
+				
 	}	
 });
+
+*/
+
+
 
 //Toggle Instructions
 $("#instructionsToggleButton").click(function() {
@@ -174,7 +203,37 @@ $("#backToTheGameInstructions").click(function() {
 	}
 	else {
 		$('.gameBoard').show();
-		$('#helpInstructions').hide();	
+		$('#helpInstructions').hide();
+		
+		$("#showStory").hide();
+		$("#showStoryHeadline").hide();
+		$("#showStoryText").hide();
+			
+	}
+});
+
+
+
+//Read Story - Back to the Game
+$("#backToTheGameReadStory").click(function() { 
+
+	if (finishedLevelOne){
+		document.location.href='/storyscramble_level_I';
+		}
+	else if (finishedLevelTwo) {
+		document.location.href='/storyscramble_level_II';
+	}
+	else if (finishedLevelThree) {
+		document.location.href='/storyscramble_level_III';
+	}
+	else {
+		$('.gameBoard').show();
+		$('#helpInstructions').hide();
+		
+		$("#showStory").hide();
+		$("#showStoryHeadline").hide();
+		$("#showStoryText").hide();
+			
 	}
 });
 
@@ -834,13 +893,13 @@ $("#levelThreeTryAgain").click(function() {
 
 
 
-// ajax call
+//READ STORY - ajax call
 
 $('input#readStory').on('click', function(){
 
 	console.log("got it");
 	
-	url = $('#finalHeadline').attr('href');
+	url = $('#finalHeadlineLink').attr('href');
 	console.log(url);
 	
 	data = {};
@@ -873,6 +932,11 @@ $('input#readStory').on('click', function(){
 	})
 	
 })
+
+
+
+
+
 
 
 

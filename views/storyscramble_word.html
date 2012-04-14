@@ -5,8 +5,8 @@
    	
 	<!-- grab the story title, split by spaces, save to a var -->
 	<%	var masterHeadline = randomStory.title; %>
-	<%	var masterHeadLineLower = masterHeadline.toLowerCase(); %> 
-	<%	var masterWords = masterHeadLineLower.split(" "); %>
+	<%	var masterHeadlineLower = masterHeadline.toLowerCase(); %> 
+	<%	var masterWords = masterHeadlineLower.split(" "); %>
 		
 	<!-- use the "longestOne" function to (1)sort the comma separated string and then (2)determine the index value of the longest word -->	
 	<%	var	index = longestOne(masterWords); %>
@@ -24,10 +24,12 @@
 		<!-- <span class="quotes">"</span> -->
 		<%	for (var i = 0; i < masterWords.length; i++){
 			if (i == index) { %>
-				<a href="<%= randomStory.link %>" id="highlightWord"> <%= scrambledWord %> </a>
+				<!-- <a href="<%= randomStory.link %>" id="highlightWord"> <%= scrambledWord %> </a> --> 
+				<span id="highlightWord"> <%= scrambledWord %> </span>
 		<%	} 
 			else { %>
-				<a href="<%= randomStory.link %>" id="wordTitle"> <%= masterWords[i] %> </a>		
+				<!-- <a href="<%= randomStory.link %>" id="wordTitle"> <%= masterWords[i] %> </a> -->
+				<span id="wordTitle"> <%= masterWords[i] %> </span>		
 		<%		}
 			} %>
 			<!-- <span class="quotes">"</span> -->
@@ -120,7 +122,8 @@
 	
 	<p>Nice Work!</p>
 	
-	<a href="<%= randomStory.link %>" class="word" id="finalHeadline">"<%=masterHeadline%>"</a>
+	<a href="<%= randomStory.link %>" id="finalHeadlineLink">"<%=masterHeadline%>"</a>
+	<div class="word" id="finalHeadline">"<%=masterHeadline%>"</d>
 	
 	<!--
 	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" value="<%= scrambledWord %>"/>
@@ -149,7 +152,6 @@
 		
 <section id="showStory">
 
-
 	<section id="showStoryHeadline">
 		"<%= masterHeadline %>"
 	</section>
@@ -158,7 +160,7 @@
 		<%= masterHeadline %>
 	</section>
 					
-	<input type="button" class="backButton" id="backToTheGameReadStoryBottom" value="BACK TO THE GAME"/>
+	<input type="button" class="backButton" id="backToTheGameReadStory" value="BACK TO THE GAME"/>
 	<!-- <input type="button" class="backButton" id="linkToStory" value="LINK TO THE STORY"/> -->
 
 </section>
