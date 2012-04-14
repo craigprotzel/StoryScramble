@@ -13,11 +13,9 @@ $("a").click(function(){
 
 //Header Home Button
 $("#homeButton").click(function() { 
-
-  console.log("Topic Set: ");
-  localStorage.setItem("topicChosen", " ");
+  console.log("Topic Set: none");
+  localStorage.setItem("topicChosen", "");
   document.location.href='/';
-
 });
 
 
@@ -116,7 +114,7 @@ $("#helpButton").click(function() {
 $("#changeTopic").click(function() { 
 	
 	console.log("Topic Set: ");
-	localStorage.setItem("topicChosen", " ");
+	localStorage.setItem("topicChosen", "");
 	document.location.href='/topics';
 	
 });
@@ -253,6 +251,7 @@ $("#clueButton").click(function() {
 
 
 
+
 //Page Titles
 var pageTitle = document.getElementById('pageTitle');
 var currentPageTitle = document.getElementById('currentPageTitle');
@@ -263,13 +262,22 @@ var topicCurrent = localStorage.getItem("topicChosen");
 
 
 var titleFiller = currentPageTitle.innerHTML;
+
+//Remove topic choice if on home page
+var homeTitle = "Story Scramble";
+if (titleFiller == homeTitle){
+	topicCurrent = "";
+}
+
 pageTitle.innerHTML = topicCurrent + " " + titleFiller;
 
 console.log("Title Filler is: " + titleFiller);
 console.log("PageTitle.innerHTML is: " + pageTitle.innerHTML);
 
 
+
 //Page Booleans
+
 var onLevelOne = false;
 var onLevelTwo = false;
 var onLevelThree = false;
