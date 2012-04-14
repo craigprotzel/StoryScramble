@@ -1,9 +1,8 @@
-This is my NYU ITP Master's Thesis project, "StoryScramble."
-It is a web-based application designed spcifically for people with early stage memory loss.
-I am working in conjunction with the NY Alzheimer's Association in hopes of creating a web-based game that would be usable by their clients.
+This is my NYU ITP Master's Thesis project, "Story Scramble."
+It's a web-based application designed specifically for people with early stage memory loss.
+I'm working in conjunction with the NY Alzheimer's Association in hopes of creating a web-based game that will be usable by their clients.
 
-The site uses the ExpressJS framework with NodeJS.  
-The web app uses EJS as a template language. 
+The site uses the ExpressJS framework with NodeJS and EJS as a template language. 
 
 Template files are in the /views folder.
 Static files are in the /static folder
@@ -12,10 +11,14 @@ Before running locally run the command
 npm install
 This will install all dependencies in the package.json file.
 
-I am accessing the USA Today API to obtain site content and storing that data in a MongoLab Db.
-I am also using one local storage variable to track the user's topic choice
+I'm accessing the USA Today API to obtain site content and the Diffbot API to show the article text on the page. 
 
-The files were created from the Heroku tutorial, "Getting Started with Node.js on Heroku/Cedar" http://devcenter.heroku.com/articles/node-js
+Back-end data is being stored in a MongoLab DB.
+I'm also using one local storage variable to track the user's "topic" choice
+
+The files were created with a great deal of help from John Schimmel (https://github.com/johnschimmel) and the Heroku tutorial, "Getting Started with Node.js on Heroku/Cedar" http://devcenter.heroku.com/articles/node-js
+
+Also, I owe a great deal of gratitude to Jeremy Scott-Diamond (http://www.jeremyscottdiamond.com/) and Martin Bravo (http://www.bravomartin.cl/) for their technical and creative help. Could not have done this without them.
 
 
 
