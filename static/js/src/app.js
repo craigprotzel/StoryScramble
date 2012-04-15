@@ -32,14 +32,19 @@ $("#welcomeButton").click(function() {
 
 
 
+/*
+//Made these POST-submit buttons
 //Choose Category
 $("#categoryWords").click(function() { 
 	document.location.href="/topics";
+	console.log("You chose WORDS");
 });
 
 $("#categoryHeadlines").click(function() { 
 	document.location.href="/topics";
+	console.log("You chose HEADLINES");
 });
+*/
 
 
 //Choose level
@@ -133,6 +138,9 @@ $('#changeLevel').click(function() {
 	}
 	else if (topicChosen == "Weather"){
 		document.location.href='/weather';
+	}
+	else {
+		document.location.href='/topics';
 	}
 });
 

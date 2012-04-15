@@ -78,10 +78,15 @@ app.configure(function() {
 
 //usa today variables
 var source = 'USA_Today';
-var topic = 'Weather';
+var topic = '';
 
 var storyTopics = ['Offbeat','Travel','Weather'];
-var requestedTopic = '';
+var requestedTopic = ''
+
+var categories = ['Words', 'Headlines'];	  
+var categoryChosen = '';
+
+;
 
 	
 
@@ -99,6 +104,26 @@ app.get('/categories', function(request, response) {
 	response.render("categories.html");
 
 });	
+
+
+app.post('/categoryChoice_words', function(request, response){
+
+	console.log("WORDS Category Was Chosen");
+	categoryChosen = 'Words'; 
+	
+	response.redirect('/topics');
+
+});
+
+app.post('/categoryChoice_headlines', function(request, response){
+
+	console.log("HEADLINES Category Was Chosen");
+	categoryChosen = 'Headlines'; 
+	
+	response.redirect('/topics');
+
+});
+
 
 //Topics Page
 app.get('/topics', function(request,response){
@@ -142,8 +167,8 @@ app.get('/instructions_level_I', function(request, response) {
 
  
 
-app.get('/storyscramble_level_I', function(request, response) {
-    
+app.get('/storyscramble_level_I', function(request, response) {  
+
     //var requestedTopic = request.params.Weather;
     //get all the stories from the db
     var query = stories_db.find({'topic' : requestedTopic});
@@ -163,11 +188,19 @@ app.get('/storyscramble_level_I', function(request, response) {
             //stories : allStories,
             randomStory : randomStory
         };
-        
-        //render the card_form template with the data above
-        response.render("storyscramble_word.html", templateData);
-        
-    });                
+	      
+	    if (categoryChosen == "Words"){
+	    	response.render("storyscramble_word_short.html", templateData);
+	    }
+	    
+	    else if (categoryChosen == "Headlines") {  
+	        response.render("storyscramble_word.html", templateData);
+	    }                
+	    
+	    else {
+	    	response.render("categories.html", templateData);
+	    }
+    });
 });
 
 
@@ -181,8 +214,7 @@ app.get('/instructions_level_II', function(request, response) {
 
 
 app.get('/storyscramble_level_II', function(request, response) {
-    
-    
+      
     //get all the stories from the db
     var query = stories_db.find({'topic' : requestedTopic});
 
@@ -202,9 +234,17 @@ app.get('/storyscramble_level_II', function(request, response) {
             randomStory : randomStory
         };
         
-        //render page with the template data from above
-        response.render("storyscramble_two_words.html", templateData);
-        
+        if (categoryChosen == "Words"){
+	    	response.render("storyscramble_word_short.html", templateData);
+	    }
+	    
+	    else if (categoryChosen == "Headlines") {  
+	        response.render("storyscramble_two_words.html", templateData);
+	    }                
+	    
+	    else {
+	    	response.render("categories.html", templateData);
+	    }   
     });                
 });
 
@@ -243,9 +283,17 @@ app.get('/storyscramble_level_III', function(request, response) {
             randomStory : randomStory
         };
 
-	//render page with the template data from above
-	response.render("storyscramble_title.html");
-
+        if (categoryChosen == "Words"){
+	    	response.render("storyscramble_word_short.html", templateData);
+	    }
+	    
+	    else if (categoryChosen == "Headlines") {  
+	        response.render("storyscramble_title.html", templateData);
+	    }                
+	    
+	    else {
+	    	response.render("categories.html", templateData);
+	    }  
     });                
 });
 
@@ -254,7 +302,8 @@ app.get('/ajaxgetarticle', function(request, response){
 
 	articleURL = request.query.url;
 	articleURL = articleURL.replace(/apidata/g, "content");
-	console.log("this is the article!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " +articleURL);
+	
+	console.log("this is the article!!!!!!!!!! " + articleURL);
 	
 	if (articleURL) {
 		
@@ -276,10 +325,11 @@ app.get('/ajaxgetarticle', function(request, response){
 		});
 	
 	}
-})
+});
 
 
 //USA Today API Query - click button on Main Page
+/*
 app.post('/usaTodayAPIQuery', function (request,response) {
 
 	console.log("hit usaTodayAPIQuery");
@@ -320,6 +370,7 @@ app.post('/usaTodayAPIQuery', function (request,response) {
     response.redirect('/');
 
 });
+*/
 
 
 
@@ -480,98 +531,5 @@ app.helpers({
 
 
 
-//**********OLD STUF**********//
-
-/*
-// Display Level I Page
-
-app.get('/storyscramble_level_I', function(request, response) {
-    var templateData = {
-    	contentType : contentType, 
-        storyTopics : storyTopics
-    };
-    
-    // render the story_form template with the data above
-    response.render("storyscramble_level_I.html",templateData);
-});
-
-
-// receive a form submission from Level I page
-*/
-
-
-/*
-app.post('/chooseTopic'), function(request, response){
-
-	console.log("A Topic Was Chosen");
-	
-	//Simple data object to hold the topic data
-	
-	var 
-}
-*/
-
-
-/*
-//Receive Story Scramble Name & Topics
-app.post('/storyscramble_level_I_post', function(request, response){
-    console.log("Inside app.post('/')");
-    console.log("form received and includes")
-    console.log(request.body);
-    
-    // Simple data object to hold the form data
-    var newStoryScramble = {
-    	
-    	storyName : request.body.storyName, 
-		contentType : request.body.contentType,
-    	storyTopics : request.body.storyTopics
-				  
-    };
-    
-    //post this data to the db
-    var post = new StoryEntry(newStoryScramble);
-    
-    // save the blog post
-    post.save();
-    
-    
-    // Put this newStoryScramble object into the scrambleArray
-    storyScrambleArray.push(newStoryScramble);
-    
-    // Get the position of the story in the storyArray    
-    storyScrambleNum = storyScrambleArray.length - 1;
-
-    response.redirect('/storyscramble_data/' + storyScrambleNum);
-	//response.json(newStoryScramble);
-});
-
-
-
-app.get('/storyscramble_data/:storyScrambleNum', function(request, response){
-    
-    // get the requested story number    
-    storyScrambleNum = request.params.storyScrambleNum;
-
-    // Get the card from cardArray
-    //cardData = cardArray[cardNumber];  // cardData contains 'to','from','message','image'
-    
-    storyScrambleData = storyScrambleArray[storyScrambleNum];
-    
-    
-    if (storyScrambleData != undefined) {
-        
-        // Render the card_display template - pass in the cardData
-        response.render("storyscramble_data.html", storyScrambleData);
-        
-    } else {
-        // card not found. show the 'Card not found' template
-        response.render("storyscramble_data_notfound.html");        
-    }
-    
-});
-
-*/
-
-//**********END OLD STUF**********//
 
 

@@ -1,4 +1,4 @@
-<section id="currentPageTitle">Level One - Headlines</section>
+<section id="currentPageTitle">Level One - Words</section>
 	
 <!-- MAIN GAME SECTION -->	
 <section class="gameBoard" id="gameBoardSection">		
@@ -7,8 +7,12 @@
 	<%	var masterHeadline = randomStory.title; %>
 	<%	var masterHeadlineLower = masterHeadline.toLowerCase(); %> 
 	<%	var masterWords = masterHeadlineLower.split(" "); %>
-			
-			
+	
+	<% var wordsLevelOne = [] %>
+	<% var wordsLevelOne = countCharsLevelOne(masterWords); %>		
+	<%= "Level One Words: " + wordsLevelOne %>
+		
+	
 	<!-- use the "longestOne" function to (1)sort the comma separated string and then (2)determine the index value of the longest word -->	
 	<%	var	index = longestOne(masterWords); %>
 					

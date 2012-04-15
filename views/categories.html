@@ -4,15 +4,18 @@
 Please Choose A Category
 </section>
 
+
+
 <section id="buttonsTwo">
-	<input type="button" class="optionTwo" id="categoryWords" value="WORDS"/>
-	<input type="button" class="optionTwo" id="categoryHeadlines" value="HEADLINES"/>
-		
-	<!--
-	<input type="button" class="welcomeButton" id="wordsCategory" value="WORDS"/>
-	<input type="button" class="welcomeButton" id="headlineCategory" value="HEADLINES"/>
-	-->
 	
+	<form method="POST" action="/categoryChoice_words">
+		<input type="submit" class="optionTwo" id="categoryWords" value="WORDS"/>
+	</form>
+	
+	<form method="POST" action="/categoryChoice_headlines">
+		<input type="submit" class="optionTwo" id="categoryHeadlines" value="HEADLINES"/>
+	</form>
+		
 </section>	
 
 
