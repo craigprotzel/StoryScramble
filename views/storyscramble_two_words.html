@@ -9,6 +9,7 @@
 	<%	var masterWords = masterHeadlineLower.split(" "); %>
 				
 	<%	var	theTwoLongestIndex = longestTwo(masterWords); %>
+	<!-- <%= theTwoLongestIndex %> -->
 	<%	var levelTwoIndex = 0 %>
 		
 	<!-- save these values for the front end in a hidden div -->
@@ -185,7 +186,7 @@
 <section id="showStory">
 
 	<section id="showStoryHeadline">
-		"<%= masterHeadline %>"
+		<div title="<%= randomStory.link %>" id="linkToStory">"<%= masterHeadline %>"</div>
 	</section>
 	
 	<section id="showStoryText">

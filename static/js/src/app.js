@@ -942,9 +942,17 @@ $('input#readStory').on('click', function(){
 })
 
 
+$('#linkToStory').click(function() {
+
+	window.open($('#linkToStory').attr('title'));
+
+});
 
 
 
+
+
+//Character Word Counts
 
 
 

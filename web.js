@@ -78,6 +78,8 @@ app.configure(function() {
 
 //usa today variables
 var source = 'USA_Today';
+var topic = 'Weather';
+
 var storyTopics = ['Offbeat','Travel','Weather'];
 var requestedTopic = '';
 
@@ -148,7 +150,7 @@ app.get('/storyscramble_level_I', function(request, response) {
 
     //sort by date in descending order
     query.sort('date',-1);
-    query.limit(50); 
+    query.limit(150); 
 
     //run the query
     query.exec({}, function(err, allStories){
@@ -186,7 +188,7 @@ app.get('/storyscramble_level_II', function(request, response) {
 
     //sort by date in descending order
     query.sort('date',-1);
-    query.limit(50); 
+    query.limit(150); 
 
     //run the query
     query.exec({}, function(err, allStories){
@@ -227,7 +229,7 @@ app.get('/storyscramble_level_III', function(request, response) {
 
     //sort by date in descending order
     query.sort('date',-1);
-    query.limit(50); 
+    query.limit(150); 
 
     //run the query
     query.exec({}, function(err, allStories){
@@ -252,7 +254,7 @@ app.get('/ajaxgetarticle', function(request, response){
 
 	articleURL = request.query.url;
 	articleURL = articleURL.replace(/apidata/g, "content");
-	console.log("this is the CONSOLE LOG MUTHAFUCKER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " +articleURL);
+	console.log("this is the article!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " +articleURL);
 	
 	if (articleURL) {
 		
@@ -276,14 +278,14 @@ app.get('/ajaxgetarticle', function(request, response){
 	}
 })
 
-/*
+
 //USA Today API Query - click button on Main Page
 app.post('/usaTodayAPIQuery', function (request,response) {
 
 	console.log("hit usaTodayAPIQuery");
 	// the url you need to request from USA Today
     // this will return the 10 top news articles in json format
-    var url = "http://api.usatoday.com/open/articles/offbeat?encoding=json&count=30&api_key=85gehs983tmqbwxz4uwk6ghv"
+    var url = "http://api.usatoday.com/open/articles/weather?encoding=json&count=30&api_key=85gehs983tmqbwxz4uwk6ghv"
     
 	
     // make the request to USA Today api
@@ -318,7 +320,7 @@ app.post('/usaTodayAPIQuery', function (request,response) {
     response.redirect('/');
 
 });
-*/
+
 
 
 
@@ -333,7 +335,24 @@ app.listen(port, function() {
 
 app.helpers({
 
-    longestOne: function(wordslist){ 
+	//function for Words Level I
+	countCharsLevelOne: function(wordsList){
+	
+		var wordsSplit = [];
+		var levelOneWords = [];
+	
+		for (var i = 0; i < wordsList.length; i++){
+	  		wordsSplit[i] = wordsList[i].split(""); 
+	  		
+	  		if (wordsSplit[i].length == 4 || wordsSplit[i].length == 5  || wordsSplit[i].length == 6) { 
+	  			levelOneWords.push(wordsList[i]); 
+	  		 }  			
+		} 
+		return levelOneWords;
+	}
+	
+	//function for Headlines Level I
+    , longestOne: function(wordslist){ 
     	
     	var sortLongToShort = function(a,b) {
 			return(b.toString().length - a.toString().length);
@@ -349,6 +368,8 @@ app.helpers({
 		return -1
     }
     
+    
+    //function for Headlines Level II
 	, longestTwo: function(wordslist){ 
     	
     	var sortLongToShort = function(a,b) {
@@ -367,6 +388,7 @@ app.helpers({
 		return twoLongest;
     }
     
+    
   , cleanup : function(word) {
     	word = word.replace(/[^\w ]/, "");
     	return word.toLowerCase();
@@ -375,12 +397,16 @@ app.helpers({
   , scramble : function (word){
   		
   		//here we use regex to find punctuation and save it for adding it after scrambling.
+  		//this strips out all the punctuation
+  		//wordNew = word.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ");
+  		//wordNew = word.replace(/[^\w ]/, "");
   		
   		var random = function() { 
 				return (0.5 - Math.random()); 
 			}; 
 				
-		var characters = word.split("");
+		var characters = word.split("");		
+		//var characters = wordNew.split("");
 		characters.sort(random); 
 		
 		//before returning you would add back the punctuation you removed at the beginning.

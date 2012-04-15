@@ -925,6 +925,9 @@ backToTheGame {
   line-height: 26px;
   margin: 20px 12% 10px 12%;
 }
+#linkToStory {
+  color: #ffffff;
+}
 /* forms */
 /*
 .main{
