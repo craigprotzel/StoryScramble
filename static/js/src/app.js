@@ -1095,6 +1095,17 @@ $(document).keypress(function (e) {
 
 
 
+//******************************TextBox Enter Logic******************************//
+//Might only be supported in Chrome???
+var textBox = document.getElementById('levelOneEntry');
+var textEntered = document.getElementById('textEntered');
+			
+textBox.addEventListener('input', function(){
 
-
+	var newText = textBox.value;
+	
+	console.log(newText);
+	textEntered.innerHTML = newText;
+	}, 
+	false);		
 		

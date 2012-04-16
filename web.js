@@ -205,7 +205,7 @@ app.get('/storyscramble_level_I', function(request, response) {
 
 
 
-// Display Level II Page - TWO WORDS SCRAMBLED 
+// Display Level II Instructions Page - TWO WORDS SCRAMBLED 
 app.get('/instructions_level_II', function(request, response) {
 	
 	response.render("instructions_level_II.html");
@@ -383,6 +383,7 @@ app.listen(port, function() {
 
 
 
+//////////Functions for the Views Pages//////////
 
 app.helpers({
 
@@ -414,15 +415,32 @@ app.helpers({
 		}
 	}
 	
+	//being used in Words Levels I & II
+	, chooseRandom: function (wordsList){
 	
-	//function for Headlines Level I
+		var random = function() { 
+				return (0.5 - Math.random()); 
+			}; 
+
+		var newWordsList = wordsList.slice(0);
+		newWordsList = wordsList.sort(random);
+	
+		for (var i = 0; i < wordsList.length; i++){
+			if (newWordsList[0] == wordsList[i]) {
+				return i;
+			}
+		}
+		return -1
+	}
+	
+	//function for all Word Levels & Headlines Level I
     , longestOne: function(wordslist){ 
     	
     	var sortLongToShort = function(a,b) {
 			return(b.toString().length - a.toString().length);
 		};
 		var sorted = wordslist.slice(0);
-		var sorted = sorted.sort(sortLongToShort);
+		sorted = sorted.sort(sortLongToShort);
 
 		for (var i = 0; i < wordslist.length; i++){
 			if (sorted[0] == wordslist[i]) {
@@ -508,7 +526,7 @@ app.helpers({
   			}
   }
   
-  /* this doesn't work very well */
+  //Not using this, doesn't work as well as compareWords function above
   , matchWords : function(one, two){
   		
   		var onechars = one.split(''),

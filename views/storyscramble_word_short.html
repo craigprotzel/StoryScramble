@@ -20,12 +20,12 @@
 	<!-- use the "longestOne" function to -->  
 	<!-- (1)sort the comma separated string and then--> 
 	<!-- (2)determine the index value of the longest word --> 	
-	<%	var	indexWordsLevelOne = longestOne(wordsLevelOne); %>
+	<%	var	indexWordsLevelOne = chooseRandom(wordsLevelOne); %>
 	
 	<!-- determine the index value of the chosen word for its original headline position -->
 	<%	var index = convertIndexToMaster((wordsLevelOne[indexWordsLevelOne]), masterWords); %>
 	
-	<!-- <div><%= "The Level One Index is: " + indexWordsLevelOne %></div> --> 
+	<!-- <div><%= "The Level One Index is: " + indexWordsLevelOne %></div> -->
 	<!-- <div><%= "The Master Words Index is: " + index %></div> -->
 					
 	<!-- save the longest word in a hidden div -->
@@ -55,10 +55,9 @@
 		<p>
 			<input type="text" placeholder="" name="longestWord" class="gameEntryField" id="levelOneEntry" value=""/>
 			
-			<input type="button" class="enterButton" id="levelOneEnter" value="ENTER"/>
+			<input type="button" class="enterButton" id="levelOneEnter" "textBox" value="ENTER"/>
 				
 		</p>
-			
 					
 		<p id="lowerGameButtonsALL">
 			<input type="button" class="lowerGameButtons" id="clueButton" value="GIVE ME A CLUE"/>
@@ -181,3 +180,6 @@
 	<!-- <input type="button" class="backButton" id="linkToStory" value="LINK TO THE STORY"/> -->
 
 </section>
+
+
+<div id="textEntered"></div>	
