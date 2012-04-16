@@ -235,7 +235,7 @@ app.get('/storyscramble_level_II', function(request, response) {
         };
         
         if (categoryChosen == "Words"){
-	    	response.render("storyscramble_word_short.html", templateData);
+	    	response.render("storyscramble_word_medium.html", templateData);
 	    }
 	    
 	    else if (categoryChosen == "Headlines") {  
@@ -284,7 +284,7 @@ app.get('/storyscramble_level_III', function(request, response) {
         };
 
         if (categoryChosen == "Words"){
-	    	response.render("storyscramble_word_short.html", templateData);
+	    	response.render("storyscramble_word_long.html", templateData);
 	    }
 	    
 	    else if (categoryChosen == "Headlines") {  
@@ -386,21 +386,34 @@ app.listen(port, function() {
 
 app.helpers({
 
-	//function for Words Level I
-	countCharsLevelOne: function(wordsList){
+	//functions for Words Level I, II, & III
+	
+	//pass in all the words from the headline and the desired char range
+	countChars: function(wordsList, lowNum, highNum){
 	
 		var wordsSplit = [];
-		var levelOneWords = [];
+		var usableWords = [];
 	
 		for (var i = 0; i < wordsList.length; i++){
 	  		wordsSplit[i] = wordsList[i].split(""); 
 	  		
-	  		if (wordsSplit[i].length == 4 || wordsSplit[i].length == 5  || wordsSplit[i].length == 6) { 
-	  			levelOneWords.push(wordsList[i]); 
+	  		if (wordsSplit[i].length >= lowNum && wordsSplit[i].length <= highNum) { 
+	  			usableWords.push(wordsList[i]); 
 	  		 }  			
 		} 
-		return levelOneWords;
+		return usableWords;
 	}
+	
+		
+	, convertIndexToMaster: function(word, wordsList){
+	
+		for (var i = 0; i < wordsList.length; i++){
+			if (word == wordsList[i]){
+				return i;
+			}		
+		}
+	}
+	
 	
 	//function for Headlines Level I
     , longestOne: function(wordslist){ 

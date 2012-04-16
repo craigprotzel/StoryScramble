@@ -380,7 +380,7 @@ body > header {
   display: none;
 }
 #pageTitle {
-  font-size: 44px;
+  font-size: 38px;
   font-weight: 500;
   text-align: center;
   line-height: 44px;
@@ -853,6 +853,15 @@ backToTheGame {
   margin-bottom: 30px;
 }
 #levelOneNext {
+  margin-top: 50px;
+}
+#levelOneShortNext {
+  margin-top: 50px;
+}
+#levelOneMedNext {
+  margin-top: 50px;
+}
+#levelOneLongNext {
   margin-top: 50px;
 }
 #levelTwoFinalButton {

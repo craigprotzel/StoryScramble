@@ -1,32 +1,32 @@
-<section id="currentPageTitle">Level One - Words</section>
+<section id="currentPageTitle">Level Two - Words</section>
 	
 <!-- MAIN GAME SECTION -->	
 <section class="gameBoard" id="gameBoardSection">		
    	
 	<!-- grab the story title, split by spaces, save to a var -->
 	<%	var masterHeadline = randomStory.title; 
-		var masterHeadlineLower = masterHeadline.toLowerCase();  
+		var masterHeadlineLower = masterHeadline.toLowerCase(); 
 		var masterWords = masterHeadlineLower.split(" "); %>
 	
-	<%	var wordsLevelOne = [];
-		var lowWordCount = 4; 
-		var highWordCount = 6; %>
+	<% 	var wordsLevelTwo = [] 
+		var lowWordCount = 7; 
+		var highWordCount = 9; %> 	
 	
-	<%	wordsLevelOne = countChars(masterWords, lowWordCount, highWordCount); %>		
+	<%	wordsLevelTwo = countChars(masterWords, lowWordCount, highWordCount); %>		
 	
-	<!-- <%= "Level One Words: " + wordsLevelOne %> -->
+	<!-- <%= "Level Two Words: " + wordsLevelTwo %> -->
 		
 	
-	<!-- use the "longestOne" function to -->  
-	<!-- (1)sort the comma separated string and then--> 
-	<!-- (2)determine the index value of the longest word --> 	
-	<%	var	indexWordsLevelOne = longestOne(wordsLevelOne); %>
+	<!-- use the "longestOne" function to  -->
+	<!-- (1)sort the comma separated string and then -->
+	<!-- (2)determine the index value of the longest word -->	
+	<%	var	indexWordsLevelTwo = longestOne(wordsLevelTwo); %>
 	
 	<!-- determine the index value of the chosen word for its original headline position -->
-	<%	var index = convertIndexToMaster((wordsLevelOne[indexWordsLevelOne]), masterWords); %>
+	<%	var index = convertIndexToMaster((wordsLevelTwo[indexWordsLevelTwo]), masterWords); %>
 	
-	<!-- <div><%= "The Level One Index is: " + indexWordsLevelOne %></div> --> 
-	<!-- <div><%= "The Master Words Index is: " + index %></div> -->
+	<!-- <div><%= "The Level Two Index is: " + indexWordsLevelTwo %></div> --> 
+	<!-- <div><%="The Master Words Index is:" + index %></div> -->
 					
 	<!-- save the longest word in a hidden div -->
 	<div class="hidden" id="levelOneAnswer"><%= masterWords[index] %></div>
@@ -148,7 +148,7 @@
 	<input type="text" placeholder="" name="longestWord" class="gameAnswerField" value="<%= masterWords[index] %>"/>
 	-->
 	<section>
-		<input type="button" class="lowerGameButtons" id="levelOneShortNext" value="NEW HEADLINE"/>
+		<input type="button" class="lowerGameButtons" id="levelOneMedNext" value="NEW HEADLINE"/>
 		<input type="button" class="lowerGameButtons" id="readStory" value="READ STORY"/>
 	</section>		
 			
