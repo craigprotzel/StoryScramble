@@ -529,14 +529,14 @@ backToTheGame {
   line-height: 52px;
 }
 .gameInstructionsSmall {
-  position: absolute;
-  float: right;
+  position: fixed;
+  bottom: 20px;
+  right: 0px;
   background-color: #555555;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
   padding: 15px 5px 10px 5px;
-  margin: 70px 0px 0px 40%;
 }
 #helpInstructionsSmall {
   display: none;
@@ -789,7 +789,7 @@ backToTheGame {
   margin: 30px auto 50px auto;
 }
 .enterButton {
-  background-color: #87468b;
+  background-color: #19a3a3;
   text-align: center;
   text-decoration: none;
   color: #ffffff;
@@ -804,11 +804,11 @@ backToTheGame {
 }
 .enterButton:hover {
   color: #ffffff;
-  background-color: #19a3a3;
+  background-color: #87468b;
 }
 .enterButton:active {
   color: #ffffff;
-  background-color: #87468b;
+  background-color: #19a3a3;
 }
 .checkAnswer {
   display: none;
@@ -924,6 +924,9 @@ backToTheGame {
   margin: 70px 0px 25px 0px;
   text-align: center;
 }
+#showImage {
+  margin-left: 12%;
+}
 #showStoryText {
   display: none;
   font-family: "Georgia", Times New Roman, Times, sans-serif;
@@ -937,15 +940,42 @@ backToTheGame {
 #linkToStory {
   color: #ffffff;
 }
-/* forms */
-/*
-.main{
-	position: absolute;
-	top: 150px;
-	left: 150px;
-	white-space:nowrap;
-	
-	font-size: 36px;
-
+button::-moz-focus-inner {
+  border: 0;
 }
-*/
+/* punch
+*******************************************************************************/
+.punch {
+  background: #19a3a3;
+  border-top: 1px solid #38538c;
+  border-right: 1px solid #1f2d4d;
+  border-bottom: 11px solid #151e33;
+  border-left: 1px solid #1f2d4d;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+  -moz-box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+  box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+  color: #fff;
+  font: bold 20px "helvetica neue", helvetica, arial, sans-serif;
+  line-height: 1;
+  margin-bottom: 10px;
+  padding: 10px 0 12px 0;
+  text-align: center;
+  text-shadow: 0px -1px 1px #1e2d4d;
+  width: 150px;
+  -webkit-background-clip: padding-box;
+}
+.punch:hover {
+  -webkit-box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+  -moz-box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+  box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
+  cursor: pointer;
+}
+.punch:active {
+  -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
+  -moz-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
+  box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
+  margin-top: 58px;
+}

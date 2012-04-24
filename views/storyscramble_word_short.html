@@ -38,18 +38,24 @@
 	<%	var scrambledWord = scramble(masterWords[index]); %>
 		
 		<!-- print the story title with the longest word scrambled in its original position -->	
-		<!-- <span class="quotes">"</span> -->
+		<span class="quotes">"</span>
 		<%	for (var i = 0; i < masterWords.length; i++){
-			if (i == index) { %>
-				<!-- <a href="<%= randomStory.link %>" id="highlightWord"> <%= scrambledWord %> </a> --> 
-				<span id="highlightWord"> <%= scrambledWord %> </span>
-		<%	} 
+			if (i == index) { 
+			
+				var scrambledLetters = scrambledWord.split("") 
+				
+				for (var j = 0; j < scrambledLetters.length; j++) { %>		
+					<span class="highlightedWord"><%=scrambledLetters[j]%></span>
+				<%	} %>
+				
+				<span class="highlightedWord"><%=scrambledWord%></span>
+			
+			<%	} 
 			else { %>
-				<!-- <a href="<%= randomStory.link %>" id="wordTitle"> <%= masterWords[i] %> </a> -->
 				<span id="wordTitle"> <%= masterWords[i] %> </span>		
 		<%		}
 			} %>
-			<!-- <span class="quotes">"</span> -->
+		<span class="quotes">"</span>
 		
 		
 		<p>

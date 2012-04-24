@@ -80,13 +80,17 @@ app.configure(function() {
 var source = 'USA_Today';
 var topic = '';
 
-var storyTopics = ['Offbeat','Travel','Weather'];
-var requestedTopic = ''
-
 var categories = ['Words', 'Headlines'];	  
 var categoryChosen = '';
 
-;
+var storyTopics = ['Offbeat','Travel','Weather'];
+var requestedTopic = '';
+
+var levels = ['levelOne','levelTwo','levelThree'];
+var requestedLevel = '';
+
+
+
 
 	
 
@@ -160,16 +164,22 @@ app.get('/weather', function(request, response) {
 
 //Display Level I Pages - ONE WORD SCRAMBLED
 app.get('/instructions_level_I', function(request, response) {
-	
+
+	requestedLevel = 'LevelOne';	
 	response.render("instructions_level_I.html");
 
 });
 
- 
+
+
 
 app.get('/storyscramble_level_I', function(request, response) {  
 
-    //var requestedTopic = request.params.Weather;
+	var getRandom;
+	var wordsLevelCheck;
+	
+	var stopWords = false;
+
     //get all the stories from the db
     var query = stories_db.find({'topic' : requestedTopic});
 
@@ -180,27 +190,88 @@ app.get('/storyscramble_level_I', function(request, response) {
     //run the query
     query.exec({}, function(err, allStories){
         
-        randomNum = Math.floor(Math.random()*allStories.length);
-		randomStory = allStories[randomNum];
+        getRandom = function() {
+	        randomNum = Math.floor(Math.random()*allStories.length);
+			randomStory = allStories[randomNum];
+			
+	        //prepare template data
+	        templateData = {
+	            randomStory : randomStory
+	        };
+	    	return randomStory
+        }
+        
+        randomStory = getRandom();
+        
 		
-        //prepare template data
-        templateData = {
-            //stories : allStories,
-            randomStory : randomStory
-        };
-	      
 	    if (categoryChosen == "Words"){
-	    	response.render("storyscramble_word_short.html", templateData);
-	    }
+	          
+	       	//WORDS LEVEL CHECK FUNCTION
+	    	wordsLevelCheck = function(randomStory, response) { 
 	    
+				var masterHeadlineBackEnd = randomStory.title; 
+				var masterHeadlineLowerBackEnd = masterHeadlineBackEnd.toLowerCase();  
+				var masterWordsBackEnd = masterHeadlineLowerBackEnd.split(" ")
+				    	
+				var wordsSplitBackEnd = [];
+				var usableWordsBackEnd = [];
+				
+				var lowNumBackEnd = 4;
+				var highNumBackEnd = 6;
+			
+				for (var i = 0; i < masterWordsBackEnd.length; i++){
+						
+					wordsSplitBackEnd[i] = masterWordsBackEnd[i].split(""); 
+					
+					if (wordsSplitBackEnd[i].length >= lowNumBackEnd && wordsSplitBackEnd[i].length <= highNumBackEnd) { 
+						usableWordsBackEnd.push(masterWordsBackEnd[i]); 
+				 	}  			
+				} 
+						
+				//check usable words to see if they have punctuation
+				if (usableWordsBackEnd.length >= 1) {
+					for (var i = 0; i < usableWordsBackEnd.length; i++){
+						if (usableWordsBackEnd[i].match(/[\W+]/)) {
+							stopWords = true;
+							console.log("FOUND A STOP WORD!!!!!!!!!!!!!!!!!");
+							break;		
+						}
+						else {
+							stopWords = false;
+							console.log("NO STOP WORDS!!!!!!!!!!!")
+						}
+					}
+				}	
+										
+				if (usableWordsBackEnd.length < 1){
+					//need to choose another story, recursively run the function	
+					newrandomStory = getRandom();
+					wordsLevelCheck(newrandomStory, response);	
+				}
+				
+				else if (stopWords){
+					stopWords = false;
+					newrandomStory = getRandom();
+					wordsLevelCheck(newrandomStory, response);
+				}	
+				
+				else {
+					response.render("storyscramble_word_short.html", templateData);
+				}
+			} 
+			//END of wordsLevelCheck()
+
+	    	wordsLevelCheck(randomStory, response);    	
+		}  
+		    
 	    else if (categoryChosen == "Headlines") {  
 	        response.render("storyscramble_word.html", templateData);
 	    }                
-	    
+
 	    else {
 	    	response.render("categories.html", templateData);
 	    }
-    });
+	});
 });
 
 
@@ -208,13 +279,19 @@ app.get('/storyscramble_level_I', function(request, response) {
 // Display Level II Instructions Page - TWO WORDS SCRAMBLED 
 app.get('/instructions_level_II', function(request, response) {
 	
+	requestedLevel = 'LevelTwo';	
 	response.render("instructions_level_II.html");
 
 });
 
 
 app.get('/storyscramble_level_II', function(request, response) {
-      
+
+	var getRandom;
+	var wordsLevelCheck;
+	
+	var stopWords = false;
+    
     //get all the stories from the db
     var query = stories_db.find({'topic' : requestedTopic});
 
@@ -225,19 +302,81 @@ app.get('/storyscramble_level_II', function(request, response) {
     //run the query
     query.exec({}, function(err, allStories){
         
-        randomNum = Math.floor(Math.random()*allStories.length);
-		randomStory = allStories[randomNum];
-		
-        //prepare template data
-        templateData = {
-            //stories : allStories,
-            randomStory : randomStory
-        };
+        getRandom = function() {
+	        randomNum = Math.floor(Math.random()*allStories.length);
+			randomStory = allStories[randomNum];
+			
+	        //prepare template data
+	        templateData = {
+	            randomStory : randomStory
+	        };
+	    	return randomStory
+        }
         
-        if (categoryChosen == "Words"){
-	    	response.render("storyscramble_word_medium.html", templateData);
-	    }
+        randomStory = getRandom();
+        
+		
+	    if (categoryChosen == "Words"){
+	       
+	       	//WORDS LEVEL CHECK FUNCTION
+	    	wordsLevelCheck = function(randomStory, response) { 
 	    
+				var masterHeadlineBackEnd = randomStory.title; 
+				var masterHeadlineLowerBackEnd = masterHeadlineBackEnd.toLowerCase();  
+				var masterWordsBackEnd = masterHeadlineLowerBackEnd.split(" ")
+				    	
+				var wordsSplitBackEnd = [];
+				var usableWordsBackEnd = [];
+				
+				var lowNumBackEnd = 7;
+				var highNumBackEnd = 9;
+			
+				for (var i = 0; i < masterWordsBackEnd.length; i++){
+						
+					wordsSplitBackEnd[i] = masterWordsBackEnd[i].split(""); 
+					
+					if (wordsSplitBackEnd[i].length >= lowNumBackEnd && wordsSplitBackEnd[i].length <= highNumBackEnd) { 
+						usableWordsBackEnd.push(masterWordsBackEnd[i]); 
+				 	}  			
+				} 
+
+				
+				//check usable words to see if they have punctuation
+				if (usableWordsBackEnd.length >= 1) {
+					for (var i = 0; i < usableWordsBackEnd.length; i++){
+						if (usableWordsBackEnd[i].match(/[\W+]/)) {
+							stopWords = true;
+							console.log("FOUND A STOP WORD!!!!!!!!!!!!!!!!!");
+							break;		
+						}
+						else {
+							stopWords = false;
+							console.log("NO STOP WORDS!!!!!!!!!!!")
+						}
+					}
+				}	
+						
+				if (usableWordsBackEnd.length < 1){
+					//need to choose another story, recursively run the function	
+					newrandomStory = getRandom();
+					wordsLevelCheck(newrandomStory, response);	
+				}
+				
+				else if (stopWords){
+					stopWords = false;
+					newrandomStory = getRandom();
+					wordsLevelCheck(newrandomStory, response);
+				}
+				
+				else {
+					response.render("storyscramble_word_medium.html", templateData);
+				}
+			} 
+			//END of wordsLevelCheck()
+
+	    	wordsLevelCheck(randomStory, response);    	
+		}  
+
 	    else if (categoryChosen == "Headlines") {  
 	        response.render("storyscramble_two_words.html", templateData);
 	    }                
@@ -255,6 +394,7 @@ app.get('/storyscramble_level_II', function(request, response) {
 
 app.get('/instructions_level_III', function(request, response) {
 	
+	requestedLevel = 'LevelThree';
 	response.render("instructions_level_III.html");
 
 });
@@ -264,7 +404,12 @@ app.get('/instructions_level_III', function(request, response) {
 
 app.get('/storyscramble_level_III', function(request, response) {
 
-    //get all the stories in the db
+	var getRandom;
+	var wordsLevelCheck;
+	
+	var stopWords = false;
+
+    //get all the stories from the db
     var query = stories_db.find({'topic' : requestedTopic});
 
     //sort by date in descending order
@@ -274,18 +419,79 @@ app.get('/storyscramble_level_III', function(request, response) {
     //run the query
     query.exec({}, function(err, allStories){
         
-        randomNum = Math.floor(Math.random()*allStories.length);
-		randomStory = allStories[randomNum];
+        getRandom = function() {
+	        randomNum = Math.floor(Math.random()*allStories.length);
+			randomStory = allStories[randomNum];
+			
+	        //prepare template data
+	        templateData = {
+	            randomStory : randomStory
+	        };
+	    	return randomStory
+        }
+        
+        randomStory = getRandom();
+        
 		
-        //prepare template data
-        templateData = {
-            //stories : allStories,
-            randomStory : randomStory
-        };
+	    if (categoryChosen == "Words"){
+	       
+	       	//WORDS LEVEL CHECK FUNCTION
+	    	wordsLevelCheck = function(randomStory, response) { 
+	    
+				var masterHeadlineBackEnd = randomStory.title; 
+				var masterHeadlineLowerBackEnd = masterHeadlineBackEnd.toLowerCase();  
+				var masterWordsBackEnd = masterHeadlineLowerBackEnd.split(" ")
+				    	
+				var wordsSplitBackEnd = [];
+				var usableWordsBackEnd = [];
+				
+				var lowNumBackEnd = 10;
+				var highNumBackEnd = 50;
+			
+				for (var i = 0; i < masterWordsBackEnd.length; i++){
+						
+					wordsSplitBackEnd[i] = masterWordsBackEnd[i].split(""); 
+					
+					if (wordsSplitBackEnd[i].length >= lowNumBackEnd && wordsSplitBackEnd[i].length <= highNumBackEnd) { 
+						usableWordsBackEnd.push(masterWordsBackEnd[i]); 
+				 	}  			
+				} 
 
-        if (categoryChosen == "Words"){
-	    	response.render("storyscramble_word_long.html", templateData);
-	    }
+				//check usable words to see if they have punctuation
+				if (usableWordsBackEnd.length >= 1) {
+					for (var i = 0; i < usableWordsBackEnd.length; i++){
+						if (usableWordsBackEnd[i].match(/[\W+]/)) {
+							stopWords = true;
+							console.log("FOUND A STOP WORD!!!!!!!!!!!!!!!!!");
+							break;		
+						}
+						else {
+							stopWords = false;
+							console.log("NO STOP WORDS!!!!!!!!!!!")
+						}
+					}
+				}	
+			
+				if (usableWordsBackEnd.length < 1){
+					//need to choose another story, recursively run the function	
+					newrandomStory = getRandom();
+					wordsLevelCheck(newrandomStory, response);	
+				}
+				
+				else if (stopWords){
+					stopWords = false;
+					newrandomStory = getRandom();
+					wordsLevelCheck(newrandomStory, response);
+				}
+				
+				else {
+					response.render("storyscramble_word_long.html", templateData);
+				}
+			} 
+			//END of wordsLevelCheck()
+
+	    	wordsLevelCheck(randomStory, response);    	
+		}  
 	    
 	    else if (categoryChosen == "Headlines") {  
 	        response.render("storyscramble_title.html", templateData);
@@ -314,12 +520,21 @@ app.get('/ajaxgetarticle', function(request, response){
 			//convert json to native js
 			diffbotData = JSON.parse(jsonData);
 			
+			try { 						
 			// get the diff bot data you want
-			articleData = {
-				title : diffbotData.title,
-				text : diffbotData.text
+				articleData = {
+					title : diffbotData.title,
+					text : diffbotData.text,
+					media : diffbotData.media
+				}
 			}
-			
+			catch(err) {
+				articleData = {
+					title : diffbotData.title,
+					text : diffbotData.text,
+					media : "null"
+				}
+			}
 			//respond with json
 			response.json(articleData);
 		});
@@ -383,6 +598,9 @@ app.listen(port, function() {
 
 
 
+
+
+
 //////////Functions for the Views Pages//////////
 
 app.helpers({
@@ -402,6 +620,19 @@ app.helpers({
 	  			usableWords.push(wordsList[i]); 
 	  		 }  			
 		} 
+		
+		/*
+		if (usableWords.length < 1){
+			//reload the page
+			//window.location.href=window.location.href;
+			window.location.reload()
+			//history.go(0)
+		}
+		else {
+			return usableWords;
+		}
+		*/
+		
 		return usableWords;
 	}
 	
@@ -488,7 +719,10 @@ app.helpers({
 			}; 
 				
 		var characters = word.split("");		
-		//var characters = wordNew.split("");
+		
+		//run sort a few times
+		characters.sort(random); 
+		characters.sort(random); 
 		characters.sort(random); 
 		
 		//before returning you would add back the punctuation you removed at the beginning.

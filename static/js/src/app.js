@@ -322,9 +322,9 @@ var wordsLevelOneTitle = "Level One - Words";
 var wordsLevelTwoTitle = "Level Two - Words";
 var wordsLevelThreeTitle = "Level Three - Words";
 
-var levelOneTitle = "Level One";
-var levelTwoTitle = "Level Two";
-var levelThreeTitle = "Level Three";
+var levelOneTitle = "Level One - Headlines";
+var levelTwoTitle = "Level Two - Headlines";
+var levelThreeTitle = "Level Three - Headlines";
 
 if (titleFiller == wordsLevelOneTitle){
 	
@@ -400,6 +400,19 @@ else if (titleFiller == levelThreeTitle) {
 	onLevelThree = true;
 	
 	console.log("We're On Headlines Level Three");
+}
+
+else {
+
+	onWordsLevelOne = false;
+	onWordsLevelTwo = false;
+	onWordsLevelThree = false;
+
+	onLevelOne = false;
+	onLevelTwo = false;
+	onLevelThree = false;
+
+	console.log("Not playing yet");
 }
 
 
@@ -484,15 +497,19 @@ var checkLevelOneAnswer = function(){
 		
 		if (onWordsLevelOne) {
 			finishedWordsLevelOne = true;
+			console.log("Finished Level One - Words!");
 			}
 		else if (onWordsLevelTwo) {
 			finishedWordsLevelTwo = true;
+			console.log("Finished Level Two - Words!");
 		}
 		else if (onWordsLevelThree) {
 			finishedWordsLevelThree = true;
+			console.log("Finished Level Three - Words!");
 		}
 		else if (onLevelOne) {
 			finishedLevelOne = true;
+			console.log("Finished Level One - Headlines!");
 		}
 		
 		$('#gameBoardSection').hide();
@@ -500,7 +517,7 @@ var checkLevelOneAnswer = function(){
 		$('.checkAnswer').show();
 		$('#levelOneCorrectAnswer').show();
 		$('#levelOneWrongAnswer').hide();
-		/* soundCorrect.play(); */	
+	
 	}
 	
 	else {
@@ -1044,16 +1061,30 @@ $('input#readStory').on('click', function(){
 			//console.log(data.text);
 			
 			$("#showStoryText").html(data.text);
-			
-			$("#showStory").show();
+					
+			$("#showStory").show();	
 			$("#showStoryHeadline").show();
+			
+			//check for image
+			var imageLink;
+
+			if (data.media != "null") {
+				for (var i = 0; i < data.media.length; i++) {
+					if (data.media[i].type == "image" && data.media[i].primary == "true") {
+						imageLink = data.media[i].link
+					}
+					console.log(data.media[i].link);
+				}	
+			}
+			$("#showImage").html('<image src="'+imageLink+'" style="maxWidth:680px"/>');
+			
 			$("#showStoryText").show();
 			
 			$('.checkAnswer').hide();
-			$('#levelThreeCorrectAnswer').hide();
+			//$('#levelThreeCorrectAnswer').hide();
 			
 		},
-		
+			
 		error : function(err) {
 		
 		}
@@ -1075,7 +1106,7 @@ $('#linkToStory').click(function() {
 var enterWasPressed = function() {
 
 	if (onWordsLevelOne || onWordsLevelTwo || onWordsLevelThree || onLevelOne) {
-		$('#levelOneEnter').trigger('click');
+		$('#levelOneEnter').trigger('click');		
 	}
 	else if (onLevelTwo) {
 		$('#levelTwoEnter').trigger('click');	
