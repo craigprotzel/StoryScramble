@@ -24,9 +24,15 @@
 		<!-- print the story title with the longest word scrambled in its original position -->	
 		<span class="quotes">"</span>
 		<%	for (var i = 0; i < masterWords.length; i++){
-			if (i == index) { %>
-				<!-- <a href="<%= randomStory.link %>" id="highlightWord"> <%= scrambledWord %> </a> --> 
-				<span id="highlightWord"> <%= scrambledWord %> </span>
+			if (i == index) { 
+			
+				var scrambledLetters = scrambledWord.split("") 
+				
+				for (var j = 0; j < scrambledLetters.length; j++) { %>		
+					<span class="letters highlightedLetter"><%=scrambledLetters[j]%></span>
+				<%	} %>
+							 
+				<!-- <span id="highlightWord"> <%= scrambledWord %> </span> -->
 		<%	} 
 			else { %>
 				<!-- <a href="<%= randomStory.link %>" id="wordTitle"> <%= masterWords[i] %> </a> -->
@@ -37,7 +43,7 @@
 		
 		
 		<p>
-			<input type="text" placeholder="" name="longestWord" class="gameEntryField" id="levelOneEntry" value=""/>
+			<input type="text" placeholder="" name="longestWord" class="gameEntryField" id="letterEntry" value=""/>
 			
 			<input type="button" class="enterButton" id="levelOneEnter" value="ENTER"/>
 				

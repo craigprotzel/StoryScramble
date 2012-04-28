@@ -16,7 +16,6 @@
 	
 	<!-- <%= "Level One Words: " + wordsLevelOne %> -->
 		
-	
 	<!-- use the "longestOne" function to -->  
 	<!-- (1)sort the comma separated string and then--> 
 	<!-- (2)determine the index value of the longest word --> 	
@@ -31,6 +30,7 @@
 	<!-- save the longest word in a hidden div -->
 	<div class="hidden" id="levelOneAnswer"><%= masterWords[index] %></div>
 	
+	<!-- for debugging -->
 	<%  var letters = masterWords[index].split(""); %> 
 	<div class="hidden" id="levelOneLetters"><%= letters %></div>  
 	
@@ -45,10 +45,10 @@
 				var scrambledLetters = scrambledWord.split("") 
 				
 				for (var j = 0; j < scrambledLetters.length; j++) { %>		
-					<span class="highlightedWord"><%=scrambledLetters[j]%></span>
+					<span class="letters highlightedLetter"><%=scrambledLetters[j]%></span>
 				<%	} %>
 				
-				<span class="highlightedWord"><%=scrambledWord%></span>
+				<!-- <span class="highlightedWord"><%=scrambledWord%></span> -->
 			
 			<%	} 
 			else { %>
@@ -59,7 +59,7 @@
 		
 		
 		<p>
-			<input type="text" placeholder="" name="longestWord" class="gameEntryField" id="levelOneEntry" value=""/>
+			<input type="text" placeholder="" name="longestWord" class="gameEntryField" id="letterEntry" value=""/>
 			
 			<input type="button" class="enterButton" id="levelOneEnter" "textBox" value="ENTER"/>
 				

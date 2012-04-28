@@ -418,10 +418,10 @@ else {
 
 //Enter - Entry - Answer Variables
 
+var letterEntry = document.getElementById('letterEntry');
+
 var levelOneEnter = document.getElementById('levelOneEnter'); 
-var levelOneEntry = document.getElementById('levelOneEntry');
-var levelOneAnswer = document.getElementById('levelOneAnswer');
-/* soundCorrect = document.getElementById('soundCorrect_01');  */
+//var levelOneEntry = document.getElementById('levelOneEntry');
 
 var levelTwoEnter = document.getElementById('levelTwoEnter'); 
 var levelTwoEntry = document.getElementById('levelTwoEntry');
@@ -459,19 +459,25 @@ var letterCountLevelOne = 1;
 
 var letterCounterLevelOne = function(){
 	
-	var levelOneAnswer = document.getElementById('levelOneAnswer');
+	//var levelOneAnswer = document.getElementById('levelOneAnswer');
 	var stringOfLettersOne = levelOneAnswer.innerHTML;
 	
-	var levelOneEntry = document.getElementById('levelOneEntry');
-	levelOneEntry.value = ""; 
+	
+	 
+	//var levelOneEntry = document.getElementById('levelOneEntry');
+	//levelOneEntry.value = ""; 
+	letterEntry.value = "";
+	
 	
 	if (letterCountLevelOne <= stringOfLettersOne.length) {
 		for (i = 0; i < letterCountLevelOne; i++){
-			levelOneEntry.value = levelOneEntry.value + stringOfLettersOne[i]
+			//levelOneEntry.value = levelOneEntry.value + stringOfLettersOne[i]
+			letterEntry.value = letterEntry.value + stringOfLettersOne[i]
 		}
 	}
 	else if (letterCountLevelOne > stringOfLettersOne.length){
-		levelOneEntry.value = levelOneAnswer.innerHTML; 
+		//levelOneEntry.value = levelOneAnswer.innerHTML; 
+		letterEntry.value = levelOneAnswer.innerHTML;
 		$('#levelOneEnter').trigger('click');
 	}		
 	letterCountLevelOne++;
@@ -491,7 +497,8 @@ $("#giveMeButtonLevelOne").click(function() {
 var checkLevelOneAnswer = function(){
 	
 	//this cleans it up for spaces
-	var levelOneEnteredAnswer = levelOneEntry.value.trim();
+	//var levelOneEnteredAnswer = levelOneEntry.value.trim();
+	var levelOneEnteredAnswer = letterEntry.value.trim();
 	
 	if (levelOneEnteredAnswer == levelOneAnswer.innerHTML) {
 		
@@ -527,7 +534,8 @@ var checkLevelOneAnswer = function(){
 		$('.checkAnswer').show();
 		$('#levelOneCorrectAnswer').hide();
 		$('#levelOneWrongAnswer').show();		
-		wrongAnswer.value = levelOneEntry.value;
+		//wrongAnswer.value = levelOneEntry.value;
+		wrongAnswer.value = letterEntry.value;
 	}	
 };
 
@@ -576,7 +584,8 @@ $("#levelOneTryAgain").click(function() {
 		
 	$('.checkAnswer').hide();
 
-	levelOneEntry.value = wrongAnswer.value;
+	//levelOneEntry.value = wrongAnswer.value;
+	letterEntry.value = wrongAnswer.value;
 	letterCountLevelOne = 1;  
 });
 
@@ -1068,7 +1077,7 @@ $('input#readStory').on('click', function(){
 			//check for image
 			var imageLink;
 
-			if (data.media != "null") {
+			if (data.media != undefined && data.media != "null") {
 				for (var i = 0; i < data.media.length; i++) {
 					if (data.media[i].type == "image" && data.media[i].primary == "true") {
 						imageLink = data.media[i].link
@@ -1126,17 +1135,88 @@ $(document).keypress(function (e) {
 
 
 
+
+
 //******************************TextBox Enter Logic******************************//
+
+//copied function from level 2
+var changeHighlightedLetter = function(idx){
+
+	$('.highlightedWord').html(levelTwoMasterHeadline[levelTwoWordCountIndex[idx-1]]);
+	$('.letter').removeClass('highlightedWord')
+	
+	$('.word').each(function(index) {
+   		if (levelTwoWordCountIndex[idx] == index){
+   			$(this).addClass('highlightedWord')
+   		}
+   });				
+}
+
+
+
+//Not sure if I should use "bind" or "addEventListener"
 //Might only be supported in Chrome???
-var textBox = document.getElementById('levelOneEntry');
+
+var textBox = document.getElementById('letterEntry');
 var textEntered = document.getElementById('textEntered');
-			
+
+//var correctLetters = (document.getElementById('levelOneLetters').innerHTML).split(",");
+
+$(function() {
+	$("#letterEntry").bind('input', function() {
+		
+		var letters = $(".letters");
+		letters.addClass("highlightedLetter"); 
+		letters.removeClass("usedLetter");
+		
+		var enteredLettersArray = textBox.value.split("");
+		
+		for (var i = 0; i < enteredLettersArray.length; i++){
+			letters.each(function(){
+				if (enteredLettersArray[i] == $(this).text() && !$(this).hasClass("usedLetter"))
+				{
+				$(this).removeClass("highlightedLetter");
+				$(this).addClass("usedLetter");		
+				}					
+			});
+		}
+	});
+});
+
+
+
+/*			
 textBox.addEventListener('input', function(){
 
-	var newText = textBox.value;
+	var letters = $(".letters");
+	//strip off the "usedLetter" class from all the letters
+	letters.removeClass("usedLetter");
 	
-	console.log(newText);
-	textEntered.innerHTML = newText;
-	}, 
-	false);		
+	//get the text box letters and split them into an array
+	var enteredLettersArray = textBox.value.split("");
+	//var enteredLettersArray = newText.split("");
+	
+	
+	//compare the entered text array with the letters array
+	for (var i = 0; i < enteredLettersArray.length; i++){
+		letters.each(function(){
+			if (enteredLettersArray[i] == $(this).text() && !$(this).hasClass("usedLetter"))
+			{
+				$(this).addClass("usedLetter");		
+			}	
+		});
+	}				
+	//print text to console
+	//console.log("New Text: " + newText);
+	//console.log("Entered Letters: " + enteredLetters);
+	//console.log("Answer Letters: " + correctLetters);
+	//print text to screen
+	//textEntered.innerHTML = newText;
+	
+}, 
+false);		
+
+*/		
+		
+		
 		
