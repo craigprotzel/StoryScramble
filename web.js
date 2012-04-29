@@ -545,13 +545,14 @@ app.get('/ajaxgetarticle', function(request, response){
 
 
 //USA Today API Query - click button on Main Page
+
 /*
 app.post('/usaTodayAPIQuery', function (request,response) {
 
 	console.log("hit usaTodayAPIQuery");
 	// the url you need to request from USA Today
     // this will return the 10 top news articles in json format
-    var url = "http://api.usatoday.com/open/articles/weather?encoding=json&count=30&api_key=85gehs983tmqbwxz4uwk6ghv"
+    var url = "http://api.usatoday.com/open/articles/weather?encoding=json&count=6&api_key=85gehs983tmqbwxz4uwk6ghv"
     
 	
     // make the request to USA Today api
@@ -587,6 +588,7 @@ app.post('/usaTodayAPIQuery', function (request,response) {
 
 });
 */
+
 
 
 

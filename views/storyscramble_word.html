@@ -144,22 +144,31 @@
 </section> 
 
 	
-<section id="articleLoading"></section>	
-	
-		
-<section id="showStory">
+<section id="articleLoading"></section>		
 
+<!-- <section id="storyContainer"> -->
+	
+<section id="showStory">
+	
 	<section id="showStoryHeadline">
-		<div title="<%= randomStory.link %>" id=" linkToStory">"<%= masterHeadline %>"</div>
+		"<%= masterHeadline %>"
 	</section>
-	
+					
+	<section id="showStoryDate">
+		<%= pullDate(randomStory.timestamp) %> 
+	</section>
+			
 	<section id="showImage"></section>
-	
+			
 	<section id="showStoryText">
 		<%= masterHeadline %>
 	</section>
-					
+		
+	<section id="showStoryLink">
+		<a href="<%= randomStory.link %>" target="_blank">CLICK HERE TO GO TO FULL STORY</a>
+	</section>	
+	
 	<input type="button" class="backButton" id="backToTheGameReadStory" value="BACK TO THE GAME"/>
-	<!-- <input type="button" class="backButton" id=" linkToStory" value="LINK TO THE STORY"/> -->
-
+	<!-- <input type="button" class="backButton" id="linkToStory" value="LINK TO THE STORY"/> -->
+						
 </section>
