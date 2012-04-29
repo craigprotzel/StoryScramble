@@ -20,6 +20,10 @@
   display: block;
   margin: 0 auto;
 }
+/*
+font-family: 'Cabin', sans-serif;
+font-family: 'Crimson Text', serif;
+*/
 /* buttons */
 #flexbox .display-box {
   display: -moz-box;
@@ -226,7 +230,7 @@ body:after {
   clear: both;
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
@@ -245,11 +249,20 @@ body a {
 .hidden {
   display: none;
 }
-/*
-#soundCorrect_01 {
-	display: hidden;
+.serif_main {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 64px;
+  font-weight: bold;
 }
-*/
+.serif_header {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+}
 body > header {
   background: #87468b;
   color: #ffffff;
@@ -268,6 +281,7 @@ body > header {
   border: none;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  font-weight: bold;
   font-size: 18px;
   padding: 10px 12px;
   margin-top: 5px;
@@ -409,7 +423,7 @@ body > footer {
   display: inline;
 }
 .welcomePage {
-  font-size: 38px;
+  font-size: 32px;
   font-weight: 400;
   text-align: center;
   margin-top: 90px;
@@ -442,7 +456,7 @@ body > footer {
   border: none;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  font-size: 34px;
+  font-size: 42px;
 }
 #buttons .option:hover {
   color: #ffffff;
@@ -473,7 +487,7 @@ body > footer {
   border: none;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  font-size: 34px;
+  font-size: 42px;
 }
 #buttonsTwo .optionTwo:hover {
   color: #ffffff;
@@ -505,6 +519,10 @@ body > footer {
 .footerButtons:active {
   color: #ffffff;
   background-color: #9b5aaa;
+}
+#linkToPage {
+  color: #ffffff;
+  font-weight: bold;
 }
 #help {
   display: none;
@@ -681,10 +699,10 @@ backToTheGame {
   border-radius: 10px;
   display: inline;
   float: left;
-  width: 31.25%;
+  width: 47.91666666666667%;
   margin: 0 1.0416666666666665%;
   padding: 20px;
-  margin: 50px 34.5% 75px;
+  margin: 50px 25% 75px;
   font-size: 24px;
   line-height: 36px;
 }
@@ -736,6 +754,9 @@ backToTheGame {
   font-weight: bold;
   font-size: 38px;
 }
+.letterPadding {
+  padding: 0px 8px 0px 2px;
+}
 .highlightedLetter {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
   font-size: 14px;
@@ -743,6 +764,16 @@ backToTheGame {
   line-height: 20px;
   font-weight: bold;
   font-size: 96px;
+  display: inline;
+  color: #19a3a3;
+}
+.highlightedLetterTwo {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 52px;
   display: inline;
   color: #19a3a3;
 }
@@ -765,7 +796,6 @@ backToTheGame {
   font-size: 96px;
   display: inline;
   color: #19a3a3;
-  padding: 0 2px 0 8px;
 }
 .highlightedWordTwo {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
@@ -776,7 +806,6 @@ backToTheGame {
   font-size: 52px;
   display: inline;
   color: #19a3a3;
-  padding: 0 2px 0 8px;
 }
 #highlightWord {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
@@ -930,8 +959,30 @@ backToTheGame {
   color: #ffffff;
   background-color: #19a3a3;
 }
+#articleLoading {
+  display: none;
+  font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 38px;
+  line-height: 42px;
+  font-weight: bold;
+  margin: 200px 30% 30px 30%;
+}
+#storyContainer {
+  display: none;
+  background-color: #282828;
+}
 #showStory {
   display: none;
+  background-color: #ebebeb;
+  color: #000000;
+  margin: 100px 12% 0px 12%;
+}
+#showStory a {
+  text-decoration: none;
+  color: black;
 }
 #showStoryHeadline {
   display: none;
@@ -939,13 +990,25 @@ backToTheGame {
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
+  font-weight: bold;
+  color: #000000;
   font-size: 24px;
-  line-height: 36px;
-  margin: 70px 0px 25px 0px;
-  text-align: center;
+  line-height: 28px;
+  padding-top: 35px;
+  margin: 0px 12% 0px 12%;
+  text-align: left;
+}
+#showStoryDate {
+  display: none;
+  color: #000000;
+  font-weight: bold;
+  text-align: left;
+  margin: 0px 12% 0px 12%;
+  padding: 20px 0px 0px 0px;
 }
 #showImage {
-  margin-left: 12%;
+  display: none;
+  margin: 0px 12% 0px 12%;
 }
 #showStoryText {
   display: none;
@@ -954,11 +1017,22 @@ backToTheGame {
   font-weight: normal;
   line-height: 20px;
   font-size: 18px;
+  color: #000000;
   line-height: 26px;
-  margin: 20px 12% 10px 12%;
+  padding: 10px 0px 15px 0px;
+  margin: 0px 12% 0px 12%;
 }
-#linkToStory {
-  color: #ffffff;
+#showStoryLink {
+  display: none;
+  text-align: left;
+  margin: 0px 12% 0px 12%;
+  padding: 20px 0px 40px 0px;
+}
+#showStoryLink a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+  font-size: 18px;
 }
 button::-moz-focus-inner {
   border: 0;

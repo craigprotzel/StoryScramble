@@ -42,11 +42,11 @@
 		<%	for (var i = 0; i < masterWords.length; i++){
 			if (i == index) { 
 				
-				var scrambledLetters = scrambledWord.split("") 
+				var scrambledLetters = scrambledWord.split("") %>
 				
-				for (var j = 0; j < scrambledLetters.length; j++) { %>		
-					<span class="letters highlightedLetter"><%=scrambledLetters[j]%></span>
-				<%	} %>
+				<span class="letterPadding">
+				<%for(var j = 0; j < scrambledLetters.length; j++){%><span class="letters highlightedLetter"><%=scrambledLetters[j]%></span><%}%>
+				</span>
 				 
 				<!-- <span id="highlightWord"> <%= scrambledWord %> </span> -->
 		<%	} 
@@ -93,20 +93,6 @@
 		
 
 <!-- HELP SECTION -->
-<section class = gameInstructions id="helpChoices">
-
-	How Can We Help You?
-	
-	<section id="buttons">		
-		<input type="button" class="option" id="changeTopic" value="CHANGE TOPIC"/>
-		<input type="button" class="option" id="changeLevel" value="CHANGE LEVEL"/>
-		<input type="button" class="option" id="reviewInstructions" value="INSTRUCTIONS"/>
-		<input type="button" class="backButton" id="backToTheGame" value="BACK TO THE GAME"/>		
-	</section>
-
-</section>
-
-
 <section class="gameInstructions" id ="helpInstructions">
 	
 	HOW TO PLAY
@@ -122,6 +108,7 @@
 </section>
 
 
+<!-- Help Box Insert - Removing this feature for now -->
 <section class="gameInstructionsSmall" id="helpInstructionsSmall">
 	
 	HOW TO PLAY
@@ -172,11 +159,12 @@
 		
 </section> 
 
+<section id="articleLoading"></section>
 		
 <section id="showStory">
 
 	<section id="showStoryHeadline">
-		<div title="<%= randomStory.link %>" id="linkToStory">"<%= masterHeadline %>"</div>
+		<div title="<%= randomStory.link %>" id=" linkToStory">"<%= masterHeadline %>"</div>
 	</section>
 	
 	<section id="showStoryText">
@@ -184,6 +172,6 @@
 	</section>
 					
 	<input type="button" class="backButton" id="backToTheGameReadStory" value="BACK TO THE GAME"/>
-	<!-- <input type="button" class="backButton" id="linkToStory" value="LINK TO THE STORY"/> -->
+	<!-- <input type="button" class="backButton" id=" linkToStory" value="LINK TO THE STORY"/> -->
 
 </section>

@@ -526,6 +526,7 @@ app.get('/ajaxgetarticle', function(request, response){
 					title : diffbotData.title,
 					text : diffbotData.text,
 					media : diffbotData.media
+					
 				}
 			}
 			catch(err) {
@@ -605,10 +606,22 @@ app.listen(port, function() {
 
 app.helpers({
 
+
+	//reg ex to get article date
+	pullDate: function(chars){
+		
+		//var printDate = chars.toString();
+		//chars.search()
+		/* for weather - (?<=story\/).{10} */
+		/* for news and travel - (?<=post\/).{7} */
+		return chars
+		
+	}
+	
 	//functions for Words Level I, II, & III
 	
 	//pass in all the words from the headline and the desired char range
-	countChars: function(wordsList, lowNum, highNum){
+	,countChars: function(wordsList, lowNum, highNum){
 	
 		var wordsSplit = [];
 		var usableWords = [];

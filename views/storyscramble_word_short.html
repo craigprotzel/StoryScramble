@@ -3,16 +3,20 @@
 <!-- MAIN GAME SECTION -->	
 <section class="gameBoard" id="gameBoardSection">		
    	
+   	
 	<!-- grab the story title, split by spaces, save to a var -->
 	<%	var masterHeadline = randomStory.title; 
 		var masterHeadlineLower = masterHeadline.toLowerCase();  
-		var masterWords = masterHeadlineLower.split(" "); %>
+		var masterWords = masterHeadlineLower.split(" "); %>	
 	
 	<%	var wordsLevelOne = [];
 		var lowWordCount = 4; 
 		var highWordCount = 6; %>
 	
 	<%	wordsLevelOne = countChars(masterWords, lowWordCount, highWordCount); %>		
+	
+	
+	<!-- <%= pullDate(randomStory.link) %> -->
 	
 	<!-- <%= "Level One Words: " + wordsLevelOne %> -->
 		
@@ -39,14 +43,15 @@
 		
 		<!-- print the story title with the longest word scrambled in its original position -->	
 		<span class="quotes">"</span>
+			
 		<%	for (var i = 0; i < masterWords.length; i++){
 			if (i == index) { 
 			
-				var scrambledLetters = scrambledWord.split("") 
+				var scrambledLetters = scrambledWord.split("") %>
 				
-				for (var j = 0; j < scrambledLetters.length; j++) { %>		
-					<span class="letters highlightedLetter"><%=scrambledLetters[j]%></span>
-				<%	} %>
+				<span class="letterPadding">
+				<%for(var j = 0; j < scrambledLetters.length; j++){%><span class="letters highlightedLetter"><%=scrambledLetters[j]%></span><%}%>
+				</span>
 				
 				<!-- <span class="highlightedWord"><%=scrambledWord%></span> -->
 			
@@ -55,6 +60,7 @@
 				<span id="wordTitle"> <%= masterWords[i] %> </span>		
 		<%		}
 			} %>
+	
 		<span class="quotes">"</span>
 		
 		
@@ -92,20 +98,6 @@
 		
 
 <!-- HELP SECTION -->
-<section class = gameInstructions id="helpChoices">
-
-	How Can We Help You?
-	
-	<section id="buttons">		
-		<input type="button" class="option" id="changeTopic" value="CHANGE TOPIC"/>
-		<input type="button" class="option" id="changeLevel" value="CHANGE LEVEL"/>
-		<input type="button" class="option" id="reviewInstructions" value="INSTRUCTIONS"/>
-		<input type="button" class="backButton" id="backToTheGame" value="BACK TO THE GAME"/>		
-	</section>
-
-</section>
-
-
 <section class="gameInstructions" id ="helpInstructions">
 	
 	HOW TO PLAY
@@ -121,6 +113,7 @@
 </section>
 
 
+<!-- Help Box Insert - Removing this feature for now -->
 <section class="gameInstructionsSmall" id="helpInstructionsSmall">
 	
 	HOW TO PLAY
@@ -171,21 +164,38 @@
 		
 </section> 
 
-		
-<section id="showStory">
 
-	<section id="showStoryHeadline">
-		<div title="<%= randomStory.link %>" id="linkToStory">"<%= masterHeadline %>"</div>
-	</section>
+<section id="articleLoading"></section>		
+
+<!-- <section id="storyContainer"> -->
 	
+<section id="showStory">
+	
+	<section id="showStoryHeadline">
+		"<%= masterHeadline %>"
+	</section>
+					
+	<section id="showStoryDate">
+		<%= pullDate(randomStory.timestamp) %> 
+	</section>
+			
+	<section id="showImage"></section>
+			
 	<section id="showStoryText">
 		<%= masterHeadline %>
 	</section>
-					
+		
+	<section id="showStoryLink">
+		<a href="<%= randomStory.link %>" target="_blank">CLICK HERE TO GO TO FULL STORY</a>
+	</section>	
+	
 	<input type="button" class="backButton" id="backToTheGameReadStory" value="BACK TO THE GAME"/>
 	<!-- <input type="button" class="backButton" id="linkToStory" value="LINK TO THE STORY"/> -->
-
+						
 </section>
+	
 
+	
+<!-- </section> -->
 
 <div id="textEntered"></div>	

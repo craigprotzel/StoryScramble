@@ -229,7 +229,12 @@ $("#backToTheGameInstructions").click(function() {
 		
 		$("#showStory").hide();
 		$("#showStoryHeadline").hide();
+		$("#showStoryDate").hide();
+		$("#showImage").hide();
 		$("#showStoryText").hide();
+		$("#showStoryLink").hide();
+		
+		
 			
 	}
 });
@@ -258,12 +263,16 @@ $("#backToTheGameReadStory").click(function() {
 		document.location.href='/storyscramble_level_III';
 	}
 	else {
-		$('.gameBoard').show();
-		$('#helpInstructions').hide();
-		
+		$('#articleLoading').hide();
+		//$('#storyContainer').show();
 		$("#showStory").hide();
 		$("#showStoryHeadline").hide();
 		$("#showStoryText").hide();
+		$("#showStoryLink").hide();
+		
+		
+		$('.gameBoard').show();
+		$('#helpInstructions').hide();
 			
 	}
 });
@@ -418,16 +427,16 @@ else {
 
 //Enter - Entry - Answer Variables
 
+//input box letters for all levels
 var letterEntry = document.getElementById('letterEntry');
 
 var levelOneEnter = document.getElementById('levelOneEnter'); 
-//var levelOneEntry = document.getElementById('levelOneEntry');
 
 var levelTwoEnter = document.getElementById('levelTwoEnter'); 
-var levelTwoEntry = document.getElementById('levelTwoEntry');
+
 
 var levelThreeEnter = document.getElementById('levelThreeEnter'); 
-var levelThreeEntry = document.getElementById('levelThreeEntry');
+//var levelThreeEntry = document.getElementById('levelThreeEntry');
 
 var wrongAnswer = document.getElementById('wrongAnswer');
 
@@ -470,7 +479,7 @@ var letterCounterLevelOne = function(){
 	
 	
 	if (letterCountLevelOne <= stringOfLettersOne.length) {
-		for (i = 0; i < letterCountLevelOne; i++){
+		for (var i = 0; i < letterCountLevelOne; i++){
 			//levelOneEntry.value = levelOneEntry.value + stringOfLettersOne[i]
 			letterEntry.value = letterEntry.value + stringOfLettersOne[i]
 		}
@@ -486,6 +495,8 @@ var letterCounterLevelOne = function(){
 
 $("#giveMeButtonLevelOne").click(function() { 
  	letterCounterLevelOne();
+ 	//$('#letterEntry').trigger('change');
+ 	
  });
 
 
@@ -586,6 +597,7 @@ $("#levelOneTryAgain").click(function() {
 
 	//levelOneEntry.value = wrongAnswer.value;
 	letterEntry.value = wrongAnswer.value;
+	letterEntry.value = "";
 	letterCountLevelOne = 1;  
 });
 
@@ -606,18 +618,22 @@ var letterCounterLevelTwo = function(){
 	console.log("The Level 2 Index Value is: " + levelTwoIndex);
 	console.log("The Current Answer is: " + levelTwoAnswer);
 	var levelTwoChars = levelTwoAnswer.split(""); 
+		
 	
-	var levelTwoEntry = document.getElementById('levelTwoEntry');
-	levelTwoEntry.value = ""; 
+	//can I check to see if any of the letters are already correct???
+	
+	
+	letterEntry.value = ""; 
+
 	
 	if (letterCountLevelTwo <= levelTwoChars.length) {
-		for (i = 0; i < letterCountLevelTwo; i++){
-			levelTwoEntry.value = levelTwoEntry.value + levelTwoChars[i]
+		for (var i = 0; i < letterCountLevelTwo; i++){
+			letterEntry.value = letterEntry.value + levelTwoChars[i]
 		}
 		console.log(letterCountLevelTwo);
 	}
 	else if (letterCountLevelTwo > levelTwoChars.length){
-		levelTwoEntry.value = levelTwoAnswer;
+		letterEntry.value = levelTwoAnswer;
 		letterCountLevelTwo = 1;
 		console.log (letterCountLevelTwo); 
 		$('#levelTwoEnter').trigger('click');
@@ -653,7 +669,7 @@ var changeHighlightWordLevelTwo = function(idx){
 											
 var checkLevelTwoAnswer = function(){
 	//console.log("Level 2 Answer Submitted");
-	console.log("You Entered: " + levelTwoEntry.value);
+	console.log("You Entered: " + letterEntry.value);
 	console.log("The Correct Answer is: " + levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]]);
 	var currentScrambleAnswer = "";
 	
@@ -666,7 +682,7 @@ var checkLevelTwoAnswer = function(){
    });
 	
 	//this cleans it up for spaces
-	var levelTwoEnteredAnswer = levelTwoEntry.value.trim();
+	var levelTwoEnteredAnswer = letterEntry.value.trim();
 	
 	if (levelTwoEnteredAnswer == levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]]) {
 				
@@ -717,7 +733,7 @@ var checkLevelTwoAnswer = function(){
 		
 		console.log("Level Two index Is: " + levelTwoIndex)
 		
-		wrongAnswer.value = levelTwoEntry.value;		
+		wrongAnswer.value = letterEntry.value;		
 	}	
 };
 
@@ -737,7 +753,7 @@ $("#levelTwoEnter").click(function() {
 //Level II - New
 $("#levelTwoNew").click(function() {
 
-	levelTwoEntry.value = "";
+	letterEntry.value = "";
 	letterCountLevelTwo = 1;
 	
 	if(levelTwoIndex == 2) {
@@ -758,7 +774,7 @@ $("#levelTwoNew").click(function() {
 $("#levelTwoNext").click(function() { 
 
 	letterCountLevelTwo = 1;
-	levelTwoEntry.value = "";
+	letterEntry.value = "";
 	
 	if(levelTwoIndex == 1) {
 		levelTwoIndex = 0;
@@ -780,7 +796,7 @@ $("#levelTwoNext").click(function() {
 $("#levelTwoSkip").click(function() { 
 
 	letterCountLevelTwo = 1;
-	levelTwoEntry.value = "";
+	letterEntry.value = "";
 
 	if(levelTwoIndex == 1) {
 			levelTwoIndex = 0;
@@ -815,7 +831,8 @@ $("#levelTwoTryAgain").click(function() {
   	$('#gameBoardSection').show();	
 	$('.checkAnswer').hide();
 
-	levelTwoEntry.value = wrongAnswer.value;
+	letterEntry.value = "";
+	letterCountLevelTwo = 1;
  
 });
 
@@ -836,17 +853,19 @@ var letterCounterLevelThree = function(){
 	var levelThreeAnswer = levelThreeMasterHeadline[levelThreeWordCountIndex];
 	var levelThreeChars = levelThreeAnswer.split(""); 
 	
-	var levelThreeEntry = document.getElementById('levelThreeEntry');
-	levelThreeEntry.value = ""; 
+	//var levelThreeEntry = document.getElementById('levelThreeEntry');
+	//levelThreeEntry.value = "";
+	
+	letterEntry.value = ""; 
 	
 	if (letterCountLevelThree <= levelThreeChars.length) {
-		for (i = 0; i < letterCountLevelThree; i++){
-			levelThreeEntry.value = levelThreeEntry.value + levelThreeChars[i]
+		for (var i = 0; i < letterCountLevelThree; i++){
+			letterEntry.value = letterEntry.value + levelThreeChars[i]
 		}
 		console.log(letterCountLevelThree);
 	}
 	else if (letterCountLevelThree > levelThreeChars.length){
-		levelThreeEntry.value = levelThreeAnswer;
+		letterEntry.value = levelThreeAnswer;
 		letterCountLevelThree = 1;
 		console.log (letterCountLevelThree); 
 		$('#levelThreeEnter').trigger('click');
@@ -880,7 +899,7 @@ var changeHighlightWordLevelThree = function(idx){
 											
 var checkLevelThreeAnswer = function(){
 	console.log("Level 3 Answer Submitted");
-	console.log("You Entered: " + levelThreeEntry.value);
+	console.log("You Entered: " + letterEntry.value);
 	console.log("The Correct Answer is: " + levelThreeMasterHeadline[levelThreeWordCountIndex]);
 	var currentScrambleAnswer = "";
 	
@@ -892,7 +911,7 @@ var checkLevelThreeAnswer = function(){
 	
 	
 	//this cleans it up for spaces
-	var levelThreeEnteredAnswer = levelThreeEntry.value.trim();
+	var levelThreeEnteredAnswer = letterEntry.value.trim();
 	
 	if (levelThreeEnteredAnswer == levelThreeMasterHeadline[levelThreeWordCountIndex]) {
 				
@@ -942,7 +961,7 @@ var checkLevelThreeAnswer = function(){
 		$('#finalAnswer').hide();
 		$('#levelThreeWrongAnswer').show();
 		
-		wrongAnswer.value = levelThreeEntry.value;		
+		wrongAnswer.value = letterEntry.value;		
 	}	
 };
 
@@ -964,7 +983,7 @@ $("#levelThreeNew").click(function() {
 
 	console.log("NEW WAS PRESSED");
 
-	levelThreeEntry.value = "";
+	letterEntry.value = "";
 	letterCountLevelThree = 1;
 	
 	if(levelThreeWordCountIndex == levelThreeMasterHeadline.length ) {
@@ -986,7 +1005,7 @@ $("#levelThreeNext").click(function() {
 	console.log("NEXT WAS PPRESSED");
 
 	letterCountLevelThree = 1;
-	levelThreeEntry.value = "";
+	letterEntry.value = "";
 	
 	if(levelThreeWordCountIndex == levelThreeMasterHeadline.length - 1 ) {
 		levelThreeWordCountIndex = 0;
@@ -1008,7 +1027,7 @@ $("#levelThreeSkip").click(function() {
 	console.log("SKIP WAS PRESSED");
 
 	letterCountLevelThree = 1;
-	levelThreeEntry.value = "";
+	letterEntry.value = "";
 
 	if(levelThreeWordCountIndex == levelThreeMasterHeadline.length - 1 ) {
 			levelThreeWordCountIndex = 0;
@@ -1041,7 +1060,8 @@ $("#levelThreeTryAgain").click(function() {
   	$('#gameBoardSection').show();	
 	$('.checkAnswer').hide();
 
-	levelThreeEntry.value = wrongAnswer.value;
+	letterEntry.value = "";
+	letterCountLevelThree = 1;
  
 });
 
@@ -1051,7 +1071,13 @@ $("#levelThreeTryAgain").click(function() {
 
 $('input#readStory').on('click', function(){
 
-	console.log("got it");
+	$('.checkAnswer').hide();
+	
+	/* $('#articleLoading').html('<img src="media/gifs/ajax-loader.gif"/> One moment please...'); */
+	$('#articleLoading').html("One moment please..."); 	
+	$('#articleLoading').show();
+	
+	console.log("Article Request Made");
 	
 	url = $('#finalHeadlineLink').attr('href');
 	console.log(url);
@@ -1067,12 +1093,17 @@ $('input#readStory').on('click', function(){
 		type : 'GET',
 		
 		success : function(data) {
-			//console.log(data.text);
+			
+			$('#articleLoading').hide();
+			$('#articleLoading').html("");
 			
 			$("#showStoryText").html(data.text);
-					
+			
+			//$('#storyContainer').show();		
 			$("#showStory").show();	
 			$("#showStoryHeadline").show();
+			$("#showStoryLink").show();
+			$("#showStoryDate").show();
 			
 			//check for image
 			var imageLink;
@@ -1084,13 +1115,13 @@ $('input#readStory').on('click', function(){
 					}
 					console.log(data.media[i].link);
 				}	
-			}
-			$("#showImage").html('<image src="'+imageLink+'" style="maxWidth:680px"/>');
-			
+				$("#showImage").html('<image src="'+imageLink+'" style="maxWidth:680px"/>');
+				$("#showImage").show();
+			}		
+						
 			$("#showStoryText").show();
 			
-			$('.checkAnswer').hide();
-			//$('#levelThreeCorrectAnswer').hide();
+					
 			
 		},
 			
@@ -1102,11 +1133,11 @@ $('input#readStory').on('click', function(){
 })
 
 
+/*
 $('#linkToStory').click(function() {
-
 	window.open($('#linkToStory').attr('title'));
-
 });
+*/
 
 
 
@@ -1139,20 +1170,6 @@ $(document).keypress(function (e) {
 
 //******************************TextBox Enter Logic******************************//
 
-//copied function from level 2
-var changeHighlightedLetter = function(idx){
-
-	$('.highlightedWord').html(levelTwoMasterHeadline[levelTwoWordCountIndex[idx-1]]);
-	$('.letter').removeClass('highlightedWord')
-	
-	$('.word').each(function(index) {
-   		if (levelTwoWordCountIndex[idx] == index){
-   			$(this).addClass('highlightedWord')
-   		}
-   });				
-}
-
-
 
 //Not sure if I should use "bind" or "addEventListener"
 //Might only be supported in Chrome???
@@ -1161,6 +1178,7 @@ var textBox = document.getElementById('letterEntry');
 var textEntered = document.getElementById('textEntered');
 
 //var correctLetters = (document.getElementById('levelOneLetters').innerHTML).split(",");
+
 
 $(function() {
 	$("#letterEntry").bind('input', function() {
@@ -1175,8 +1193,8 @@ $(function() {
 			letters.each(function(){
 				if (enteredLettersArray[i] == $(this).text() && !$(this).hasClass("usedLetter"))
 				{
-				$(this).removeClass("highlightedLetter");
-				$(this).addClass("usedLetter");		
+					$(this).removeClass("highlightedLetter");
+					$(this).addClass("usedLetter");		
 				}					
 			});
 		}
@@ -1185,7 +1203,8 @@ $(function() {
 
 
 
-/*			
+			
+/*
 textBox.addEventListener('input', function(){
 
 	var letters = $(".letters");
@@ -1215,8 +1234,8 @@ textBox.addEventListener('input', function(){
 	
 }, 
 false);		
-
-*/		
+		
+*/
 		
 		
 		

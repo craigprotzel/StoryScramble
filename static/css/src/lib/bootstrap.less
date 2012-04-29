@@ -32,6 +32,7 @@
 @purple:            #7a43b6;
 
 
+@softWhite:			#EBEBEB;
 
 //Alz other colors
 @lightPurpleAlz:	#6D4194; 
@@ -107,6 +108,13 @@
   }
 }
 
+//Google Fonts
+/*
+font-family: 'Cabin', sans-serif;
+font-family: 'Crimson Text', serif;
+*/
+
+
 // Font Stacks
 #font {
   .shorthand(@weight: normal, @size: 14px, @lineHeight: 20px) {
@@ -115,7 +123,7 @@
     line-height: @lineHeight;
   }
   .sans-serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
@@ -281,6 +289,29 @@
 	}
 }
 
+
+
+.headerHomeButton(){
+ 	
+ 	//background-color: @newAqua;
+ 	background-color: @lightPurple;
+	text-align: center;
+	text-decoration: none;
+	color: @white;
+	font-weight: bold;
+	border: none;
+	.border-radius(5px);	
+
+	&:hover {
+		color: @newAqua;
+		//background-color: @newAqua;
+	}
+
+	&:active {
+		color: @white;
+		background-color: @lightPurple;	
+	}
+}
 
 .headerButton(){
  	

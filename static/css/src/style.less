@@ -1,9 +1,14 @@
+
+
+
+
 //font sizes
 @superBig: 96px;
 @reallyBig: 72px;
 @big: 52px;
 @larger: 44px;
 @large: 38px;
+@medium_large: 32px;
 @medium: 24px;
 @normal: 18px;
 @small: 12px;
@@ -56,16 +61,23 @@ body{
 	display: none;
 }
 
-/*
-#soundCorrect_01 {
-	display: hidden;
+
+.serif_main {
+	#font.serif();
+	font-size: 64px;
+	font-weight: bold;
 }
-*/
+
+
+.serif_header {
+	#font.serif();
+}
 
 // > sign means direct child of
 body > header {
 	background: @lightPurple;
-	//background: @grayDark;
+	//background-image: url('media/jpegs/newspaper_texture_05.jpeg');
+	//background: @softWhite;
 	color: @white;
 	padding: 18px;	
 	overflow: hidden;	
@@ -85,14 +97,16 @@ float: right;
 #homeButton{
 		
 	.headerButton();
+	font-weight: bold;
 	font-size: @normal;
 	//text-align: left;
 	//width: 100px;
-	padding: 10px 12px;
+	padding: 10px 12px; 
 	margin-top: 5px;
 	float: left;
 	line-height: 1;
 }
+
 
 #changeTopic{
 		
@@ -181,6 +195,7 @@ article#main {
 body > footer {
 	position: fixed;
 	background-color: @lightPurple;
+	//background-image: url('media/jpegs/newspaper_texture_05.jpeg');
 	bottom: 0;
 	width: 100%;
 	color: @white;
@@ -201,7 +216,7 @@ body > footer {
 
 .welcomePage{
 
-	font-size: @large;
+	font-size: @medium_large;
 	font-weight: 400;
 	text-align: center;
 	margin-top: 90px; 
@@ -226,7 +241,7 @@ body > footer {
 	.option {
 		.column(3,9); 
 		.bigButton();
-		font-size: 34px;
+		font-size: 42px;
 	}
 }
 
@@ -240,7 +255,7 @@ body > footer {
 	.optionTwo {
 		.column(6,12); 
 		.bigButton();
-		font-size: 34px;
+		font-size: 42px;
 	}	
 }
 
@@ -255,7 +270,10 @@ body > footer {
 }
 
 
-
+#linkToPage {
+	color: @white;
+	font-weight: bold;
+}
 
 
 //////////////////
@@ -410,9 +428,9 @@ backToTheGame{
 .backButton {
 
 	.instructionsButton();
-	.column(4,12);	
+	.column(6,12);	
 	padding: 20px;
-	margin: 50px 34.5% 75px;
+	margin: 50px 25% 75px;
 	font-size: @medium;
 	line-height: 36px;
 }
@@ -458,6 +476,7 @@ backToTheGame{
 	font-size: @large;
 }
 
+//for headlines level 2 and 3
 .word{
 	#font.serif();
 	color: @white;
@@ -466,7 +485,13 @@ backToTheGame{
 }	
 
 
-.letter{
+//for words levels 1,2,3 and headlines level 1
+.letters{
+	
+}
+
+.letterPadding{
+	padding: 0px 8px 0px 2px;
 }
 
 
@@ -476,7 +501,15 @@ backToTheGame{
 	font-size: @superBig;
 	display: inline;
 	color: @newAqua;
-	//padding: 0px;
+}
+
+
+.highlightedLetterTwo{
+		#font.serif();
+		font-weight: bold;
+		font-size: @big;
+		display: inline;
+		color: @newAqua;
 }
 
 
@@ -490,13 +523,14 @@ backToTheGame{
 }
 
 
+
 .highlightedWord{
 		#font.serif();
 		font-weight: bold;
 		font-size: @superBig;
 		display: inline;
 		color: @newAqua;
-		padding: 0 2px 0 8px;
+		//padding: 0 2px 0 8px;
 	}
 	
 .highlightedWordTwo{
@@ -505,7 +539,7 @@ backToTheGame{
 		font-size: @big;
 		display: inline;
 		color: @newAqua;
-		padding: 0 2px 0 8px;
+		//padding: 0 2px 0 8px;
 	}
 	
 	
@@ -703,41 +737,96 @@ backToTheGame{
 // READ STORY //
 ////////////////
 
-#showStory{
-	
-	display:none;
 
+#articleLoading{
+	display: none;
+	#font.sans-serif();
+	font-size: @large;
+	line-height: 42px;
+	font-weight: bold;
+	margin: 200px 30% 30px 30%;
+}
+
+
+#storyContainer{
+	display: none;
+	background-color: @grayDark;
+	
+}
+
+#showStory{
+	display:none;
+	background-color: @softWhite;
+	//background-image: url('media/jpegs/newspaper_texture_05.jpeg');
+	color: @black;
+	margin: 100px 12% 0px 12%;
+	//padding: 10px 0px 10px 0px; 
+	
+	a{ 
+	text-decoration: none;
+	color: black;
+	}
+	
+	
 }	
 
 
 #showStoryHeadline{
-	
 	display: none;
-	#font.serif(); 
+	#font.serif();
+	font-weight: bold;
+	color: @black; 
 	font-size: @medium;
-	line-height: 36px;
-	margin: 70px 0px 25px 0px;
-	text-align: center;
-	
+	line-height: 28px;
+	padding-top: 35px;
+	margin: 0px 12% 0px 12%;
+	text-align: left;	
 }
+
+
+#showStoryDate {
+	display: none;
+	color: @black;
+	font-weight: bold;
+	text-align: left;
+	margin: 0px 12% 0px 12%;
+	padding: 20px 0px 0px 0px;
+}
+
 
 #showImage {
-	margin-left: 12%;
+	display: none;
+	margin: 0px 12% 0px 12%;
 }
 
-#showStoryText{
 
+#showStoryText{
 	display: none;
 	#font.serif();
 	font-size: @normal;
+	color: @black;
 	line-height: 26px;
-	margin: 20px 12% 10px 12%;
-
+	padding: 10px 0px 15px 0px;
+	margin: 0px 12% 0px 12%;
+	
 }
 
-#linkToStory {
-	color: @white;
+
+#showStoryLink{
+	display: none;	
+	text-align: left;
+	margin: 0px 12% 0px 12%;
+	padding: 20px 0px 40px 0px;
+	
+	a { 
+	text-decoration: none;
+	color: @black;
+	font-weight: bold;
+	font-size: @normal;
+	}
 }
+
+
 
 
 

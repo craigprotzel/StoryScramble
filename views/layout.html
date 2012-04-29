@@ -11,7 +11,8 @@
         </title>
         
         <link rel="stylesheet" href="/css/style.css" type="text/css" charset="utf-8"/>
-        
+		<link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700' rel='stylesheet' type='text/css'>
+		        
         <script type="text/javascript">
 
 		  var _gaq = _gaq || [];
@@ -36,16 +37,16 @@
 		<header> 
                
            <div class="headerContainerWidth" id="helpDiv">
-           	<input type="button" class="headerHelpButton" id="instructionsToggleButton" value="ON/OFF"/>  
-            <input type="button" class="headerHelpButton" id="helpButton" value="HOW TO PLAY"/>         
+           	<!-- <input type="button" class="headerHelpButton" id="instructionsToggleButton" value="ON/OFF"/> -->  
+            <input type="button" class="headerHelpButton" id="helpButton" value="HOW TO PLAY"/>   
+	        <input type="button" id="changeTopic" value="CHANGE TOPIC"/>
+	        <input type="button" id="changeLevel" value="CHANGE LEVEL"/>      
 	       </div>
 	   
-	        <input type="button" id="homeButton" value="HOME"/>
-	        <input type="button" id="changeTopic" value="TOPICS"/>
-	        <input type="button" id="changeLevel" value="LEVELS"/>
-	     
-                
-         	<section id="pageTitle"></section>
+	   		<input type="button" id="homeButton" value="STORY SCRAMBLE"/>
+	   
+            
+         	<section class="hidden" id="pageTitle"></section>
       	
       	</header>
       	
@@ -66,7 +67,11 @@
 				<!-- <input type="button" class="footerButtons" id="usaTodayCall" value="USA Today API" /> -->
 			</form>
 
-			<a href="http://www.craigprotzel.com" class="footerButtons">By Craig Protzel</a>
+			
+			<a href="http://www.craigprotzel.com" class="footerButtons" target="_blank">By Craig Protzel</a>
+			
+			<!-- <a href="http://www.storyscramble.com" id="linkToPage" target="blank">"Story Scramble" </a> is the 2012 <a href="http://itp.nyu.edu/itp/" id="linkToPage" target="blank"> ITP-NYU </a> thesis of <a href="http://www.craigprotzel.com" id="linkToPage" target="blank"> Craig Protzel </a> -->
+			
 						
 		</footer>
 
