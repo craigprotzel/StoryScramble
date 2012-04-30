@@ -1190,11 +1190,15 @@ $(function() {
 		var enteredLettersArray = textBox.value.split("");
 		
 		for (var i = 0; i < enteredLettersArray.length; i++){
-			letters.each(function(){
+			var letterFound = false;
+			letters.each(function(){ 
 				if (enteredLettersArray[i] == $(this).text() && !$(this).hasClass("usedLetter"))
 				{
+					if(!letterFound){
 					$(this).removeClass("highlightedLetter");
-					$(this).addClass("usedLetter");		
+					$(this).addClass("usedLetter");
+					letterFound = true;	
+					}
 				}					
 			});
 		}
