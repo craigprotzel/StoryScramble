@@ -136,11 +136,11 @@
 	
 	<p id="correctText">Correct!</p>
 	
-	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" id="scrambledWordCorrect" value="<%= scrambledWords[theTwoLongestIndex[levelTwoIndex]] %>"/>
+	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" id="scrambledWordCorrect" disabled="disabled" value="<%= scrambledWords[theTwoLongestIndex[levelTwoIndex]] %>"/>
 	<b>=></b>
-	<input type="text" placeholder="" name="currentWord" class="gameAnswerField" id="correctAnswer" value="<%= masterWords[theTwoLongestIndex[levelTwoIndex]] %>"/>
+	<input type="text" placeholder="" name="currentWord" class="gameAnswerField" id="correctAnswer" disabled="disabled" value="<%= masterWords[theTwoLongestIndex[levelTwoIndex]] %>"/>
 	
-	<input type="button" class="enterButton" id="levelTwoNew" value="NEXT WORD"/>
+	<input type="button" class="lowerGameButtons" id="levelTwoNew" value="NEXT WORD"/>
 			
 </section>
 		

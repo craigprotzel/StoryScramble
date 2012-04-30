@@ -1143,8 +1143,12 @@ $('#linkToStory').click(function() {
 
 //******************************Keyboard Enter Logic******************************//
 
-var enterWasPressed = function() {
 
+//var enterWasPressed = function() {
+
+//	$('.enterButton').trigger('click');	
+
+/*
 	if (onWordsLevelOne || onWordsLevelTwo || onWordsLevelThree || onLevelOne) {
 		$('#levelOneEnter').trigger('click');		
 	}
@@ -1154,16 +1158,19 @@ var enterWasPressed = function() {
 	else if (onLevelThree) {
 		$('#levelThreeEnter').trigger('click');	
 	}	
-};
+*/
+
+//};
 
 
+/*
 $(document).keypress(function (e) {
   if (e.which == 13) {
     enterWasPressed();
 	console.log ("Enter Was Pressed");
   }
 });
-
+*/
 
 
 

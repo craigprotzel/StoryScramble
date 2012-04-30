@@ -124,11 +124,11 @@
 	
 	<p id="correctText">Correct!</p>
 	
-	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" id="scrambledWordCorrect" value="<%= scrambledWords[wordCountIndex] %>"/>
+	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" id="scrambledWordCorrect" disabled="disabled" value="<%= scrambledWords[wordCountIndex] %>"/>
 	<b>=></b>
-	<input type="text" placeholder="" name="currentWord" class="gameAnswerField" id="correctAnswer" value="<%= masterWords[wordCountIndex] %>"/>
+	<input type="text" placeholder="" name="currentWord" class="gameAnswerField" id="correctAnswer" disabled="disabled" value="<%= masterWords[wordCountIndex] %>"/>
 	
-	<input type="button" class="enterButton" id="levelThreeNew" value="NEXT WORD"/>
+	<input type="button" class="lowerGameButtons" id="levelThreeNew" value="NEXT WORD"/>
 			
 </section>
 
