@@ -766,7 +766,7 @@ app.helpers({
   			
   			var diff = Math.abs(onechars.length - twochars.length);
   			
-  			if (diff < 3) {
+  			if (diff < 2) {
 		  		if ( likeness > (looper - 2) ) {
 		  				return true;
 		  			} else {
