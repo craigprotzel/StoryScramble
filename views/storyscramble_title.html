@@ -66,7 +66,7 @@
 		<!-- if the answer is in the clue, put it in appropriate array -->		
 		<%	for (var i = 0; i < clueMasterWords.length; i++){
 				for (var j = 0; j < masterWords.length; j++){
-					if ( compareWords( cleanup( masterWords[j] ),cleanup( clueMasterWords[i] ) ) ) { 
+					if ( compareWordsLevelThree( cleanup( masterWords[j] ),cleanup( clueMasterWords[i] ) ) ) { 
 						 inClue.push(clueMasterWords[i]);
 					}
 				} 

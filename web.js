@@ -211,7 +211,7 @@ app.get('/storyscramble_level_I', function(request, response) {
 	    
 				var masterHeadlineBackEnd = randomStory.title; 
 				var masterHeadlineLowerBackEnd = masterHeadlineBackEnd.toLowerCase();  
-				var masterWordsBackEnd = masterHeadlineLowerBackEnd.split(" ")
+				var masterWordsBackEnd = masterHeadlineLowerBackEnd.split(" ");
 				    	
 				var wordsSplitBackEnd = [];
 				var usableWordsBackEnd = [];
@@ -386,8 +386,6 @@ app.get('/storyscramble_level_II', function(request, response) {
 	    }   
     });                
 });
-
-
 
 
 //Display Level III Page - TITLE WORDS SCRAMBLED 
@@ -631,11 +629,10 @@ app.helpers({
 		for (var i = 0; i < wordsList.length; i++){
 	  		wordsSplit[i] = wordsList[i].split(""); 
 	  		
-	  		if (wordsSplit[i].length >= lowNum && wordsSplit[i].length <= highNum && wordsSplit[i].search) { 
+	  		if (wordsSplit[i].length >= lowNum && wordsSplit[i].length <= highNum) { 
 	  			usableWords.push(wordsList[i]); 
 	  		 }  			
 		} 
-		
 		return usableWords;
 	}
 	
@@ -731,7 +728,7 @@ app.helpers({
 		//before returning you would add back the punctuation you removed at the beginning.
 
 		return characters.join("");
-  }
+	}
   
   , compareWords : function(one, two){
   		var onechars = one.split(''),
@@ -741,10 +738,10 @@ app.helpers({
   			
   			if (onechars.length > twochars.length){
   				looper = twochars.length;
-  			} else {
+  			} 
+  			else {
   				looper = onechars.length;	
   			}
-  			
  
   			for (var i = 0; i < looper; i++){
   				if (onechars[i] === twochars[i]) {
@@ -757,40 +754,46 @@ app.helpers({
   			if (diff < 2) {
 		  		if ( likeness > (looper - 2) ) {
 		  				return true;
-		  			} else {
+		  		} 
+		  		else {
 		  				return false;
 		  		}
   			}
-  }
-  
-  //Not using this, doesn't work as well as compareWords function above
-  , matchWords : function(one, two){
+  		}
   		
-  		var onechars = one.split(''),
-  			twochars = two.split('');	
-  		
-  		var close = Math.abs(onechars.length - twochars.length);	
-  			
-  		if (close < 3){	
-  		
-	  		if (onechars.length > twochars.length){
-	  			if (one.match(two)){
-	  				return true;
-	  			} 
-	  			else {
-	  				return false;
-	  			}
-	  		}
-	  		else if (twochars.length > onechars.length){
-	  			if (two.match(one)){
-	  				return true;
-	  			}
-	  			else {
-	  				return false;
-	  			}
-	  		}	
-	  	}	
-  	}
+	  , compareWordsLevelThree : function(one, two){
+		var onechars = one.split(''),
+			twochars = two.split(''),
+			likeness = 0,
+			looper = []; 			
+			
+			if (onechars.length > 5 && twochars.length > 5){
+				if (onechars.length > twochars.length){
+					looper = twochars.length;
+				} 
+				else {
+					looper = onechars.length;	
+				}
+	
+				for (var i = 0; i < looper; i++){
+					if (onechars[i] === twochars[i]) {
+						likeness++;
+					}
+				}
+				
+				var diff = Math.abs(onechars.length - twochars.length);
+				
+				if (diff < 2) {
+			  		if ( likeness > (looper - 2) ) {
+			  				return true;
+			  		} 
+			  		else {
+			  				return false;
+			  		}
+				}
+			}
+		}
+
 });
 
 

@@ -764,7 +764,7 @@ backToTheGame {
   font-size: 38px;
 }
 .letterPadding {
-  padding: 0px 8px 0px 2px;
+  padding: 0px 10px 0px 4px;
 }
 .highlightedLetter {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
@@ -805,6 +805,7 @@ backToTheGame {
   font-size: 96px;
   display: inline;
   color: #19a3a3;
+  padding: 0px 0px 0px 14px;
 }
 .highlightedWordTwo {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
