@@ -24,9 +24,6 @@
 	
 	<!-- determine the index value of the chosen word for its original headline position -->
 	<%	var index = convertIndexToMaster((wordsLevelTwo[indexWordsLevelTwo]), masterWords); %>
-	
-	<!-- <div><%= "The Level Two Index is: " + indexWordsLevelTwo %></div> --> 
-	<!-- <div><%="The Master Words Index is:" + index %></div> -->
 					
 	<!-- save the longest word in a hidden div -->
 	<div class="hidden" id="levelOneAnswer"><%= masterWords[index] %></div>
@@ -59,8 +56,7 @@
 		
 		
 		<p>
-			<input type="text" placeholder="" name="longestWord" class="gameEntryField" id="letterEntry" value=""/>
-			
+			<input type="text" placeholder="" name="longestWord" class="gameEntryField" id="letterEntry" value=""/>	
 			<input type="button" class="enterButton" id="levelOneEnter" value="ENTER"/>
 				
 		</p>
@@ -69,7 +65,6 @@
 		<p id="lowerGameButtonsALL">
 			<input type="button" class="lowerGameButtons" id="clueButton" value="GIVE ME A CLUE"/>
 			<input type="button" class="lowerGameButtons" id="giveMeButtonLevelOne" value="GIVE ME A LETTER"/>
-			<!-- <input type="button" class="lowerGameButtons" id="levelOneNew" value="GIVE ME A NEW HEADLINE"/> -->
 		</p>
 		
 
@@ -118,13 +113,8 @@
 		<li>Type your answer in the <span class="instructionsEntryFieldSmall">White Box</span></li>
 		<li>Press <span class="instructionsPurpleSmall">ENTER</span> to check your answer</li>
 	</ol>
-
-	<!-- <input type="button" class="backButton" id="backToTheGameInstructionsSmall" value="BACK TO THE GAME"/> -->
 	
 </section>
-
-
-
 	
 		
 <!-- CHECK ANSWER SECTION -->				
@@ -134,12 +124,7 @@
 	
 	<a href="<%= randomStory.link %>" id="finalHeadlineLink">"<%=masterHeadline%>"</a>
 	<div class="word" id="finalHeadline">"<%=masterHeadline%>"</d>
-	
-	<!--
-	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" value="<%= scrambledWord %>"/>
-	<b>=</b>
-	<input type="text" placeholder="" name="longestWord" class="gameAnswerField" value="<%= masterWords[index] %>"/>
-	-->
+
 	<section>
 		<input type="button" class="lowerGameButtons" id="levelOneMedNext" value="NEW HEADLINE"/>
 		<input type="button" class="lowerGameButtons" id="readStory" value="READ STORY"/>
@@ -148,20 +133,16 @@
 </section>
 		
 <section class="checkAnswer" id="levelOneWrongAnswer">
-	<!-- <p>Sorry</p> -->
 	
 	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" disabled="disabled" value="<%= scrambledWord %>"/>
 	­
 	<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" id="wrongAnswer" disabled="disabled" value=""/>
 	
 	<input type="button" class="lowerGameButtons" id="levelOneTryAgain" value="TRY AGAIN"/>
-	<!-- <input type="button" class="lowerGameButtons" id="levelOneSkip" value="NEW HEADLINE"/> -->
 		
 </section> 
 
 <section id="articleLoading"></section>		
-
-<!-- <section id="storyContainer"> -->
 	
 <section id="showStory">
 	
@@ -184,6 +165,5 @@
 	</section>	
 	
 	<input type="button" class="backButton" id="backToTheGameReadStory" value="BACK TO THE GAME"/>
-	<!-- <input type="button" class="backButton" id="linkToStory" value="LINK TO THE STORY"/> -->
 						
 </section>

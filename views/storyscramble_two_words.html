@@ -28,19 +28,32 @@
 					
 				if (i == (theTwoLongestIndex[levelTwoIndex])){ %>
 			
-					<span class="word highlightedWord"> <%= scrambledWords[i] %> </span> 
+					<!-- <span class="hidden highlightedWord"> <%= scrambledWords[i] %> </span> -->  
+						
+					<% var scrambledLettersOne = scrambledWords[i].split("") %>
+					
+					<span class="levelTwoWords letterPadding">
+					<%for(var j = 0; j < scrambledLettersOne.length; j++){%><span class="word letters highlightedLetter highlightedWordOne"><%=scrambledLettersOne[j]%></span><%}%>
+					</span>				
+						
+					<span class="highlightedWordOneCorrect hidden"> <%= masterWords[i] %> </span> 
 					
 			<%	} 
 				else if (i == (theTwoLongestIndex[levelTwoIndex + 1])){ %>
 					
-					<span class="word highlightedWordTwo"> <%= scrambledWords[i] %> </span> 
+					<!-- <span class="word highlightedWordTwo"> <%= scrambledWords[i] %> </span>  -->
 					
+					<% var scrambledLettersTwo = scrambledWords[i].split("") %>
+					
+					<span class="levelTwoWords letterPadding">
+					<%for(var j = 0; j < scrambledLettersTwo.length; j++){%><span class="word letters highlightedWordTwo"><%=scrambledLettersTwo[j]%></span><%}%>
+					</span>				
+							
 			<%	}
-			
-			
+				
 				else { %>
 					
-					<span class="word"> <%= masterWords[i] %> </span>
+					<span class="levelTwoWords word"> <%= masterWords[i] %> </span>
 			<%	}								
 		} %>
 				
@@ -58,8 +71,6 @@
 	-->
 	
 	</ul>
-	
-
 				
 	<p>
 		<input type="text" placeholder="" name="correctWord" class="gameEntryField" id="letterEntry" value=""/>
@@ -71,7 +82,6 @@
 	<p id="lowerGameButtonsALL">
 		<input type="button" class="lowerGameButtons" id="clueButton" value="GIVE ME A CLUE"/>
 		<input type="button" class="lowerGameButtons" id="giveMeButtonLevelTwo" value="GIVE ME A LETTER"/>
-		<!-- <input type="button" class="lowerGameButtons" id="levelTwoNext" value="GIVE ME A NEW HEADLINE"/> -->
 	</p>	
 	
 	
@@ -90,8 +100,7 @@
 				<%	} 
 			} %>			
 	</p>
-
-
+	
 </section>	
 		
 
@@ -123,8 +132,6 @@
 		<li>Type your answer in the <span class="instructionsEntryFieldSmall">White Box</span></li>
 		<li>Press <span class="instructionsPurpleSmall">ENTER</span> to check your answer</li>
 	</ol>
-
-	<!-- <input type="button" class="backButton" id="backToTheGameInstructionsSmall" value="BACK TO THE GAME"/> -->
 	
 </section>
 
@@ -140,7 +147,7 @@
 	<b>=></b>
 	<input type="text" placeholder="" name="currentWord" class="gameAnswerField" id="correctAnswer" disabled="disabled" value="<%= masterWords[theTwoLongestIndex[levelTwoIndex]] %>"/>
 	
-	<input type="button" class="lowerGameButtons" id="levelTwoNew" value="NEXT WORD"/>
+	<input type="button" class="lowerGameButtons" id="levelTwoNext" value="NEXT WORD"/>
 			
 </section>
 		
@@ -162,20 +169,16 @@
 		
 				
 <section class="checkAnswer" id="levelTwoWrongAnswer">
-	<!-- <p id="wrongText">Sorry</p> -->
 	
 	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" id="scrambledWordWrong" disabled="disabled" value="<%=  scrambledWords[theTwoLongestIndex[levelTwoIndex]] %>"/>
 	­
 	<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" id="wrongAnswer" disabled="disabled" value=""/>
 	
 	<input type="button" class="lowerGameButtons" id="levelTwoTryAgain" value="TRY AGAIN"/>
-	<!-- <input type="button" class="lowerGameButtons" id="levelTwoSkip" value="NEXT WORD"/> -->
 		
 </section> 
 
 <section id="articleLoading"></section>		
-
-<!-- <section id="storyContainer"> -->
 	
 <section id="showStory">
 	
@@ -198,6 +201,5 @@
 	</section>	
 	
 	<input type="button" class="backButton" id="backToTheGameReadStory" value="BACK TO THE GAME"/>
-	<!-- <input type="button" class="backButton" id="linkToStory" value="LINK TO THE STORY"/> -->
 						
 </section>

@@ -631,22 +631,10 @@ app.helpers({
 		for (var i = 0; i < wordsList.length; i++){
 	  		wordsSplit[i] = wordsList[i].split(""); 
 	  		
-	  		if (wordsSplit[i].length >= lowNum && wordsSplit[i].length <= highNum) { 
+	  		if (wordsSplit[i].length >= lowNum && wordsSplit[i].length <= highNum && wordsSplit[i].search) { 
 	  			usableWords.push(wordsList[i]); 
 	  		 }  			
 		} 
-		
-		/*
-		if (usableWords.length < 1){
-			//reload the page
-			//window.location.href=window.location.href;
-			window.location.reload()
-			//history.go(0)
-		}
-		else {
-			return usableWords;
-		}
-		*/
 		
 		return usableWords;
 	}

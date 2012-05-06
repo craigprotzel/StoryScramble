@@ -754,6 +754,15 @@ backToTheGame {
   font-weight: bold;
   font-size: 38px;
 }
+.highlightedWordOneCorrect {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 38px;
+}
 .letterPadding {
   padding: 0px 8px 0px 2px;
 }
@@ -1004,11 +1013,12 @@ backToTheGame {
   font-weight: bold;
   text-align: left;
   margin: 0px 12% 0px 12%;
-  padding: 20px 0px 0px 0px;
+  padding: 20px 0px 10px 0px;
 }
 #showImage {
   display: none;
-  margin: 0px 12% 0px 12%;
+  float: left;
+  margin: 0px 2% 0px 12%;
 }
 #showStoryText {
   display: none;
@@ -1019,7 +1029,7 @@ backToTheGame {
   font-size: 18px;
   color: #000000;
   line-height: 26px;
-  padding: 10px 0px 15px 0px;
+  padding: 0px 0px 15px 0px;
   margin: 0px 12% 0px 12%;
 }
 #showStoryLink {

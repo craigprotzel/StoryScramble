@@ -20,11 +20,13 @@
 	<%	for (var i=0; i < masterWords.length; i++){ %>
 			
 			<!-- run the scramble function on all the words -->
+			<!-- <% scrambledWords[i] = scramble(masterWords[i]); %> -->
 			<% scrambledWords[i] = scramble(masterWords[i]); %>
 			
 			<%	if (i == wordCountIndex){ %>
 						
 						<span class="word highlightedWord"> <%= scrambledWords[i] %> </span>
+						
 			<%	} 
 				else { %>
 						
@@ -45,8 +47,7 @@
 	<p>
 		<input type="text" placeholder="" name="correctWord" class="gameEntryField" id="letterEntry" value=""/>
 		<input type="button" class="enterButton" id="levelThreeEnter" value="ENTER"/>
-		<!-- <input type="button" class="enterButton" id="levelThreeNext" value="NEXT WORD"/> -->
-						 		
+								 		
 	</p>
 					
 	<p id="lowerGameButtonsALL">
@@ -111,12 +112,8 @@
 		<li>Type your answer in the <span class="instructionsEntryFieldSmall">White Box</span></li>
 		<li>Press <span class="instructionsPurpleSmall">ENTER</span> to check your answer</li>
 	</ol>
-
-	<!-- <input type="button" class="backButton" id="backToTheGameInstructionsSmall" value="BACK TO THE GAME"/> -->
 	
 </section>
-
-
 
 
 <!-- CHECK ANSWER SECTION -->				
@@ -149,20 +146,16 @@
 
 		
 <section class="checkAnswer" id="levelThreeWrongAnswer">
-	<!-- <p id="wrongText">Sorry</p> -->
 	
 	<input type="text" placeholder="" name="scrambledWord" class="gameAnswerField" id="scrambledWordWrong" disabled="disabled" value="<%=  scrambledWords[wordCountIndex] %>"/>
 	­
 	<input type="text" placeholder="" name="enteredAnswer" class="gameAnswerField" id="wrongAnswer" disabled="disabled" value=""/>
 	
 	<input type="button" class="lowerGameButtons" id="levelThreeTryAgain" value="TRY AGAIN"/>
-	<!-- <input type="button" class="lowerGameButtons" id="levelThreeSkip" value="NEXT WORD"/> -->
 		
 </section> 
 
 <section id="articleLoading"></section>		
-
-<!-- <section id="storyContainer"> -->
 	
 <section id="showStory">
 	
@@ -185,6 +178,6 @@
 	</section>	
 	
 	<input type="button" class="backButton" id="backToTheGameReadStory" value="BACK TO THE GAME"/>
-	<!-- <input type="button" class="backButton" id="linkToStory" value="LINK TO THE STORY"/> -->
+
 						
 </section>
