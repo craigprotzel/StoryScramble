@@ -11,7 +11,7 @@ $("#homeButton").click(function() {
 	localStorage.setItem("topicChosen", "");
 	localStorage.setItem("levelChosen", "");
   
-  	document.location.href='/';
+  	document.location.href='/categories';
 });
 
 

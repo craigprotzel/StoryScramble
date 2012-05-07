@@ -65,6 +65,7 @@ body{
 .serif_main {
 	#font.serif();
 	font-size: 64px;
+	line-height: 64px;
 	font-weight: bold;
 }
 
@@ -184,6 +185,8 @@ article#main {
 	background-color: @grayDark;
 	//background-color: @white;
 	
+	clear: both;
+	
 }
 
 
@@ -204,6 +207,7 @@ body > footer {
 
 .categoryChosenStyle{
 	display: none;
+	float: left;
 	#font.sans-serif();
 	font-size: @medium;
 	line-height: @medium;
@@ -212,13 +216,13 @@ body > footer {
 	margin-left: 55px;
 	border-style:solid;
 	border-color: @lightPurple;
-	
-	//overflow: hidden;
+
 }
 
 
 #chosenBox{
 	float: right;
+	margin-top: 5px;
 	margin-right: 180px;
 	width: 300px;
 
@@ -236,8 +240,7 @@ body > footer {
 	font-size: @medium;
 	line-height: @medium;
 	color: @white;
-	padding: 6px;	
-	//margin-right: 20%;
+	padding: 4px;	
 	border-style:solid;
 	border-color: @lightPurple;
 	
@@ -255,7 +258,8 @@ body > footer {
 	line-height: @medium;
 	color: @white;	
 	padding: 6px;
-	margin-left: 60px;
+	//margin-top: 20px;
+	margin-left: 85px;
 	border-style: solid;
 	border-color: @lightPurple;
 	
@@ -363,7 +367,7 @@ backToTheGame{
 	font-size: @big;
 	font-weight: bolder;
 	text-align: center;
-	margin-top: 100px; 
+	margin-top: 90px; 
 	line-height: 52px;
 }	
 

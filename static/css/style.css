@@ -255,6 +255,7 @@ body a {
   font-weight: normal;
   line-height: 20px;
   font-size: 64px;
+  line-height: 64px;
   font-weight: bold;
 }
 .serif_header {
@@ -410,6 +411,7 @@ article#main {
   overflow: hidden;
   color: #ffffff;
   background-color: #282828;
+  clear: both;
 }
 body > footer {
   position: fixed;
@@ -424,6 +426,7 @@ body > footer {
 }
 .categoryChosenStyle {
   display: none;
+  float: left;
   font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
@@ -438,6 +441,7 @@ body > footer {
 }
 #chosenBox {
   float: right;
+  margin-top: 5px;
   margin-right: 180px;
   width: 300px;
 }
@@ -452,7 +456,7 @@ body > footer {
   font-size: 24px;
   line-height: 24px;
   color: #ffffff;
-  padding: 6px;
+  padding: 4px;
   border-style: solid;
   border-color: #87468b;
 }
@@ -468,7 +472,7 @@ body > footer {
   line-height: 24px;
   color: #ffffff;
   padding: 6px;
-  margin-left: 60px;
+  margin-left: 85px;
   border-style: solid;
   border-color: #87468b;
 }
@@ -593,7 +597,7 @@ backToTheGame {
   font-size: 52px;
   font-weight: bolder;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 90px;
   line-height: 52px;
 }
 .gameInstructionsSmall {
