@@ -1,14 +1,17 @@
 //**********Global**********//
 var categoryChosen;
 var topicChosen;
+var levelChosen;
 
 //Header Home Button
 //Reset Local Vars
 $("#homeButton").click(function() { 
-  console.log("Topic Set: none");
-  localStorage.setItem("categoryChosen", "");
-  localStorage.setItem("topicChosen", "");
-  document.location.href='/';
+	console.log("Topic Set: none");
+	localStorage.setItem("categoryChosen", "");
+	localStorage.setItem("topicChosen", "");
+	localStorage.setItem("levelChosen", "");
+  
+  	document.location.href='/';
 });
 
 
@@ -20,7 +23,12 @@ $("#changeTopic").click(function() {
 
 //Welcome - Enter Button
 $("#welcomeButton").click(function() { 
-  document.location.href='/categories';
+
+	localStorage.setItem("categoryChosen", "");
+	localStorage.setItem("topicChosen", "");
+	localStorage.setItem("levelChosen", "");
+	
+	document.location.href='/categories';
 });
 
 
@@ -39,34 +47,147 @@ $("#categoryHeadlines").click(function() {
 
 
 //Choose level
-$("#chooseLevelOne").click(function() { 
+$("#chooseLevelOne").click(function() {
+	localStorage.setItem("levelChosen", "Level I");
 	document.location.href="/instructions_level_I";
 });
-$("#chooseLevelTwo").click(function() { 
+$("#chooseLevelTwo").click(function() {
+	localStorage.setItem("levelChosen", "Level II"); 
 	document.location.href="/instructions_level_II";
 });
-$("#chooseLevelThree").click(function() { 
+$("#chooseLevelThree").click(function() {
+	localStorage.setItem("levelChosen", "Level III"); 
 	document.location.href="/instructions_level_III";
 });
 
 
-//Header Help Button
+//Choose Topic
+//Check to see if a level has already been chosen first
 $("#news").click(function() { 
 	console.log("Topic Set: News");
 	localStorage.setItem("topicChosen", "News");
-	document.location.href='/news';	
+	
+	if (categoryCurrent == "Words") {
+	
+		if (levelCurrent == "Level I") {
+			document.location.href="/instructions_level_I";	
+		}
+		else if (levelCurrent == "Level II") {
+			document.location.href="/instructions_level_II";	
+		}
+		else if (levelCurrent == "Level III") {
+			document.location.href="/instructions_level_III";	
+		}		
+		else {
+			document.location.href='/news';
+		}
+	}
+	
+	else if (categoryCurrent == "Headlines") {
+	
+		if (levelCurrent == "Level I") {
+			document.location.href="/instructions_level_I";		
+		}
+		else if (levelCurrent == "Level II") {
+			document.location.href="/instructions_level_II";		
+		}
+		else if (levelCurrent == "Level III") {
+			document.location.href="/instructions_level_III";		
+		}		
+		else {
+			document.location.href='/news';
+		}
+	}
+	
+	else {
+		document.location.href='/categories';	
+	}
 });
+
+
 
 $("#travel").click(function() { 
 	console.log("Topic Set: Travel");
 	localStorage.setItem("topicChosen", "Travel");
-	document.location.href='/travel';
+	
+	if (categoryCurrent == "Words") {
+	
+		if (levelCurrent == "Level I") {
+			document.location.href="/instructions_level_I";	
+		}
+		else if (levelCurrent == "Level II") {
+			document.location.href="/instructions_level_II";	
+		}
+		else if (levelCurrent == "Level III") {
+			document.location.href="/instructions_level_III";	
+		}		
+		else {
+			document.location.href='/travel';
+		}
+	}
+	
+	else if (categoryCurrent == "Headlines") {
+	
+		if (levelCurrent == "Level I") {
+			document.location.href="/instructions_level_I";		
+		}
+		else if (levelCurrent == "Level II") {
+			document.location.href="/instructions_level_II";		
+		}
+		else if (levelCurrent == "Level III") {
+			document.location.href="/instructions_level_III";		
+		}		
+		else {
+			document.location.href='/travel';
+		}
+	}
+	
+	else {
+		document.location.href='/categories';	
+	}
 });
+
 
 $("#weather").click(function() { 
 	console.log("Topic Set: Weather");
 	localStorage.setItem("topicChosen", "Weather");
-	document.location.href='/weather';	
+	
+	if (categoryCurrent == "Words") {
+	
+		if (levelCurrent == "Level I") {
+			document.location.href="/instructions_level_I";	
+		}
+		else if (levelCurrent == "Level II") {
+			document.location.href="/instructions_level_II";	
+		}
+		else if (levelCurrent == "Level III") {
+			document.location.href="/instructions_level_III";	
+		}		
+		else {
+			document.location.href='/weather';
+		}
+	}
+	
+	else if (categoryCurrent == "Headlines") {
+	
+		if (levelCurrent == "Level I") {
+			document.location.href="/instructions_level_I";		
+		}
+		else if (levelCurrent == "Level II") {
+			document.location.href="/instructions_level_II";		
+		}
+		else if (levelCurrent == "Level III") {
+			document.location.href="/instructions_level_III";		
+		}		
+		else {
+			document.location.href='/weather';
+		}
+	}
+	
+	else {
+		document.location.href='/categories';	
+	}
+
 });	
 
 
@@ -89,31 +210,44 @@ $("#helpButton").click(function() {
 
 
 
-//Help - Change Topic
+//Change Topic
 $("#changeTopic").click(function() { 
-	console.log("Topic Set: ");
+
+	//console.log("Topic Set: ");
 	localStorage.setItem("topicChosen", "");
+
+	if (categoryCurrent == ""){
+		document.location.href='/categories';
+	}
+	else {
 	document.location.href='/topics';
+	}
 });
 
 
-
+//Change Level
 $('#changeLevel').click(function() {
-	console.log("Change Level Pressed");
-	var topicChosen = localStorage.getItem("topicChosen");
-	console.log(topicChosen);
-	if (topicChosen == "News") {
+	//console.log("Change Level Pressed");
+	localStorage.setItem("levelChosen", "");
+	
+	console.log(topicCurrent);
+	
+	if (categoryCurrent == ""){
+		document.location.href='/categories';
+	}
+	else if (topicCurrent == "News") {
 		document.location.href='/news';
 	}
-	else if (topicChosen == "Travel") {
+	else if (topicCurrent == "Travel") {
 		document.location.href='/travel';
 	}
-	else if (topicChosen == "Weather"){
+	else if (topicCurrent == "Weather"){
 		document.location.href='/weather';
 	}
 	else {
 		document.location.href='/topics';
 	}
+	
 });
 
 
@@ -226,7 +360,7 @@ $("input:text:visible:first").focus();
 
 //Clue Button 
 $("#clueButton").click(function() { 
-	console.log("Clue was pressed");	
+	//console.log("Clue was pressed");	
 	$('.clue').toggle();
 });
 
@@ -237,7 +371,10 @@ var currentPageTitle = document.getElementById('currentPageTitle');
 console.log(currentPageTitle);
 
 
+//Get Local Variables
+var categoryCurrent = localStorage.getItem("categoryChosen");
 var topicCurrent = localStorage.getItem("topicChosen");
+var levelCurrent = localStorage.getItem("levelChosen");
 
 var titleFiller = currentPageTitle.innerHTML;
 
@@ -249,8 +386,8 @@ if (titleFiller == homeTitle){
 
 pageTitle.innerHTML = topicCurrent + " " + titleFiller;
 
-console.log("Title Filler is: " + titleFiller);
-console.log("PageTitle.innerHTML is: " + pageTitle.innerHTML);
+//console.log("Title Filler is: " + titleFiller);
+//console.log("PageTitle.innerHTML is: " + pageTitle.innerHTML);
 
 
 //Page Booleans
@@ -280,7 +417,7 @@ if (titleFiller == wordsLevelOneTitle){
 	onLevelTwo = false;
 	onLevelThree = false;
 	
-	console.log("We're On Words Level One");
+	//console.log("We're On Words Level One");
 }
 
 else if (titleFiller == wordsLevelTwoTitle){
@@ -293,7 +430,7 @@ else if (titleFiller == wordsLevelTwoTitle){
 	onLevelTwo = false;
 	onLevelThree = false;
 	
-	console.log("We're On Words Level Two");
+	//console.log("We're On Words Level Two");
 }
 
 else if (titleFiller == wordsLevelThreeTitle){
@@ -306,7 +443,7 @@ else if (titleFiller == wordsLevelThreeTitle){
 	onLevelTwo = false;
 	onLevelThree = false;
 	
-	console.log("We're On Words Level Three");
+	//console.log("We're On Words Level Three");
 }
 
 else if (titleFiller == levelOneTitle){
@@ -319,7 +456,7 @@ else if (titleFiller == levelOneTitle){
 	onLevelTwo = false;
 	onLevelThree = false;
 	
-	console.log("We're On Headlines Level One");
+	//console.log("We're On Headlines Level One");
 }
 else if (titleFiller == levelTwoTitle) {
 
@@ -331,7 +468,7 @@ else if (titleFiller == levelTwoTitle) {
 	onLevelTwo = true;
 	onLevelThree = false;
 	
-	console.log("We're On Headlines Level Two");
+	//console.log("We're On Headlines Level Two");
 }
 else if (titleFiller == levelThreeTitle) {
 
@@ -343,7 +480,7 @@ else if (titleFiller == levelThreeTitle) {
 	onLevelTwo = false;
 	onLevelThree = true;
 	
-	console.log("We're On Headlines Level Three");
+	//console.log("We're On Headlines Level Three");
 }
 
 else {
@@ -356,7 +493,7 @@ else {
 	onLevelTwo = false;
 	onLevelThree = false;
 
-	console.log("Not playing yet");
+	//console.log("Not playing yet");
 }
 
 
@@ -379,17 +516,68 @@ var wrongAnswer = document.getElementById('wrongAnswer');
 if (onLevelTwo) {
 	var levelTwoMasterHeadline = (document.getElementById('levelTwoHeadline').innerHTML).split(" ");
 	var levelTwoWordCountIndex = (document.getElementById('levelTwoWordCountIndex').innerHTML).split(",");
-	console.log("TLTWC 0 is: " + levelTwoWordCountIndex[0]);
-	console.log("TLTWC 1 is: " + levelTwoWordCountIndex[1]);
+	//console.log("TLTWC 0 is: " + levelTwoWordCountIndex[0]);
+	//console.log("TLTWC 1 is: " + levelTwoWordCountIndex[1]);
 	var levelTwoIndex = document.getElementById('levelTwoIndex').innerHTML;
 }
 else if (onLevelThree){
 	//inner HTML variables
 	var levelThreeMasterHeadline = (document.getElementById('levelThreeHeadline').innerHTML).split(" ");
 	var levelThreeWordCountIndex = document.getElementById('levelThreeWordCountIndex').innerHTML;
-	console.log("TLTWC is: " + levelThreeWordCountIndex)
+	//console.log("TLTWC is: " + levelThreeWordCountIndex)
 }
 
+
+
+
+//Set Indicators
+//Current Category
+if (categoryCurrent == "Words" || categoryCurrent == "Headlines"){
+	$('#categoryChosen').html(categoryCurrent);
+}
+else {
+	$('#categoryChosen').html("");
+}
+
+
+if (categoryCurrent !== ""){
+	$('.categoryChosenStyle').show();
+}
+else {
+	$('.categoryChosenStyle').hide();
+}
+
+
+//Current Topic
+if (topicCurrent == "News" || topicCurrent == "Weather" || topicCurrent == "Travel"){
+	$('#topicChosen').html(topicCurrent);
+} 
+else {
+	$('#topicChosen').html("");
+} 
+
+
+//Current Level
+if (levelCurrent == "Level I" || levelCurrent == "Level II" || levelCurrent == "Level III") {
+	$('#levelChosen').html(levelCurrent);	
+}
+else {
+	$('#levelChosen').html("");
+} 
+
+
+if (topicCurrent !== "" && levelCurrent !== ""){
+	$('#topicChosen').show();
+	$('#levelChosen').show();	
+}
+else if (topicCurrent !== "" && levelCurrent == ""){
+	$('#topicChosen').show();
+	$('#levelChosen').hide();
+}
+else {
+	$('#topicChosen').hide();
+	$('#levelChosen').hide();
+}
 
 
 
@@ -450,19 +638,19 @@ var checkLevelOneAnswer = function(){
 		
 		if (onWordsLevelOne) {
 			finishedWordsLevelOne = true;
-			console.log("Finished Level One - Words!");
+			//console.log("Finished Level One - Words!");
 			}
 		else if (onWordsLevelTwo) {
 			finishedWordsLevelTwo = true;
-			console.log("Finished Level Two - Words!");
+			//console.log("Finished Level Two - Words!");
 		}
 		else if (onWordsLevelThree) {
 			finishedWordsLevelThree = true;
-			console.log("Finished Level Three - Words!");
+			//console.log("Finished Level Three - Words!");
 		}
 		else if (onLevelOne) {
 			finishedLevelOne = true;
-			console.log("Finished Level One - Headlines!");
+			//console.log("Finished Level One - Headlines!");
 		}
 		
 		$('#gameBoardSection').hide();
@@ -549,9 +737,9 @@ var letterCountLevelTwo = 1;
 var letterCounterLevelTwo = function(){
 	
 	var levelTwoAnswer = levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]];
-	console.log(levelTwoAnswer);
-	console.log("The Level 2 Index Value is: " + levelTwoIndex);
-	console.log("The Current Answer is: " + levelTwoAnswer);
+	//console.log(levelTwoAnswer);
+	//console.log("The Level 2 Index Value is: " + levelTwoIndex);
+	//console.log("The Current Answer is: " + levelTwoAnswer);
 	var levelTwoChars = levelTwoAnswer.split(""); 
 		
 	letterEntry.value = ""; 
@@ -561,12 +749,12 @@ var letterCounterLevelTwo = function(){
 		for (var i = 0; i < letterCountLevelTwo; i++){
 			letterEntry.value = letterEntry.value + levelTwoChars[i]
 		}
-		console.log(letterCountLevelTwo);
+		//console.log(letterCountLevelTwo);
 	}
 	else if (letterCountLevelTwo > levelTwoChars.length){
 		letterEntry.value = levelTwoAnswer;
 		letterCountLevelTwo = 1;
-		console.log (letterCountLevelTwo); 
+		//console.log (letterCountLevelTwo); 
 		$('#levelTwoEnter').trigger('click');	
 	}		
 	letterCountLevelTwo++;
@@ -604,14 +792,14 @@ var changeHighlightWordLevelTwo = function(idx){
 											
 var checkLevelTwoAnswer = function(){
 	//console.log("Level 2 Answer Submitted");
-	console.log("You Entered: " + letterEntry.value);
-	console.log("The Correct Answer is: " + levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]]);
+	//console.log("You Entered: " + letterEntry.value);
+	//console.log("The Correct Answer is: " + levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]]);
 	var currentScrambleAnswer = "";
 	
 	$('.scrambledWordItem').each(function(index) {
    		if (levelTwoIndex == index){
    			currentScrambleAnswer = $(this).html()
-   			console.log("Current Scramble Answer = " + currentScrambleAnswer)
+   			//console.log("Current Scramble Answer = " + currentScrambleAnswer)
    		}
    		
    });
@@ -628,7 +816,7 @@ var checkLevelTwoAnswer = function(){
 		
 		levelTwoIndex++;
 		
-		console.log("Level Two index Is Now: " + levelTwoIndex)
+		//console.log("Level Two index Is Now: " + levelTwoIndex)
 		
 		
 		
@@ -666,7 +854,7 @@ var checkLevelTwoAnswer = function(){
 		$('#finalAnswer').hide();
 		$('#levelTwoWrongAnswer').show();
 		
-		console.log("Level Two index Is: " + levelTwoIndex)
+		//console.log("Level Two index Is: " + levelTwoIndex)
 		
 		wrongAnswer.value = letterEntry.value;		
 	}	
@@ -674,7 +862,7 @@ var checkLevelTwoAnswer = function(){
 
 		
 $("#levelTwoEnter").click(function() { 
-	console.log("ENTER WAS PRESSED");
+	//console.log("ENTER WAS PRESSED");
  	checkLevelTwoAnswer();
  });
 	
@@ -688,7 +876,7 @@ $("#levelTwoNext").click(function() {
 	if(levelTwoIndex == 2) {
 		levelTwoIndex = 0;
 		document.location.href='/storyscramble_level_II';
-		console.log("NEW WAS CLICKED")
+		//console.log("NEW WAS CLICKED")
 		}
 	else {
 		$('#gameBoardSection').show();	
@@ -706,7 +894,7 @@ $("#levelTwoFinalButton").click(function() {
 		levelTwoIndex = 0;
 		letterKnockOut();
 		document.location.href='/storyscramble_level_II';
-		console.log("FINAL WAS CLICKED")
+		//console.log("FINAL WAS CLICKED")
 	
 });
 
@@ -748,12 +936,12 @@ var letterCounterLevelThree = function(){
 		for (var i = 0; i < letterCountLevelThree; i++){
 			letterEntry.value = letterEntry.value + levelThreeChars[i]
 		}
-		console.log(letterCountLevelThree);
+		//console.log(letterCountLevelThree);
 	}
 	else if (letterCountLevelThree > levelThreeChars.length){
 		letterEntry.value = levelThreeAnswer;
 		letterCountLevelThree = 1;
-		console.log (letterCountLevelThree); 
+		//console.log (letterCountLevelThree); 
 		$('#levelThreeEnter').trigger('click');
 		
 	}		
@@ -762,7 +950,7 @@ var letterCounterLevelThree = function(){
 
 
 $("#giveMeButtonLevelThree").click(function() { 
-	console.log("GIVE ME BUTTON WAS PRESSED");
+	//console.log("GIVE ME BUTTON WAS PRESSED");
  	letterCounterLevelThree();
  	letterKnockOut();
  	
@@ -777,7 +965,7 @@ var levelThreeLetterMaker = function(){
 	var funElement = $('.highlightedWord');
 	var funSplit = $(funElement).html().split("");
 	$(funElement).html('');
-	console.log(funSplit);
+	//console.log(funSplit);
 	for(var i = 0; i < funSplit.length; i++){
 		$(funElement).append('<span class="letters highlightedLetter">'+funSplit[i]+'</span>');
 	}
@@ -805,9 +993,9 @@ var changeHighlightWordLevelThree = function(idx){
 
 											
 var checkLevelThreeAnswer = function(){
-	console.log("Level 3 Answer Submitted");
-	console.log("You Entered: " + letterEntry.value);
-	console.log("The Correct Answer is: " + levelThreeMasterHeadline[levelThreeWordCountIndex]);
+	//console.log("Level 3 Answer Submitted");
+	//console.log("You Entered: " + letterEntry.value);
+	//console.log("The Correct Answer is: " + levelThreeMasterHeadline[levelThreeWordCountIndex]);
 	var currentScrambleAnswer = "";
 	
 	$('.scrambledWordItem').each(function(index) {
@@ -853,7 +1041,7 @@ var checkLevelThreeAnswer = function(){
 		letterCountLevelThree = 1;
 		//console.log("THE LETTER COUNT IS: " + letterCountLevelThree);
 
-		console.log("The Word Count Is: " + levelThreeWordCountIndex)
+		//console.log("The Word Count Is: " + levelThreeWordCountIndex)
 		levelThreeWordCountIndex++;
 		changeHighlightWordLevelThree(levelThreeWordCountIndex);	
 	}
@@ -873,7 +1061,7 @@ var checkLevelThreeAnswer = function(){
 
 		
 $("#levelThreeEnter").click(function() { 
-	console.log("ENTER WAS PRESSED");
+	//console.log("ENTER WAS PRESSED");
  	checkLevelThreeAnswer();
 
  });
@@ -883,7 +1071,7 @@ $("#levelThreeEnter").click(function() {
 //Level III - New
 $("#levelThreeNew").click(function() {
 
-	console.log("NEW WAS PRESSED");
+	//console.log("NEW WAS PRESSED");
 
 	letterEntry.value = "";
 	letterCountLevelThree = 1;
@@ -891,7 +1079,7 @@ $("#levelThreeNew").click(function() {
 	if(levelThreeWordCountIndex == levelThreeMasterHeadline.length ) {
 		levelThreeWordCountIndex = 0;
 		document.location.href='/storyscramble_level_III';
-		console.log("NEW WAS CLICKED")
+		//console.log("NEW WAS CLICKED")
 		}
 	else {
 		$('#gameBoardSection').show();	
@@ -908,7 +1096,7 @@ $("#levelThreeFinalButton").click(function() {
 
 		levelThreeWordCountIndex = 0;
 		document.location.href='/storyscramble_level_III';
-		console.log("FINAL WAS CLICKED")
+		//console.log("FINAL WAS CLICKED")
 		letterKnockOut();
 	
 });
@@ -941,10 +1129,10 @@ $('input#readStory').on('click', function(){
 	$('#articleLoadingGif').html('<img src="media/gifs/ajax-loader.gif"/>'); 
 	$('#articleLoadingGif').show();
 	
-	console.log("Article Request Made");
+	//console.log("Article Request Made");
 	
 	url = $('#finalHeadlineLink').attr('href');
-	console.log(url);
+	//console.log(url);
 	
 	data = {};
 	data['url'] = url;
@@ -980,7 +1168,7 @@ $('input#readStory').on('click', function(){
 					if (data.media[i].type == "image" && data.media[i].primary == "true") {
 						imageLink = data.media[i].link
 					}
-					console.log(data.media[i].link);
+					//console.log(data.media[i].link);
 				}	
 				$("#showImage").html('<image src="'+imageLink+'" style="maxWidth:680px"/>');
 				$("#showImage").show();
@@ -1021,7 +1209,7 @@ var enterWasPressed = function() {
 $(document).keypress(function (e) {
   if (e.which == 13) {
     enterWasPressed();
-	console.log ("Enter Was Pressed");
+	//console.log ("Enter Was Pressed");
   }
 });
 

@@ -422,6 +422,56 @@ body > footer {
   font-size: 12px;
   display: inline;
 }
+.categoryChosenStyle {
+  display: none;
+  font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #ffffff;
+  padding: 6px;
+  margin-left: 55px;
+  border-style: solid;
+  border-color: #87468b;
+}
+#chosenBox {
+  float: right;
+  margin-right: 180px;
+  width: 300px;
+}
+#topicChosen {
+  display: none;
+}
+.topicChosenStyle {
+  font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #ffffff;
+  padding: 6px;
+  border-style: solid;
+  border-color: #87468b;
+}
+#levelChosen {
+  display: none;
+}
+.levelChosenStyle {
+  font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #ffffff;
+  padding: 6px;
+  margin-left: 60px;
+  border-style: solid;
+  border-color: #87468b;
+}
 .welcomePage {
   font-size: 32px;
   font-weight: 400;
