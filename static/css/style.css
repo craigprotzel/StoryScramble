@@ -376,8 +376,8 @@ body > header {
   color: #ffffff;
   font-weight: bold;
   border: none;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   font-size: 38px;
   padding: 50px 0px;
   margin: 75px 26% 0px 26%;
@@ -669,8 +669,8 @@ backToTheGame {
   color: #ffffff;
   font-weight: bold;
   border: none;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   display: inline;
   float: left;
   width: 31.25%;
@@ -695,14 +695,14 @@ backToTheGame {
   color: #ffffff;
   font-weight: bold;
   border: none;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   display: inline;
   float: left;
-  width: 47.91666666666667%;
+  width: 31.25%;
   margin: 0 1.0416666666666665%;
   padding: 20px;
-  margin: 50px 25% 75px;
+  margin: 50px 36% 75px;
   font-size: 24px;
   line-height: 36px;
 }
@@ -713,6 +713,10 @@ backToTheGame {
 .backButton:active {
   color: #ffffff;
   background-color: #19a3a3;
+}
+#showStoryContainer {
+  background-color: #282828;
+  display: none;
 }
 .gameBoard {
   color: #ffffff;
@@ -753,6 +757,9 @@ backToTheGame {
   color: #ffffff;
   font-weight: bold;
   font-size: 38px;
+}
+.levelThreeWordSpace {
+  padding: 0px 2px 0px 6px;
 }
 .highlightedWordOneCorrect {
   font-family: "Georgia", Times New Roman, Times, sans-serif;
@@ -969,7 +976,7 @@ backToTheGame {
   color: #ffffff;
   background-color: #19a3a3;
 }
-#articleLoading {
+#articleLoadingText {
   display: none;
   font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -980,7 +987,10 @@ backToTheGame {
   font-weight: bold;
   margin: 200px 30% 30px 30%;
 }
-#storyContainer {
+#articleLoadingGif {
+  margin: 5px 48% 0px 48%;
+}
+#showStoryContainer {
   display: none;
   background-color: #282828;
 }
@@ -1012,6 +1022,7 @@ backToTheGame {
   display: none;
   color: #000000;
   font-weight: bold;
+  font-size: 16px;
   text-align: left;
   margin: 0px 12% 0px 12%;
   padding: 20px 0px 10px 0px;
@@ -1044,43 +1055,4 @@ backToTheGame {
   color: #000000;
   font-weight: bold;
   font-size: 18px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-/* punch
-*******************************************************************************/
-.punch {
-  background: #19a3a3;
-  border-top: 1px solid #38538c;
-  border-right: 1px solid #1f2d4d;
-  border-bottom: 11px solid #151e33;
-  border-left: 1px solid #1f2d4d;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-  -moz-box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-  box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-  color: #fff;
-  font: bold 20px "helvetica neue", helvetica, arial, sans-serif;
-  line-height: 1;
-  margin-bottom: 10px;
-  padding: 10px 0 12px 0;
-  text-align: center;
-  text-shadow: 0px -1px 1px #1e2d4d;
-  width: 150px;
-  -webkit-background-clip: padding-box;
-}
-.punch:hover {
-  -webkit-box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-  -moz-box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-  box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-  cursor: pointer;
-}
-.punch:active {
-  -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
-  -moz-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
-  box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
-  margin-top: 58px;
 }

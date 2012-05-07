@@ -599,9 +599,6 @@ app.listen(port, function() {
 
 
 
-
-
-
 //////////Functions for the Views Pages//////////
 
 app.helpers({
@@ -609,16 +606,40 @@ app.helpers({
 
 	//reg ex to get article date
 	pullDate: function(chars){
+	
+		console.log("______________This is the link: " + chars + "______________");
 		
-		//var printDate = chars.toString();
-		//chars.search()
-		/* for weather - (?<=story\/).{10} */
-		/* for news and travel - (?<=post\/).{7} */
-		return chars
+		var unknown = "2012/04";
 		
+		try{
+			
+			var re;
+			
+			if (requestedTopic == 'Weather'){
+				re = new RegExp("story\/(.{10})"); 
+			}
+			else if (requestedTopic == 'Offbeat' || requestedTopic == 'Travel'){
+				re = new RegExp("post\/(.{7})");
+			}
+		
+			var printDate = chars.match(re);
+			
+			console.log ("___________I'm returning: " + printDate[1] + "_______________");
+
+			return printDate[1];
+			
+		
+		}
+		
+		catch(err) {
+		
+			console.log ("___________I'm returning: " + unknown + "_______________");
+        
+        	return unknown;  	
+    	
+    	}
 	}
 	
-	//functions for Words Level I, II, & III
 	
 	//pass in all the words from the headline and the desired char range
 	,countChars: function(wordsList, lowNum, highNum){

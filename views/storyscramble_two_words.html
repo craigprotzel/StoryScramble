@@ -176,28 +176,35 @@
 		
 </section> 
 
-<section id="articleLoading"></section>		
+<section id="articleLoadingText"></section>
+<section id="articleLoadingGif"></section>		
+
+
+<section id="showStoryContainer">
 	
-<section id="showStory">
-	
-	<section id="showStoryHeadline">
-		"<%= masterHeadline %>"
-	</section>
-					
-	<section id="showStoryDate">
-		<%= pullDate(randomStory.timestamp) %> 
-	</section>
-			
-	<section id="showImage"></section>
-			
-	<section id="showStoryText">
-		<%= masterHeadline %>
-	</section>
+	<section id="showStory">
 		
-	<section id="showStoryLink">
-		<a href="<%= randomStory.link %>" target="_blank">CLICK HERE TO GO TO FULL STORY</a>
-	</section>	
-	
-	<input type="button" class="backButton" id="backToTheGameReadStory" value="BACK TO THE GAME"/>
+		<section id="showStoryHeadline">
+			"<%= masterHeadline %>"
+		</section>
 						
+		<section id="showStoryDate">
+			<% var date = pullDate(randomStory.link) %>
+			DATE: <%= date %> 
+		</section>
+				
+		<section id="showImage"></section>
+				
+		<section id="showStoryText">
+			<%= masterHeadline %>
+		</section>
+			
+		<section id="showStoryLink">
+			<a href="<%= randomStory.link %>" target="_blank">CLICK HERE TO GO TO FULL STORY</a>
+		</section>	
+							
+	</section>
+
+	<input type="button" class="backButton" id="backToTheGameReadStory" value="BACK TO THE GAME"/>
+
 </section>

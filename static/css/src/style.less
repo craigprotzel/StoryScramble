@@ -171,10 +171,6 @@ float: right;
 }
 
 
-
-
-	
-
 article#main {
 	/* .column(12); */	
 	max-width: 960px; 
@@ -191,7 +187,6 @@ article#main {
 }
 
 
-
 body > footer {
 	position: fixed;
 	background-color: @lightPurple;
@@ -204,8 +199,6 @@ body > footer {
 	font-size: @small;
 	display: inline;
 }
-
-
 
 
 
@@ -411,8 +404,6 @@ backToTheGame{
 	margin: 5px 10px 5px 7px;
 	font-size: @normal;
 }
-
-
 	
 	
 .startButton {
@@ -427,14 +418,19 @@ backToTheGame{
 
 .backButton {
 
-	.instructionsButton();
-	.column(6,12);	
+	.styleButton();
+	.column(4,12);	
 	padding: 20px;
-	margin: 50px 25% 75px;
+	margin: 50px 36% 75px;
 	font-size: @medium;
 	line-height: 36px;
 }
 
+
+#showStoryContainer {
+	background-color: @grayDark;
+	display: none;
+}
 
 
 ////////////////
@@ -484,6 +480,10 @@ backToTheGame{
 	font-size: @large;
 }	
 
+.levelThreeWordSpace {
+	padding: 0px 2px 0px 6px;
+}	
+	
 .highlightedWordOneCorrect{
 	#font.serif();
 	color: @white;
@@ -720,8 +720,6 @@ backToTheGame{
 
 
 
-	
-
 
 ///////////////////
 // LOWER BUTTONS //
@@ -742,14 +740,11 @@ backToTheGame{
 
 
 
-
-
 ////////////////
 // READ STORY //
 ////////////////
 
-
-#articleLoading{
+#articleLoadingText{
 	display: none;
 	#font.sans-serif();
 	font-size: @large;
@@ -758,8 +753,12 @@ backToTheGame{
 	margin: 200px 30% 30px 30%;
 }
 
+#articleLoadingGif{
+	margin: 5px 48% 0px 48%;
+}
 
-#storyContainer{
+
+#showStoryContainer{
 	display: none;
 	background-color: @grayDark;
 	
@@ -776,9 +775,8 @@ backToTheGame{
 	a{ 
 	text-decoration: none;
 	color: black;
-	}
-	
-	
+	}	
+
 }	
 
 
@@ -799,6 +797,7 @@ backToTheGame{
 	display: none;
 	color: @black;
 	font-weight: bold;
+	font-size: 16px;
 	text-align: left;
 	margin: 0px 12% 0px 12%;
 	padding: 20px 0px 10px 0px;
@@ -838,56 +837,6 @@ backToTheGame{
 	}
 }
 
-
-
-
-
-
-//CSS3 BUTTONS
-//http://hellohappy.org/css3-buttons/
-
-button::-moz-focus-inner {
-  border: 0; }
-  
-    
-/* punch
-*******************************************************************************/
-.punch {
-  
-  //background: #4162a8;
-  background: @newAqua;
-  
-  border-top: 1px solid #38538c;
-  border-right: 1px solid #1f2d4d;
-  border-bottom: 11px solid #151e33;
-  border-left: 1px solid #1f2d4d;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-  -moz-box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-  box-shadow: inset 0 1px 10px 1px #5c8bee, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-  color: #fff;
-  font: bold 20px "helvetica neue", helvetica, arial, sans-serif;
-  line-height: 1;
-  margin-bottom: 10px;
-  padding: 10px 0 12px 0;
-  text-align: center;
-  text-shadow: 0px -1px 1px #1e2d4d;
-  width: 150px;
-  -webkit-background-clip: padding-box; }
-
-.punch:hover {
-    -webkit-box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-    -moz-box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-    box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
-    cursor: pointer; }
-
-.punch:active {
-    -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
-    -moz-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
-    box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
-    margin-top: 58px; }
 
 
 

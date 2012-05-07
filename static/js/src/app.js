@@ -78,9 +78,13 @@ $("#helpButton").click(function() {
 	$('.gameBoard').hide();
 	$('#helpInstructions').show();
 	
+	$('#showStoryContainer').hide();
 	$("#showStory").hide();
 	$("#showStoryHeadline").hide();
 	$("#showStoryText").hide();
+	
+	$('.checkAnswer').hide();
+	
 });
 
 
@@ -162,6 +166,7 @@ $("#backToTheGameInstructions").click(function() {
 		$('.gameBoard').show();
 		$('#helpInstructions').hide();
 		
+		$("#showStoryContainer").hide();
 		$("#showStory").hide();
 		$("#showStoryHeadline").hide();
 		$("#showStoryDate").hide();
@@ -173,7 +178,9 @@ $("#backToTheGameInstructions").click(function() {
 
 
 
+
 //Read Story - Back to the Game
+
 $("#backToTheGameReadStory").click(function() { 
 
 	if (finishedWordsLevelOne) {
@@ -195,8 +202,10 @@ $("#backToTheGameReadStory").click(function() {
 		document.location.href='/storyscramble_level_III';
 	}
 	else {
-		$('#articleLoading').hide();
-		//$('#storyContainer').show();
+		$('#articleLoadingText').hide();
+		$('#articleLoadingGif').hide();
+		
+		$("#showStoryContainer").hide();
 		$("#showStory").hide();
 		$("#showStoryHeadline").hide();
 		$("#showStoryText").hide();
@@ -391,12 +400,11 @@ else if (onLevelThree){
 
 var letterCountLevelOne = 1;
 
+var levelOneAnswer = document.getElementById('levelOneAnswer');
+
 var letterCounterLevelOne = function(){
-	
-	//var levelOneAnswer = document.getElementById('levelOneAnswer');
+
 	var stringOfLettersOne = levelOneAnswer.innerHTML;
-	
-	
 	 
 	//var levelOneEntry = document.getElementById('levelOneEntry');
 	//levelOneEntry.value = ""; 
@@ -435,6 +443,8 @@ var checkLevelOneAnswer = function(){
 	//this cleans it up for spaces
 	//var levelOneEnteredAnswer = levelOneEntry.value.trim();
 	var levelOneEnteredAnswer = letterEntry.value.trim();
+	
+	
 	
 	if (levelOneEnteredAnswer == levelOneAnswer.innerHTML) {
 		
@@ -783,6 +793,7 @@ $(document).ready(function(){
 var changeHighlightWordLevelThree = function(idx){
 
 	$('.highlightedWord').html(levelThreeMasterHeadline[idx-1]);
+	$('.highlightedWord').addClass('levelThreeWordSpace');
 	$('.word').removeClass('highlightedWord')
 	
 	$('.word').each(function(index) {
@@ -838,8 +849,7 @@ var checkLevelThreeAnswer = function(){
 			$('#levelThreeWrongAnswer').hide();
 		}
 		
-		
-		
+			
 		letterCountLevelThree = 1;
 		//console.log("THE LETTER COUNT IS: " + letterCountLevelThree);
 
@@ -893,8 +903,6 @@ $("#levelThreeNew").click(function() {
 
 
 
-
-
 //Level III - Final Button
 $("#levelThreeFinalButton").click(function() {
 
@@ -927,9 +935,11 @@ $('input#readStory').on('click', function(){
 
 	$('.checkAnswer').hide();
 	
-	/* $('#articleLoading').html('<img src="media/gifs/ajax-loader.gif"/> One moment please...'); */
-	$('#articleLoading').html("One moment please..."); 	
-	$('#articleLoading').show();
+	$('#articleLoadingText').html('One Moment Please...');
+	$('#articleLoadingText').show();			
+
+	$('#articleLoadingGif').html('<img src="media/gifs/ajax-loader.gif"/>'); 
+	$('#articleLoadingGif').show();
 	
 	console.log("Article Request Made");
 	
@@ -948,12 +958,15 @@ $('input#readStory').on('click', function(){
 		
 		success : function(data) {
 			
-			$('#articleLoading').hide();
-			$('#articleLoading').html("");
+			$('#articleLoadingText').hide();
+			$('#articleLoadingText').html("");
+			
+			$('#articleLoadingGif').hide();
+			$('#articleLoadingGif').html("");
 			
 			$("#showStoryText").html(data.text);
 			
-			//$('#storyContainer').show();		
+			$("#showStoryContainer").show();		
 			$("#showStory").show();	
 			$("#showStoryHeadline").show();
 			$("#showStoryLink").show();
