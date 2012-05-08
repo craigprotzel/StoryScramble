@@ -424,8 +424,10 @@ body > footer {
   font-size: 12px;
   display: inline;
 }
-.categoryChosenStyle {
+#categoryChosen {
   display: none;
+}
+.categoryChosenStyle {
   float: left;
   font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;

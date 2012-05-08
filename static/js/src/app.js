@@ -541,10 +541,10 @@ else {
 
 
 if (categoryCurrent !== ""){
-	$('.categoryChosenStyle').show();
+	$('#categoryChosen').show();
 }
 else {
-	$('.categoryChosenStyle').hide();
+	$('#categoryChosen').hide();
 }
 
 
