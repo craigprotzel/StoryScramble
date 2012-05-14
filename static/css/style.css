@@ -273,7 +273,7 @@ body > header {
 #helpDiv {
   float: right;
 }
-#homeButton {
+.navButton {
   background-color: #9b5aaa;
   text-align: center;
   text-decoration: none;
@@ -289,11 +289,11 @@ body > header {
   float: left;
   line-height: 1;
 }
-#homeButton:hover {
+.navButton:hover {
   color: #ffffff;
   background-color: #19a3a3;
 }
-#homeButton:active {
+.navButton:active {
   color: #ffffff;
   background-color: #9b5aaa;
 }
@@ -381,7 +381,7 @@ body > header {
   border-radius: 5px;
   font-size: 38px;
   padding: 50px 0px;
-  margin: 75px 26% 0px 26%;
+  margin: 30px 26% 0px 26%;
 }
 #welcomeButton:hover {
   color: #ffffff;
@@ -437,7 +437,7 @@ body > footer {
   line-height: 24px;
   color: #ffffff;
   padding: 6px;
-  margin-left: 55px;
+  margin-left: 140px;
   border-style: solid;
   border-color: #87468b;
 }
@@ -484,6 +484,12 @@ body > footer {
   text-align: center;
   margin-top: 90px;
   line-height: 48px;
+}
+#homePageTitle {
+  margin-bottom: 50px;
+}
+.titleDescription {
+  padding: 10px 0px;
 }
 #usaTodayCall {
   float: right;

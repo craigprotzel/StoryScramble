@@ -5,7 +5,20 @@ var levelChosen;
 
 //Header Home Button
 //Reset Local Vars
-$("#homeButton").click(function() { 
+
+$('#homeButton').click(function(){
+	console.log("Topic Set: none");
+	localStorage.setItem("categoryChosen", "");
+	localStorage.setItem("topicChosen", "");
+	localStorage.setItem("levelChosen", "");
+  
+  	document.location.href='/';
+
+
+});
+
+
+$("#changeCategory").click(function() { 
 	console.log("Topic Set: none");
 	localStorage.setItem("categoryChosen", "");
 	localStorage.setItem("topicChosen", "");
