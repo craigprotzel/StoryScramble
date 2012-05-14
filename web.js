@@ -78,7 +78,7 @@ app.configure(function() {
 
 //usa today variables
 var source = 'USA_Today';
-var topic = '';
+var topic = 'Offbeat';
 
 var categories = ['Words', 'Headlines'];	  
 var categoryChosen = '';
@@ -185,7 +185,7 @@ app.get('/storyscramble_level_I', function(request, response) {
 
     //sort by date in descending order
     query.sort('date',-1);
-    query.limit(150); 
+    query.limit(250); 
 
     //run the query
     query.exec({}, function(err, allStories){
@@ -297,7 +297,7 @@ app.get('/storyscramble_level_II', function(request, response) {
 
     //sort by date in descending order
     query.sort('date',-1);
-    query.limit(150); 
+    query.limit(250); 
 
     //run the query
     query.exec({}, function(err, allStories){
@@ -412,7 +412,7 @@ app.get('/storyscramble_level_III', function(request, response) {
 
     //sort by date in descending order
     query.sort('date',-1);
-    query.limit(150); 
+    query.limit(250); 
 
     //run the query
     query.exec({}, function(err, allStories){
@@ -544,13 +544,14 @@ app.get('/ajaxgetarticle', function(request, response){
 
 //USA Today API Query - click button on Main Page
 
+
 /*
 app.post('/usaTodayAPIQuery', function (request,response) {
 
 	console.log("hit usaTodayAPIQuery");
 	// the url you need to request from USA Today
     // this will return the 10 top news articles in json format
-    var url = "http://api.usatoday.com/open/articles/weather?encoding=json&count=6&api_key=85gehs983tmqbwxz4uwk6ghv"
+    var url = "http://api.usatoday.com/open/articles/offbeat?encoding=json&count=5&api_key=85gehs983tmqbwxz4uwk6ghv"
     
 	
     // make the request to USA Today api
@@ -586,6 +587,7 @@ app.post('/usaTodayAPIQuery', function (request,response) {
 
 });
 */
+
 
 
 
