@@ -211,12 +211,13 @@ body > footer {
 	float: left;
 	#font.sans-serif();
 	font-size: @medium;
+	font-weight: bold;
 	line-height: @medium;
-	color: @white;
+	color: @lightPurple;
 	padding: 6px;	
-	margin-left: 140px;
-	border-style:solid;
-	border-color: @lightPurple;
+	margin-left: 125px;
+	//border-style:solid;
+	//border-color: @lightPurple;
 
 }
 
@@ -230,20 +231,15 @@ body > footer {
 }
 
 
-
-#topicChosen{
-	display: none;
-}
-
-
-.topicChosenStyle{
+.levelChosenStyle{
 	#font.sans-serif();
 	font-size: @medium;
+	font-weight: bold;
 	line-height: @medium;
-	color: @white;
+	color: @lightPurple;
 	padding: 4px;	
-	border-style:solid;
-	border-color: @lightPurple;
+	//border-style:solid;
+	//border-color: @lightPurple;
 	
 }
 
@@ -253,19 +249,23 @@ body > footer {
 }
 
 
-.levelChosenStyle{
+.topicChosenStyle{
 	#font.sans-serif();
 	font-size: @medium;
+	font-weight: bold;
 	line-height: @medium;
-	color: @white;	
+	color: @lightPurple;	
 	padding: 6px;
 	//margin-top: 20px;
 	margin-left: 85px;
-	border-style: solid;
-	border-color: @lightPurple;
+	//border-style: solid;
+	//border-color: @lightPurple;
 	
 }
 
+#topicChosen{
+	display: none;
+}
 
 
 ///////////////
@@ -310,7 +310,7 @@ body > footer {
 	.option {
 		.column(3,9); 
 		.bigButton();
-		font-size: 42px;
+		font-size: 36px;
 	}
 }
 
@@ -324,15 +324,9 @@ body > footer {
 	.optionTwo {
 		.column(6,12); 
 		.bigButton();
-		font-size: 42px;
+		font-size: 34px;
 	}	
 }
-
-
-#categoryWords:hover {
-	background-color: white;
-}
-
 
 
 .footerButtons{

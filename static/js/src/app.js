@@ -3,40 +3,16 @@ var categoryChosen;
 var topicChosen;
 var levelChosen;
 
+//Get Local Variables
+var categoryCurrent = localStorage.getItem("categoryChosen");
+var topicCurrent = localStorage.getItem("topicChosen");
+var levelCurrent = localStorage.getItem("levelChosen");
+
 var enterOK = true;
-
-//Header Home Button
-//Reset Local Vars
-
-$('#homeButton').click(function(){
-	console.log("Topic Set: none");
-	localStorage.setItem("categoryChosen", "");
-	localStorage.setItem("topicChosen", "");
-	localStorage.setItem("levelChosen", "");
-  
-  	document.location.href='/';
-
-
-});
-
-
-$("#changeCategory").click(function() { 
-	console.log("Topic Set: none");
-	localStorage.setItem("categoryChosen", "");
-	localStorage.setItem("topicChosen", "");
-	localStorage.setItem("levelChosen", "");
-  
-  	document.location.href='/categories';
-});
-
-
-//Header Topic Button
-$("#changeTopic").click(function() { 
-  document.location.href='/topics';
-});
 
 
 //Welcome - Enter Button
+//Reset Local Vars
 $("#welcomeButton").click(function() { 
 
 	localStorage.setItem("categoryChosen", "");
@@ -47,32 +23,86 @@ $("#welcomeButton").click(function() {
 });
 
 
-//Made these POST-submit buttons
+//Header Home Button
+//Reset Local Vars
+$('#homeButton').click(function(){
+	console.log("Topic Set: none");
+	localStorage.setItem("categoryChosen", "");
+	localStorage.setItem("topicChosen", "");
+	localStorage.setItem("levelChosen", "");
+  
+  	document.location.href='/';
+});
+
+
+//CHOOSE SELECTIONS
+
 //Choose Category - Setting Local Vars for front-end access
+//Made these POST-submit buttons
 $("#categoryWords").click(function() { 
 	console.log("Category Set: Words ");
-	localStorage.setItem("categoryChosen", "Words");	
+	localStorage.setItem("categoryChosen", "Single Word");	
 });
 
 $("#categoryHeadlines").click(function() { 
 	console.log("Category Set: Headlines ");
-	localStorage.setItem("categoryChosen", "Headlines");	
+	localStorage.setItem("categoryChosen", "Multiple Words");	
 });
-
 
 
 //Choose level
 $("#chooseLevelOne").click(function() {
 	localStorage.setItem("levelChosen", "Level I");
-	document.location.href="/instructions_level_I";
+	
+	if (topicCurrent == "News"){
+		document.location.href="/instructions_level_I_News";
+	}
+	else if (topicCurrent == "Travel"){
+		document.location.href="/instructions_level_I_Travel";	
+	}
+	else if (topicCurrent == "Weather"){
+		document.location.href="/instructions_level_I_Weather";		
+	}
+	else {
+		document.location.href="/topics_levelOne";
+	}
 });
+
+
+
 $("#chooseLevelTwo").click(function() {
 	localStorage.setItem("levelChosen", "Level II"); 
-	document.location.href="/instructions_level_II";
+
+	if (topicCurrent == "News"){
+		document.location.href="/instructions_level_II_News";
+	}
+	else if (topicCurrent == "Travel"){
+		document.location.href="/instructions_level_II_Travel";	
+	}
+	else if (topicCurrent == "Weather"){
+		document.location.href="/instructions_level_II_Weather";		
+	}
+	else {
+		document.location.href="/topics_levelTwo";
+	}	
 });
+
+
 $("#chooseLevelThree").click(function() {
 	localStorage.setItem("levelChosen", "Level III"); 
-	document.location.href="/instructions_level_III";
+	
+	if (topicCurrent == "News"){
+		document.location.href="/instructions_level_III_News";
+	}
+	else if (topicCurrent == "Travel"){
+		document.location.href="/instructions_level_III_Travel";	
+	}
+	else if (topicCurrent == "Weather"){
+		document.location.href="/instructions_level_III_Weather";		
+	}
+	else {
+		document.location.href="/topics_levelThree";
+	}	
 });
 
 
@@ -82,35 +112,35 @@ $("#news").click(function() {
 	console.log("Topic Set: News");
 	localStorage.setItem("topicChosen", "News");
 	
-	if (categoryCurrent == "Words") {
+	if (categoryCurrent == "Single Word") {
 	
 		if (levelCurrent == "Level I") {
-			document.location.href="/instructions_level_I";	
+			document.location.href="/instructions_level_I_News";	
 		}
 		else if (levelCurrent == "Level II") {
-			document.location.href="/instructions_level_II";	
+			document.location.href="/instructions_level_II_News";	
 		}
 		else if (levelCurrent == "Level III") {
-			document.location.href="/instructions_level_III";	
+			document.location.href="/instructions_level_III_News";	
 		}		
 		else {
-			document.location.href='/news';
+			document.location.href='/words';
 		}
 	}
 	
-	else if (categoryCurrent == "Headlines") {
+	else if (categoryCurrent == "Multiple Words") {
 	
 		if (levelCurrent == "Level I") {
-			document.location.href="/instructions_level_I";		
+			document.location.href="/instructions_level_I_News";		
 		}
 		else if (levelCurrent == "Level II") {
-			document.location.href="/instructions_level_II";		
+			document.location.href="/instructions_level_II_News";		
 		}
 		else if (levelCurrent == "Level III") {
-			document.location.href="/instructions_level_III";		
+			document.location.href="/instructions_level_III_News";		
 		}		
 		else {
-			document.location.href='/news';
+			document.location.href='/headlines';
 		}
 	}
 	
@@ -125,35 +155,35 @@ $("#travel").click(function() {
 	console.log("Topic Set: Travel");
 	localStorage.setItem("topicChosen", "Travel");
 	
-	if (categoryCurrent == "Words") {
+	if (categoryCurrent == "Single Word") {
 	
 		if (levelCurrent == "Level I") {
-			document.location.href="/instructions_level_I";	
+			document.location.href="/instructions_level_I_Travel";	
 		}
 		else if (levelCurrent == "Level II") {
-			document.location.href="/instructions_level_II";	
+			document.location.href="/instructions_level_II_Travel";	
 		}
 		else if (levelCurrent == "Level III") {
-			document.location.href="/instructions_level_III";	
+			document.location.href="/instructions_level_III_Travel";	
 		}		
 		else {
-			document.location.href='/travel';
+			document.location.href='/words';
 		}
 	}
 	
-	else if (categoryCurrent == "Headlines") {
+	else if (categoryCurrent == "Multiple Words") {
 	
 		if (levelCurrent == "Level I") {
-			document.location.href="/instructions_level_I";		
+			document.location.href="/instructions_level_I_Travel";		
 		}
 		else if (levelCurrent == "Level II") {
-			document.location.href="/instructions_level_II";		
+			document.location.href="/instructions_level_II_Travel";		
 		}
 		else if (levelCurrent == "Level III") {
-			document.location.href="/instructions_level_III";		
+			document.location.href="/instructions_level_III_Travel";		
 		}		
 		else {
-			document.location.href='/travel';
+			document.location.href='/headlines';
 		}
 	}
 	
@@ -167,35 +197,35 @@ $("#weather").click(function() {
 	console.log("Topic Set: Weather");
 	localStorage.setItem("topicChosen", "Weather");
 	
-	if (categoryCurrent == "Words") {
+	if (categoryCurrent == "Single Word") {
 	
 		if (levelCurrent == "Level I") {
-			document.location.href="/instructions_level_I";	
+			document.location.href="/instructions_level_I_Weather";	
 		}
 		else if (levelCurrent == "Level II") {
-			document.location.href="/instructions_level_II";	
+			document.location.href="/instructions_level_II_Weather";	
 		}
 		else if (levelCurrent == "Level III") {
-			document.location.href="/instructions_level_III";	
+			document.location.href="/instructions_level_III_Weather";	
 		}		
 		else {
-			document.location.href='/weather';
+			document.location.href='/words';
 		}
 	}
 	
-	else if (categoryCurrent == "Headlines") {
+	else if (categoryCurrent == "Multiple Words") {
 	
 		if (levelCurrent == "Level I") {
-			document.location.href="/instructions_level_I";		
+			document.location.href="/instructions_level_I_Weather";		
 		}
 		else if (levelCurrent == "Level II") {
-			document.location.href="/instructions_level_II";		
+			document.location.href="/instructions_level_II_Weather";		
 		}
 		else if (levelCurrent == "Level III") {
-			document.location.href="/instructions_level_III";		
+			document.location.href="/instructions_level_III_Weather";		
 		}		
 		else {
-			document.location.href='/weather';
+			document.location.href='/headlines';
 		}
 	}
 	
@@ -204,6 +234,78 @@ $("#weather").click(function() {
 	}
 
 });	
+
+
+//CHANGE SELECTIONS
+
+//Header Change Category
+$("#changeCategory").click(function() { 
+	console.log("Topic Set: none");
+	localStorage.setItem("categoryChosen", "");
+	localStorage.setItem("topicChosen", "");
+	localStorage.setItem("levelChosen", "");
+  
+  	document.location.href='/categories';
+});
+
+
+//Change Level
+$('#changeLevel').click(function() {
+
+	localStorage.setItem("levelChosen", "");	
+	
+	if (categoryCurrent == ""){
+		document.location.href='/categories';
+	}
+	else if (categoryCurrent == "Single Word"){
+		document.location.href='/levels_words';
+	}
+	else if (categoryCurrent == "Multiple Words"){
+		document.location.href='/levels_headlines';
+	}			
+});
+
+
+
+//Change Topic
+$("#changeTopic").click(function() { 
+
+	localStorage.setItem("topicChosen", "");
+
+	if (categoryCurrent == "") {
+		document.location.href='/categories';
+	}
+	
+	else if (categoryCurrent == "Single Word") {
+		if (levelCurrent == "") {
+			document.location.href='/levels_words';
+		}
+		else if (levelCurrent == "Level I"){
+			document.location.href='/topics_levelOne';
+		}
+		else if (levelCurrent == "Level II"){
+			document.location.href='/topics_levelTwo';
+		}		
+		else if (levelCurrent == "Level III"){
+			document.location.href='/topics_levelThree';
+		}			
+	}
+	else if (categoryCurrent == "Multiple Words"){
+		if (levelCurrent == "") {
+			document.location.href='/levels_headlines';
+		}
+		else if (levelCurrent == "Level I"){
+			document.location.href='/topics_levelOne';
+		}
+		else if (levelCurrent == "Level II"){
+			document.location.href='/topics_levelTwo';
+		}		
+		else if (levelCurrent == "Level III"){
+			document.location.href='/topics_levelThree';
+		}			
+	}				
+});
+
 
 
 
@@ -222,48 +324,6 @@ $("#helpButton").click(function() {
 	$("#showStoryText").hide();
 	
 	$('.checkAnswer').hide();
-	
-});
-
-
-
-//Change Topic
-$("#changeTopic").click(function() { 
-
-	//console.log("Topic Set: ");
-	localStorage.setItem("topicChosen", "");
-
-	if (categoryCurrent == ""){
-		document.location.href='/categories';
-	}
-	else {
-	document.location.href='/topics';
-	}
-});
-
-
-//Change Level
-$('#changeLevel').click(function() {
-	//console.log("Change Level Pressed");
-	localStorage.setItem("levelChosen", "");
-	
-	console.log(topicCurrent);
-	
-	if (categoryCurrent == ""){
-		document.location.href='/categories';
-	}
-	else if (topicCurrent == "News") {
-		document.location.href='/news';
-	}
-	else if (topicCurrent == "Travel") {
-		document.location.href='/travel';
-	}
-	else if (topicCurrent == "Weather"){
-		document.location.href='/weather';
-	}
-	else {
-		document.location.href='/topics';
-	}
 	
 });
 
@@ -396,11 +456,6 @@ var pageTitle = document.getElementById('pageTitle');
 var currentPageTitle = document.getElementById('currentPageTitle');
 console.log(currentPageTitle);
 
-
-//Get Local Variables
-var categoryCurrent = localStorage.getItem("categoryChosen");
-var topicCurrent = localStorage.getItem("topicChosen");
-var levelCurrent = localStorage.getItem("levelChosen");
 
 var titleFiller = currentPageTitle.innerHTML;
 
@@ -556,9 +611,9 @@ else if (onLevelThree){
 
 
 
-//Set Indicators
+//Set Visual Indicators
 //Current Category
-if (categoryCurrent == "Words" || categoryCurrent == "Headlines"){
+if (categoryCurrent == "Single Word" || categoryCurrent == "Multiple Words"){
 	$('#categoryChosen').html(categoryCurrent);
 }
 else {
@@ -596,13 +651,13 @@ if (topicCurrent !== "" && levelCurrent !== ""){
 	$('#topicChosen').show();
 	$('#levelChosen').show();	
 }
-else if (topicCurrent !== "" && levelCurrent == ""){
-	$('#topicChosen').show();
-	$('#levelChosen').hide();
+else if (levelCurrent !== "" && topicCurrent == ""){
+	$('#levelChosen').show();
+	$('#topicChosen').hide();
 }
 else {
-	$('#topicChosen').hide();
 	$('#levelChosen').hide();
+	$('#topicChosen').hide();
 }
 
 
@@ -1222,8 +1277,7 @@ $('input#readStory').on('click', function(){
 						
 			$("#showStoryText").show();
 			
-					
-			
+								
 		},
 			
 		error : function(err) {
@@ -1252,7 +1306,6 @@ var enterWasPressed = function() {
 	}	
 	
 };
-
 
 
 $(document).keypress(function (e) {

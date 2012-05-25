@@ -92,8 +92,6 @@ var requestedLevel = '';
 
 
 
-	
-
 //Main Page - Choose Topic
 app.get('/', function(request, response) {
 	
@@ -115,7 +113,7 @@ app.post('/categoryChoice_words', function(request, response){
 	console.log("WORDS Category Was Chosen");
 	categoryChosen = 'Words'; 
 	
-	response.redirect('/topics');
+	response.redirect('/levels_words');
 
 });
 
@@ -124,55 +122,77 @@ app.post('/categoryChoice_headlines', function(request, response){
 	console.log("HEADLINES Category Was Chosen");
 	categoryChosen = 'Headlines'; 
 	
-	response.redirect('/topics');
+	response.redirect('/levels_headlines');
 
 });
+
+
+//Levels - Words Page
+app.get('/levels_words', function(request, response) {
+    
+    response.render("levels_words.html");
+    
+});
+
+
+//Levels - Headlines Page
+app.get('/levels_headlines', function(request, response) {
+    
+    response.render("levels_headlines.html");
+    
+});
+
 
 
 //Topics Page
-app.get('/topics', function(request,response){
+app.get('/topics_levelOne', function(request,response){
 
+	requestedLevel = 'LevelOne';
 	response.render("topics.html");
 
 });
-		
-//Levels - News Page
-app.get('/news', function(request, response) {
-    
-    requestedTopic = 'Offbeat';
-    response.render("levels_news.html");
-    
+
+app.get('/topics_levelTwo', function(request,response){
+
+	requestedLevel = 'LevelTwo';
+	response.render("topics.html");
+
 });
 
-//Levels - Travel Page
-app.get('/travel', function(request, response) {
-    
-    requestedTopic = 'Travel';
-    response.render("levels_travel.html");
-    
-});
+app.get('/topics_levelThree', function(request,response){
 
-//Levels - Weather Page
-app.get('/weather', function(request, response) {
-    
-    requestedTopic = 'Weather';
-    response.render("levels_weather.html");
-    
+	requestedLevel = 'LevelThree';
+	response.render("topics.html");
+
 });
 
 
 
-//Display Level I Pages - ONE WORD SCRAMBLED
-app.get('/instructions_level_I', function(request, response) {
+//Display Level I Pages
+app.get('/instructions_level_I_News', function(request, response) {
 
-	requestedLevel = 'LevelOne';	
+	requestedTopic = 'Offbeat';	
+	response.render("instructions_level_I.html");
+
+});
+
+app.get('/instructions_level_I_Travel', function(request, response) {
+
+	requestedTopic = 'Travel';	
+	response.render("instructions_level_I.html");
+
+});
+
+app.get('/instructions_level_I_Weather', function(request, response) {
+
+	requestedTopic = 'Weather';	
 	response.render("instructions_level_I.html");
 
 });
 
 
 
-
+//Display Level I
 app.get('/storyscramble_level_I', function(request, response) {  
 
 	var getRandom;
@@ -276,15 +296,31 @@ app.get('/storyscramble_level_I', function(request, response) {
 
 
 
-// Display Level II Instructions Page - TWO WORDS SCRAMBLED 
-app.get('/instructions_level_II', function(request, response) {
-	
-	requestedLevel = 'LevelTwo';	
+// Display Level II Instructions Page
+app.get('/instructions_level_II_News', function(request, response) {
+
+	requestedTopic = 'Offbeat';	
+	response.render("instructions_level_II.html");
+
+});
+
+app.get('/instructions_level_II_Travel', function(request, response) {
+
+	requestedTopic = 'Travel';	
+	response.render("instructions_level_II.html");
+
+});
+
+app.get('/instructions_level_II_Weather', function(request, response) {
+
+	requestedTopic = 'Weather';	
 	response.render("instructions_level_II.html");
 
 });
 
 
+
+// Display Level II
 app.get('/storyscramble_level_II', function(request, response) {
 
 	var getRandom;
@@ -388,17 +424,32 @@ app.get('/storyscramble_level_II', function(request, response) {
 });
 
 
-//Display Level III Page - TITLE WORDS SCRAMBLED 
 
-app.get('/instructions_level_III', function(request, response) {
-	
-	requestedLevel = 'LevelThree';
+//Display Level III Instructions 
+app.get('/instructions_level_III_News', function(request, response) {
+
+	requestedTopic = 'Offbeat';	
+	response.render("instructions_level_III.html");
+
+});
+
+app.get('/instructions_level_III_Travel', function(request, response) {
+
+	requestedTopic = 'Travel';	
+	response.render("instructions_level_III.html");
+
+});
+
+app.get('/instructions_level_III_Weather', function(request, response) {
+
+	requestedTopic = 'Weather';	
 	response.render("instructions_level_III.html");
 
 });
 
 
-//Display Level III Page - ALL USA TODAY ENTRIES
+
+//Display Level III Page
 
 app.get('/storyscramble_level_III', function(request, response) {
 

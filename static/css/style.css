@@ -434,12 +434,11 @@ body > footer {
   font-weight: normal;
   line-height: 20px;
   font-size: 24px;
+  font-weight: bold;
   line-height: 24px;
-  color: #ffffff;
+  color: #87468b;
   padding: 6px;
-  margin-left: 140px;
-  border-style: solid;
-  border-color: #87468b;
+  margin-left: 125px;
 }
 #chosenBox {
   float: right;
@@ -447,7 +446,18 @@ body > footer {
   margin-right: 180px;
   width: 300px;
 }
-#topicChosen {
+.levelChosenStyle {
+  font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 24px;
+  color: #87468b;
+  padding: 4px;
+}
+#levelChosen {
   display: none;
 }
 .topicChosenStyle {
@@ -456,27 +466,14 @@ body > footer {
   font-weight: normal;
   line-height: 20px;
   font-size: 24px;
+  font-weight: bold;
   line-height: 24px;
-  color: #ffffff;
-  padding: 4px;
-  border-style: solid;
-  border-color: #87468b;
-}
-#levelChosen {
-  display: none;
-}
-.levelChosenStyle {
-  font-family: "Cabin", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 20px;
-  font-size: 24px;
-  line-height: 24px;
-  color: #ffffff;
+  color: #87468b;
   padding: 6px;
   margin-left: 85px;
-  border-style: solid;
-  border-color: #87468b;
+}
+#topicChosen {
+  display: none;
 }
 .welcomePage {
   font-size: 32px;
@@ -518,7 +515,7 @@ body > footer {
   border: none;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  font-size: 42px;
+  font-size: 36px;
 }
 #buttons .option:hover {
   color: #ffffff;
@@ -549,7 +546,7 @@ body > footer {
   border: none;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  font-size: 42px;
+  font-size: 34px;
 }
 #buttonsTwo .optionTwo:hover {
   color: #ffffff;
@@ -558,9 +555,6 @@ body > footer {
 #buttonsTwo .optionTwo:active {
   color: #ffffff;
   background-color: #19a3a3;
-}
-#categoryWords:hover {
-  background-color: white;
 }
 .footerButtons {
   background-color: #9b5aaa;
