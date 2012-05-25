@@ -559,6 +559,9 @@ body > footer {
   color: #ffffff;
   background-color: #19a3a3;
 }
+#categoryWords:hover {
+  background-color: white;
+}
 .footerButtons {
   background-color: #9b5aaa;
   text-align: center;
@@ -937,6 +940,12 @@ backToTheGame {
 .enterButton:active {
   color: #ffffff;
   background-color: #19a3a3;
+}
+#levelTwoNext {
+  padding: 23px 33px;
+}
+#levelThreeNext {
+  padding: 23px 33px;
 }
 .checkAnswer {
   display: none;
