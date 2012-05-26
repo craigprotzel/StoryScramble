@@ -78,7 +78,7 @@ app.configure(function() {
 
 //usa today variables
 var source = 'USA_Today';
-var topic = 'Offbeat';
+var topic = 'Weather';
 
 var categories = ['Words', 'Headlines'];	  
 var categoryChosen = '';
@@ -602,7 +602,7 @@ app.post('/usaTodayAPIQuery', function (request,response) {
 	console.log("hit usaTodayAPIQuery");
 	// the url you need to request from USA Today
     // this will return the 10 top news articles in json format
-    var url = "http://api.usatoday.com/open/articles/offbeat?encoding=json&count=5&api_key=85gehs983tmqbwxz4uwk6ghv"
+    var url = "http://api.usatoday.com/open/articles/weather?encoding=json&count=15&api_key=85gehs983tmqbwxz4uwk6ghv"
     
 	
     // make the request to USA Today api
@@ -638,9 +638,6 @@ app.post('/usaTodayAPIQuery', function (request,response) {
 
 });
 */
-
-
-
 
 
 
@@ -738,6 +735,7 @@ app.helpers({
 		return -1
 	}
 	
+
 	//function for all Word Levels & Headlines Level I
     , longestOne: function(wordslist){ 
     	
@@ -746,16 +744,30 @@ app.helpers({
 		};
 		var sorted = wordslist.slice(0);
 		sorted = sorted.sort(sortLongToShort);
-
+		
+		//determine which sorted words are usable
+		var sortedUsable = [];
+		for (var i = 0; i < sorted.length; i++){
+			//match any non-word character and/or any digit
+			if (sorted[i].match(/[\W+\d+]/)){
+				console.log ("BAD WORD!!!!!!!!!!")
+				continue
+			}	
+			else {
+				sortedUsable.push(sorted[i]);
+			}
+		}
+		
+		//take the longest usable sorted word
 		for (var i = 0; i < wordslist.length; i++){
-			if (sorted[0] == wordslist[i]) {
+			if (sortedUsable[0] == wordslist[i]) {
 				return i;
 			}
 		}
-		return -1
-    }
-    
-    
+		return -1	
+	}
+ 
+   
     //function for Headlines Level II
 	, longestTwo: function(wordslist){ 
     	
@@ -764,11 +776,24 @@ app.helpers({
 		};
 		var sorted = wordslist.slice(0);
 		var sorted = sorted.sort(sortLongToShort);
+	
+		//determine which sorted words are usable
+		var sortedUsable = [];
+		for (var i = 0; i < sorted.length; i++){
+			//match any non-word character and/or any digit
+			if (sorted[i].match(/[\W+\d+]/)){
+				console.log ("BAD WORD!!!!!!!!!!")
+				continue
+			}	
+			else {
+				sortedUsable.push(sorted[i]);
+			}
+		}		
 
-		var twoLongest = [];
-		
+		//determine the two longest usable words
+		var twoLongest = [];	
 		for (var i = 0; i < wordslist.length; i++){
-			if (sorted[0] == wordslist[i] || sorted[1] == wordslist[i]) {
+			if (sortedUsable[0] == wordslist[i] || sortedUsable[1] == wordslist[i]) {
 				twoLongest.push(i);
 			}
 		} 
@@ -787,22 +812,37 @@ app.helpers({
   		//this strips out all the punctuation
   		//wordNew = word.replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ");
   		//wordNew = word.replace(/[^\w ]/, "");
-  		
-  		var random = function() { 
-				return (0.5 - Math.random()); 
+  				
+	  	var random = function() { 
+			return (0.5 - Math.random()); 
 			}; 
-				
-		var characters = word.split("");		
 		
+		var characters = word.split("");
+		var newWord;
+  					
 		//run sort a few times
 		characters.sort(random); 
 		characters.sort(random); 
 		characters.sort(random); 
 		
-		//before returning you would add back the punctuation you removed at the beginning.
+		//before returning you would add back the punctuation you removed at the beginning
+		
+		//return characters.join("");
+		newWord = characters.join("");
+		return newWord
+		
+		/*	
+		//not working right now, just trying to prevent words being unscrambled
+		//recursively call scramble function if word isn't scrambled
+		if (newWord == word && newWord.length >= 2) {
+			scrambleStart();
+		}
+		else {
+			return newWord;
+		}
+		*/
+	}		
 
-		return characters.join("");
-	}
   
   , compareWords : function(one, two){
   		var onechars = one.split(''),
