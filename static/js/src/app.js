@@ -594,12 +594,16 @@ var wrongAnswer = document.getElementById('wrongAnswer');
 
 
 
+
 var levelTwoMasterHeadline;
 var levelTwoWordCountIndex;
 var levelTwoIndex;
 
+
+
 var levelThreeMasterHeadline;
 var levelThreeWordCountIndex;
+
 
 //inner HTML variables
 if (onLevelTwo) {
@@ -827,12 +831,12 @@ $("#levelOneTryAgain").click(function() {
 var letterCountLevelTwo = 1;
 
 var levelTwoAnswer;
-if (onLevelTwo){
-	levelTwoAnswer = levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]];
-}
-
 
 var letterCounterLevelTwo = function(){
+	
+	if (onLevelTwo){
+	levelTwoAnswer = levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]];
+	}
 	
 	//levelTwoAnswer = 
 	
@@ -1032,12 +1036,12 @@ $("#levelTwoTryAgain").click(function() {
 var letterCountLevelThree = 1;
 
 var levelThreeAnswer;
-if (onLevelThree){
-	levelThreeAnswer = levelThreeMasterHeadline[levelThreeWordCountIndex];
-}
-
 
 var letterCounterLevelThree = function(){
+
+	if (onLevelThree){
+	levelThreeAnswer = levelThreeMasterHeadline[levelThreeWordCountIndex];
+	}
 
 	var levelThreeChars = levelThreeAnswer.split(""); 
 	
@@ -1363,7 +1367,7 @@ $(function() {
 		if (onWordsLevelOne || onWordsLevelTwo || onWordsLevelThree || onLevelOne){
 			
 			var firstAnswerString = levelOneAnswer.innerHTML;
-			
+			$(".gameEntryField").css("color", "black");
 			for (var i = 0; i < enteredLettersArray.length; i++){
 					//determine if letter is usable
 					//****this is just for levels 1-4******
@@ -1379,8 +1383,10 @@ $(function() {
 			}
 		}
 		
+		/*
+		//THIS ISN"T WORKING YET
 		else if (onLevelTwo){
-		
+			$(".gameEntryField").css("color", "black");
 			for (var i = 0; i < enteredLettersArray.length; i++){
 				//determine if letter is usable
 				//****this is for level 2******
@@ -1397,7 +1403,7 @@ $(function() {
 		}
 		
 		else if (onLevelThree){
-		
+			$(".gameEntryField").css("color", "black");
 			for (var i = 0; i < enteredLettersArray.length; i++){
 				//determine if letter is usable
 				//****this is for level 3******
@@ -1413,7 +1419,7 @@ $(function() {
 			}
 		
 		}
-		
+		*/
 		
 		letterKnockOut();
 	});
