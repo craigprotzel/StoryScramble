@@ -593,18 +593,26 @@ var levelThreeEnter = document.getElementById('levelThreeEnter');
 var wrongAnswer = document.getElementById('wrongAnswer');
 
 
+
+var levelTwoMasterHeadline;
+var levelTwoWordCountIndex;
+var levelTwoIndex;
+
+var levelThreeMasterHeadline;
+var levelThreeWordCountIndex;
+
 //inner HTML variables
 if (onLevelTwo) {
-	var levelTwoMasterHeadline = (document.getElementById('levelTwoHeadline').innerHTML).split(" ");
-	var levelTwoWordCountIndex = (document.getElementById('levelTwoWordCountIndex').innerHTML).split(",");
+	levelTwoMasterHeadline = (document.getElementById('levelTwoHeadline').innerHTML).split(" ");
+	levelTwoWordCountIndex = (document.getElementById('levelTwoWordCountIndex').innerHTML).split(",");
 	//console.log("TLTWC 0 is: " + levelTwoWordCountIndex[0]);
 	//console.log("TLTWC 1 is: " + levelTwoWordCountIndex[1]);
-	var levelTwoIndex = document.getElementById('levelTwoIndex').innerHTML;
+	levelTwoIndex = document.getElementById('levelTwoIndex').innerHTML;
 }
 else if (onLevelThree){
 	//inner HTML variables
-	var levelThreeMasterHeadline = (document.getElementById('levelThreeHeadline').innerHTML).split(" ");
-	var levelThreeWordCountIndex = document.getElementById('levelThreeWordCountIndex').innerHTML;
+	levelThreeMasterHeadline = (document.getElementById('levelThreeHeadline').innerHTML).split(" ");
+	levelThreeWordCountIndex = document.getElementById('levelThreeWordCountIndex').innerHTML;
 	//console.log("TLTWC is: " + levelThreeWordCountIndex)
 }
 
@@ -818,9 +826,16 @@ $("#levelOneTryAgain").click(function() {
 //Level II - Give Me A Letter Logic
 var letterCountLevelTwo = 1;
 
+var levelTwoAnswer;
+if (onLevelTwo){
+	levelTwoAnswer = levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]];
+}
+
+
 var letterCounterLevelTwo = function(){
 	
-	var levelTwoAnswer = levelTwoMasterHeadline[levelTwoWordCountIndex[levelTwoIndex]];
+	//levelTwoAnswer = 
+	
 	//console.log(levelTwoAnswer);
 	//console.log("The Level 2 Index Value is: " + levelTwoIndex);
 	//console.log("The Current Answer is: " + levelTwoAnswer);
@@ -1016,9 +1031,14 @@ $("#levelTwoTryAgain").click(function() {
 
 var letterCountLevelThree = 1;
 
+var levelThreeAnswer;
+if (onLevelThree){
+	levelThreeAnswer = levelThreeMasterHeadline[levelThreeWordCountIndex];
+}
+
+
 var letterCounterLevelThree = function(){
-	
-	var levelThreeAnswer = levelThreeMasterHeadline[levelThreeWordCountIndex];
+
 	var levelThreeChars = levelThreeAnswer.split(""); 
 	
 	//var levelThreeEntry = document.getElementById('levelThreeEntry');
@@ -1329,32 +1349,96 @@ var textEntered = document.getElementById('textEntered');
 //var correctLetters = (document.getElementById('levelOneLetters').innerHTML).split(",");
 
 
+//Not Working
 $(function() {
 	$("#letterEntry").bind('input', function() {
+				
+		var enteredLettersArray = textBox.value.split("");
+		
+		//need to set if statements to figure out which level we're on and what is the current correct ansser
+		//then need to be able to stylize the text elements individually in the text box
+		
+		//This is just for levels 1-4	
+		
+		if (onWordsLevelOne || onWordsLevelTwo || onWordsLevelThree || onLevelOne){
+			
+			var firstAnswerString = levelOneAnswer.innerHTML;
+			
+			for (var i = 0; i < enteredLettersArray.length; i++){
+					//determine if letter is usable
+					//****this is just for levels 1-4******
+					if (firstAnswerString.indexOf(enteredLettersArray[i].toLowerCase()) == -1){
+			            $(".gameEntryField").css("color", "red");
+			         	console.log("BAD LETTER IN FIELD");
+			         	break;
+			         }
+			      	else {
+			            $(".gameEntryField").css("color", "black");
+			            console.log("LETTERS ARE ALL USABLE");
+			      	}
+			}
+		}
+		
+		else if (onLevelTwo){
+		
+			for (var i = 0; i < enteredLettersArray.length; i++){
+				//determine if letter is usable
+				//****this is for level 2******
+				if (levelTwoAnswer.indexOf(enteredLettersArray[i].toLowerCase()) == -1){
+		            $(".gameEntryField").css("color", "red");
+		         	console.log("BAD LETTER IN FIELD");
+		         	break;
+		         }
+		      	else {
+		            $(".gameEntryField").css("color", "black");
+		            console.log("LETTERS ARE ALL USABLE");
+		      	}
+			}
+		}
+		
+		else if (onLevelThree){
+		
+			for (var i = 0; i < enteredLettersArray.length; i++){
+				//determine if letter is usable
+				//****this is for level 3******
+				if (levelThreeAnswer.indexOf(enteredLettersArray[i].toLowerCase()) == -1){
+		            $(".gameEntryField").css("color", "red");
+		         	console.log("BAD LETTER IN FIELD");
+		         	break;
+		         }
+		      	else {
+		            $(".gameEntryField").css("color", "black");
+		            console.log("LETTERS ARE ALL USABLE");
+		      	}
+			}
+		
+		}
+		
+		
 		letterKnockOut();
 	});
 });
 
 
 var letterKnockOut = function(){
+
 	var letters = $(".letters");
-		letters.addClass("highlightedLetter"); 
-		letters.removeClass("usedLetter");
-		
-		var enteredLettersArray = textBox.value.split("");
-		
-		for (var i = 0; i < enteredLettersArray.length; i++){
-			var letterFound = false;
-			letters.each(function(){ 
-				if (enteredLettersArray[i].toLowerCase() == $(this).text() && !$(this).hasClass("usedLetter"))
-				{
-					if(!letterFound){
-						$(this).removeClass("highlightedLetter");
-						$(this).addClass("usedLetter");
-						letterFound = true;	
-					}
-				}					
-			});
-		}
+	var enteredLettersArray = textBox.value.split("");
+
+	letters.addClass("highlightedLetter"); 
+	letters.removeClass("usedLetter");
+
+	for (var i = 0; i < enteredLettersArray.length; i++){
+		var letterFound = false;
+		letters.each(function(){ 
+			if (enteredLettersArray[i].toLowerCase() == $(this).text() && !$(this).hasClass("usedLetter")) {
+				if(!letterFound){
+					$(this).removeClass("highlightedLetter");
+					$(this).addClass("usedLetter");
+					letterFound = true;	
+				}
+			}			
+		});
+	}
 }
 		

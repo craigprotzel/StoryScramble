@@ -455,6 +455,7 @@ app.get('/storyscramble_level_III', function(request, response) {
 
 	var getRandom;
 	var wordsLevelCheck;
+	var headlineLevelCheck;
 	
 	var stopWords = false;
 
@@ -528,6 +529,7 @@ app.get('/storyscramble_level_III', function(request, response) {
 				}
 				
 				else if (stopWords){
+					//need to choose another story, recursively run the function
 					stopWords = false;
 					newrandomStory = getRandom();
 					wordsLevelCheck(newrandomStory, response);
@@ -543,12 +545,51 @@ app.get('/storyscramble_level_III', function(request, response) {
 		}  
 	    
 	    else if (categoryChosen == "Headlines") {  
-	        response.render("storyscramble_title.html", templateData);
-	    }                
 	    
-	    else {
-	    	response.render("categories.html", templateData);
-	    }  
+	    console.log("HEADLINESHEADLINESHEADLINESHEADLINESHEADLINESHEADLINESHEADLINESHEADLINESHEADLINESHEADLINES")
+	    
+	    	//filter out headlines that have punctuation
+			//HEADLINE LEVEL CHECK FUNCTION
+		    headlineLevelCheck = function(randomStory, response) { 
+		    
+				var masterHeadlineBackEnd = randomStory.title; 
+				var masterHeadlineLowerBackEnd = masterHeadlineBackEnd.toLowerCase();  
+				var masterWordsBackEnd = masterHeadlineLowerBackEnd.split(" ")		    	
+							
+				//check words to see if they have punctuation
+				for (var i = 0; i < masterWordsBackEnd.length; i++){
+				
+					if (masterWordsBackEnd[i].match(/[\W+]/)) {
+						stopWords = true;
+						console.log("FOUND A STOP WORD!!!!!!!!!!!!!!!!!");
+						break;		
+					}
+					else {
+						stopWords = false;
+						console.log("NO STOP WORDS!!!!!!!!!!!")
+					}
+				}					
+			
+				if (stopWords){
+					stopWords = false;
+					newrandomStory = getRandom();
+					headlineLevelCheck(newrandomStory, response);	
+				}
+				
+		    	else {
+		        	response.render("storyscramble_title.html", templateData);
+		    	}
+		    }	
+		    //END of wordsLevelCheck()
+	
+		    headlineLevelCheck(randomStory, response); 
+		}   	               
+		
+		//go to Category page if all fails
+		else {
+		    response.render("categories.html", templateData);
+		}  
+		
     });                
 });
 
