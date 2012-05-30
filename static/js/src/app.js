@@ -1356,71 +1356,6 @@ var textEntered = document.getElementById('textEntered');
 //Not Working
 $(function() {
 	$("#letterEntry").bind('input', function() {
-				
-		var enteredLettersArray = textBox.value.split("");
-		
-		//need to set if statements to figure out which level we're on and what is the current correct ansser
-		//then need to be able to stylize the text elements individually in the text box
-		
-		//This is just for levels 1-4	
-		
-		if (onWordsLevelOne || onWordsLevelTwo || onWordsLevelThree || onLevelOne){
-			
-			var firstAnswerString = levelOneAnswer.innerHTML;
-			$(".gameEntryField").css("color", "black");
-			for (var i = 0; i < enteredLettersArray.length; i++){
-					//determine if letter is usable
-					//****this is just for levels 1-4******
-					if (firstAnswerString.indexOf(enteredLettersArray[i].toLowerCase()) == -1){
-			            $(".gameEntryField").css("color", "red");
-			         	console.log("BAD LETTER IN FIELD");
-			         	break;
-			         }
-			      	else {
-			            $(".gameEntryField").css("color", "black");
-			            console.log("LETTERS ARE ALL USABLE");
-			      	}
-			}
-		}
-		
-		/*
-		//THIS ISN"T WORKING YET
-		else if (onLevelTwo){
-			$(".gameEntryField").css("color", "black");
-			for (var i = 0; i < enteredLettersArray.length; i++){
-				//determine if letter is usable
-				//****this is for level 2******
-				if (levelTwoAnswer.indexOf(enteredLettersArray[i].toLowerCase()) == -1){
-		            $(".gameEntryField").css("color", "red");
-		         	console.log("BAD LETTER IN FIELD");
-		         	break;
-		         }
-		      	else {
-		            $(".gameEntryField").css("color", "black");
-		            console.log("LETTERS ARE ALL USABLE");
-		      	}
-			}
-		}
-		
-		else if (onLevelThree){
-			$(".gameEntryField").css("color", "black");
-			for (var i = 0; i < enteredLettersArray.length; i++){
-				//determine if letter is usable
-				//****this is for level 3******
-				if (levelThreeAnswer.indexOf(enteredLettersArray[i].toLowerCase()) == -1){
-		            $(".gameEntryField").css("color", "red");
-		         	console.log("BAD LETTER IN FIELD");
-		         	break;
-		         }
-		      	else {
-		            $(".gameEntryField").css("color", "black");
-		            console.log("LETTERS ARE ALL USABLE");
-		      	}
-			}
-		
-		}
-		*/
-		
 		letterKnockOut();
 	});
 });
@@ -1428,23 +1363,34 @@ $(function() {
 
 var letterKnockOut = function(){
 
-	var letters = $(".letters");
+	var letters = $(".letters").parent().first().children();
 	var enteredLettersArray = textBox.value.split("");
-
-	letters.addClass("highlightedLetter"); 
+	letters.addClass("highlightedLetter");
 	letters.removeClass("usedLetter");
-
-	for (var i = 0; i < enteredLettersArray.length; i++){
-		var letterFound = false;
-		letters.each(function(){ 
-			if (enteredLettersArray[i].toLowerCase() == $(this).text() && !$(this).hasClass("usedLetter")) {
-				if(!letterFound){
-					$(this).removeClass("highlightedLetter");
-					$(this).addClass("usedLetter");
-					letterFound = true;	
+		for (var i = 0; i < enteredLettersArray.length; i++){
+			var letterFound = false;
+			letters.each(function(){
+				if (enteredLettersArray[i].toLowerCase() == $(this).text() && !$(this).hasClass("usedLetter")) {
+					if(!letterFound){
+						$(this).removeClass("highlightedLetter");
+						$(this).addClass("usedLetter");
+						letterFound = true;
+					}
 				}
-			}			
-		});
+			});
+			
+		if (!letterFound) {
+			$(".gameEntryField").css("color", "red");
+			console.log("BAD LETTER IN FIELD");
+			break;
+		} else {
+			$(".gameEntryField").css("color", "black");
+	
+		}
 	}
 }
+
+
+
+
 		
